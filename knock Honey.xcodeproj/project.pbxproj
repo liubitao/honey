@@ -1,0 +1,788 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0CB128BF1DAA0467005A0A4D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB128BE1DAA0467005A0A4D /* main.m */; };
+		0CB128CA1DAA0467005A0A4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CB128C91DAA0467005A0A4D /* Assets.xcassets */; };
+		0CB128CD1DAA0467005A0A4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CB128CB1DAA0467005A0A4D /* LaunchScreen.storyboard */; };
+		0CB128D81DAA0467005A0A4D /* knock_HoneyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB128D71DAA0467005A0A4D /* knock_HoneyTests.m */; };
+		0CB128E31DAA0467005A0A4D /* knock_HoneyUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB128E21DAA0467005A0A4D /* knock_HoneyUITests.m */; };
+		0CB128F91DAA1F2E005A0A4D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB128F81DAA1F2E005A0A4D /* AppDelegate.m */; };
+		0CB129371DAA28ED005A0A4D /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB129281DAA28ED005A0A4D /* MBProgressHUD+MJ.m */; };
+		0CB129381DAA28ED005A0A4D /* UIAlertController+BTAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB1292A1DAA28ED005A0A4D /* UIAlertController+BTAdd.m */; };
+		0CB129391DAA28ED005A0A4D /* UIColor+YWcolor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB1292C1DAA28ED005A0A4D /* UIColor+YWcolor.m */; };
+		0CB1293A1DAA28ED005A0A4D /* UIImage+YWimage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB1292E1DAA28ED005A0A4D /* UIImage+YWimage.m */; };
+		0CB1293B1DAA28ED005A0A4D /* UINavigationBar+BTsome.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB129301DAA28ED005A0A4D /* UINavigationBar+BTsome.m */; };
+		0CB1293C1DAA28ED005A0A4D /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB129321DAA28ED005A0A4D /* UIView+Frame.m */; };
+		0CB1293D1DAA28ED005A0A4D /* UIView+YWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB129341DAA28ED005A0A4D /* UIView+YWViewController.m */; };
+		0CB129481DAA2977005A0A4D /* YWUserTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB129411DAA2977005A0A4D /* YWUserTool.m */; };
+		0CB129491DAA2977005A0A4D /* YWHttptool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB129441DAA2977005A0A4D /* YWHttptool.m */; };
+		0CB1294A1DAA2977005A0A4D /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB129471DAA2977005A0A4D /* Utils.m */; };
+		0CB1294F1DAA2C15005A0A4D /* YWUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB1294E1DAA2C15005A0A4D /* YWUser.m */; };
+		1940049D3EBD15A1FE12CC6B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C462ABFC3A89753851B1E5B4 /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0CB128D41DAA0467005A0A4D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0CB128B21DAA0467005A0A4D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0CB128B91DAA0467005A0A4D;
+			remoteInfo = "knock Honey";
+		};
+		0CB128DF1DAA0467005A0A4D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0CB128B21DAA0467005A0A4D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0CB128B91DAA0467005A0A4D;
+			remoteInfo = "knock Honey";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0CB128BA1DAA0467005A0A4D /* knock Honey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "knock Honey.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CB128BE1DAA0467005A0A4D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0CB128C91DAA0467005A0A4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0CB128CC1DAA0467005A0A4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0CB128CE1DAA0467005A0A4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CB128D31DAA0467005A0A4D /* knock HoneyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "knock HoneyTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CB128D71DAA0467005A0A4D /* knock_HoneyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = knock_HoneyTests.m; sourceTree = "<group>"; };
+		0CB128D91DAA0467005A0A4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CB128DE1DAA0467005A0A4D /* knock HoneyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "knock HoneyUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CB128E21DAA0467005A0A4D /* knock_HoneyUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = knock_HoneyUITests.m; sourceTree = "<group>"; };
+		0CB128E41DAA0467005A0A4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CB128F71DAA1F2E005A0A4D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		0CB128F81DAA1F2E005A0A4D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		0CB129271DAA28ED005A0A4D /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
+		0CB129281DAA28ED005A0A4D /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
+		0CB129291DAA28ED005A0A4D /* UIAlertController+BTAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+BTAdd.h"; sourceTree = "<group>"; };
+		0CB1292A1DAA28ED005A0A4D /* UIAlertController+BTAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+BTAdd.m"; sourceTree = "<group>"; };
+		0CB1292B1DAA28ED005A0A4D /* UIColor+YWcolor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+YWcolor.h"; sourceTree = "<group>"; };
+		0CB1292C1DAA28ED005A0A4D /* UIColor+YWcolor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+YWcolor.m"; sourceTree = "<group>"; };
+		0CB1292D1DAA28ED005A0A4D /* UIImage+YWimage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+YWimage.h"; sourceTree = "<group>"; };
+		0CB1292E1DAA28ED005A0A4D /* UIImage+YWimage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+YWimage.m"; sourceTree = "<group>"; };
+		0CB1292F1DAA28ED005A0A4D /* UINavigationBar+BTsome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+BTsome.h"; sourceTree = "<group>"; };
+		0CB129301DAA28ED005A0A4D /* UINavigationBar+BTsome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+BTsome.m"; sourceTree = "<group>"; };
+		0CB129311DAA28ED005A0A4D /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		0CB129321DAA28ED005A0A4D /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		0CB129331DAA28ED005A0A4D /* UIView+YWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YWViewController.h"; sourceTree = "<group>"; };
+		0CB129341DAA28ED005A0A4D /* UIView+YWViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YWViewController.m"; sourceTree = "<group>"; };
+		0CB129401DAA2977005A0A4D /* YWUserTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YWUserTool.h; sourceTree = "<group>"; };
+		0CB129411DAA2977005A0A4D /* YWUserTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YWUserTool.m; sourceTree = "<group>"; };
+		0CB129431DAA2977005A0A4D /* YWHttptool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YWHttptool.h; sourceTree = "<group>"; };
+		0CB129441DAA2977005A0A4D /* YWHttptool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YWHttptool.m; sourceTree = "<group>"; };
+		0CB129461DAA2977005A0A4D /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		0CB129471DAA2977005A0A4D /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		0CB1294B1DAA2A40005A0A4D /* knock Honey.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "knock Honey.pch"; sourceTree = "<group>"; };
+		0CB1294D1DAA2C15005A0A4D /* YWUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YWUser.h; sourceTree = "<group>"; };
+		0CB1294E1DAA2C15005A0A4D /* YWUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YWUser.m; sourceTree = "<group>"; };
+		74E0C9D2929A91D4AB2D6BA5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		B30030C39E55FCBDA7B7F09D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		C462ABFC3A89753851B1E5B4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0CB128B71DAA0467005A0A4D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1940049D3EBD15A1FE12CC6B /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0CB128D01DAA0467005A0A4D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0CB128DB1DAA0467005A0A4D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0606D3066CB5E18E899A3B54 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C462ABFC3A89753851B1E5B4 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0CB128B11DAA0467005A0A4D = {
+			isa = PBXGroup;
+			children = (
+				0CB128BC1DAA0467005A0A4D /* knock Honey */,
+				0CB128D61DAA0467005A0A4D /* knock HoneyTests */,
+				0CB128E11DAA0467005A0A4D /* knock HoneyUITests */,
+				0CB128BB1DAA0467005A0A4D /* Products */,
+				AB43EC70D2FC0A6A6B3B5B58 /* Pods */,
+				0606D3066CB5E18E899A3B54 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		0CB128BB1DAA0467005A0A4D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0CB128BA1DAA0467005A0A4D /* knock Honey.app */,
+				0CB128D31DAA0467005A0A4D /* knock HoneyTests.xctest */,
+				0CB128DE1DAA0467005A0A4D /* knock HoneyUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0CB128BC1DAA0467005A0A4D /* knock Honey */ = {
+			isa = PBXGroup;
+			children = (
+				0CB1293E1DAA291A005A0A4D /* baseClass（基类） */,
+				0CB128F61DAA1F2E005A0A4D /* AppDelegate */,
+				0CB128F01DAA1EF3005A0A4D /* 夺宝 */,
+				0CB128F51DAA1EF3005A0A4D /* 最新揭晓 */,
+				0CB128F41DAA1EF3005A0A4D /* 晒单 */,
+				0CB128F31DAA1EF3005A0A4D /* 购物车 */,
+				0CB128F21DAA1EF3005A0A4D /* 个人中心 */,
+				0CB129251DAA28ED005A0A4D /* Category（分类） */,
+				0CB129351DAA28ED005A0A4D /* lib（三方库） */,
+				0CB129361DAA28ED005A0A4D /* tool（工具类） */,
+				0CB128C91DAA0467005A0A4D /* Assets.xcassets */,
+				0CB128CB1DAA0467005A0A4D /* LaunchScreen.storyboard */,
+				0CB128CE1DAA0467005A0A4D /* Info.plist */,
+				0CB1294B1DAA2A40005A0A4D /* knock Honey.pch */,
+				0CB128BD1DAA0467005A0A4D /* Supporting Files */,
+			);
+			path = "knock Honey";
+			sourceTree = "<group>";
+		};
+		0CB128BD1DAA0467005A0A4D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0CB128BE1DAA0467005A0A4D /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0CB128D61DAA0467005A0A4D /* knock HoneyTests */ = {
+			isa = PBXGroup;
+			children = (
+				0CB128D71DAA0467005A0A4D /* knock_HoneyTests.m */,
+				0CB128D91DAA0467005A0A4D /* Info.plist */,
+			);
+			path = "knock HoneyTests";
+			sourceTree = "<group>";
+		};
+		0CB128E11DAA0467005A0A4D /* knock HoneyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0CB128E21DAA0467005A0A4D /* knock_HoneyUITests.m */,
+				0CB128E41DAA0467005A0A4D /* Info.plist */,
+			);
+			path = "knock HoneyUITests";
+			sourceTree = "<group>";
+		};
+		0CB128F01DAA1EF3005A0A4D /* 夺宝 */ = {
+			isa = PBXGroup;
+			children = (
+				0CB128F11DAA1EF3005A0A4D /* 全民夺宝 */,
+			);
+			path = "夺宝";
+			sourceTree = "<group>";
+		};
+		0CB128F11DAA1EF3005A0A4D /* 全民夺宝 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "全民夺宝";
+			sourceTree = "<group>";
+		};
+		0CB128F21DAA1EF3005A0A4D /* 个人中心 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "个人中心";
+			sourceTree = "<group>";
+		};
+		0CB128F31DAA1EF3005A0A4D /* 购物车 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "购物车";
+			sourceTree = "<group>";
+		};
+		0CB128F41DAA1EF3005A0A4D /* 晒单 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "晒单";
+			sourceTree = "<group>";
+		};
+		0CB128F51DAA1EF3005A0A4D /* 最新揭晓 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "最新揭晓";
+			sourceTree = "<group>";
+		};
+		0CB128F61DAA1F2E005A0A4D /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				0CB128F71DAA1F2E005A0A4D /* AppDelegate.h */,
+				0CB128F81DAA1F2E005A0A4D /* AppDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		0CB129251DAA28ED005A0A4D /* Category（分类） */ = {
+			isa = PBXGroup;
+			children = (
+				0CB129261DAA28ED005A0A4D /* MBProgressHUD+MJ */,
+				0CB129291DAA28ED005A0A4D /* UIAlertController+BTAdd.h */,
+				0CB1292A1DAA28ED005A0A4D /* UIAlertController+BTAdd.m */,
+				0CB1292B1DAA28ED005A0A4D /* UIColor+YWcolor.h */,
+				0CB1292C1DAA28ED005A0A4D /* UIColor+YWcolor.m */,
+				0CB1292D1DAA28ED005A0A4D /* UIImage+YWimage.h */,
+				0CB1292E1DAA28ED005A0A4D /* UIImage+YWimage.m */,
+				0CB1292F1DAA28ED005A0A4D /* UINavigationBar+BTsome.h */,
+				0CB129301DAA28ED005A0A4D /* UINavigationBar+BTsome.m */,
+				0CB129311DAA28ED005A0A4D /* UIView+Frame.h */,
+				0CB129321DAA28ED005A0A4D /* UIView+Frame.m */,
+				0CB129331DAA28ED005A0A4D /* UIView+YWViewController.h */,
+				0CB129341DAA28ED005A0A4D /* UIView+YWViewController.m */,
+			);
+			path = "Category（分类）";
+			sourceTree = "<group>";
+		};
+		0CB129261DAA28ED005A0A4D /* MBProgressHUD+MJ */ = {
+			isa = PBXGroup;
+			children = (
+				0CB129271DAA28ED005A0A4D /* MBProgressHUD+MJ.h */,
+				0CB129281DAA28ED005A0A4D /* MBProgressHUD+MJ.m */,
+			);
+			path = "MBProgressHUD+MJ";
+			sourceTree = "<group>";
+		};
+		0CB129351DAA28ED005A0A4D /* lib（三方库） */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "lib（三方库）";
+			sourceTree = "<group>";
+		};
+		0CB129361DAA28ED005A0A4D /* tool（工具类） */ = {
+			isa = PBXGroup;
+			children = (
+				0CB1294C1DAA2C15005A0A4D /* user(用户) */,
+				0CB1293F1DAA2977005A0A4D /* config（存储） */,
+				0CB129421DAA2977005A0A4D /* http（网络） */,
+				0CB129451DAA2977005A0A4D /* utils（工具） */,
+			);
+			path = "tool（工具类）";
+			sourceTree = "<group>";
+		};
+		0CB1293E1DAA291A005A0A4D /* baseClass（基类） */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "baseClass（基类）";
+			sourceTree = "<group>";
+		};
+		0CB1293F1DAA2977005A0A4D /* config（存储） */ = {
+			isa = PBXGroup;
+			children = (
+				0CB129401DAA2977005A0A4D /* YWUserTool.h */,
+				0CB129411DAA2977005A0A4D /* YWUserTool.m */,
+			);
+			name = "config（存储）";
+			path = config;
+			sourceTree = "<group>";
+		};
+		0CB129421DAA2977005A0A4D /* http（网络） */ = {
+			isa = PBXGroup;
+			children = (
+				0CB129431DAA2977005A0A4D /* YWHttptool.h */,
+				0CB129441DAA2977005A0A4D /* YWHttptool.m */,
+			);
+			name = "http（网络）";
+			path = http;
+			sourceTree = "<group>";
+		};
+		0CB129451DAA2977005A0A4D /* utils（工具） */ = {
+			isa = PBXGroup;
+			children = (
+				0CB129461DAA2977005A0A4D /* Utils.h */,
+				0CB129471DAA2977005A0A4D /* Utils.m */,
+			);
+			name = "utils（工具）";
+			path = utils;
+			sourceTree = "<group>";
+		};
+		0CB1294C1DAA2C15005A0A4D /* user(用户) */ = {
+			isa = PBXGroup;
+			children = (
+				0CB1294D1DAA2C15005A0A4D /* YWUser.h */,
+				0CB1294E1DAA2C15005A0A4D /* YWUser.m */,
+			);
+			path = "user(用户)";
+			sourceTree = "<group>";
+		};
+		AB43EC70D2FC0A6A6B3B5B58 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B30030C39E55FCBDA7B7F09D /* Pods.debug.xcconfig */,
+				74E0C9D2929A91D4AB2D6BA5 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0CB128B91DAA0467005A0A4D /* knock Honey */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0CB128E71DAA0467005A0A4D /* Build configuration list for PBXNativeTarget "knock Honey" */;
+			buildPhases = (
+				31E52337AFFC45CFEF41DB46 /* Check Pods Manifest.lock */,
+				0CB128B61DAA0467005A0A4D /* Sources */,
+				0CB128B71DAA0467005A0A4D /* Frameworks */,
+				0CB128B81DAA0467005A0A4D /* Resources */,
+				594184486DA23FABAA3771F8 /* Embed Pods Frameworks */,
+				11C61A6D60E8A691BA59E1D0 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "knock Honey";
+			productName = "knock Honey";
+			productReference = 0CB128BA1DAA0467005A0A4D /* knock Honey.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0CB128D21DAA0467005A0A4D /* knock HoneyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0CB128EA1DAA0467005A0A4D /* Build configuration list for PBXNativeTarget "knock HoneyTests" */;
+			buildPhases = (
+				0CB128CF1DAA0467005A0A4D /* Sources */,
+				0CB128D01DAA0467005A0A4D /* Frameworks */,
+				0CB128D11DAA0467005A0A4D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0CB128D51DAA0467005A0A4D /* PBXTargetDependency */,
+			);
+			name = "knock HoneyTests";
+			productName = "knock HoneyTests";
+			productReference = 0CB128D31DAA0467005A0A4D /* knock HoneyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0CB128DD1DAA0467005A0A4D /* knock HoneyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0CB128ED1DAA0467005A0A4D /* Build configuration list for PBXNativeTarget "knock HoneyUITests" */;
+			buildPhases = (
+				0CB128DA1DAA0467005A0A4D /* Sources */,
+				0CB128DB1DAA0467005A0A4D /* Frameworks */,
+				0CB128DC1DAA0467005A0A4D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0CB128E01DAA0467005A0A4D /* PBXTargetDependency */,
+			);
+			name = "knock HoneyUITests";
+			productName = "knock HoneyUITests";
+			productReference = 0CB128DE1DAA0467005A0A4D /* knock HoneyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0CB128B21DAA0467005A0A4D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = liubitao;
+				TargetAttributes = {
+					0CB128B91DAA0467005A0A4D = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					0CB128D21DAA0467005A0A4D = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 0CB128B91DAA0467005A0A4D;
+					};
+					0CB128DD1DAA0467005A0A4D = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 0CB128B91DAA0467005A0A4D;
+					};
+				};
+			};
+			buildConfigurationList = 0CB128B51DAA0467005A0A4D /* Build configuration list for PBXProject "knock Honey" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0CB128B11DAA0467005A0A4D;
+			productRefGroup = 0CB128BB1DAA0467005A0A4D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0CB128B91DAA0467005A0A4D /* knock Honey */,
+				0CB128D21DAA0467005A0A4D /* knock HoneyTests */,
+				0CB128DD1DAA0467005A0A4D /* knock HoneyUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0CB128B81DAA0467005A0A4D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0CB128CD1DAA0467005A0A4D /* LaunchScreen.storyboard in Resources */,
+				0CB128CA1DAA0467005A0A4D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0CB128D11DAA0467005A0A4D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0CB128DC1DAA0467005A0A4D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		11C61A6D60E8A691BA59E1D0 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		31E52337AFFC45CFEF41DB46 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		594184486DA23FABAA3771F8 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0CB128B61DAA0467005A0A4D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0CB129481DAA2977005A0A4D /* YWUserTool.m in Sources */,
+				0CB129491DAA2977005A0A4D /* YWHttptool.m in Sources */,
+				0CB129371DAA28ED005A0A4D /* MBProgressHUD+MJ.m in Sources */,
+				0CB1294A1DAA2977005A0A4D /* Utils.m in Sources */,
+				0CB1293A1DAA28ED005A0A4D /* UIImage+YWimage.m in Sources */,
+				0CB129391DAA28ED005A0A4D /* UIColor+YWcolor.m in Sources */,
+				0CB1293D1DAA28ED005A0A4D /* UIView+YWViewController.m in Sources */,
+				0CB1293C1DAA28ED005A0A4D /* UIView+Frame.m in Sources */,
+				0CB1294F1DAA2C15005A0A4D /* YWUser.m in Sources */,
+				0CB1293B1DAA28ED005A0A4D /* UINavigationBar+BTsome.m in Sources */,
+				0CB128F91DAA1F2E005A0A4D /* AppDelegate.m in Sources */,
+				0CB129381DAA28ED005A0A4D /* UIAlertController+BTAdd.m in Sources */,
+				0CB128BF1DAA0467005A0A4D /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0CB128CF1DAA0467005A0A4D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0CB128D81DAA0467005A0A4D /* knock_HoneyTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0CB128DA1DAA0467005A0A4D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0CB128E31DAA0467005A0A4D /* knock_HoneyUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0CB128D51DAA0467005A0A4D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0CB128B91DAA0467005A0A4D /* knock Honey */;
+			targetProxy = 0CB128D41DAA0467005A0A4D /* PBXContainerItemProxy */;
+		};
+		0CB128E01DAA0467005A0A4D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0CB128B91DAA0467005A0A4D /* knock Honey */;
+			targetProxy = 0CB128DF1DAA0467005A0A4D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0CB128CB1DAA0467005A0A4D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0CB128CC1DAA0467005A0A4D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0CB128E51DAA0467005A0A4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		0CB128E61DAA0467005A0A4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0CB128E81DAA0467005A0A4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B30030C39E55FCBDA7B7F09D /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "knock Honey/knock Honey.pch";
+				INFOPLIST_FILE = "knock Honey/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "cn.liubitao.knock-Honey";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0CB128E91DAA0467005A0A4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74E0C9D2929A91D4AB2D6BA5 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "knock Honey/knock Honey.pch";
+				INFOPLIST_FILE = "knock Honey/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "cn.liubitao.knock-Honey";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		0CB128EB1DAA0467005A0A4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "knock HoneyTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "cn.liubitao.knock-HoneyTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/knock Honey.app/knock Honey";
+			};
+			name = Debug;
+		};
+		0CB128EC1DAA0467005A0A4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "knock HoneyTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "cn.liubitao.knock-HoneyTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/knock Honey.app/knock Honey";
+			};
+			name = Release;
+		};
+		0CB128EE1DAA0467005A0A4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "knock HoneyUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "cn.liubitao.knock-HoneyUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "knock Honey";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		0CB128EF1DAA0467005A0A4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "knock HoneyUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "cn.liubitao.knock-HoneyUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "knock Honey";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0CB128B51DAA0467005A0A4D /* Build configuration list for PBXProject "knock Honey" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0CB128E51DAA0467005A0A4D /* Debug */,
+				0CB128E61DAA0467005A0A4D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0CB128E71DAA0467005A0A4D /* Build configuration list for PBXNativeTarget "knock Honey" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0CB128E81DAA0467005A0A4D /* Debug */,
+				0CB128E91DAA0467005A0A4D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0CB128EA1DAA0467005A0A4D /* Build configuration list for PBXNativeTarget "knock HoneyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0CB128EB1DAA0467005A0A4D /* Debug */,
+				0CB128EC1DAA0467005A0A4D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0CB128ED1DAA0467005A0A4D /* Build configuration list for PBXNativeTarget "knock HoneyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0CB128EE1DAA0467005A0A4D /* Debug */,
+				0CB128EF1DAA0467005A0A4D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0CB128B21DAA0467005A0A4D /* Project object */;
+}

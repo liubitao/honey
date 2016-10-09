@@ -1,0 +1,28 @@
+//
+//  knock Honey.pch
+//  knock Honey
+//
+//  Created by 刘毕涛 on 16/10/9.
+//  Copyright © 2016年 liubitao. All rights reserved.
+//
+
+#ifndef knock_Honey_pch
+#define knock_Honey_pch
+
+#import <MD5Digest/NSString+MD5.h>
+
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+#define YWKeyWindow [UIApplication sharedApplication].keyWindow
+
+#define kScreenWidth       [UIScreen mainScreen].bounds.size.width
+#define KscreenHeight      [UIScreen mainScreen].bounds.size.height
+
+// 2.获得RGB颜色
+#define RGBA(r, g, b, a)                    [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
+#define RGB(r, g, b)                        RGBA(r, g, b, 1.0f)
+
+#endif /* knock_Honey_pch */
