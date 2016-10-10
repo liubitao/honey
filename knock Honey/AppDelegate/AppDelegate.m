@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "KHTabbarViewController.h"
 
 @interface AppDelegate ()
 
@@ -14,13 +15,22 @@
 
 @implementation AppDelegate
 
-
-
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    sleep(2);
+    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    KHTabbarViewController *tabbarVC = [[KHTabbarViewController alloc]init];
+    self.window.rootViewController = tabbarVC;
+    [self.window makeKeyAndVisible];
+    
+    [self configApper];
     return YES;
+}
+
+- (void)configApper{
+    NSDictionary *navbarTitleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+    [UINavigationBar appearance].titleTextAttributes = navbarTitleTextAttributes;
+    [UINavigationBar appearance].tintColor = [UIColor whiteColor];
+    [UINavigationBar appearance].barTintColor = kDefaultColor;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

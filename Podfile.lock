@@ -18,6 +18,7 @@ PODS:
   - MBProgressHUD (1.0.0)
   - MD5Digest (1.1.0)
   - MJExtension (3.0.11)
+  - MJRefresh (3.1.10)
   - SDWebImage (3.8.1):
     - SDWebImage/Core (= 3.8.1)
   - SDWebImage/Core (3.8.1)
@@ -28,6 +29,7 @@ DEPENDENCIES:
   - MBProgressHUD (~> 1.0.0)
   - MD5Digest (~> 1.1.0)
   - MJExtension (~> 3.0.10)
+  - MJRefresh (~> 3.1.0)
   - SDWebImage (~> 3.8.0)
 
 SPEC CHECKSUMS:
@@ -36,6 +38,7 @@ SPEC CHECKSUMS:
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MD5Digest: fea371215507cfcdc3c9633d02cffc7fd075ebc3
   MJExtension: f9ae6ddc0f1c482c3c9af750280ccebd14381958
+  MJRefresh: bb72948c985914b0b5cecac573a2c69a8915fb02
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
 
 COCOAPODS: 0.39.0
