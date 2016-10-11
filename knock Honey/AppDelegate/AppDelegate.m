@@ -31,6 +31,7 @@
     [UINavigationBar appearance].titleTextAttributes = navbarTitleTextAttributes;
     [UINavigationBar appearance].tintColor = [UIColor whiteColor];
     [UINavigationBar appearance].barTintColor = kDefaultColor;
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

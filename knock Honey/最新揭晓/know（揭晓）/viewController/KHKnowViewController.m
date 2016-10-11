@@ -9,6 +9,7 @@
 #import "KHKnowViewController.h"
 #import "KHKnowTableViewCell.h"
 #import "KHKnowModel.h"
+#import "KHPulishedTableViewCell.h"
 
 static NSString * nopublished = @"nopublished";
 static NSString * published = @"published";
@@ -32,10 +33,13 @@ static NSString * published = @"published";
 
 - (void)cofigTableView{
     self.automaticallyAdjustsScrollViewInsets = NO;
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kNavigationBarHeight, kScreenWidth, KscreenHeight-kTabBarHeight-kNavigationBarHeight) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kNavigationBarHeight, kScreenWidth, kScreenHeight-kTabBarHeight-kNavigationBarHeight) style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.tableFooterView = [[UIView alloc]init];
+ 
+    [self.tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
+    [self.tableView setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.view addSubview:_tableView];
     
     
@@ -51,6 +55,7 @@ static NSString * published = @"published";
     [self.tableView.mj_header beginRefreshing];
     
     [_tableView registerNib:NIB_NAMED(@"KHKnowTableViewCell") forCellReuseIdentifier:nopublished];
+    [_tableView registerNib:NIB_NAMED(@"KHPulishedTableViewCell") forCellReuseIdentifier:published];
     
 }
 
@@ -69,12 +74,22 @@ static NSString * published = @"published";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     KHKnowModel *model = _dataArray[indexPath.row];
-    KHKnowTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:nopublished forIndexPath:indexPath];
-    cell.delegate = self;
-    [cell setModel:model indexPath:indexPath];
-    
-    return cell;
+
+    if ([model.publishTime doubleValue] >[[NSDate date] timeIntervalSince1970] ) {
+        KHKnowTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:nopublished forIndexPath:indexPath];
+        cell.delegate = self;
+        [cell setModel:model indexPath:indexPath];
+        [cell setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
+        [cell setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, 0)];
+        return cell;
+    }
+        KHPulishedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:published forIndexPath:indexPath];
+        [cell setModel:model indexPath:indexPath];
+        [cell setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
+        [cell setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, 0)];
+        return cell;
 }
+
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     KHKnowTableViewCell *tmpCell = (KHKnowTableViewCell *)cell;
     tmpCell.isDisplayed = YES;
@@ -91,8 +106,7 @@ static NSString * published = @"published";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];    
 }
 
 #pragma mark - LatestPublishCellDelegate

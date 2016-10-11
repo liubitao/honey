@@ -1,22 +1,22 @@
 //
-//  KHHomeViewController.m
+//  KHMessageViewController.m
 //  knock Honey
 //
-//  Created by 刘毕涛 on 16/10/10.
+//  Created by 刘毕涛 on 16/10/11.
 //  Copyright © 2016年 liubitao. All rights reserved.
 //
 
-#import "KHHomeViewController.h"
+#import "KHMessageViewController.h"
 
-@interface KHHomeViewController ()
+@interface KHMessageViewController ()
 
 @end
 
-@implementation KHHomeViewController
+@implementation KHMessageViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"全民夺宝";
+    self.title = @"消息中心";
     self.view.backgroundColor = [UIColor whiteColor];
     // Do any additional setup after loading the view.
 }

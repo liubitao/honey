@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class KHKnowModel;
 
 @interface KHPulishedTableViewCell : UITableViewCell
+//是否展示
+@property (nonatomic, assign) BOOL isDisplayed;
 
+- (void)setModel:(KHKnowModel *)model indexPath:(NSIndexPath *)indexPath;
 @end

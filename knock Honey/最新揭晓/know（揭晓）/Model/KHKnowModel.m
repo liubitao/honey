@@ -16,7 +16,7 @@
 
 @property (nonatomic, assign) double startTime;
 
-
+@property (strong, nonatomic) NSTimer *timer;
 
 @property (nonatomic, assign) BOOL running;
 @end
@@ -29,11 +29,13 @@ MJCodingImplementation
         self.imgUrl = @"https://tse4-mm.cn.bing.net/th?id=OIP.M9271c634f71d813901afbc9e69602dcfo2&pid=15.1";
         self.productName = @"斯嘉丽·约翰逊(Scarlett Johansson),1984年11月22日生于纽约，美国女演员。";
         self.sprice = @"220";
-        self.startValue = 36000;
         self.winner = @"起什么名能中奖";
         self.partInTimes = @"20次";
         self.luckyNumber = @"1000043";
-        self.publishTime = @"今天12:12";
+        self.publishTime = @"1476153730";
+        NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+        NSTimeInterval time=[dat timeIntervalSince1970];
+        self.startValue =  ([_publishTime doubleValue]- time)*1000;
     }
     return self;
 }
@@ -59,18 +61,16 @@ MJCodingImplementation
 
 - (void)setValue:(unsigned long)value {
     _value = value;
-    self.currentValue = _value;
-    
     [self updateDisplay];
 }
 
 - (void)setStartValue:(NSInteger)startValue {
     _startValue = startValue;
+
     [self setValue:startValue];
 }
 
 - (void)updateDisplay {
-    
     if ( _value < 100) {
         [self stop];
         self.valueString = @"00:00:00";
@@ -105,7 +105,6 @@ MJCodingImplementation
     if (self.timer) {
         [self.timer invalidate];
         self.timer = nil;
-        
         _startValue = self.value;
     }
     
