@@ -140,13 +140,21 @@
 }
 
 + (NSString*)timeWith:(NSString*)timeStr{
-    NSTimeInterval time=[timeStr doubleValue];//因为时差问题要加8小时 == 28800 sec
+    NSTimeInterval time=[timeStr doubleValue];
     NSDate *detaildate=[NSDate dateWithTimeIntervalSince1970:time];
     //实例化一个NSDateFormatter对象
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     //设定时间格式,这里可以设置成自己需要的格式
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     return [dateFormatter stringFromDate: detaildate];
+}
+
++ (NSMutableAttributedString *)stringWith:(NSString *)string font1:(UIFont*)font1 color1:(UIColor *)color1 font2:(UIFont*)font2 color2:(UIColor *)color2 range:(NSRange)range{
+    NSMutableAttributedString *string1 = [[NSMutableAttributedString alloc]initWithString:string  attributes:@{NSFontAttributeName:font1,
+                                                                                                            NSForegroundColorAttributeName:color1}];
+    [string1 addAttribute:NSForegroundColorAttributeName value:color2 range:range];
+    [string1 addAttribute:NSFontAttributeName value:font2 range:range];
+    return string1;
 }
 
 @end

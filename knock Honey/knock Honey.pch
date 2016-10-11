@@ -9,8 +9,27 @@
 #ifndef knock_Honey_pch
 #define knock_Honey_pch
 
-#import <MD5Digest/NSString+MD5.h>
 
+
+
+
+//第三方库
+#import <MD5Digest/NSString+MD5.h>
+#import <MJRefresh.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "UINavigationController+FDFullscreenPopGesture.h"
+#import <YYKit.h>
+
+
+//分类
+#import "UIColor+YWcolor.h"
+#import "UIView+Frame.h"
+#import "UIAlertController+BTAdd.h"
+#import "MBProgressHUD+MJ.h"
+#import "UIImage+YWimage.h"
+
+//工具类
+#import "Utils.h"
 
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
@@ -18,11 +37,24 @@
 
 #define YWKeyWindow [UIApplication sharedApplication].keyWindow
 
-#define kScreenWidth       [UIScreen mainScreen].bounds.size.width
-#define KscreenHeight      [UIScreen mainScreen].bounds.size.height
+
+#define kNavigationBarHeight 64.0
+#define kTabBarHeight 49.0
 
 // 2.获得RGB颜色
 #define RGBA(r, g, b, a)                    [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
 #define RGB(r, g, b)                        RGBA(r, g, b, 1.0f)
+#define UIColorHex(_hex_)   [UIColor colorWithHexString:((__bridge NSString *)CFSTR(#_hex_))]
+
+#define kDefaultColor [UIColor colorWithHexString:@"D02346"]
+
+#define SYSTEM_FONT(__fontsize__)\
+[UIFont systemFontOfSize:__fontsize__]
+
+#define IMAGE_NAMED(__imageName__)\
+[UIImage imageNamed:__imageName__]
+
+#define NIB_NAMED(__nibName__)\
+[UINib nibWithNibName:__nibName__ bundle:nil]
 
 #endif /* knock_Honey_pch */
