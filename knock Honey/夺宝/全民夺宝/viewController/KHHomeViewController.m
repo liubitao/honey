@@ -22,7 +22,6 @@
 
 
 
-
 @interface KHHomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,WinTreasureCellDelegate,TSAnimationDelegate>
 {
     NSMutableArray *_dataArray;
