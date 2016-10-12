@@ -7,9 +7,8 @@
 //
 
 #import "WinTreasureHeader.h"
-#import "AdvertiseView.h"
 #import "VerticalButton.h"
-#import "TSMenu.h"
+
 
 const CGFloat kMenuButtonHeight = 75.0;
 const CGFloat kScrollViewHeight = 140.0;
@@ -52,8 +51,8 @@ const CGFloat kScrollViewHeight = 140.0;
                                                       BOOL * _Nonnull stop) {
             VerticalButton *button = [VerticalButton buttonWithType:UIButtonTypeCustom];
             button.tag = idx;
-            button.origin = CGPointMake(idx*kScreenWidth/_menuImages.count, 0);
-            button.size = CGSizeMake(kScreenWidth/_menuImages.count, kMenuButtonHeight);
+            button.origin = CGPointMake(idx*KscreenWidth/_menuImages.count, 0);
+            button.size = CGSizeMake(KscreenWidth/_menuImages.count, kMenuButtonHeight);
             button.titleLabel.font = SYSTEM_FONT(12);
             [button setTitleColor:UIColorHex(999999) forState:UIControlStateNormal];
             [button setImage:IMAGE_NAMED(_menuImages[idx]) title:self.menuTitles[idx] forState:UIControlStateNormal];
@@ -76,13 +75,13 @@ const CGFloat kScrollViewHeight = 140.0;
 
 @interface WinTreasureHeader () <UIScrollViewDelegate>
 
-@property (nonatomic, strong) TSMenu *selectMenu;
+
 
 @property (nonatomic, strong) UIScrollView *imgScrollView;
 
 @property (nonatomic, strong) UIPageControl *pageControl;
 
-@property (nonatomic, strong) NSArray *images;
+
 
 @property (nonatomic, strong) NSNumber *menuNumber;
 
@@ -100,10 +99,10 @@ const CGFloat kScrollViewHeight = 140.0;
 - (UIPageControl *)pageControl {
     if (!_pageControl) {
         _pageControl = [[UIPageControl alloc]initWithFrame:({
-            CGRect rect = {0,kScrollViewHeight-40,kScreenWidth,40};
+            CGRect rect = {0,kScrollViewHeight-40,KscreenWidth,40};
             rect;
         })];
-        _pageControl.numberOfPages = self.images.count;
+        
         _pageControl.currentPageIndicatorTintColor = kDefaultColor;
         _pageControl.pageIndicatorTintColor = UIColorHex(666666);
         _pageControl.userInteractionEnabled = NO;
@@ -111,14 +110,6 @@ const CGFloat kScrollViewHeight = 140.0;
     return _pageControl;
 }
 
-- (NSArray *)images {
-    if (!_images) {
-        _images = @[@"1.jpg",
-                    @"2.jpg",
-                    @"3.jpg"];
-    }
-    return _images;
-}
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -130,24 +121,8 @@ const CGFloat kScrollViewHeight = 140.0;
         })];
         _imgScrollView.delegate = self;
         _imgScrollView.pagingEnabled = YES;
-        _imgScrollView.contentSize = CGSizeMake(kScreenWidth*self.images.count, _imgScrollView.height);
         [self addSubview:_imgScrollView];
-        for (int i=0; i<self.images.count; i++) {
-            UIImageView *imgView = [UIImageView new];
-            imgView.tag = i;
-            imgView.userInteractionEnabled = YES;
-            imgView.image = IMAGE_NAMED(_images[i]);
-            imgView.origin = CGPointMake(i*kScreenWidth, 0);
-            imgView.size = CGSizeMake(_imgScrollView.width, _imgScrollView.height);
-            [_imgScrollView addSubview:imgView];
-            
-            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithActionBlock:^(id  _Nonnull sender) {
-                if (_imageBlock) {
-                    _imageBlock(sender);
-                }
-            }];
-            [imgView addGestureRecognizer:tap];
-        }
+        
         [self addSubview:self.pageControl];
         [self addTimer];
 
@@ -155,10 +130,39 @@ const CGFloat kScrollViewHeight = 140.0;
             CGRect rect = {0,_imgScrollView.bottom,self.width,kMenuButtonHeight};
             rect;
         })];
-        _menuView.header = self;
         [self addSubview:_menuView];
     }
     return self;
+}
+
+- (void)resetImage{
+    for (UIView *object in _imgScrollView.subviews) {
+        if([object isKindOfClass:[UIImageView class]]){
+            [object removeFromSuperview];
+        }
+    }
+    _imgScrollView.contentSize = CGSizeMake(KscreenWidth*self.images.count, _imgScrollView.height);
+    
+    for (int i=0; i<self.images.count; i++) {
+        UIImageView *imgView = [UIImageView new];
+        imgView.tag = i;
+        imgView.userInteractionEnabled = YES;
+        [imgView sd_setImageWithURL:[NSURL URLWithString:_images[i]] placeholderImage:[UIImage imageNamed:@"placeholder"]];;
+        imgView.origin = CGPointMake(i*KscreenWidth, 0);
+        imgView.size = CGSizeMake(_imgScrollView.width, _imgScrollView.height);
+        [_imgScrollView addSubview:imgView];        
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didSelect:)];
+        [imgView addGestureRecognizer:tap];
+    }
+    
+    _pageControl.numberOfPages = self.images.count;
+}
+
+- (void)didSelect:(UITapGestureRecognizer *)sender{
+    if (_imageBlock) {
+        _imageBlock(sender.view);
+    }
 }
 
 - (void)addTimer {
@@ -189,21 +193,12 @@ const CGFloat kScrollViewHeight = 140.0;
 #pragma mark -
 
 - (void)selectItem:(WinTreasureHeaderSelectItemBlock)block {
-    _menuBlock = block;
-    @weakify(self);
-    _menuView.block = ^(UIButton *sender){
-        @strongify(self);
-        if (self.menuBlock) {
-            self.menuBlock(sender);
-        }
-    };
+    _imageBlock = block;
 }
-
-
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    _pageControl.currentPage = scrollView.contentOffset.x/kScreenWidth;
+    _pageControl.currentPage = scrollView.contentOffset.x/KscreenWidth;
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {

@@ -6,9 +6,9 @@
 //  Copyright © 2016年 linitial. All rights reserved.
 //
 
-#import "WinTreasureMenuHeader.h"
+#import "WinTreasureMenuHeader.h"\
 
-
+#define   kTSMenuHeight 44
 @interface WinTreasureMenuHeader ()
 
 @property (nonatomic, strong) NSArray *selectItems;
@@ -30,12 +30,11 @@
     if (self) {
         _menu = [[TSHomeMenu alloc]initWithDataArray:self.selectItems];
         _menu.origin = CGPointMake(0, 0);
-        _menu.size = CGSizeMake(kScreenWidth, kTSMenuHeight);
+        _menu.size = CGSizeMake(KscreenWidth, kTSMenuHeight);
         [self addSubview:_menu];
         
         CAShapeLayer *lineLayer = [CAShapeLayer layer];
-        lineLayer.origin = CGPointMake(0, kTSMenuHeight-CGFloatFromPixel(0.5));
-        lineLayer.size = CGSizeMake(self.width, CGFloatFromPixel(0.5));
+        lineLayer.frame = CGRectMake(0, kTSMenuHeight-0.5, self.width, 0.5);
         lineLayer.backgroundColor = UIColorHex(0xEAE5E1).CGColor;
         [self.layer addSublayer:lineLayer];
     }
@@ -48,11 +47,10 @@
 
 - (void)selectAMenu:(WinTreasureMenuHeaderBlock)block {
     _block = block;
-    @weakify(self);
+    __weak typeof(self) weakSelf = self;
     _menu.menuBlock = ^(UIButton *sender) {
-        @strongify(self);
-        if (self.block) {
-            self.block(sender);
+        if (weakSelf.block) {
+            weakSelf.block(sender);
         }
     };
 }
@@ -79,7 +77,7 @@ const CGFloat kTSHomeMenuLineSpacing = 20.0;
         _bottomLine = [CAShapeLayer layer];
         _bottomLine.frame = CGRectMake(kTSHomeMenuLineSpacing,
                                        kTSHomeMenuDefaultHeight-kTSHomeMenuLineHeight,
-                                       (kScreenWidth-(kTSHomeMenuLineSpacing*2*_data.count))/_data.count,
+                                       (KscreenWidth-(kTSHomeMenuLineSpacing*2*_data.count))/_data.count,
                                        kTSHomeMenuLineHeight);
         _bottomLine.backgroundColor = kDefaultColor.CGColor;
     }
@@ -102,8 +100,8 @@ const CGFloat kTSHomeMenuLineSpacing = 20.0;
                                         BOOL * _Nonnull stop) {
         UIButton *menuBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         menuBtn.tag = idx+1;
-        menuBtn.origin = CGPointMake(idx*kScreenWidth/_data.count, 0);
-        menuBtn.size = CGSizeMake(kScreenWidth/_data.count, kTSHomeMenuDefaultHeight);
+        menuBtn.origin = CGPointMake(idx*KscreenWidth/_data.count, 0);
+        menuBtn.size = CGSizeMake(KscreenWidth/_data.count, kTSHomeMenuDefaultHeight);
         [menuBtn setTitle:_data[idx] forState:UIControlStateNormal];
         [menuBtn setTitleColor:UIColorHex(666666) forState:UIControlStateNormal];
         [menuBtn setTitleColor:kDefaultColor forState:UIControlStateSelected];
@@ -115,34 +113,14 @@ const CGFloat kTSHomeMenuLineSpacing = 20.0;
             menuBtn.userInteractionEnabled = NO;
             _selectedBtn = menuBtn;
         }
-        if ([[menuBtn titleForState:UIControlStateNormal] isEqualToString:@"总需人次"]) {
-            [menuBtn setImage:IMAGE_NAMED(@"list_nav_need") forState:UIControlStateNormal];
-            [menuBtn setImageEdgeInsets:UIEdgeInsetsMake(0, kScreenWidth/_data.count-14, 0, 0)];
-        }
         
     }];
     [self.layer addSublayer:self.bottomLine];
 }
 
 - (void)selectMenu:(UIButton *)sender {
-    if ([[sender titleForState:UIControlStateNormal] isEqualToString:@"总需人次"]) {
-        if ([[sender imageForState:UIControlStateNormal] isEqual:IMAGE_NAMED(@"list_nav_need_aesc_7x10_")]) {
-            [sender setImage:IMAGE_NAMED(@"list_nav_need_desc_7x10_") forState:UIControlStateNormal];
-            if (_descBlock) {
-                _descBlock();
-            }
-            return;
-        }
-        [sender setImage:IMAGE_NAMED(@"list_nav_need_aesc_7x10_") forState:UIControlStateNormal];
-        if (_aescBlock) {
-            _aescBlock();
-        }
-    } else {
-        UIButton *button = [self viewWithTag:4];
-        [button setImage:IMAGE_NAMED(@"list_nav_need") forState:UIControlStateNormal];
-    }
     [self refreshButtonState:sender];
-    CGFloat lineWidth = _bottomLine.width;
+    CGFloat lineWidth = _bottomLine.frame.size.width;
     CGFloat x = (sender.tag-1) * (kTSHomeMenuLineSpacing + lineWidth) + (sender.tag) * kTSHomeMenuLineSpacing;
     [self scrollBottomLine:x];
     if (_menuBlock) {
@@ -168,15 +146,6 @@ const CGFloat kTSHomeMenuLineSpacing = 20.0;
         rect.origin.x = x;
         _bottomLine.frame = rect;
     }];
-}
-
-- (void)setSelectIndex:(NSInteger)selectIndex {
-    _selectIndex = selectIndex;
-    UIButton *sender = [self viewWithTag:_selectIndex+1];
-    [self refreshButtonState:sender];
-    CGFloat lineWidth = _bottomLine.width;
-    CGFloat x = (sender.tag-1) * (kTSHomeMenuLineSpacing + lineWidth) + (sender.tag) * kTSHomeMenuLineSpacing;
-    [self scrollBottomLine:x];
 }
 
 

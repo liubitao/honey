@@ -66,13 +66,11 @@ static const CGFloat kAnimationTime = 3.f;
     _bgLayer.masksToBounds = YES;
     _bgLayer.cornerRadius = kProcessHeight / 2;
     _bgLayer.shouldRasterize = YES;
-    _bgLayer.rasterizationScale = kScreenScale;
     [self.layer addSublayer:_bgLayer];
     
     self.maskLayer = [CALayer layer];
     self.maskLayer.frame = CGRectMake(0, 0, self.width * self.progress / 100.f, kProcessHeight);
     self.maskLayer.shouldRasterize = YES;
-    self.maskLayer.rasterizationScale = kScreenScale;
     self.maskLayer.borderWidth = self.height / 2;
     
     self.gradientLayer =  [CAGradientLayer layer];
@@ -80,7 +78,6 @@ static const CGFloat kAnimationTime = 3.f;
     self.gradientLayer.masksToBounds = YES;
     self.gradientLayer.cornerRadius = kProcessHeight / 2;
     self.gradientLayer.shouldRasterize = YES;
-    self.gradientLayer.rasterizationScale = kScreenScale;
     [self.gradientLayer setColors:self.colorArray];
     [self.gradientLayer setLocations:self.colorLocationArray];
     [self.gradientLayer setStartPoint:CGPointMake(0, 0)];

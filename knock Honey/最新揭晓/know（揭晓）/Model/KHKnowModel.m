@@ -16,7 +16,7 @@
 
 @property (nonatomic, assign) double startTime;
 
-@property (strong, nonatomic) NSTimer *timer;
+
 
 @property (nonatomic, assign) BOOL running;
 @end
@@ -24,6 +24,7 @@
 @implementation KHKnowModel
 MJCodingImplementation
 - (instancetype)init {
+
     self = [super init];
     if (self) {
         self.imgUrl = @"https://tse4-mm.cn.bing.net/th?id=OIP.M9271c634f71d813901afbc9e69602dcfo2&pid=15.1";
@@ -32,7 +33,7 @@ MJCodingImplementation
         self.winner = @"起什么名能中奖";
         self.partInTimes = @"20次";
         self.luckyNumber = @"1000043";
-        self.publishTime = @"1476153730";
+        self.publishTime = @"1476250800";
         NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
         NSTimeInterval time=[dat timeIntervalSince1970];
         self.startValue =  ([_publishTime doubleValue]- time)*1000;

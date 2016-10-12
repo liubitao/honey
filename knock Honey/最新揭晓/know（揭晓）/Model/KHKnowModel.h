@@ -44,6 +44,7 @@
 
 @property (strong, nonatomic) NSString *valueString;
 
+@property (strong, nonatomic) NSTimer *timer;
 
 
 + (instancetype)kh_objectWithKeyValues:(NSDictionary*)dict;

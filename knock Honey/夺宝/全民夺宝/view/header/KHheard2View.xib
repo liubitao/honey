@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="KHheard2View">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最新揭晓" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5R-BW-giG">
+                    <rect key="frame" x="15" y="13" width="73" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="73" id="2Cf-Ii-tBo"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3o3-BH-bSd">
+                    <rect key="frame" x="0.0" y="42" width="320" height="1"/>
+                    <color key="backgroundColor" red="0.91764705882352937" green="0.89803921568627454" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="RvH-Wl-A2m"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3q-Co-QBz" customClass="KHChangButton">
+                    <rect key="frame" x="230" y="13" width="80" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="Xxw-2u-D69"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="显示全部" image="more">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="touchMore:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="1nZ-Kh-8Ox"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="A5R-BW-giG" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="15" id="Jbq-rs-eYy"/>
+                <constraint firstAttribute="trailing" secondItem="d3q-Co-QBz" secondAttribute="trailing" constant="10" id="LkI-kR-gvp"/>
+                <constraint firstAttribute="trailing" secondItem="3o3-BH-bSd" secondAttribute="trailing" id="Lqb-I1-Ne4"/>
+                <constraint firstItem="d3q-Co-QBz" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="PJM-Km-whC"/>
+                <constraint firstAttribute="bottom" secondItem="3o3-BH-bSd" secondAttribute="bottom" id="Yb3-Rg-Z3K"/>
+                <constraint firstItem="3o3-BH-bSd" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="nMz-fw-FBS"/>
+                <constraint firstItem="A5R-BW-giG" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="rsU-iP-Na0"/>
+            </constraints>
+            <connections>
+                <outlet property="moreBtn" destination="d3q-Co-QBz" id="JCm-C6-bM7"/>
+            </connections>
+            <point key="canvasLocation" x="250" y="265.5"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <image name="more" width="16" height="13"/>
+    </resources>
+</document>

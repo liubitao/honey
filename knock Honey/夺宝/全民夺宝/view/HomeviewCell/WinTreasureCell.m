@@ -23,12 +23,13 @@
     [super awakeFromNib];
 
     _addListButton.layer.cornerRadius = 4.0;
-    _addListButton.layer.borderWidth = CGFloatFromPixel(0.6);
+    _addListButton.layer.borderWidth = 0.6;
     _addListButton.layer.borderColor = kDefaultColor.CGColor;
     _addListButton.layer.masksToBounds = YES;
     _addListButton.layer.shouldRasterize = YES;
-    _addListButton.layer.rasterizationScale = kScreenScale;
 }
+
+
 
 - (IBAction)addList:(UIButton *)sender {
     if (_delegate&&[_delegate respondsToSelector:@selector(addShoppingList:indexPath:)]) {
@@ -39,21 +40,22 @@
 - (void)setModel:(KHHomeModel *)model {
     _model = model;
     _nameLabel.text = _model.productName;
-    [_productImgView setImageWithURL:[NSURL URLWithString:_model.productImgUrl] options:YYWebImageOptionProgressiveBlur];
+    [_productImgView sd_setImageWithURL:[NSURL URLWithString:_model.productImgUrl] placeholderImage:IMAGE_NAMED(@"placeholder")];
     NSMutableAttributedString *attrProgress = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"揭晓进度 %@%%",_model.publishProgress]];
-    [attrProgress setColor:UIColorHex(0x007AFF) range:NSMakeRange(5, _model.publishProgress.length+1)];
+    [attrProgress addAttribute:NSForegroundColorAttributeName value:UIColorHex(0x007AFF) range:NSMakeRange(5, _model.publishProgress.length+1)];
+
     _progressLabel.attributedText = attrProgress;
 
     _progressView.progress = [_model.publishProgress integerValue];
 }
 
 + (CGSize)size {
-    CGFloat imgHeight = ((kScreenWidth-0.5)/2.0-kWinTreasureCellImagePadding)*0.8;
+    CGFloat imgHeight = ((KscreenWidth-0.5)/2.0-kWinTreasureCellImagePadding)*0.8;
     CGFloat nameHeight = 30;
     CGFloat progressHeight = 15;
     CGFloat tsViewHeight = 8.0;
     CGFloat height =  kImageMargin*4.0+imgHeight+nameHeight+progressHeight+2+tsViewHeight;
-    return CGSizeMake((kScreenWidth-0.25)/2.0, height);
+    return CGSizeMake((KscreenWidth-0.5)/2.0, height);
 }
 
 @end

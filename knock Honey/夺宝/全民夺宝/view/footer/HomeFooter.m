@@ -12,10 +12,15 @@
 
 @implementation HomeFooter
 
+
+- (instancetype)init{
+    return  [self initWithFrame:CGRectMake(0, 0, KscreenWidth, 10)];
+}
+
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 10)];
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 10)];
         view.backgroundColor = [UIColor clearColor];
         [self addSubview:view];
     }

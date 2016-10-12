@@ -21,6 +21,7 @@
 #import <YYKit.h>
 
 
+
 //分类
 #import "UIColor+YWcolor.h"
 #import "UIView+Frame.h"
@@ -37,6 +38,8 @@
 
 #define YWKeyWindow [UIApplication sharedApplication].keyWindow
 
+#define KscreenWidth    [UIScreen mainScreen].bounds.size.width
+#define KscreenHeight   [UIScreen mainScreen].bounds.size.height
 
 #define kNavigationBarHeight 64.0
 #define kTabBarHeight 49.0
