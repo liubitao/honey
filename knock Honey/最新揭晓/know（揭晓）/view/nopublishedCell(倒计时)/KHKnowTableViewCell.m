@@ -48,7 +48,7 @@
     _timeLabel.text = [NSString stringWithFormat:@"%@",model.valueString];
     _title.text = model.productName;
     _sprice.text = [NSString stringWithFormat:@"总需:￥%@",model.sprice];
-    if ([_timeLabel.text isEqualToString:@"00:00:00"]) {
+    if ([_timeLabel.text isEqualToString:@"正在揭晓"]) {
         if (_delegate && [_delegate respondsToSelector:@selector(countdownDidEnd:)]) {
             [_delegate countdownDidEnd:self.indexPath];
         }

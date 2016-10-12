@@ -11,14 +11,10 @@
 
 @interface KHKnowModel ()
 
-@property (nonatomic, assign) unsigned long value;
-
-
-@property (nonatomic, assign) double startTime;
-
-
+@property (nonatomic, assign) double value;
 
 @property (nonatomic, assign) BOOL running;
+
 @end
 
 @implementation KHKnowModel
@@ -33,10 +29,7 @@ MJCodingImplementation
         self.winner = @"起什么名能中奖";
         self.partInTimes = @"20次";
         self.luckyNumber = @"1000043";
-        self.publishTime = @"1476250800";
-        NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
-        NSTimeInterval time=[dat timeIntervalSince1970];
-        self.startValue =  ([_publishTime doubleValue]- time)*1000;
+        self.publishTime = @"1476262390";
     }
     return self;
 }
@@ -60,21 +53,10 @@ MJCodingImplementation
 //}
 #pragma mark - Setters
 
-- (void)setValue:(unsigned long)value {
-    _value = value;
-    [self updateDisplay];
-}
-
-- (void)setStartValue:(NSInteger)startValue {
-    _startValue = startValue;
-
-    [self setValue:startValue];
-}
-
 - (void)updateDisplay {
-    if ( _value < 100) {
+    if ( _value < 200) {
         [self stop];
-        self.valueString = @"00:00:00";
+        self.valueString = @"正在揭晓";
     } else {
         self.valueString = [self timeFormattedStringForValue:_value];
     }
@@ -82,12 +64,8 @@ MJCodingImplementation
 
 - (void)start {
     if (self.running) return;
-    
-    self.startTime = CFAbsoluteTimeGetCurrent();
-    
     self.running = YES;
-    
-    self.timer = [NSTimer timerWithTimeInterval:0.02
+    self.timer = [NSTimer timerWithTimeInterval:0.05
                                          target:self
                                        selector:@selector(clockDidTick)
                                        userInfo:nil repeats:YES];
@@ -95,20 +73,19 @@ MJCodingImplementation
 }
 
 - (void)clockDidTick {
-    double currentTime = CFAbsoluteTimeGetCurrent();
-    double elapsedTime = currentTime - self.startTime;
-    unsigned long milliSecs = (unsigned long)(elapsedTime * 1000);
+    NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSTimeInterval time=[dat timeIntervalSince1970];
+    _value =  ([_publishTime doubleValue]- time)*1000;
+    [self updateDisplay];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_TIME_CELL object:nil];
-    [self setValue:(_startValue - milliSecs)];
+    
 }
 
 - (void)stop {
     if (self.timer) {
         [self.timer invalidate];
         self.timer = nil;
-        _startValue = self.value;
     }
-    
     self.running = NO;
 }
 

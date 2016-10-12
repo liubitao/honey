@@ -75,7 +75,7 @@ static NSString * published = @"published";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     KHKnowModel *model = _dataArray[indexPath.row];
 
-    if ([model.publishTime doubleValue] >[[NSDate date] timeIntervalSince1970] ) {
+    if ([model.publishTime doubleValue] >[[NSDate date] timeIntervalSince1970]) {
         KHKnowTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:nopublished forIndexPath:indexPath];
         cell.delegate = self;
         [cell setModel:model indexPath:indexPath];

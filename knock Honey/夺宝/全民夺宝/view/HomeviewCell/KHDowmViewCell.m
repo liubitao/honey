@@ -28,7 +28,7 @@
 #pragma mark - 通知中心
 - (void)registerNSNotificationCenter {
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
+   [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(notificationCenterEvent:)
                                                  name:NOTIFICATION_TIME_CELL
                                                object:nil];
@@ -39,18 +39,21 @@
 }
 
 - (void)notificationCenterEvent:(id)sender{
-    [self setModel:self.model ];
+    [self setModel:self.model];
 }
 
 -(void)setModel:(KHKnowModel *)model{
     _model = model;
     [_goodsImage sd_setImageWithURL:[NSURL URLWithString:model.imgUrl] placeholderImage:IMAGE_NAMED(@"placeholder")];
     _goodsName.text = model.productName;
-    _timeDown.text = model.valueString;
-    if ([_timeDown.text isEqualToString:@"00:00:00"]) {
-        _timeDown.text = @"正在揭晓";
+     _timeDown.text = model.valueString;
+    if ([model.publishTime doubleValue] <[[NSDate date] timeIntervalSince1970]) {
+        _timeDown.text = @"即将揭晓";
     }
+   
 }
+
+
 - (void)dealloc {
     [self removeNSNotificationCenter];
 

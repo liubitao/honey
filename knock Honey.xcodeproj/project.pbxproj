@@ -24,6 +24,16 @@
 		0C5E05CF1DADDD3900B2133F /* KHheard2View.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E05CD1DADDD3900B2133F /* KHheard2View.m */; };
 		0C5E05D01DADDD3900B2133F /* KHheard2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C5E05CE1DADDD3900B2133F /* KHheard2View.xib */; };
 		0C5E05D41DADFAEC00B2133F /* KHChangButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E05D31DADFAEC00B2133F /* KHChangButton.m */; };
+		0C5E05DF1DAE32F800B2133F /* KHDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E05DE1DAE32F800B2133F /* KHDetailViewController.m */; };
+		0C5E05F01DAE36FE00B2133F /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E05E31DAE36FE00B2133F /* TAAbstractDotView.m */; };
+		0C5E05F11DAE36FE00B2133F /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E05E51DAE36FE00B2133F /* TAAnimatedDotView.m */; };
+		0C5E05F21DAE36FE00B2133F /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E05E71DAE36FE00B2133F /* TADotView.m */; };
+		0C5E05F31DAE36FE00B2133F /* TAPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E05E91DAE36FE00B2133F /* TAPageControl.m */; };
+		0C5E05F41DAE36FE00B2133F /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E05EB1DAE36FE00B2133F /* SDCollectionViewCell.m */; };
+		0C5E05F51DAE36FE00B2133F /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E05ED1DAE36FE00B2133F /* SDCycleScrollView.m */; };
+		0C5E05F61DAE36FE00B2133F /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E05EF1DAE36FE00B2133F /* UIView+SDExtension.m */; };
+		0C5E05F91DAE3A7E00B2133F /* KHDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E05F81DAE3A7E00B2133F /* KHDetailModel.m */; };
+		0C5E05FC1DAE3B7C00B2133F /* KHProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E05FB1DAE3B7C00B2133F /* KHProductModel.m */; };
 		0CB128BF1DAA0467005A0A4D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB128BE1DAA0467005A0A4D /* main.m */; };
 		0CB128CA1DAA0467005A0A4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CB128C91DAA0467005A0A4D /* Assets.xcassets */; };
 		0CB128CD1DAA0467005A0A4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CB128CB1DAA0467005A0A4D /* LaunchScreen.storyboard */; };
@@ -122,6 +132,26 @@
 		0C5E05CE1DADDD3900B2133F /* KHheard2View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHheard2View.xib; sourceTree = "<group>"; };
 		0C5E05D21DADFAEC00B2133F /* KHChangButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHChangButton.h; sourceTree = "<group>"; };
 		0C5E05D31DADFAEC00B2133F /* KHChangButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHChangButton.m; sourceTree = "<group>"; };
+		0C5E05DD1DAE32F800B2133F /* KHDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHDetailViewController.h; sourceTree = "<group>"; };
+		0C5E05DE1DAE32F800B2133F /* KHDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHDetailViewController.m; sourceTree = "<group>"; };
+		0C5E05E21DAE36FE00B2133F /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
+		0C5E05E31DAE36FE00B2133F /* TAAbstractDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAbstractDotView.m; sourceTree = "<group>"; };
+		0C5E05E41DAE36FE00B2133F /* TAAnimatedDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAnimatedDotView.h; sourceTree = "<group>"; };
+		0C5E05E51DAE36FE00B2133F /* TAAnimatedDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAnimatedDotView.m; sourceTree = "<group>"; };
+		0C5E05E61DAE36FE00B2133F /* TADotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TADotView.h; sourceTree = "<group>"; };
+		0C5E05E71DAE36FE00B2133F /* TADotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TADotView.m; sourceTree = "<group>"; };
+		0C5E05E81DAE36FE00B2133F /* TAPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAPageControl.h; sourceTree = "<group>"; };
+		0C5E05E91DAE36FE00B2133F /* TAPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAPageControl.m; sourceTree = "<group>"; };
+		0C5E05EA1DAE36FE00B2133F /* SDCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCollectionViewCell.h; sourceTree = "<group>"; };
+		0C5E05EB1DAE36FE00B2133F /* SDCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCollectionViewCell.m; sourceTree = "<group>"; };
+		0C5E05EC1DAE36FE00B2133F /* SDCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCycleScrollView.h; sourceTree = "<group>"; };
+		0C5E05ED1DAE36FE00B2133F /* SDCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCycleScrollView.m; sourceTree = "<group>"; };
+		0C5E05EE1DAE36FE00B2133F /* UIView+SDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDExtension.h"; sourceTree = "<group>"; };
+		0C5E05EF1DAE36FE00B2133F /* UIView+SDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDExtension.m"; sourceTree = "<group>"; };
+		0C5E05F71DAE3A7E00B2133F /* KHDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHDetailModel.h; sourceTree = "<group>"; };
+		0C5E05F81DAE3A7E00B2133F /* KHDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHDetailModel.m; sourceTree = "<group>"; };
+		0C5E05FA1DAE3B7C00B2133F /* KHProductModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHProductModel.h; sourceTree = "<group>"; };
+		0C5E05FB1DAE3B7C00B2133F /* KHProductModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHProductModel.m; sourceTree = "<group>"; };
 		0CB128BA1DAA0467005A0A4D /* knock Honey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "knock Honey.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CB128BE1DAA0467005A0A4D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0CB128C91DAA0467005A0A4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -354,6 +384,72 @@
 			path = "左文右图";
 			sourceTree = "<group>";
 		};
+		0C5E05D91DAE32C000B2133F /* 宝贝详情 */ = {
+			isa = PBXGroup;
+			children = (
+				0C5E05DC1DAE32C000B2133F /* viewController */,
+				0C5E05DB1DAE32C000B2133F /* view */,
+				0C5E05DA1DAE32C000B2133F /* model */,
+			);
+			path = "宝贝详情";
+			sourceTree = "<group>";
+		};
+		0C5E05DA1DAE32C000B2133F /* model */ = {
+			isa = PBXGroup;
+			children = (
+				0C5E05F71DAE3A7E00B2133F /* KHDetailModel.h */,
+				0C5E05F81DAE3A7E00B2133F /* KHDetailModel.m */,
+				0C5E05FA1DAE3B7C00B2133F /* KHProductModel.h */,
+				0C5E05FB1DAE3B7C00B2133F /* KHProductModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		0C5E05DB1DAE32C000B2133F /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		0C5E05DC1DAE32C000B2133F /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C5E05DD1DAE32F800B2133F /* KHDetailViewController.h */,
+				0C5E05DE1DAE32F800B2133F /* KHDetailViewController.m */,
+			);
+			path = viewController;
+			sourceTree = "<group>";
+		};
+		0C5E05E01DAE36FE00B2133F /* SDCycleScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				0C5E05E11DAE36FE00B2133F /* PageControl */,
+				0C5E05EA1DAE36FE00B2133F /* SDCollectionViewCell.h */,
+				0C5E05EB1DAE36FE00B2133F /* SDCollectionViewCell.m */,
+				0C5E05EC1DAE36FE00B2133F /* SDCycleScrollView.h */,
+				0C5E05ED1DAE36FE00B2133F /* SDCycleScrollView.m */,
+				0C5E05EE1DAE36FE00B2133F /* UIView+SDExtension.h */,
+				0C5E05EF1DAE36FE00B2133F /* UIView+SDExtension.m */,
+			);
+			path = SDCycleScrollView;
+			sourceTree = "<group>";
+		};
+		0C5E05E11DAE36FE00B2133F /* PageControl */ = {
+			isa = PBXGroup;
+			children = (
+				0C5E05E21DAE36FE00B2133F /* TAAbstractDotView.h */,
+				0C5E05E31DAE36FE00B2133F /* TAAbstractDotView.m */,
+				0C5E05E41DAE36FE00B2133F /* TAAnimatedDotView.h */,
+				0C5E05E51DAE36FE00B2133F /* TAAnimatedDotView.m */,
+				0C5E05E61DAE36FE00B2133F /* TADotView.h */,
+				0C5E05E71DAE36FE00B2133F /* TADotView.m */,
+				0C5E05E81DAE36FE00B2133F /* TAPageControl.h */,
+				0C5E05E91DAE36FE00B2133F /* TAPageControl.m */,
+			);
+			path = PageControl;
+			sourceTree = "<group>";
+		};
 		0CB128B11DAA0467005A0A4D = {
 			isa = PBXGroup;
 			children = (
@@ -476,6 +572,7 @@
 		0CB128F51DAA1EF3005A0A4D /* 最新揭晓 */ = {
 			isa = PBXGroup;
 			children = (
+				0C5E05D91DAE32C000B2133F /* 宝贝详情 */,
 				0C3693291DAB5AE400BB3EE0 /* know（揭晓） */,
 			);
 			path = "最新揭晓";
@@ -522,6 +619,7 @@
 		0CB129351DAA28ED005A0A4D /* lib（三方库） */ = {
 			isa = PBXGroup;
 			children = (
+				0C5E05E01DAE36FE00B2133F /* SDCycleScrollView */,
 				0CBD1A531DACB78B003E8150 /* FDFullscreenPopGesture */,
 				0CBD19EB1DACB650003E8150 /* IQKeyboardManager */,
 			);
@@ -1042,6 +1140,7 @@
 				0CBD1A5C1DACC130003E8150 /* WinTreasureCell.m in Sources */,
 				0CBD1A7E1DACEF97003E8150 /* HomeFooter.m in Sources */,
 				0C3693451DAB8F8000BB3EE0 /* KHPulishedTableViewCell.m in Sources */,
+				0C5E05F51DAE36FE00B2133F /* SDCycleScrollView.m in Sources */,
 				0CBD1A111DACB650003E8150 /* IQUIScrollView+Additions.m in Sources */,
 				0CBD19DF1DAC8DD0003E8150 /* KHSearchViewController.m in Sources */,
 				0C3693281DAB2DD700BB3EE0 /* KHBaseViewController.m in Sources */,
@@ -1053,11 +1152,17 @@
 				0CB129491DAA2977005A0A4D /* YWHttptool.m in Sources */,
 				0C5E05CF1DADDD3900B2133F /* KHheard2View.m in Sources */,
 				0CBD1A661DACC415003E8150 /* WinTreasureMenuHeader.m in Sources */,
+				0C5E05FC1DAE3B7C00B2133F /* KHProductModel.m in Sources */,
 				0CB129371DAA28ED005A0A4D /* MBProgressHUD+MJ.m in Sources */,
 				0CBD1A1A1DACB650003E8150 /* IQPreviousNextView.m in Sources */,
+				0C5E05F01DAE36FE00B2133F /* TAAbstractDotView.m in Sources */,
 				0C5E05CA1DADCF7700B2133F /* KHDowmViewCell.m in Sources */,
 				0C5E05D41DADFAEC00B2133F /* KHChangButton.m in Sources */,
+				0C5E05F91DAE3A7E00B2133F /* KHDetailModel.m in Sources */,
+				0C5E05F11DAE36FE00B2133F /* TAAnimatedDotView.m in Sources */,
+				0C5E05F21DAE36FE00B2133F /* TADotView.m in Sources */,
 				0CBD1A601DACC368003E8150 /* KHHOmeViewLayout.m in Sources */,
+				0C5E05F41DAE36FE00B2133F /* SDCollectionViewCell.m in Sources */,
 				0CBD1A151DACB650003E8150 /* IQUIWindow+Hierarchy.m in Sources */,
 				0CBD1A101DACB650003E8150 /* IQNSArray+Sort.m in Sources */,
 				0CB1294A1DAA2977005A0A4D /* Utils.m in Sources */,
@@ -1067,6 +1172,7 @@
 				0CBD1A171DACB650003E8150 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				0CBD1A131DACB650003E8150 /* IQUIView+Hierarchy.m in Sources */,
 				0CBD1A141DACB650003E8150 /* IQUIViewController+Additions.m in Sources */,
+				0C5E05DF1DAE32F800B2133F /* KHDetailViewController.m in Sources */,
 				0CBD1A651DACC415003E8150 /* WinTreasureHeader.m in Sources */,
 				0CBD1A181DACB650003E8150 /* IQTextView.m in Sources */,
 				0CBD1A161DACB650003E8150 /* IQKeyboardManager.m in Sources */,
@@ -1077,6 +1183,7 @@
 				0CBD19D81DAC8A5D003E8150 /* KHHomeModel.m in Sources */,
 				0C3693411DAB6EE600BB3EE0 /* KHKnowModel.m in Sources */,
 				0C3693131DAB209A00BB3EE0 /* KHTabbarViewController.m in Sources */,
+				0C5E05F31DAE36FE00B2133F /* TAPageControl.m in Sources */,
 				0CBD19D51DAC8A30003E8150 /* KHHomeViewController.m in Sources */,
 				0CBD1A6A1DACCF7D003E8150 /* TSProgressView.m in Sources */,
 				0CB1293C1DAA28ED005A0A4D /* UIView+Frame.m in Sources */,
@@ -1092,6 +1199,7 @@
 				0C36931F1DAB27D700BB3EE0 /* KHCartViewController.m in Sources */,
 				0C36933D1DAB66C800BB3EE0 /* KHKnowTableViewCell.m in Sources */,
 				0CBD19EA1DAC9116003E8150 /* KHMessageViewController.m in Sources */,
+				0C5E05F61DAE36FE00B2133F /* UIView+SDExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

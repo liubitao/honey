@@ -32,6 +32,9 @@
 /**c产品图片(动画)
  */
 @property (nonatomic, strong) UIImageView *productView;
+
+@property (nonatomic,strong) NSTimer *timer;
+
 @end
 static NSString *Cell0Identifier = @"winTreasureCell0Identifier";
 static NSString *Cell1Identifier = @"winTreasureCell1Identifier";
@@ -80,7 +83,10 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     
     [self createNavi];
     [self configCollectionView];
+
 }
+
+
 
 //创建导航栏
 - (void)createNavi{
