@@ -11,7 +11,7 @@
 
 @class WinTreasureHeader;
 
-//分类图
+//分类
 typedef void(^TreasureMenuViewSelectItemBlock)(id object);
 
 @interface TreasureMenuView : UIView

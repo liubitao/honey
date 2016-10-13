@@ -19,6 +19,8 @@
 #import "KHDowmViewCell.h"
 #import "KHKnowModel.h"
 #import "KHheard2View.h"
+#import "KHTenViewController.h"
+#import "KHDetailViewController.h"
 
 
 
@@ -174,7 +176,8 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
             }
                 break;
             case 1: {
-           
+                KHTenViewController *tenVC = [[KHTenViewController alloc]init];
+                [weakSelf pushController:tenVC];
             }
                 break;
             case 2: {
@@ -263,7 +266,17 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
 
 //点击
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-  
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    KHDetailViewController *DetailVC = [[KHDetailViewController alloc]init];
+    [self hideBottomBarPush:DetailVC];
+    if (indexPath.section == 1) {
+        DetailVC.showType = TreasureDetailHeaderTypeCountdown;
+        DetailVC.model = _downArray[indexPath.row];
+        return;
+    }
+    DetailVC.showType = TreasureDetailHeaderTypeNotParticipate;
+    DetailVC.model = _dataArray[indexPath.row];
+   
 }
 
 //UICollectionViewDelegateFlowLayout

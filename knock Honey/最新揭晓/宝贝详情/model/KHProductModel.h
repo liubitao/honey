@@ -11,7 +11,7 @@
 @interface KHProductModel : NSObject
 
 //图片组
-@property (nonatomic,strong) NSArray *images;
+@property (nonatomic,strong) NSArray *imgs;
 
 //奖品名
 @property (nonatomic,copy) NSString *productName;
@@ -19,6 +19,6 @@
 //商品期数
 @property (nonatomic, copy) NSNumber *countTime;
 
-
+@property (nonatomic, strong) NSMutableArray *imgUrls;
 
 @end

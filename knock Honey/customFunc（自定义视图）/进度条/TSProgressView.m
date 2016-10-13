@@ -94,17 +94,16 @@ static const CGFloat kAnimationTime = 3.f;
     _progress = progress;
     self.maskLayer.frame = CGRectMake(0, 0, self.width  * _progress / 100.f, kProcessHeight);
 
-//    [NSTimer scheduledTimerWithTimeInterval:0 target:self selector:@selector(circleAnimation) userInfo:nil repeats:NO];
 }
 
-- (void)circleAnimation { // 进度条动画
-    
-    [CATransaction begin];
-    [CATransaction setDisableActions:NO];
-    [CATransaction setAnimationTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
-    [CATransaction setAnimationDuration:kAnimationTime];
-    [CATransaction commit];
-}
+//- (void)circleAnimation { // 进度条动画
+//    
+//    [CATransaction begin];
+////    [CATransaction setDisableActions:NO];
+//    [CATransaction setAnimationTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+//    [CATransaction setAnimationDuration:kAnimationTime];
+//    [CATransaction commit];
+//}
 
 
 @end

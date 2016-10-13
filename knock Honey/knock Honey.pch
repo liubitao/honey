@@ -19,6 +19,8 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "UINavigationController+FDFullscreenPopGesture.h"
 #import <YYKit.h>
+#import <Masonry.h>
+
 
 
 

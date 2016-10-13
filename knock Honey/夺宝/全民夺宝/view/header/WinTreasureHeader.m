@@ -193,7 +193,7 @@ const CGFloat kScrollViewHeight = 140.0;
 #pragma mark -
 
 - (void)selectItem:(WinTreasureHeaderSelectItemBlock)block {
-    _imageBlock = block;
+    _menuView.block = block;
 }
 
 #pragma mark - UIScrollViewDelegate

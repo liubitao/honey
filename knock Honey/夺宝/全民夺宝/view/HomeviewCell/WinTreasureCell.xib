@@ -88,7 +88,7 @@
                 <outlet property="progressLabel" destination="cr1-vK-t56" id="i4b-uI-dbK"/>
                 <outlet property="progressView" destination="x6a-ef-Em7" id="NjC-4V-Jy3"/>
             </connections>
-            <point key="canvasLocation" x="195" y="407.5"/>
+            <point key="canvasLocation" x="242" y="337.5"/>
         </collectionViewCell>
     </objects>
     <resources>

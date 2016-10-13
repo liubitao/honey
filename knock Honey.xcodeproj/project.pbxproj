@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C2705961DAF279200CE2F15 /* KHTenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2705951DAF279200CE2F15 /* KHTenViewController.m */; };
+		0C2705991DAF27A600CE2F15 /* KHTenModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2705981DAF27A600CE2F15 /* KHTenModel.m */; };
+		0C27059D1DAF287A00CE2F15 /* CategoryDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C27059B1DAF287A00CE2F15 /* CategoryDetailCell.m */; };
+		0C27059E1DAF287A00CE2F15 /* CategoryDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C27059C1DAF287A00CE2F15 /* CategoryDetailCell.xib */; };
+		0C2705A21DAF666C00CE2F15 /* TreasureDetailFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2705A11DAF666C00CE2F15 /* TreasureDetailFooter.m */; };
+		0C2705AC1DAF66EB00CE2F15 /* TreasureDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2705A51DAF66EB00CE2F15 /* TreasureDetailCell.m */; };
+		0C2705AD1DAF66EB00CE2F15 /* TreasureDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C2705A61DAF66EB00CE2F15 /* TreasureDetailCell.xib */; };
+		0C2705AE1DAF66EB00CE2F15 /* TreasureDetailHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2705A91DAF66EB00CE2F15 /* TreasureDetailHeader.m */; };
+		0C2705AF1DAF66EB00CE2F15 /* TreaureHeaderMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2705AB1DAF66EB00CE2F15 /* TreaureHeaderMenu.m */; };
+		0C2705B31DAF7CA500CE2F15 /* TSCountLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2705B21DAF7CA500CE2F15 /* TSCountLabel.m */; };
 		0C3693131DAB209A00BB3EE0 /* KHTabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3693121DAB209A00BB3EE0 /* KHTabbarViewController.m */; };
 		0C36931C1DAB27C000BB3EE0 /* KHAppearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C36931B1DAB27C000BB3EE0 /* KHAppearViewController.m */; };
 		0C36931F1DAB27D700BB3EE0 /* KHCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C36931E1DAB27D700BB3EE0 /* KHCartViewController.m */; };
@@ -102,6 +112,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C2705941DAF279200CE2F15 /* KHTenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHTenViewController.h; sourceTree = "<group>"; };
+		0C2705951DAF279200CE2F15 /* KHTenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHTenViewController.m; sourceTree = "<group>"; };
+		0C2705971DAF27A600CE2F15 /* KHTenModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHTenModel.h; sourceTree = "<group>"; };
+		0C2705981DAF27A600CE2F15 /* KHTenModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHTenModel.m; sourceTree = "<group>"; };
+		0C27059A1DAF287A00CE2F15 /* CategoryDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryDetailCell.h; sourceTree = "<group>"; };
+		0C27059B1DAF287A00CE2F15 /* CategoryDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryDetailCell.m; sourceTree = "<group>"; };
+		0C27059C1DAF287A00CE2F15 /* CategoryDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryDetailCell.xib; sourceTree = "<group>"; };
+		0C2705A01DAF666C00CE2F15 /* TreasureDetailFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreasureDetailFooter.h; sourceTree = "<group>"; };
+		0C2705A11DAF666C00CE2F15 /* TreasureDetailFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreasureDetailFooter.m; sourceTree = "<group>"; };
+		0C2705A41DAF66EB00CE2F15 /* TreasureDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreasureDetailCell.h; sourceTree = "<group>"; };
+		0C2705A51DAF66EB00CE2F15 /* TreasureDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreasureDetailCell.m; sourceTree = "<group>"; };
+		0C2705A61DAF66EB00CE2F15 /* TreasureDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TreasureDetailCell.xib; sourceTree = "<group>"; };
+		0C2705A81DAF66EB00CE2F15 /* TreasureDetailHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreasureDetailHeader.h; sourceTree = "<group>"; };
+		0C2705A91DAF66EB00CE2F15 /* TreasureDetailHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreasureDetailHeader.m; sourceTree = "<group>"; };
+		0C2705AA1DAF66EB00CE2F15 /* TreaureHeaderMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreaureHeaderMenu.h; sourceTree = "<group>"; };
+		0C2705AB1DAF66EB00CE2F15 /* TreaureHeaderMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreaureHeaderMenu.m; sourceTree = "<group>"; };
+		0C2705B11DAF7CA500CE2F15 /* TSCountLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSCountLabel.h; sourceTree = "<group>"; };
+		0C2705B21DAF7CA500CE2F15 /* TSCountLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCountLabel.m; sourceTree = "<group>"; };
 		0C3693111DAB209A00BB3EE0 /* KHTabbarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHTabbarViewController.h; sourceTree = "<group>"; };
 		0C3693121DAB209A00BB3EE0 /* KHTabbarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHTabbarViewController.m; sourceTree = "<group>"; };
 		0C36931A1DAB27C000BB3EE0 /* KHAppearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHAppearViewController.h; sourceTree = "<group>"; };
@@ -287,6 +315,83 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		0C2705901DAF26B500CE2F15 /* 10元专区 */ = {
+			isa = PBXGroup;
+			children = (
+				0C2705931DAF26B500CE2F15 /* viewController */,
+				0C2705921DAF26B500CE2F15 /* View */,
+				0C2705911DAF26B500CE2F15 /* Model */,
+			);
+			path = "10元专区";
+			sourceTree = "<group>";
+		};
+		0C2705911DAF26B500CE2F15 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0C2705971DAF27A600CE2F15 /* KHTenModel.h */,
+				0C2705981DAF27A600CE2F15 /* KHTenModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0C2705921DAF26B500CE2F15 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0C27059A1DAF287A00CE2F15 /* CategoryDetailCell.h */,
+				0C27059B1DAF287A00CE2F15 /* CategoryDetailCell.m */,
+				0C27059C1DAF287A00CE2F15 /* CategoryDetailCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0C2705931DAF26B500CE2F15 /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C2705941DAF279200CE2F15 /* KHTenViewController.h */,
+				0C2705951DAF279200CE2F15 /* KHTenViewController.m */,
+			);
+			path = viewController;
+			sourceTree = "<group>";
+		};
+		0C27059F1DAF666C00CE2F15 /* DetailFooter */ = {
+			isa = PBXGroup;
+			children = (
+				0C2705A01DAF666C00CE2F15 /* TreasureDetailFooter.h */,
+				0C2705A11DAF666C00CE2F15 /* TreasureDetailFooter.m */,
+			);
+			path = DetailFooter;
+			sourceTree = "<group>";
+		};
+		0C2705A31DAF66EB00CE2F15 /* detailCell */ = {
+			isa = PBXGroup;
+			children = (
+				0C2705A41DAF66EB00CE2F15 /* TreasureDetailCell.h */,
+				0C2705A51DAF66EB00CE2F15 /* TreasureDetailCell.m */,
+				0C2705A61DAF66EB00CE2F15 /* TreasureDetailCell.xib */,
+			);
+			path = detailCell;
+			sourceTree = "<group>";
+		};
+		0C2705A71DAF66EB00CE2F15 /* detailHeader */ = {
+			isa = PBXGroup;
+			children = (
+				0C2705A81DAF66EB00CE2F15 /* TreasureDetailHeader.h */,
+				0C2705A91DAF66EB00CE2F15 /* TreasureDetailHeader.m */,
+				0C2705AA1DAF66EB00CE2F15 /* TreaureHeaderMenu.h */,
+				0C2705AB1DAF66EB00CE2F15 /* TreaureHeaderMenu.m */,
+			);
+			path = detailHeader;
+			sourceTree = "<group>";
+		};
+		0C2705B01DAF7CA500CE2F15 /* CountLabel */ = {
+			isa = PBXGroup;
+			children = (
+				0C2705B11DAF7CA500CE2F15 /* TSCountLabel.h */,
+				0C2705B21DAF7CA500CE2F15 /* TSCountLabel.m */,
+			);
+			path = CountLabel;
+			sourceTree = "<group>";
+		};
 		0C3693101DAB205800BB3EE0 /* menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,6 +444,7 @@
 		0C3693361DAB5F2200BB3EE0 /* customFunc（自定义视图） */ = {
 			isa = PBXGroup;
 			children = (
+				0C2705B01DAF7CA500CE2F15 /* CountLabel */,
 				0C5E05D11DADFAC700B2133F /* 左文右图 */,
 				0CBD1A731DACD43C003E8150 /* 上图下字按钮 */,
 				0CBD1A6B1DACD05E003E8150 /* TSAnimation */,
@@ -408,6 +514,9 @@
 		0C5E05DB1DAE32C000B2133F /* view */ = {
 			isa = PBXGroup;
 			children = (
+				0C2705A31DAF66EB00CE2F15 /* detailCell */,
+				0C2705A71DAF66EB00CE2F15 /* detailHeader */,
+				0C27059F1DAF666C00CE2F15 /* DetailFooter */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -525,6 +634,7 @@
 		0CB128F01DAA1EF3005A0A4D /* 夺宝 */ = {
 			isa = PBXGroup;
 			children = (
+				0C2705901DAF26B500CE2F15 /* 10元专区 */,
 				0CB128F11DAA1EF3005A0A4D /* 全民夺宝 */,
 				0CBD19E41DAC90F9003E8150 /* 消息页面 */,
 				0CBD19D91DAC8D9A003E8150 /* 搜索页面 */,
@@ -1057,10 +1167,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C5E05CB1DADCF7700B2133F /* KHDowmViewCell.xib in Resources */,
+				0C2705AD1DAF66EB00CE2F15 /* TreasureDetailCell.xib in Resources */,
 				0CBD1A1E1DACB650003E8150 /* IQKeyboardManager.bundle in Resources */,
 				0C3693461DAB8F8000BB3EE0 /* KHPulishedTableViewCell.xib in Resources */,
 				0CB128CD1DAA0467005A0A4D /* LaunchScreen.storyboard in Resources */,
 				0CBD1A5D1DACC130003E8150 /* WinTreasureCell.xib in Resources */,
+				0C27059E1DAF287A00CE2F15 /* CategoryDetailCell.xib in Resources */,
 				0C5E05D01DADDD3900B2133F /* KHheard2View.xib in Resources */,
 				0C36933E1DAB66C800BB3EE0 /* KHKnowTableViewCell.xib in Resources */,
 				0CB128CA1DAA0467005A0A4D /* Assets.xcassets in Resources */,
@@ -1136,9 +1248,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C2705AF1DAF66EB00CE2F15 /* TreaureHeaderMenu.m in Sources */,
+				0C2705B31DAF7CA500CE2F15 /* TSCountLabel.m in Sources */,
 				0CBD1A191DACB650003E8150 /* IQBarButtonItem.m in Sources */,
 				0CBD1A5C1DACC130003E8150 /* WinTreasureCell.m in Sources */,
 				0CBD1A7E1DACEF97003E8150 /* HomeFooter.m in Sources */,
+				0C2705AC1DAF66EB00CE2F15 /* TreasureDetailCell.m in Sources */,
 				0C3693451DAB8F8000BB3EE0 /* KHPulishedTableViewCell.m in Sources */,
 				0C5E05F51DAE36FE00B2133F /* SDCycleScrollView.m in Sources */,
 				0CBD1A111DACB650003E8150 /* IQUIScrollView+Additions.m in Sources */,
@@ -1151,13 +1266,16 @@
 				0CB129481DAA2977005A0A4D /* YWUserTool.m in Sources */,
 				0CB129491DAA2977005A0A4D /* YWHttptool.m in Sources */,
 				0C5E05CF1DADDD3900B2133F /* KHheard2View.m in Sources */,
+				0C27059D1DAF287A00CE2F15 /* CategoryDetailCell.m in Sources */,
 				0CBD1A661DACC415003E8150 /* WinTreasureMenuHeader.m in Sources */,
 				0C5E05FC1DAE3B7C00B2133F /* KHProductModel.m in Sources */,
 				0CB129371DAA28ED005A0A4D /* MBProgressHUD+MJ.m in Sources */,
 				0CBD1A1A1DACB650003E8150 /* IQPreviousNextView.m in Sources */,
 				0C5E05F01DAE36FE00B2133F /* TAAbstractDotView.m in Sources */,
+				0C2705991DAF27A600CE2F15 /* KHTenModel.m in Sources */,
 				0C5E05CA1DADCF7700B2133F /* KHDowmViewCell.m in Sources */,
 				0C5E05D41DADFAEC00B2133F /* KHChangButton.m in Sources */,
+				0C2705961DAF279200CE2F15 /* KHTenViewController.m in Sources */,
 				0C5E05F91DAE3A7E00B2133F /* KHDetailModel.m in Sources */,
 				0C5E05F11DAE36FE00B2133F /* TAAnimatedDotView.m in Sources */,
 				0C5E05F21DAE36FE00B2133F /* TADotView.m in Sources */,
@@ -1195,8 +1313,10 @@
 				0CB129381DAA28ED005A0A4D /* UIAlertController+BTAdd.m in Sources */,
 				0CBD1A561DACB78B003E8150 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				0C3693251DAB281000BB3EE0 /* KHNavigationViewController.m in Sources */,
+				0C2705A21DAF666C00CE2F15 /* TreasureDetailFooter.m in Sources */,
 				0CB128BF1DAA0467005A0A4D /* main.m in Sources */,
 				0C36931F1DAB27D700BB3EE0 /* KHCartViewController.m in Sources */,
+				0C2705AE1DAF66EB00CE2F15 /* TreasureDetailHeader.m in Sources */,
 				0C36933D1DAB66C800BB3EE0 /* KHKnowTableViewCell.m in Sources */,
 				0CBD19EA1DAC9116003E8150 /* KHMessageViewController.m in Sources */,
 				0C5E05F61DAE36FE00B2133F /* UIView+SDExtension.m in Sources */,

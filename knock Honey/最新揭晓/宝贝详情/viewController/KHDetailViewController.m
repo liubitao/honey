@@ -7,8 +7,16 @@
 //
 
 #import "KHDetailViewController.h"
+#import "KHDetailModel.h"
+#import "TreasureDetailCell.h"
+#import "TreasureDetailFooter.h"
+#import "TreasureDetailHeader.h"
 
-@interface KHDetailViewController ()
+@interface KHDetailViewController ()<UITableViewDataSource,UITableViewDelegate,TreasureDetailFooterDelegate>
+
+@property (nonatomic,strong) UITableView *tableView;
+@property (nonatomic,strong) TreasureDetailFooter *footer;
+@property (nonatomic,strong) NSMutableArray *dataArray;
 
 @end
 
@@ -16,7 +24,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _dataArray = [NSMutableArray array];
     [self createNavi];
+    [self configBottomMenu];
+    [self createTableView];
 }
 
 - (void)createNavi{
@@ -25,23 +36,97 @@
     
 }
 
-//分享
-- (void)share{
+- (void)createTableView{
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kNavigationBarHeight, KscreenWidth, KscreenHeight - kNavigationBarHeight-60) style:UITableViewStylePlain];
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
+    _tableView.tableFooterView = [[UIView alloc]init];
+    [self.view addSubview:_tableView];
+    
+    TreasureDetailHeader *header = [[TreasureDetailHeader alloc]initWithFrame:({
+        CGRect rect = {0, 0, kScreenWidth, 1};
+        rect;
+    }) type:_showType countTime:_count];
+    
+     _tableView.tableHeaderView = header;
+    
+    __weak typeof(self) weakSelf = self;
+    //下拉刷新
+    _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf getData];
+        [weakSelf.tableView.mj_header endRefreshing];
+    }];
+    //上拉刷新
+    _tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+        
+    }];
+    [_tableView.mj_header beginRefreshing];
     
 }
+//获取数据
+- (void)getData{
+    for (int i=0; i<8; i++) {
+        KHDetailModel *model = [[KHDetailModel alloc]init];
+        [self.dataArray addObject:model];
+    }
+    [_tableView reloadData];
+}
+
+//加载下面菜单视图
+- (void)configBottomMenu{
+    _footer = [[TreasureDetailFooter alloc]initWithType:(_showType==TreasureDetailHeaderTypeNotParticipate)?TreasureUnPublishedType:TreasurePublishedType];
+    _footer.delegate = self;
+    [self.view addSubview:_footer];
+}
+
+//分享
+- (void)share{
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return _dataArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    TreasureDetailCell *cell = [TreasureDetailCell cellWithTableView:tableView];
+    cell.indexPath = indexPath;
+    cell.model = _dataArray[indexPath.row];
+    return cell;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 75;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+//夺宝中下面的，点击按钮
+- (void)clickMenuButtonWithIndex:(NSInteger)index{
+    switch (index) {
+        case 1:
+            NSLog(@"点击了购物车图标");
+            break;
+        case 2:
+            NSLog(@"点击了加入购物车");
+            break;
+        case 3:
+            NSLog(@"点击了立即购物");
+            break;
+        default:
+            break;
+    }
+}
+
+//倒计时，进入新的一期
+- (void)checkNewTreasre{
+    NSLog(@"进入新一期");
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

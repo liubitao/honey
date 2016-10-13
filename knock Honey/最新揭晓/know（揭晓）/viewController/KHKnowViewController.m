@@ -10,6 +10,7 @@
 #import "KHKnowTableViewCell.h"
 #import "KHKnowModel.h"
 #import "KHPulishedTableViewCell.h"
+#import "KHDetailViewController.h"
 
 static NSString * nopublished = @"nopublished";
 static NSString * published = @"published";
@@ -53,6 +54,11 @@ static NSString * published = @"published";
     
     //开始下拉刷新
     [self.tableView.mj_header beginRefreshing];
+    
+    //上拉刷新
+    _tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+        
+    }];
     
     [_tableView registerNib:NIB_NAMED(@"KHKnowTableViewCell") forCellReuseIdentifier:nopublished];
     [_tableView registerNib:NIB_NAMED(@"KHPulishedTableViewCell") forCellReuseIdentifier:published];
@@ -106,7 +112,9 @@ static NSString * published = @"published";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    KHDetailViewController *DetailVC = [[KHDetailViewController alloc]init];
+    [self hideBottomBarPush:DetailVC];
 }
 
 #pragma mark - LatestPublishCellDelegate

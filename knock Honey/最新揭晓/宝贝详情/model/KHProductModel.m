@@ -10,4 +10,18 @@
 
 @implementation KHProductModel
 
+- (NSMutableArray *)imgUrls {
+    if (!_imgUrls) {
+        _imgUrls = [NSMutableArray array];
+    }
+    return _imgUrls;
+}
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
 @end
