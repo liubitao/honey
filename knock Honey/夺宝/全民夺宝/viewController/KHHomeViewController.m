@@ -272,6 +272,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     if (indexPath.section == 1) {
         DetailVC.showType = TreasureDetailHeaderTypeCountdown;
         DetailVC.model = _downArray[indexPath.row];
+        DetailVC.count = 10000;
         return;
     }
     DetailVC.showType = TreasureDetailHeaderTypeNotParticipate;

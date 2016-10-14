@@ -18,16 +18,22 @@ typedef NS_ENUM(NSUInteger, TreasureDetailHeaderType) {
     TreasureDetailHeaderTypeParticipated //参加
 };
 
-typedef void(^TreasureDetailHeaderClickImageBlock)(id object);
 typedef void(^TreasureDetailHeaderClickMenuButtonBlock)(id object);
 typedef void(^TreasureDetailHeaderCountDetailButtonBlock)(void);
 
 typedef void(^TreasureCountDetailButtonBlock)(void);
 
+/**
+ *  进度或时间倒计时
+ */
 @interface TreasureProgressView : UIView
-
+/**
+ *  倒计时时间
+ */
 @property (nonatomic, assign) NSInteger countTime;
-
+/**
+ *  商品时间类型
+ */
 @property (nonatomic, assign) TreasureDetailHeaderType type;
 /**期号
  */
@@ -55,15 +61,20 @@ typedef void(^TreasureCountDetailButtonBlock)(void);
 
 /**剩余
  */
-@property (nonatomic, strong) YYLabel *leftLabel;
+@property (nonatomic, strong) YYLabel *rightLabel;
 
 /**揭晓时间
  */
 @property (nonatomic, strong) YYLabel *publishTimeLabel;
 
-/**用户ID
+/**用户IP
  */
 @property (nonatomic, strong) YYLabel *IDLabel;
+
+/**
+ *  地区
+ */
+@property (nonatomic,strong) YYLabel *addressLabel;
 
 /**获奖者
  */
@@ -83,7 +94,7 @@ typedef void(^TreasureCountDetailButtonBlock)(void);
 
 /**背景图片
  */
-@property (nonatomic, strong) UIView *backImgView;
+@property (nonatomic, strong) UIImageView *backImgView;
 
 @property (nonatomic, strong) TreasureCountDetailButtonBlock block;
 
@@ -109,16 +120,21 @@ typedef void(^TreasureCountDetailButtonBlock)(void);
 
 @end
 
+
 @interface TreasureDetailHeader : UIView
 
 /**是否参与视图
  */
 @property (nonatomic, strong) ParticipateView *participateView;
 
+/**
+ *  商品时间类型
+ */
 @property (nonatomic, assign) TreasureDetailHeaderType type;
 
-@property (nonatomic, copy) TreasureDetailHeaderClickImageBlock imageBlock;
-
+/**
+ *  点击
+ */
 @property (nonatomic, copy) TreasureDetailHeaderClickMenuButtonBlock clickMenuBlock;
 
 /**计算详情
@@ -128,6 +144,13 @@ typedef void(^TreasureCountDetailButtonBlock)(void);
 @property (nonatomic, strong) TreasureProgressView *treasureProgressView;
 
 @property (nonatomic, strong) TreaureHeaderMenu *headerMenu;
+
+@property (nonatomic,copy) TreasureCountDetailButtonBlock declareBlcok;
+
+//声明
+@property (nonatomic,strong) UILabel *declareLabel;
+
+@property (nonatomic,strong) UIButton *declareBtn;
 
 @property (nonatomic, assign) NSInteger count;
 

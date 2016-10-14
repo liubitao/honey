@@ -48,10 +48,38 @@
         CGRect rect = {0, 0, kScreenWidth, 1};
         rect;
     }) type:_showType countTime:_count];
-    
      _tableView.tableHeaderView = header;
-    
     __weak typeof(self) weakSelf = self;
+    //详情中的选项
+    header.clickMenuBlock = ^(id object){
+        switch ([object integerValue]) {
+            case 0: {//图文详情
+                NSLog(@"图文详情");
+            }
+                break;
+            case 1: {//晒单分享
+                NSLog(@"晒单分享");
+            }
+                break;
+            case 2: {//往期揭晓
+                NSLog(@"往期揭晓");
+            }
+                break;
+            default:
+                break;
+        }
+ 
+    };
+    
+    header.countDetailBlock = ^(){//计算详情
+        NSLog(@"计算详情");
+    };
+    
+    header.declareBlcok = ^(){//点击声明
+        NSLog(@"声明");
+    };
+
+    
     //下拉刷新
     _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf getData];

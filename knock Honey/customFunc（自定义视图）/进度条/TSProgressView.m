@@ -10,7 +10,6 @@
 
 static const CGFloat kProcessHeight = 8.f;
 static const CGFloat kTopSpaces = 2.f;
-static const CGFloat kAnimationTime = 3.f;
 
 @interface TSProgressView ()
 @property (nonatomic, strong) CALayer *bgLayer;

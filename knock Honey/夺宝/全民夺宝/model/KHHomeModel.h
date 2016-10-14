@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface KHHomeModel : NSObject
+
 @property (nonatomic, strong) NSMutableArray *adImgUrls;
 
 @property (nonatomic, copy) NSString *productImgUrl;
@@ -20,4 +21,5 @@
 @property (nonatomic, assign) BOOL isAdded;
 
 @property (nonatomic, assign) CGFloat height;
+
 @end
