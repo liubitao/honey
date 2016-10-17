@@ -15,7 +15,9 @@
 static NSString * nopublished = @"nopublished";
 static NSString * published = @"published";
 
-@interface KHKnowViewController ()<UITableViewDataSource,UITableViewDelegate,KHKnowtableViewCellDelegate>
+@interface KHKnowViewController ()<UITableViewDataSource,UITableViewDelegate,KHKnowtableViewCellDelegate>{
+    NSInteger _currentPage;
+}
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *dataArray;
 
@@ -39,15 +41,13 @@ static NSString * published = @"published";
     _tableView.dataSource = self;
     _tableView.tableFooterView = [[UIView alloc]init];
  
-    [self.tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
-    [self.tableView setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.view addSubview:_tableView];
     
     
     //下拉刷新
     __weak typeof(self) weakSelf = self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-         [self getLatestPubData];
+        [weakSelf getLatestPubData];
         //结束刷新
         [weakSelf.tableView.mj_header endRefreshing];
     }];
@@ -56,8 +56,9 @@ static NSString * published = @"published";
     [self.tableView.mj_header beginRefreshing];
     
     //上拉刷新
-    _tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
-        
+    _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [weakSelf getMoreData];
+        [weakSelf.tableView.mj_footer endRefreshing];
     }];
     
     [_tableView registerNib:NIB_NAMED(@"KHKnowTableViewCell") forCellReuseIdentifier:nopublished];
@@ -66,12 +67,29 @@ static NSString * published = @"published";
 }
 
 - (void)getLatestPubData {
-    for (int i=0; i<10; i++) {
-        KHKnowModel *model = [[KHKnowModel alloc]init];
-        [model start];
-        [self.dataArray addObject:model];
-    }
-    [_tableView reloadData];
+    NSMutableDictionary *parameter = [Utils parameter];
+    [YWHttptool GET:PortGoodszxjx parameters:parameter success:^(id responseObject) {
+        NSLog(@"%@",responseObject);
+        _currentPage = 1;
+        _dataArray = [KHKnowModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
+        [MBProgressHUD showError:@"网络连接有误"];
+    }];
+}
+
+- (void)getMoreData{
+    NSMutableDictionary *parameter = [Utils parameter];
+    parameter[@"p"] = [NSNumber numberWithInteger:++_currentPage];
+    [YWHttptool GET:PortGoodszxjx parameters:parameter success:^(id responseObject) {
+        NSLog(@"%@",responseObject);
+        if ([responseObject[@"isError"] integerValue])return ;
+        NSMutableArray *array = [KHKnowModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
+        [_dataArray addObjectsFromArray:array];
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
+        [MBProgressHUD showError:@"网络连接有误"];
+    }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -80,19 +98,14 @@ static NSString * published = @"published";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     KHKnowModel *model = _dataArray[indexPath.row];
-
-    if ([model.publishTime doubleValue] >[[NSDate date] timeIntervalSince1970]) {
+    if ([model.newtime doubleValue] >[[NSDate date] timeIntervalSince1970]) {
         KHKnowTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:nopublished forIndexPath:indexPath];
         cell.delegate = self;
         [cell setModel:model indexPath:indexPath];
-        [cell setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
-        [cell setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, 0)];
         return cell;
     }
         KHPulishedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:published forIndexPath:indexPath];
         [cell setModel:model indexPath:indexPath];
-        [cell setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
-        [cell setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, 0)];
         return cell;
 }
 
@@ -113,8 +126,20 @@ static NSString * published = @"published";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    KHKnowModel *knowModel = _dataArray[indexPath.row];
     KHDetailViewController *DetailVC = [[KHDetailViewController alloc]init];
-    [self hideBottomBarPush:DetailVC];
+    DetailVC.model = _dataArray[indexPath.row];
+    DetailVC.showType = TreasureDetailHeaderTypeNotParticipate;
+    NSMutableDictionary *parameter = [Utils parameter];
+    parameter[@"goodsid"] = knowModel.goodsid;
+    [YWHttptool GET:PortGoodsdetails parameters:parameter success:^(id responseObject) {
+        NSLog(@"%@",responseObject);
+        if ([responseObject[@"isError"] integerValue])return ;
+        [self pushController:DetailVC];
+    } failure:^(NSError *error) {
+        [MBProgressHUD showError:@"网络连接有误"];
+    }];
+    
 }
 
 #pragma mark - LatestPublishCellDelegate

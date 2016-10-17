@@ -38,22 +38,31 @@
 
 - (void)notificationCenterEvent:(id)sender{
     if (self.isDisplayed) {
-        [self setModel:self.model indexPath:self.indexPath];
+        [self settime:self.model];
     }
 }
 
 - (void)setModel:(KHKnowModel *)model indexPath:(NSIndexPath *)indexPath{
     [self storeWeakValueWithData:model indexPath:indexPath];
-    [_goodImage sd_setImageWithURL:[NSURL URLWithString:model.imgUrl] placeholderImage:[UIImage imageNamed:@"placeholder"]];
-    _timeLabel.text = [NSString stringWithFormat:@"%@",model.valueString];
-    _title.text = model.productName;
-    _sprice.text = [NSString stringWithFormat:@"总需:￥%@",model.sprice];
+    [_goodImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",portPic,model.thumb]] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+    _timeLabel.text = [model valueForKey:@"valueString"];
+    _title.text = model.title;
+    _sprice.text = [NSString stringWithFormat:@"总需:￥%@",model.zongrenshu];
     if ([_timeLabel.text isEqualToString:@"正在揭晓"]) {
         if (_delegate && [_delegate respondsToSelector:@selector(countdownDidEnd:)]) {
             [_delegate countdownDidEnd:self.indexPath];
         }
     }
 }
+- (void)settime:(KHKnowModel *)model{
+    _timeLabel.text = [model valueForKey:@"valueString"];
+    if ([_timeLabel.text isEqualToString:@"正在揭晓"]) {
+        if (_delegate && [_delegate respondsToSelector:@selector(countdownDidEnd:)]) {
+            [_delegate countdownDidEnd:self.indexPath];
+        }
+    }
+}
+
 
 - (void)storeWeakValueWithData:(KHKnowModel *)model indexPath:(NSIndexPath *)indexPath {
     self.model = model;

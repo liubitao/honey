@@ -7,24 +7,28 @@
 //
 
 #import "KHHomeModel.h"
+#import <MJExtension/MJExtension.h>
+
 
 @implementation KHHomeModel
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        self.productImgUrl = @"http://onegoods.nosdn.127.net/goods/1093/5095bc4b3f4228b69d6b58acf67cae1c.jpg";
-        self.productName = @"Apple iPhone6s Plus 128G 颜色随机";
-        self.publishProgress = [NSString stringWithFormat:@"%@",@(arc4random() % 99)];
-        self.isAdded = NO;
-    }
-    return self;
-}
-- (NSMutableArray *)adImgUrls {
-    if (!_adImgUrls) {
-        _adImgUrls = [NSMutableArray array];
-    }
-    return _adImgUrls;
+MJCodingImplementation
+
++ (instancetype)kh_objectWithKeyValues:(NSDictionary*)dict{
+    [self mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
+        return @{
+                 @"ID":@"id"
+                 };
+    }];
+    return [self mj_objectWithKeyValues:dict];
 }
 
++ (NSMutableArray*)kh_objectWithKeyValuesArray:(NSArray *)array{
+    NSMutableArray *result = [NSMutableArray array];
+    for (NSDictionary *dict in array) {
+         KHHomeModel *model = [self kh_objectWithKeyValues:dict];
+        [result addObject:model];
+        }
+    return result;
+}
 
 @end

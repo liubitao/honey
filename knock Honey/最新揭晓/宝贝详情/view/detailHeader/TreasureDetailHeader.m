@@ -22,7 +22,7 @@ const CGFloat kTreasureDetailHeaderPageControlHeight = 30.0; //pagecontroll heig
 
 @property (nonatomic, strong) UIPageControl *pageControl;
 
-@property (nonatomic, strong) YYLabel *productNameLabel;
+
 
 //商品图片
 @property (nonatomic, strong) NSArray *images;
@@ -223,6 +223,7 @@ const CGFloat kTreasureDetailHeaderPageControlHeight = 30.0; //pagecontroll heig
     _declareBtn.top = _declareLabel.bottom+5;
     _headerMenu.top = _declareBtn.bottom+5;
     self.height = _headerMenu.bottom;
+    NSLog(@"%f",_headerMenu.bottom);
 }
 
 //点击声明
@@ -233,9 +234,11 @@ const CGFloat kTreasureDetailHeaderPageControlHeight = 30.0; //pagecontroll heig
 }
 
 #pragma mark - TSCountLabelDelegate
+//倒计时完成
 - (void)countdownDidEnd {
     _treasureProgressView.type = TreasureDetailHeaderTypeWon;
     [self setNeedsLayout];
+    self.headerHeight();
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -298,7 +301,7 @@ const CGFloat kTreasureDetailHeaderPageControlHeight = 30.0; //pagecontroll heig
 const CGFloat kTreasureProgressViewCountButtonHeight = 26.0;
 const CGFloat kTreasureProgressViewCountButtonWidth = 100.0;
 const CGFloat kWinnerImageWidth = 40.0;
-const CGFloat kWinnerImagePadding = 15.0;
+const CGFloat kWinnerImagePadding = 20.0;
 const CGFloat kBackImageViewHeight = 45.0;
 
 @implementation TreasureProgressView
@@ -422,11 +425,31 @@ const CGFloat kBackImageViewHeight = 45.0;
     UIColor *defaultColor = UIColorHex(666666);
     UIFont *defaultFont = SYSTEM_FONT(12);
     
+    UIView *view = [UIView new];
+    view.origin = CGPointMake(0, top);
+    view.size = CGSizeMake(self.width, 1);
+    [self addSubview:view];
+    
+    UIImageView *iamgeView = [UIImageView new];
+    iamgeView.origin = CGPointMake(0, 0);
+    iamgeView.size = CGSizeMake(40, 40);
+    iamgeView.contentMode = UIViewContentModeScaleAspectFit;
+    iamgeView.image = IMAGE_NAMED(@"lottery_container_user");
+    [view addSubview:iamgeView];
+    
+    if (_type == TreasureDetailHeaderTypeParticipated || _type == TreasureDetailHeaderTypeNotParticipate) {
+        UIImageView *imageView2 = [UIImageView new];
+        imageView2.origin = CGPointMake(view.width -40  , 0);
+        imageView2.size = CGSizeMake(20, 50);
+        imageView2.image = IMAGE_NAMED(@"lottery_container_last_icon");
+        [view addSubview:imageView2];
+    }
+    
     _winnerImgView = [UIImageView new];
-    _winnerImgView.origin = CGPointMake(kWinnerImagePadding, kWinnerImagePadding+top);
+    _winnerImgView.origin = CGPointMake(kWinnerImagePadding, kWinnerImagePadding);
     _winnerImgView.size = CGSizeMake(kWinnerImageWidth, kWinnerImageWidth);
     _winnerImgView.image = IMAGE_NAMED(@"touxiang");
-    [self addSubview:_winnerImgView];
+    [view addSubview:_winnerImgView];
     
     YYLabel *aLabel = [YYLabel new];
     aLabel.origin = CGPointMake(_winnerImgView.right+10, _winnerImgView.top);
@@ -435,7 +458,7 @@ const CGFloat kBackImageViewHeight = 45.0;
     aLabel.text = @"获奖者：";
     aLabel.textColor = defaultColor;
     aLabel.numberOfLines = 0;
-    [self addSubview:aLabel];
+    [view addSubview:aLabel];
     [aLabel sizeToFit];
     
     _winnerLabel = [YYLabel new];
@@ -445,7 +468,7 @@ const CGFloat kBackImageViewHeight = 45.0;
     _winnerLabel.text = @"我被坑了";
     _winnerLabel.textColor = UIColorHex(7cade8);
     _winnerLabel.numberOfLines = 1;
-    [self addSubview:_winnerLabel];
+    [view addSubview:_winnerLabel];
     [_winnerLabel sizeToFit];
 
     _IDLabel = [YYLabel new];
@@ -454,7 +477,7 @@ const CGFloat kBackImageViewHeight = 45.0;
     _IDLabel.font = defaultFont;
     _IDLabel.textColor = defaultColor;
     _IDLabel.text = @"用户IP：10.1.1.1";
-    [self addSubview:_IDLabel];
+    [view addSubview:_IDLabel];
     [_IDLabel sizeToFit];
     
     _addressLabel = [YYLabel new];
@@ -464,7 +487,7 @@ const CGFloat kBackImageViewHeight = 45.0;
     _addressLabel.text = @"(浙江杭州)";
     _addressLabel.textColor = UIColorHex(a0d791);
     _addressLabel.numberOfLines = 1;
-    [self addSubview:_addressLabel];
+    [view addSubview:_addressLabel];
     [_addressLabel sizeToFit];
     
     _periodNumberLabel = [YYLabel new];
@@ -473,7 +496,7 @@ const CGFloat kBackImageViewHeight = 45.0;
     _periodNumberLabel.font = defaultFont;
     _periodNumberLabel.textColor = defaultColor;
     _periodNumberLabel.text = @"商品期数：30981005";
-    [self addSubview:_periodNumberLabel];
+    [view addSubview:_periodNumberLabel];
     [_periodNumberLabel sizeToFit];
     
     _totalLabel = [YYLabel new];
@@ -482,7 +505,7 @@ const CGFloat kBackImageViewHeight = 45.0;
     NSString *str = @"本期参与：1000人次";
     
     _totalLabel.attributedText = [Utils stringWith:str font1:defaultFont color1:defaultColor font2:defaultFont color2:kDefaultColor range:NSMakeRange(4, str.length-6)] ;
-    [self addSubview:_totalLabel];
+    [view addSubview:_totalLabel];
     [_totalLabel sizeToFit];
     
     _publishTimeLabel = [YYLabel new];
@@ -491,14 +514,14 @@ const CGFloat kBackImageViewHeight = 45.0;
     _publishTimeLabel.font = defaultFont;
     _publishTimeLabel.textColor = defaultColor;
     _publishTimeLabel.text = @"揭晓时间：2016-06-10 14:15:16";
-    [self addSubview:_publishTimeLabel];
+    [view addSubview:_publishTimeLabel];
     [_publishTimeLabel sizeToFit];
 
     _backImgView = [UIImageView new];
     _backImgView.origin = CGPointMake(0, _publishTimeLabel.bottom+20);
     _backImgView.size = CGSizeMake(self.width, kBackImageViewHeight);
     _backImgView.image = [UIImage imageWithStretchableName:@"winner_bottom_bg"];
-    [self addSubview:_backImgView];
+    [view addSubview:_backImgView];
     
     _countDetailButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _countDetailButton.origin = CGPointMake(self.width-kTreasureProgressViewCountButtonWidth-kTreasureDetailHeaderPadding, _backImgView.top+(kBackImageViewHeight-kTreasureProgressViewCountButtonHeight)/2.0);
@@ -512,20 +535,22 @@ const CGFloat kBackImageViewHeight = 45.0;
     [_countDetailButton setTitle:@"查看计算详情" forState:UIControlStateNormal];
     [_countDetailButton setTitleColor:kDefaultColor forState:UIControlStateNormal];
     [_countDetailButton addTarget:self action:@selector(countDetail) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:_countDetailButton];
+    [view addSubview:_countDetailButton];
     
     _luckyNumberLabel = [YYLabel new];
     _luckyNumberLabel.origin = CGPointMake(kWinnerImagePadding, _backImgView.top+(kBackImageViewHeight-16)/2.0);
     _luckyNumberLabel.size = CGSizeMake(self.width-kWinnerImagePadding*2, 16);
     NSString *numeber = @"幸运号码:10004038";
     _luckyNumberLabel.attributedText = [Utils stringWith:numeber font1:SYSTEM_FONT(14) color1:[UIColor whiteColor] font2:SYSTEM_FONT(18) color2:[UIColor whiteColor] range:NSMakeRange(4, numeber.length-4)];
-    [self addSubview:_luckyNumberLabel];
+    [view addSubview:_luckyNumberLabel];
     [_luckyNumberLabel sizeToFit];
 
-    self.backgroundColor = UIColorHex(0xFBF1ED);
-    self.height = _backImgView.bottom;
-    self.layer.shadowColor = UIColorHex(333333).CGColor;
-    self.layer.shadowOpacity = 0.3;
+    view.backgroundColor = UIColorHex(0xFBF1ED);
+    view.height = _backImgView.bottom;
+    view.layer.shadowColor = UIColorHex(333333).CGColor;
+    view.layer.shadowOpacity = 0.3;
+    
+    self.height = _backImgView.bottom+top;
 }
 
 - (void)countDetail {

@@ -44,15 +44,13 @@
 
 -(void)setModel:(KHKnowModel *)model{
     _model = model;
-    [_goodsImage sd_setImageWithURL:[NSURL URLWithString:model.imgUrl] placeholderImage:IMAGE_NAMED(@"placeholder")];
-    _goodsName.text = model.productName;
-     _timeDown.text = model.valueString;
-    if ([model.publishTime doubleValue] <[[NSDate date] timeIntervalSince1970]) {
+    [_goodsImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",portPic,model.thumb]] placeholderImage:IMAGE_NAMED(@"placeholder")];
+    _goodsName.text = model.title;
+    _timeDown.text = [model valueForKey:@"valueString"];
+    if ([model.newtime doubleValue] <[[NSDate date] timeIntervalSince1970]) {
         _timeDown.text = @"即将揭晓";
     }
-   
 }
-
 
 - (void)dealloc {
     [self removeNSNotificationCenter];

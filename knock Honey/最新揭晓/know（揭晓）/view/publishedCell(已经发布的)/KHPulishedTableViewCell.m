@@ -26,14 +26,13 @@
 
 
 - (void)setModel:(KHKnowModel *)model indexPath:(NSIndexPath *)indexPath{
-    [_goodImage sd_setImageWithURL:[NSURL URLWithString:model.imgUrl] placeholderImage:[UIImage imageNamed:@"placeholder"]];
-    _title.text = model.productName;
-    _sprice.text = [NSString stringWithFormat:@"总需:￥%@",model.sprice];
-    _number.text = [NSString stringWithFormat:@"本期夺宝:%@",model.partInTimes];
+    [_goodImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",portPic,model.thumb]] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+    _title.text = model.title;
+    _sprice.text = [NSString stringWithFormat:@"总需:￥%@",model.zongrenshu];
     _name.attributedText = [Utils stringWith:[NSString stringWithFormat:@"获奖者:%@",model.winner] font1:[UIFont systemFontOfSize:12.f] color1:[UIColor colorWithHexString:@"2a99f4"] font2:[UIFont systemFontOfSize:12.f] color2:[UIColor colorWithWhite:0 alpha:0.5] range:NSMakeRange(0, 3)];
-    _number.attributedText = [Utils stringWith:[NSString stringWithFormat:@"本期夺宝:%@人次",model.partInTimes] font1:[UIFont systemFontOfSize:12.f] color1:[UIColor redColor] font2:[UIFont systemFontOfSize:12.f] color2:[UIColor colorWithWhite:0 alpha:0.5] range:NSMakeRange(0, 5)];
-    
-    _publishTime.text = [NSString stringWithFormat:@"揭晓时间:%@",[Utils timeWith:model.publishTime]];
+    NSString *numebr =[NSString stringWithFormat:@"本期夺宝:%@人次",model.buynum];
+    _number.attributedText = [Utils stringWith:numebr font1:[UIFont systemFontOfSize:12.f] color1:[UIColor colorWithWhite:0 alpha:0.5] font2:[UIFont systemFontOfSize:12.f] color2:[UIColor redColor] range:NSMakeRange(4, numebr.length-7)];
+    _publishTime.text = [NSString stringWithFormat:@"揭晓时间:%@",[Utils timeWith:[Utils timeWith:model.newtime]]];
     
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

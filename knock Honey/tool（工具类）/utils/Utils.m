@@ -157,4 +157,10 @@
     return string1;
 }
 
++ (NSMutableDictionary *)parameter{
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    parameter[@"mKey"] = [[NSString stringWithFormat:@"%@%@",[mKey MD5Digest],sKey]MD5Digest];
+    return parameter;
+}
+
 @end

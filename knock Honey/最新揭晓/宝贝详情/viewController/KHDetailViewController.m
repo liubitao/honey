@@ -33,7 +33,6 @@
 - (void)createNavi{
     self.title = @"奖品详情";
     [self setRightImageNamed:@"share" action:@selector(share)];
-    
 }
 
 - (void)createTableView{
@@ -69,6 +68,11 @@
                 break;
         }
  
+    };
+    __weak typeof(header) weakHeader = header;
+    header.headerHeight = ^(){//头高
+        weakHeader.height = 695-200+kScreenWidth/375*200-30+weakHeader.productNameLabel.height;
+        weakSelf.tableView.tableHeaderView = weakHeader;
     };
     
     header.countDetailBlock = ^(){//计算详情
@@ -128,6 +132,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSLog(@"%d",indexPath.row);
 }
 
 //夺宝中下面的，点击按钮

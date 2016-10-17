@@ -11,6 +11,13 @@
 
 @interface KHKnowModel ()
 
+/**
+ *  倒计时时间字符串
+ */
+@property (copy, nonatomic) NSString *valueString;
+
+@property (strong, nonatomic) NSTimer *timer;
+
 @property (nonatomic, assign) double value;
 
 @property (nonatomic, assign) BOOL running;
@@ -19,20 +26,7 @@
 
 @implementation KHKnowModel
 MJCodingImplementation
-- (instancetype)init {
 
-    self = [super init];
-    if (self) {
-        self.imgUrl = @"https://tse4-mm.cn.bing.net/th?id=OIP.M9271c634f71d813901afbc9e69602dcfo2&pid=15.1";
-        self.productName = @"斯嘉丽·约翰逊(Scarlett Johansson),1984年11月22日生于纽约，美国女演员。";
-        self.sprice = @"220";
-        self.winner = @"起什么名能中奖";
-        self.partInTimes = @"20次";
-        self.luckyNumber = @"1000043";
-        self.publishTime = @"1476262390";
-    }
-    return self;
-}
 + (instancetype)kh_objectWithKeyValues:(NSDictionary*)dict{
     [self mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
         return @{
@@ -42,15 +36,17 @@ MJCodingImplementation
     return [self mj_objectWithKeyValues:dict];
 }
 
-//+ (NSMutableArray*)kh_objectWithKeyValuesArray:(NSArray *)array{
-//    NSMutableArray *result = [NSMutableArray array];
-//    for (NSDictionary *dict in array) {
-//        
-//        }
-//        [result addObject:model];
-//    }
-//    return result;
-//}
++ (NSMutableArray*)kh_objectWithKeyValuesArray:(NSArray *)array{
+    NSMutableArray *result = [NSMutableArray array];
+    for (NSDictionary *dict in array) {
+        KHKnowModel *model = [self kh_objectWithKeyValues:dict];
+        if ([model.newtime doubleValue] >[[NSDate date] timeIntervalSince1970]){
+            [model start];
+        }
+        [result addObject:model];
+    }
+    return result;
+}
 #pragma mark - Setters
 
 - (void)updateDisplay {
@@ -75,7 +71,7 @@ MJCodingImplementation
 - (void)clockDidTick {
     NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
     NSTimeInterval time=[dat timeIntervalSince1970];
-    _value =  ([_publishTime doubleValue]- time)*1000;
+    _value =  ([_newtime doubleValue]- time)*1000;
     [self updateDisplay];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_TIME_CELL object:nil];
     

@@ -145,8 +145,12 @@ typedef void(^TreasureCountDetailButtonBlock)(void);
 
 @property (nonatomic, strong) TreaureHeaderMenu *headerMenu;
 
+//声明blcok
 @property (nonatomic,copy) TreasureCountDetailButtonBlock declareBlcok;
 
+@property (nonatomic,copy) TreasureCountDetailButtonBlock headerHeight;
+
+@property (nonatomic, strong) YYLabel *productNameLabel;
 //声明
 @property (nonatomic,strong) UILabel *declareLabel;
 

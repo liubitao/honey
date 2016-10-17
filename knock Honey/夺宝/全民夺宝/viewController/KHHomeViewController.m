@@ -28,6 +28,8 @@
 {
     NSMutableArray *_dataArray;
     NSMutableArray *_downArray;
+    NSInteger _currentIndex;
+    NSInteger _currentPage;
 }
 @property (nonatomic,strong) UICollectionView *collectionView;
 @property (nonatomic,strong) WinTreasureHeader *header;
@@ -36,6 +38,7 @@
 @property (nonatomic, strong) UIImageView *productView;
 
 @property (nonatomic,strong) NSTimer *timer;
+
 
 @end
 static NSString *Cell0Identifier = @"winTreasureCell0Identifier";
@@ -50,12 +53,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
 @implementation KHHomeViewController
 
 #pragma mark - lazy load
-- (NSMutableArray *)datasource {
-    if (!_dataArray) {
-        _dataArray = [NSMutableArray array];
-    }
-    return _dataArray;
-}
+
 
 - (WinTreasureHeader *)header {
     if (!_header) {
@@ -77,8 +75,8 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _dataArray = [NSMutableArray array];
-    _downArray = [NSMutableArray array];
+    _dataArray = [NSMutableArray arrayWithObjects:[NSMutableArray array],[NSMutableArray array],[NSMutableArray array],[NSMutableArray array], nil];
+    _currentIndex = 0;
     
     self.title = @"全民夺宝";
     self.view.backgroundColor = [UIColor whiteColor];
@@ -135,33 +133,78 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
         [weakSelf.collectionView.mj_header endRefreshing];
     }];
     //上拉刷新
-    _collectionView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
-        
+    _collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [weakSelf getMoreDate];
+        [weakSelf.collectionView.mj_footer endRefreshing];
     }];
+    
      _collectionView.mj_header.ignoredScrollViewContentInsetTop = [WinTreasureHeader height];
     [_collectionView.mj_header beginRefreshing];
 }
 
-- (void)getData{
-    [_downArray removeAllObjects];
+//下拉刷新
+- (void)getData{ 
+    NSArray *array = @[@"canyurenshu",@"jindu",@"addtime",@"zongrenshu"];
+    NSMutableDictionary *parameter = [Utils parameter];
+    parameter[@"p"] = @"1";
+    _currentPage = 1;
+    for (int i = 0 ; i<=3; i++) {
+        parameter[@"sort"] = array[i];
+        [YWHttptool GET:PortGoodslist parameters:parameter success:^(id responseObject) {
+            NSLog(@"%@",responseObject);
+            _dataArray[i] = [KHHomeModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
+            if (i == 0) {
+                 [_collectionView reloadData];
+            }
+        } failure:^(NSError *error) {
+            [MBProgressHUD showError:@"网络连接有误"];
+        }];
+    }
+    
+    [YWHttptool GET:PortGoodsIndex parameters:parameter success:^(id responseObject) {
+        NSLog(@"%@",responseObject);
+        for (KHKnowModel *model in _downArray) {
+            [model stop];
+        }
+        [_downArray removeAllObjects];
+        _downArray = [KHKnowModel kh_objectWithKeyValuesArray:responseObject[@"result"][@"zxjx"]];
+        [_collectionView reloadSections:[NSIndexSet indexSetWithIndex:1]];
+    } failure:^(NSError *error) {
+        [MBProgressHUD showError:@"网络连接有误"];
+    }];
+    
+    
     for (int i = 0; i<3; i++) {
         KHKnowModel *model = [[KHKnowModel alloc]init];
         [model start];
         [_downArray addObject:model];
     }
     
-    for (int i=0; i<8; i++) {
-        KHHomeModel *model = [[KHHomeModel alloc]init];
-        [_dataArray addObject:model];
-    }
+    //轮播图
+    [_collectionView addSubview:self.header];
+    self.header.images = [NSMutableArray arrayWithArray:@[@"https://tse4-mm.cn.bing.net/th?id=OIP.M9271c634f71d813901afbc9e69602dcfo2&pid=15.1",@"https://tse4-mm.cn.bing.net/th?id=OIP.M9271c634f71d813901afbc9e69602dcfo2&pid=15.1",@"https://tse4-mm.cn.bing.net/th?id=OIP.M9271c634f71d813901afbc9e69602dcfo2&pid=15.1"]];
+    [self.header resetImage];
+    [self setupHeaderEvents];
+}
 
-    [_collectionView reloadData];
-
-    if (_dataArray.count>0){
-        [_collectionView addSubview:self.header];
-        self.header.images = [NSMutableArray arrayWithArray:@[@"https://tse4-mm.cn.bing.net/th?id=OIP.M9271c634f71d813901afbc9e69602dcfo2&pid=15.1",@"https://tse4-mm.cn.bing.net/th?id=OIP.M9271c634f71d813901afbc9e69602dcfo2&pid=15.1",@"https://tse4-mm.cn.bing.net/th?id=OIP.M9271c634f71d813901afbc9e69602dcfo2&pid=15.1"]];
-        [self.header resetImage];
-        [self setupHeaderEvents];
+//上拉更多
+- (void)getMoreDate{
+    NSArray *array = @[@"canyurenshu",@"jindu",@"addtime",@"zongrenshu"];
+    NSMutableDictionary *parameter = [Utils parameter];
+    parameter[@"p"] = [NSNumber numberWithInteger:++_currentPage];
+    for (int i = 0 ; i<=3; i++) {
+        parameter[@"sort"] = array[i];
+        [YWHttptool GET:PortGoodslist parameters:parameter success:^(id responseObject) {
+            NSLog(@"%@",responseObject);
+            if ([responseObject[@"isError"] integerValue])return ;
+            NSMutableArray *data = [KHHomeModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
+            [_dataArray[i] addObjectsFromArray:data];
+            if (i == 0) {
+                [_collectionView reloadSections:[NSIndexSet indexSetWithIndex:2]];
+            }
+        } failure:^(NSError *error) {
+            [MBProgressHUD showError:@"网络连接有误"];
+        }];
     }
 }
 
@@ -204,10 +247,12 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (section == 1) {
-        return _downArray.count;
+        return 3;
     }
     else if (section == 2) {
-        return _dataArray.count;
+       
+        NSMutableArray *array = _dataArray[_currentIndex];
+        return array.count;
     }
     return 1;
     
@@ -222,10 +267,11 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
         cell.model = _downArray[indexPath.row];
         return cell;
     }
+    NSMutableArray *array = _dataArray[_currentIndex];
      WinTreasureCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:Cell2Identifier forIndexPath:indexPath];
     cell.indexPath = indexPath;
     cell.delegate = self;
-    cell.model = _dataArray[indexPath.row];
+    cell.model = array[indexPath.row];
     return cell;
 }
 
@@ -249,10 +295,12 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
             return header;
         }
             WinTreasureMenuHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:HeaderIdentifier forIndexPath:indexPath];
+        __weak typeof(self) weakSelf = self;
             [header selectAMenu:^(id object) {
                 UIButton *sender = (UIButton *)object;
                 NSLog(@"点击%@",[sender titleForState:UIControlStateNormal]);
-                
+                _currentIndex = sender.tag- 1;
+                [weakSelf.collectionView reloadData];
             }];
             return header;
         
@@ -268,7 +316,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     KHDetailViewController *DetailVC = [[KHDetailViewController alloc]init];
-    [self hideBottomBarPush:DetailVC];
+    [self pushController:DetailVC];
     if (indexPath.section == 1) {
         DetailVC.showType = TreasureDetailHeaderTypeCountdown;
         DetailVC.model = _downArray[indexPath.row];
@@ -312,7 +360,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     listRect.origin.x = 3*KscreenWidth/5+KscreenWidth/5/2;
     listRect.size.width = KscreenWidth/5.0;
     KHHomeModel *model = _dataArray[indexPath.row];
-    model.isAdded = YES;
+//    model.isAdded = YES;
     [_dataArray replaceObjectAtIndex:indexPath.row withObject:model];
     
     CGRect parentRectA = [cell.contentView convertRect:cell.productImgView.frame toView:self.tabBarController.view];

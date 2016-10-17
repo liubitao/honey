@@ -47,7 +47,7 @@ const CGFloat kTimeLineCellHeight = 35.0; //cell高度
     _IPLabel.text = _model.ipAddress;
     NSString *participateStr = [NSString stringWithFormat:@"参与了%@人次",_model.partInTimes];
    
-    _partInLabel.attributedText = [Utils stringWith:participateStr font1:[UIFont systemFontOfSize:13] color1:[UIColor blackColor] font2:[UIFont systemFontOfSize:13] color2:kDefaultColor range:NSMakeRange(2, participateStr.length-2)];
+    _partInLabel.attributedText = [Utils stringWith:participateStr font1:[UIFont systemFontOfSize:13] color1:[UIColor blackColor] font2:[UIFont systemFontOfSize:13] color2:kDefaultColor range:NSMakeRange(2, participateStr.length-5)];
     _timeLabel.text = model.time;
 }
 

@@ -31,5 +31,6 @@
 
 - (void)setModel:(KHKnowModel *)model indexPath:(NSIndexPath *)indexPath;
 
+- (void)settime:(KHKnowModel *)model;
 
 @end

@@ -10,16 +10,30 @@
 
 @interface KHHomeModel : NSObject
 
-@property (nonatomic, strong) NSMutableArray *adImgUrls;
+/**
+ *  ID
+ */
+@property (nonatomic, copy) NSString *ID;
+/**
+ *  期数
+ */
+@property (nonatomic, copy) NSString *qishu;
+/**
+ *  商品名
+ */
+@property (nonatomic, copy) NSString *title;
+/**
+ *  商品图
+ */
+@property (nonatomic, copy) NSString *thumb;
 
-@property (nonatomic, copy) NSString *productImgUrl;
+/**
+ *  进度
+ */
+@property (nonatomic, copy) NSString *jindu;
 
-@property (nonatomic, copy) NSString *productName;
++ (instancetype)kh_objectWithKeyValues:(NSDictionary*)dict;
 
-@property (nonatomic, copy) NSString *publishProgress;
-
-@property (nonatomic, assign) BOOL isAdded;
-
-@property (nonatomic, assign) CGFloat height;
++ (NSMutableArray*)kh_objectWithKeyValuesArray:(NSArray *)array;
 
 @end

@@ -40,14 +40,14 @@
 
 - (void)setModel:(KHHomeModel *)model {
     _model = model;
-    _nameLabel.text = _model.productName;
-    [_productImgView sd_setImageWithURL:[NSURL URLWithString:_model.productImgUrl] placeholderImage:IMAGE_NAMED(@"placeholder")];
-    NSMutableAttributedString *attrProgress = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"揭晓进度 %@%%",_model.publishProgress]];
-    [attrProgress addAttribute:NSForegroundColorAttributeName value:UIColorHex(0x007AFF) range:NSMakeRange(5, _model.publishProgress.length+1)];
+    _nameLabel.text = _model.title;
+    [_productImgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",portPic,model.thumb]] placeholderImage:IMAGE_NAMED(@"placeholder")];
+    NSMutableAttributedString *attrProgress = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"开奖进度%@%%",_model.jindu]];
+    [attrProgress addAttribute:NSForegroundColorAttributeName value:UIColorHex(0x007AFF) range:NSMakeRange(4, _model.jindu.length+5-4)];
 
     _progressLabel.attributedText = attrProgress;
 
-    _progressView.progress = [_model.publishProgress integerValue];
+    _progressView.progress = [_model.jindu integerValue];
 }
 
 + (CGSize)size {

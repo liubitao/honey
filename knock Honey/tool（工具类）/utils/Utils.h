@@ -34,4 +34,6 @@
 
 + (NSMutableAttributedString *)stringWith:(NSString *)string font1:(UIFont*)font1 color1:(UIColor *)color1 font2:(UIFont*)font2 color2:(UIColor *)color2 range:(NSRange)range;
 
++ (NSMutableDictionary *)parameter;
+
 @end
