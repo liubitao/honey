@@ -31,5 +31,8 @@
 //6.购买记录
 #define PortGoodsOrder  @"http://oneshop.zhongwenyu1987.com/index.php/Api/goods/goodsorder"
 
+//7.十元专区
+#define PortGoodsarea   @"http://oneshop.zhongwenyu1987.com/index.php/api/goods/goodsarea"
+
 
 #endif /* port_h */

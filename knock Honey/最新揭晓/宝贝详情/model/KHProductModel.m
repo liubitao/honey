@@ -7,21 +7,15 @@
 //
 
 #import "KHProductModel.h"
+#import <MJExtension/MJExtension.h>
 
 @implementation KHProductModel
 
-- (NSMutableArray *)imgUrls {
-    if (!_imgUrls) {
-        _imgUrls = [NSMutableArray array];
-    }
-    return _imgUrls;
++ (instancetype)kh_objectWithKeyValues:(NSDictionary*)dict{
+    KHProductModel *model = [self mj_objectWithKeyValues:dict];
+    model.winner = [KHWinner mj_objectWithKeyValues:dict[@"winner"]];
+    return model;
 }
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        
-    }
-    return self;
-}
+
 @end

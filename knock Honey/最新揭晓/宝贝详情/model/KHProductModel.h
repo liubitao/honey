@@ -7,18 +7,60 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KHWinner.h"
+
 
 @interface KHProductModel : NSObject
 
-//图片组
-@property (nonatomic,strong) NSArray *imgs;
+/**
+ *  总需人数
+ */
+@property (nonatomic,copy) NSString *zongrenshu;
 
-//奖品名
-@property (nonatomic,copy) NSString *productName;
+/**
+ *  商品图标
+ */
+@property (nonatomic,copy) NSString *thumb;
+/**
+ *  开奖时间
+ */
+@property (nonatomic,copy) NSString *newtime;
+/**
+ *  夺宝价格
+ */
+@property (nonatomic,copy) NSString *yunjiage;
+/**
+ *  商品标题
+ */
+@property (nonatomic,copy) NSString *title;
+/**
+ *  期数
+ */
+@property (nonatomic,copy) NSString *qishu;
 
-//商品期数
-@property (nonatomic, copy) NSNumber *countTime;
+/**
+ *  计算方式
+ */
+@property (nonatomic,copy) NSString *formula;
+/**
+ *  开奖进度
+ */
+@property (nonatomic,copy) NSString *jindu;
+/**
+ *  参与人数
+ */
+@property (nonatomic,copy) NSString *canyurenshu;
+/**
+ *  商品描述
+ */
+@property (nonatomic,copy) NSString *content;
 
-@property (nonatomic, strong) NSMutableArray *imgUrls;
+/**
+ *  图片组
+ */
+@property (nonatomic,strong) NSArray *picarr;
 
+@property (nonatomic,strong) KHWinner *winner;
+
++ (instancetype)kh_objectWithKeyValues:(NSDictionary*)dict;
 @end

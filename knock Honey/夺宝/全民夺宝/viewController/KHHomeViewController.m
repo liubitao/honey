@@ -21,11 +21,13 @@
 #import "KHheard2View.h"
 #import "KHTenViewController.h"
 #import "KHDetailViewController.h"
+#import "KHIMage.h"
 
 
 
 @interface KHHomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,WinTreasureCellDelegate,TSAnimationDelegate>
 {
+    NSMutableArray *_images;
     NSMutableArray *_dataArray;
     NSMutableArray *_downArray;
     NSInteger _currentIndex;
@@ -152,6 +154,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
         parameter[@"sort"] = array[i];
         [YWHttptool GET:PortGoodslist parameters:parameter success:^(id responseObject) {
             NSLog(@"%@",responseObject);
+            
             _dataArray[i] = [KHHomeModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
             if (i == 0) {
                  [_collectionView reloadData];
@@ -167,23 +170,18 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
             [model stop];
         }
         [_downArray removeAllObjects];
+        
+        _images = [KHIMage kh_objectWithKeyValuesArray:responseObject[@"result"][@"banner"]];
+        self.header.images = _images;
+        [self.header resetImage];
         _downArray = [KHKnowModel kh_objectWithKeyValuesArray:responseObject[@"result"][@"zxjx"]];
         [_collectionView reloadSections:[NSIndexSet indexSetWithIndex:1]];
     } failure:^(NSError *error) {
         [MBProgressHUD showError:@"网络连接有误"];
     }];
     
-    
-    for (int i = 0; i<3; i++) {
-        KHKnowModel *model = [[KHKnowModel alloc]init];
-        [model start];
-        [_downArray addObject:model];
-    }
-    
     //轮播图
     [_collectionView addSubview:self.header];
-    self.header.images = [NSMutableArray arrayWithArray:@[@"https://tse4-mm.cn.bing.net/th?id=OIP.M9271c634f71d813901afbc9e69602dcfo2&pid=15.1",@"https://tse4-mm.cn.bing.net/th?id=OIP.M9271c634f71d813901afbc9e69602dcfo2&pid=15.1",@"https://tse4-mm.cn.bing.net/th?id=OIP.M9271c634f71d813901afbc9e69602dcfo2&pid=15.1"]];
-    [self.header resetImage];
     [self setupHeaderEvents];
 }
 
@@ -315,17 +313,44 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
 //点击
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-    KHDetailViewController *DetailVC = [[KHDetailViewController alloc]init];
-    [self pushController:DetailVC];
-    if (indexPath.section == 1) {
-        DetailVC.showType = TreasureDetailHeaderTypeCountdown;
-        DetailVC.model = _downArray[indexPath.row];
-        DetailVC.count = 10000;
-        return;
-    }
-    DetailVC.showType = TreasureDetailHeaderTypeNotParticipate;
-    DetailVC.model = _dataArray[indexPath.row];
    
+    [MBProgressHUD showMessage:@"加载中..."];
+    NSMutableDictionary *parameter = [Utils parameter];
+    NSString *goodsid;
+    if (indexPath.section == 1) {
+        KHKnowModel * knowModel = _downArray[indexPath.row];
+        parameter[@"goodsid"] = knowModel.goodsid;
+        parameter[@"qishu"] = knowModel.qishu;
+        goodsid = knowModel.goodsid;
+    }else{
+        KHHomeModel *knowModel = _dataArray[_currentIndex][indexPath.row];
+        parameter[@"goodsid"] = knowModel.ID;
+        parameter[@"qishu"] = knowModel.qishu;
+        goodsid = knowModel.ID;
+    }
+    
+    [YWHttptool GET:PortGoodsdetails parameters:parameter success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
+        NSLog(@"%@",responseObject);
+        if ([responseObject[@"isError"] integerValue])return;
+        KHDetailViewController *DetailVC = [[KHDetailViewController alloc]init];
+        DetailVC.model = [KHProductModel kh_objectWithKeyValues:responseObject[@"result"]];
+        DetailVC.goodsid = goodsid;
+        if (indexPath.section == 1) {
+            if ([DetailVC.model.winner.newtime doubleValue] >[[NSDate date] timeIntervalSince1970]){
+                DetailVC.showType = TreasureDetailHeaderTypeCountdown;
+            }else{
+                DetailVC.showType = TreasureDetailHeaderTypeWon;
+            }
+            DetailVC.showType = TreasureDetailHeaderTypeCountdown;
+        }else{
+            DetailVC.showType = TreasureDetailHeaderTypeNotParticipate;
+        }
+        [self pushController:DetailVC];
+    } failure:^(NSError *error) {
+        [MBProgressHUD hideHUD];
+        [MBProgressHUD showError:@"网络连接有误"];
+    }];
 }
 
 //UICollectionViewDelegateFlowLayout
@@ -370,7 +395,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     self.productView.image = cell.productImgView.image;
     UIBezierPath *path = [UIBezierPath bezierPath];
     [path moveToPoint:CGPointMake(self.productView.centerX, self.productView.centerY)];
-    [path addQuadCurveToPoint:CGPointMake(parentRectB.origin.x, parentRectB.origin.y-kNavigationBarHeight) controlPoint:CGPointMake(self.productView.centerX+30, self.productView.centerY+20)];
+    [path addQuadCurveToPoint:CGPointMake(parentRectB.origin.x, parentRectB.origin.y) controlPoint:CGPointMake(self.productView.centerX+30, self.productView.centerY+20)];
     [TSAnimation sharedAnimation].delegate = self;
     [[TSAnimation sharedAnimation] throwTheView:self.productView path:path isRotated:YES endScale:0.1];
 }
@@ -378,6 +403,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
 #pragma mark - TSAnimationDelegate;//动画完成
 - (void)animationFinished {
     NSLog(@"动画完成");
+    [self.productView removeFromSuperview];
 }
 
 - (void)didReceiveMemoryWarning {

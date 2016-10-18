@@ -8,7 +8,7 @@
 
 #import "WinTreasureHeader.h"
 #import "VerticalButton.h"
-
+#import "KHIMage.h"
 
 const CGFloat kMenuButtonHeight = 75.0;
 const CGFloat kScrollViewHeight = 140.0;
@@ -144,10 +144,11 @@ const CGFloat kScrollViewHeight = 140.0;
     _imgScrollView.contentSize = CGSizeMake(KscreenWidth*self.images.count, _imgScrollView.height);
     
     for (int i=0; i<self.images.count; i++) {
+        KHIMage *img = _images[i];
         UIImageView *imgView = [UIImageView new];
         imgView.tag = i;
         imgView.userInteractionEnabled = YES;
-        [imgView sd_setImageWithURL:[NSURL URLWithString:_images[i]] placeholderImage:[UIImage imageNamed:@"placeholder"]];;
+        [imgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",portPic,img.img]] placeholderImage:[UIImage imageNamed:@"placeholder"]];;
         imgView.origin = CGPointMake(i*KscreenWidth, 0);
         imgView.size = CGSizeMake(_imgScrollView.width, _imgScrollView.height);
         [_imgScrollView addSubview:imgView];        

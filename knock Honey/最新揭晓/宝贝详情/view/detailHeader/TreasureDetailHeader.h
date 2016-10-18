@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "TreaureHeaderMenu.h"
+#import "KHProductModel.h"
+
 @class TSProgressView;
 @class TSCountLabel;
+
 
 typedef NS_ENUM(NSUInteger, TreasureDetailHeaderType) {
     TreasureDetailHeaderTypeNotParticipate = 0, //未参加
@@ -31,6 +34,7 @@ typedef void(^TreasureCountDetailButtonBlock)(void);
  *  倒计时时间
  */
 @property (nonatomic, assign) NSInteger countTime;
+@property (nonatomic,strong) KHProductModel *model;
 /**
  *  商品时间类型
  */
@@ -100,7 +104,7 @@ typedef void(^TreasureCountDetailButtonBlock)(void);
 
 - (instancetype)initWithFrame:(CGRect)frame
                          type:(TreasureDetailHeaderType)type
-                    countTime:(NSInteger)countTime;
+                    countTime:(NSInteger)countTime Model:(KHProductModel*)model;
 - (void)start;
 
 @end
@@ -158,9 +162,12 @@ typedef void(^TreasureCountDetailButtonBlock)(void);
 
 @property (nonatomic, assign) NSInteger count;
 
+@property (nonatomic,strong) KHProductModel *model;
+
+
 - (instancetype)initWithFrame:(CGRect)frame
                          type:(TreasureDetailHeaderType)type
-                    countTime:(NSInteger)countTime;
+                    countTime:(NSInteger)countTime Model:(KHProductModel*)model;
 + (CGFloat)getHeight;
 
 @end

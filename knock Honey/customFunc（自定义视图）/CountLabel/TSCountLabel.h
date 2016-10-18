@@ -29,6 +29,8 @@ typedef NS_ENUM(NSInteger, kCountDirection){
 
 @property (nonatomic, assign) NSInteger currentValue;
 
+@property (strong, nonatomic) NSTimer *timer;
+
 
 @property (nonatomic, weak) id<TSCountLabelDelegate>delegate;
 

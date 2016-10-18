@@ -8,7 +8,7 @@
 
 #import "KHBaseViewController.h"
 #import "TreasureDetailHeader.h"
-@class KHHomeModel;
+#import "KHProductModel.h"
 
 typedef NS_ENUM(NSUInteger, TreasureDetailType) {
     TreasureDetailTypePublished = 0,
@@ -19,7 +19,9 @@ typedef NS_ENUM(NSUInteger, TreasureDetailType) {
 
 @property (nonatomic, assign) NSInteger count;
 
-@property (nonatomic, strong) KHHomeModel *model;
+@property (nonatomic, strong) KHProductModel *model;
 
 @property (nonatomic, assign) TreasureDetailHeaderType showType;
+
+@property (nonatomic,copy) NSString *goodsid;
 @end

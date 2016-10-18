@@ -10,16 +10,34 @@
 
 @interface KHTenModel : NSObject
 
-@property (nonatomic, copy) NSString *productImgUrl;
+@property (nonatomic, copy) NSString *ID;
+/**
+ *  商品名
+ */
+@property (nonatomic, copy) NSString *title;
+/**
+ *  总人数
+ */
+@property (nonatomic, copy) NSString *zongrenshu;
+/**
+ *  商品图片
+ */
+@property (nonatomic, copy) NSString *thumb;
+/**
+ *  进度
+ */
+@property (nonatomic, copy) NSString *jindu;
+/**
+ *  期数
+ */
+@property (nonatomic, copy) NSString *qishu;
+/**
+ *  参与人数
+ */
+@property (nonatomic, copy) NSString *canyurenshu;
 
-@property (nonatomic, copy) NSString *productName;
++ (instancetype)kh_objectWithKeyValues:(NSDictionary*)dict;
 
-@property (nonatomic, copy) NSNumber *publishProgress;
-
-@property (nonatomic, copy) NSNumber *totalAmount;
-
-@property (nonatomic, copy) NSNumber *leftAmount;
-
-@property (nonatomic, assign) BOOL isSelected;
++ (NSMutableArray*)kh_objectWithKeyValuesArray:(NSArray *)array;
 
 @end

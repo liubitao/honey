@@ -11,7 +11,6 @@
 @interface TSCountLabel ()
 
 @property (strong, nonatomic) NSString *valueString;
-@property (strong, nonatomic) NSTimer *timer;
 @property (nonatomic, assign) unsigned long resetValue;
 @property (nonatomic, assign) unsigned long value;
 @property (nonatomic, assign) double startTime;
@@ -69,7 +68,7 @@
 - (void)updateDisplay {
     if (self.countDirection == kCountDirectionDown && _value < 100) {
         [self stop];
-        self.valueString = @"00:00:00";
+        self.valueString = @"正在揭晓";
         
         // Inform any delegates
         if (self.delegate && [self.delegate respondsToSelector:@selector(countdownDidEnd)]) {
@@ -161,6 +160,13 @@
 
 - (void)updateApperance {
     [self setValue:_currentValue];
+}
+
+-(void)dealloc{
+    if (self.timer) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
 }
 
 @end

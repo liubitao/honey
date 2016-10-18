@@ -56,14 +56,15 @@
 
 - (void)setModel:(KHTenModel *)model {
     _model = model;
-    [_productImgView setImageWithURL:[NSURL URLWithString:_model.productImgUrl] options:YYWebImageOptionProgressive];
-    _productNameLabel.text = _model.productName;
+    [_productImgView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",portPic,model.thumb]] options:YYWebImageOptionProgressive];
+    _productNameLabel.text = _model.title;
     
+    _totalLabel.text = [NSString stringWithFormat:@"已参与:%@",_model.canyurenshu];
     
-    _totalLabel.text = [NSString stringWithFormat:@"已参与:%@",_model.leftAmount];
+    _timeCount.text = [NSString stringWithFormat:@"商品期数:%@",model.qishu];
     
-    int right = [_model.totalAmount intValue]- [_model.leftAmount intValue];
-    _progressView.progress = _model.publishProgress.integerValue;
+    int right = [_model.zongrenshu intValue]- [_model.canyurenshu intValue];
+    _progressView.progress = _model.jindu.integerValue;
     NSString *rightString = [NSString stringWithFormat:@"剩余:%d",right];
     _leftLabel.text = rightString;
 }

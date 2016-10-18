@@ -12,7 +12,9 @@
 #import "TreasureDetailFooter.h"
 #import "TreasureDetailHeader.h"
 
-@interface KHDetailViewController ()<UITableViewDataSource,UITableViewDelegate,TreasureDetailFooterDelegate>
+@interface KHDetailViewController ()<UITableViewDataSource,UITableViewDelegate,TreasureDetailFooterDelegate>{
+    NSInteger _currentPage;
+}
 
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) TreasureDetailFooter *footer;
@@ -24,7 +26,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _dataArray = [NSMutableArray array];
     [self createNavi];
     [self configBottomMenu];
     [self createTableView];
@@ -43,10 +44,15 @@
     _tableView.tableFooterView = [[UIView alloc]init];
     [self.view addSubview:_tableView];
     
+    if (_showType == TreasureDetailHeaderTypeCountdown) {
+        NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+        NSTimeInterval time=[dat timeIntervalSince1970];
+        _count = ([_model.winner.newtime doubleValue]- time)*1000;
+    }
     TreasureDetailHeader *header = [[TreasureDetailHeader alloc]initWithFrame:({
         CGRect rect = {0, 0, kScreenWidth, 1};
         rect;
-    }) type:_showType countTime:_count];
+    }) type:_showType countTime:_count Model:_model];
      _tableView.tableHeaderView = header;
     __weak typeof(self) weakSelf = self;
     //详情中的选项
@@ -90,19 +96,44 @@
         [weakSelf.tableView.mj_header endRefreshing];
     }];
     //上拉刷新
-    _tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
-        
+    _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [weakSelf getMoreData];
+        [weakSelf.tableView .mj_footer endRefreshing];
     }];
     [_tableView.mj_header beginRefreshing];
     
 }
 //获取数据
 - (void)getData{
-    for (int i=0; i<8; i++) {
-        KHDetailModel *model = [[KHDetailModel alloc]init];
-        [self.dataArray addObject:model];
-    }
-    [_tableView reloadData];
+    NSMutableDictionary *parameter = [Utils parameter];
+    parameter[@"p"] = @"1";
+    parameter[@"goodsid"] = _goodsid;
+    parameter[@"qishu"] = _model.qishu;
+    _currentPage = 1;
+    [YWHttptool GET:PortGoodsOrder parameters:parameter success:^(id responseObject) {
+        NSLog(@"%@",responseObject);
+        _dataArray = [KHDetailModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
+        [_tableView reloadData];
+    } failure:^(NSError *error) {
+        [MBProgressHUD showError:@"网络连接有误"];
+    }];
+
+}
+
+- (void)getMoreData{
+    NSMutableDictionary *parameter = [Utils parameter];
+    parameter[@"p"] = [NSNumber numberWithInteger:++_currentPage];
+    parameter[@"goodsid"] = _goodsid;
+    parameter[@"qishu"] = _model.qishu;
+    [YWHttptool GET:PortGoodsOrder parameters:parameter success:^(id responseObject) {
+        NSLog(@"%@",responseObject);
+        if ([responseObject[@"isError"] integerValue])return ;
+        NSArray *array = [KHDetailModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
+        [_dataArray addObjectsFromArray:array];
+        [_tableView reloadData];
+    } failure:^(NSError *error){
+        [MBProgressHUD showError:@"网络连接有误"];
+    }];
 }
 
 //加载下面菜单视图

@@ -92,7 +92,7 @@ const CGFloat kFooterButtonHeight = 40.0;
             label.size = CGSizeMake(150, 15);
             label.font = SYSTEM_FONT(14);
             label.textColor = UIColorHex(666666);
-            label.text = @"第12101204566期正在进行中..";
+            label.text = @"最新一期正在进行中..";
             [self addSubview:label];
             [label sizeToFit];
             

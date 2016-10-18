@@ -59,4 +59,5 @@
 
 - (void)clickAddListButtonAtCell:(CategoryDetailCell *)cell;
 
+
 @end

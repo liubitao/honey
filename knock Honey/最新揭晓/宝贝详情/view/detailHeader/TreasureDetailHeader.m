@@ -24,8 +24,7 @@ const CGFloat kTreasureDetailHeaderPageControlHeight = 30.0; //pagecontroll heig
 
 
 
-//商品图片
-@property (nonatomic, strong) NSArray *images;
+
 
 @end
 
@@ -35,14 +34,6 @@ const CGFloat kTreasureDetailHeaderPageControlHeight = 30.0; //pagecontroll heig
     return kScreenWidth*2;
 }
 
-- (NSArray *)images {
-    if (!_images) {
-        _images = @[@"1",
-                    @"2",
-                    @"3"];
-    }
-    return _images;
-}
 
 - (UIScrollView *)scrollView {
     if (!_scrollView) {
@@ -51,16 +42,16 @@ const CGFloat kTreasureDetailHeaderPageControlHeight = 30.0; //pagecontroll heig
             rect;
         })];
         _scrollView.delegate = self;
-        _scrollView.contentSize = CGSizeMake(self.images.count*kScreenWidth, kScreenWidth/375*200);
+        _scrollView.contentSize = CGSizeMake(self.model.picarr.count*kScreenWidth, kScreenWidth/375*200);
         _scrollView.pagingEnabled = YES;
         _scrollView.showsHorizontalScrollIndicator = NO;
-        [_images enumerateObjectsUsingBlock:^(id  _Nonnull obj,
+        [self.model.picarr enumerateObjectsUsingBlock:^(id  _Nonnull obj,
                                               NSUInteger idx,
                                               BOOL * _Nonnull stop) {
             UIImageView *imgView = [UIImageView new];
             imgView.tag = idx;
             imgView.userInteractionEnabled = YES;
-            imgView.image = IMAGE_NAMED(_images[idx]);
+            [imgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",portPic,_model.picarr[idx]]]];
             imgView.origin = CGPointMake(idx*kScreenWidth, 0);
             imgView.size = CGSizeMake(_scrollView.width, _scrollView.height);
             imgView.contentMode = UIViewContentModeScaleAspectFill;
@@ -70,13 +61,13 @@ const CGFloat kTreasureDetailHeaderPageControlHeight = 30.0; //pagecontroll heig
     return _scrollView;
 }
 
-- (UIPageControl *)pageControl {
+- (UIPageControl *)pageControl{
     if (!_pageControl) {
         _pageControl = [[UIPageControl alloc]initWithFrame:({
             CGRect rect = {0,kScreenWidth/375*200-kTreasureDetailHeaderPageControlHeight,kScreenWidth,kTreasureDetailHeaderPageControlHeight};
             rect;
         })];
-        _pageControl.numberOfPages = self.images.count;
+        _pageControl.numberOfPages = self.model.picarr.count;
         _pageControl.currentPageIndicatorTintColor = kDefaultColor;
         _pageControl.pageIndicatorTintColor = UIColorHex(666666);
         _pageControl.userInteractionEnabled = NO;
@@ -86,11 +77,12 @@ const CGFloat kTreasureDetailHeaderPageControlHeight = 30.0; //pagecontroll heig
 
 - (instancetype)initWithFrame:(CGRect)frame
                          type:(TreasureDetailHeaderType)type
-                    countTime:(NSInteger)countTime {
+                    countTime:(NSInteger)countTime  Model:(KHProductModel*)model{
     self = [super initWithFrame:frame];
     if (self) {
         _count = countTime;
         _type = type;
+        _model = model;
         [self setup];
     }
     return self;
@@ -111,6 +103,7 @@ const CGFloat kTreasureDetailHeaderPageControlHeight = 30.0; //pagecontroll heig
     switch (_type) {
             //进行中
         case TreasureDetailHeaderTypeNotParticipate:
+        case TreasureDetailHeaderTypeParticipated:
             label.text = @"进行中";
             label.backgroundColor = kDefaultColor;
             break;
@@ -126,7 +119,7 @@ const CGFloat kTreasureDetailHeaderPageControlHeight = 30.0; //pagecontroll heig
             break;
     }
     //添加商品名
-    NSMutableAttributedString *name = [[NSMutableAttributedString alloc]initWithString:@"Apple Watch Sport 42毫米 铝金属表壳 运动表带 颜色随机"];
+    NSMutableAttributedString *name = [[NSMutableAttributedString alloc]initWithString:_model.title];
     name.color = UIColorHex(333333);
     name.font = [UIFont boldSystemFontOfSize:14];
     name.lineSpacing = 1.0;
@@ -149,7 +142,7 @@ const CGFloat kTreasureDetailHeaderPageControlHeight = 30.0; //pagecontroll heig
         kScreenWidth-kTreasureDetailHeaderPadding*2,
                                                 1};
         rect;
-    }) type:_type countTime:_count];
+    }) type:_type countTime:_count Model:_model];
     _treasureProgressView.countDownLabel.delegate = self;
     __weak typeof(self) weakSelf = self;
     _treasureProgressView.block = ^() {
@@ -236,14 +229,23 @@ const CGFloat kTreasureDetailHeaderPageControlHeight = 30.0; //pagecontroll heig
 #pragma mark - TSCountLabelDelegate
 //倒计时完成
 - (void)countdownDidEnd {
-    _treasureProgressView.type = TreasureDetailHeaderTypeWon;
-    [self setNeedsLayout];
-    self.headerHeight();
+    CGFloat delayTime = dispatch_time(DISPATCH_TIME_NOW, 2);
+    dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+        _treasureProgressView.type = TreasureDetailHeaderTypeWon;
+        [self setNeedsLayout];
+        self.headerHeight();
+    });
 }
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     _pageControl.currentPage = scrollView.contentOffset.x/kScreenWidth;
+}
+- (void)dealloc{
+    if (_treasureProgressView.countDownLabel.timer) {
+        [_treasureProgressView.countDownLabel.timer invalidate];
+        _treasureProgressView.countDownLabel.timer = nil;
+    }
 }
 
 @end
@@ -308,11 +310,12 @@ const CGFloat kBackImageViewHeight = 45.0;
 
 - (instancetype)initWithFrame:(CGRect)frame
                          type:(TreasureDetailHeaderType)type
-                    countTime:(NSInteger)countTime {
+                    countTime:(NSInteger)countTime Model:(KHProductModel*)model{
     self = [super initWithFrame:frame];
     if (self) {
         _countTime = countTime;
         _type = type;
+        _model = model;
         [self setup];
     }
     return self;
@@ -333,7 +336,7 @@ const CGFloat kBackImageViewHeight = 45.0;
             _periodNumberLabel.size = CGSizeMake(self.width, 12);
             _periodNumberLabel.font = SYSTEM_FONT(12);
             _periodNumberLabel.textColor = UIColorHex(999999);
-            _periodNumberLabel.text = @"商品期号：306131836";
+            _periodNumberLabel.text = [NSString stringWithFormat:@"商品期号：%@",_model.qishu];
             [self addSubview:_periodNumberLabel];
             
             //进度条
@@ -341,13 +344,13 @@ const CGFloat kBackImageViewHeight = 45.0;
                 CGRect rect = {0,_periodNumberLabel.bottom+kTreasureDetailHeaderPadding,self.width,10};
                 rect;
             })];
-            _progressView.progress = (1588/2588.0) *100.0;
+            _progressView.progress = [_model.jindu integerValue];
             [self addSubview:_progressView];
             
             _rightLabel = [YYLabel new];
             _rightLabel.origin = CGPointMake(self.width/2, _progressView.bottom+kTreasureDetailHeaderPadding);
             _rightLabel.size = CGSizeMake(self.width/2, 12);
-            NSString *rightStr = @"剩余1000人次";
+            NSString *rightStr = [NSString stringWithFormat:@"剩余%d人次",[_model.zongrenshu intValue]-[_model.canyurenshu intValue]];
             _rightLabel.attributedText = [Utils stringWith:rightStr font1:SYSTEM_FONT(12) color1:UIColorHex(999999) font2:SYSTEM_FONT(12) color2:kDefaultColor range:NSMakeRange(2, rightStr.length-4)];
             _rightLabel.textAlignment = NSTextAlignmentRight;
             [self addSubview:_rightLabel];
@@ -356,7 +359,7 @@ const CGFloat kBackImageViewHeight = 45.0;
             _totalLabel.origin = CGPointMake(0, _progressView.bottom+kTreasureDetailHeaderPadding);
             _totalLabel.size = CGSizeMake(self.width/2, 12);
             _totalLabel.font = SYSTEM_FONT(12);
-            NSString *totalStr = @"总需2588人次";
+            NSString *totalStr = [NSString stringWithFormat:@"总需%@人次",_model.zongrenshu];
             _totalLabel.attributedText = [Utils stringWith:totalStr font1:SYSTEM_FONT(12) color1:UIColorHex(999999) font2:SYSTEM_FONT(12) color2:UIColorHex(7cade8) range:NSMakeRange(2, totalStr.length-4)];
             [self addSubview:_totalLabel];
             
@@ -370,7 +373,7 @@ const CGFloat kBackImageViewHeight = 45.0;
             _periodNumberLabel.size = CGSizeMake(self.width-kTreasureProgressViewCountButtonWidth, 12);
             _periodNumberLabel.font = SYSTEM_FONT(12);
             _periodNumberLabel.textColor = [UIColor whiteColor];
-            _periodNumberLabel.text = @"商品期号：306131836";
+            _periodNumberLabel.text = [NSString stringWithFormat:@"商品期号：%@",_model.qishu];
             [self addSubview:_periodNumberLabel];
             
             _countLabel = [YYLabel new];
@@ -429,6 +432,7 @@ const CGFloat kBackImageViewHeight = 45.0;
     view.origin = CGPointMake(0, top);
     view.size = CGSizeMake(self.width, 1);
     [self addSubview:view];
+    KHWinner *winner= _model.winner;
     
     UIImageView *iamgeView = [UIImageView new];
     iamgeView.origin = CGPointMake(0, 0);
@@ -448,7 +452,7 @@ const CGFloat kBackImageViewHeight = 45.0;
     _winnerImgView = [UIImageView new];
     _winnerImgView.origin = CGPointMake(kWinnerImagePadding, kWinnerImagePadding);
     _winnerImgView.size = CGSizeMake(kWinnerImageWidth, kWinnerImageWidth);
-    _winnerImgView.image = IMAGE_NAMED(@"touxiang");
+    [_winnerImgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",portPic,winner.img]]];
     [view addSubview:_winnerImgView];
     
     YYLabel *aLabel = [YYLabel new];
@@ -465,46 +469,36 @@ const CGFloat kBackImageViewHeight = 45.0;
     _winnerLabel.origin = CGPointMake(aLabel.right, _winnerImgView.top);
     _winnerLabel.size = CGSizeMake(self.width-aLabel.right, 13);
     _winnerLabel.font = defaultFont;
-    _winnerLabel.text = @"我被坑了";
+    _winnerLabel.text = winner.username;
     _winnerLabel.textColor = UIColorHex(7cade8);
     _winnerLabel.numberOfLines = 1;
     [view addSubview:_winnerLabel];
     [_winnerLabel sizeToFit];
 
     _IDLabel = [YYLabel new];
-    _IDLabel.origin = CGPointMake(aLabel.left, _winnerLabel.bottom+5);
+    _IDLabel.origin = CGPointMake(aLabel.left, kWinnerImagePadding+13+5);
     _IDLabel.size = CGSizeMake(self.width-(_winnerImgView.right+5)-5, 13);
     _IDLabel.font = defaultFont;
     _IDLabel.textColor = defaultColor;
-    _IDLabel.text = @"用户IP：10.1.1.1";
+    _IDLabel.text = [NSString stringWithFormat:@"用户IP：%@",winner.user_ip];
     [view addSubview:_IDLabel];
     [_IDLabel sizeToFit];
-    
-    _addressLabel = [YYLabel new];
-    _addressLabel.origin = CGPointMake(_IDLabel.right+15, _winnerLabel.bottom+5);
-    _addressLabel.size = CGSizeMake(self.width-aLabel.right, 13);
-    _addressLabel.font = defaultFont;
-    _addressLabel.text = @"(浙江杭州)";
-    _addressLabel.textColor = UIColorHex(a0d791);
-    _addressLabel.numberOfLines = 1;
-    [view addSubview:_addressLabel];
-    [_addressLabel sizeToFit];
     
     _periodNumberLabel = [YYLabel new];
     _periodNumberLabel.origin = CGPointMake(aLabel.left, _IDLabel.bottom+5);
     _periodNumberLabel.size = CGSizeMake(self.width-(_winnerImgView.right+5)-5, 13);
     _periodNumberLabel.font = defaultFont;
     _periodNumberLabel.textColor = defaultColor;
-    _periodNumberLabel.text = @"商品期数：30981005";
+    _periodNumberLabel.text = [NSString stringWithFormat:@"商品期数:%@",winner.qishu];
     [view addSubview:_periodNumberLabel];
     [_periodNumberLabel sizeToFit];
     
     _totalLabel = [YYLabel new];
     _totalLabel.origin = CGPointMake(aLabel.left, _periodNumberLabel.bottom+5);
     _totalLabel.size = CGSizeMake(self.width-(_winnerImgView.right+5)-5, 13);
-    NSString *str = @"本期参与：1000人次";
+    NSString *str = [NSString stringWithFormat:@"本次参与:%@人次",winner.buynum];
     
-    _totalLabel.attributedText = [Utils stringWith:str font1:defaultFont color1:defaultColor font2:defaultFont color2:kDefaultColor range:NSMakeRange(4, str.length-6)] ;
+    _totalLabel.attributedText = [Utils stringWith:str font1:defaultFont color1:defaultColor font2:defaultFont color2:kDefaultColor range:NSMakeRange(5, str.length-7)] ;
     [view addSubview:_totalLabel];
     [_totalLabel sizeToFit];
     
@@ -513,7 +507,7 @@ const CGFloat kBackImageViewHeight = 45.0;
     _publishTimeLabel.size = CGSizeMake(self.width-(_winnerImgView.right+5)-5, 13);
     _publishTimeLabel.font = defaultFont;
     _publishTimeLabel.textColor = defaultColor;
-    _publishTimeLabel.text = @"揭晓时间：2016-06-10 14:15:16";
+    _publishTimeLabel.text = [NSString stringWithFormat:@"揭晓时间:%@",[Utils timeWith:winner.addtime]];
     [view addSubview:_publishTimeLabel];
     [_publishTimeLabel sizeToFit];
 
@@ -540,8 +534,8 @@ const CGFloat kBackImageViewHeight = 45.0;
     _luckyNumberLabel = [YYLabel new];
     _luckyNumberLabel.origin = CGPointMake(kWinnerImagePadding, _backImgView.top+(kBackImageViewHeight-16)/2.0);
     _luckyNumberLabel.size = CGSizeMake(self.width-kWinnerImagePadding*2, 16);
-    NSString *numeber = @"幸运号码:10004038";
-    _luckyNumberLabel.attributedText = [Utils stringWith:numeber font1:SYSTEM_FONT(14) color1:[UIColor whiteColor] font2:SYSTEM_FONT(18) color2:[UIColor whiteColor] range:NSMakeRange(4, numeber.length-4)];
+    NSString *numeber = [NSString stringWithFormat:@"幸运号码:%@",winner.wincode];
+    _luckyNumberLabel.attributedText = [Utils stringWith:numeber font1:SYSTEM_FONT(14) color1:[UIColor whiteColor] font2:SYSTEM_FONT(18) color2:[UIColor whiteColor] range:NSMakeRange(5, numeber.length-5)];
     [view addSubview:_luckyNumberLabel];
     [_luckyNumberLabel sizeToFit];
 

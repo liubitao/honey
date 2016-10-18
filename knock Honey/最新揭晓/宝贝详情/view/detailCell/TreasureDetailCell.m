@@ -40,15 +40,15 @@ const CGFloat kTimeLineCellHeight = 35.0; //cell高度
 
 - (void)setModel:(KHDetailModel *)model {
     _model = model;
-    CGRect detailSize = [model.nickname boundingRectWithSize:CGSizeMake(MAXFLOAT, 15) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:13]}context:nil];
+    CGRect detailSize = [model.username boundingRectWithSize:CGSizeMake(MAXFLOAT, 15) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:14]}context:nil];
     _userNameWidth.constant = detailSize.size.width;
-    [_headImageView setImageWithURL:[NSURL URLWithString:_model.imgUrl] options:YYWebImageOptionProgressive];
-    _usernameLabel.text = _model.nickname;
-    _IPLabel.text = _model.ipAddress;
-    NSString *participateStr = [NSString stringWithFormat:@"参与了%@人次",_model.partInTimes];
+    [_headImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",portPic,model.img]] options:YYWebImageOptionProgressive];
+    _usernameLabel.text = model.username;
+    _IPLabel.text = [NSString stringWithFormat:@"(%@)",model.user_ip];
+    NSString *participateStr = [NSString stringWithFormat:@"参与了%@人次",model.buynum];
    
-    _partInLabel.attributedText = [Utils stringWith:participateStr font1:[UIFont systemFontOfSize:13] color1:[UIColor blackColor] font2:[UIFont systemFontOfSize:13] color2:kDefaultColor range:NSMakeRange(2, participateStr.length-5)];
-    _timeLabel.text = model.time;
+    _partInLabel.attributedText = [Utils stringWith:participateStr font1:[UIFont systemFontOfSize:13] color1:[UIColor blackColor] font2:[UIFont systemFontOfSize:13] color2:kDefaultColor range:NSMakeRange(3, participateStr.length-5)];
+    _timeLabel.text = [Utils timeWith:model.addtime];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

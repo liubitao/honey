@@ -9,26 +9,34 @@
 #import <Foundation/Foundation.h>
 
 @interface KHDetailModel : NSObject
-/**图片路径
+/**
+ *  时间
  */
-@property (copy, nonatomic) NSString *imgUrl;
-
-
+@property (nonatomic,copy) NSString *addtime;
 /**
  *  用户名
  */
-@property (copy, nonatomic) NSString *nickname;
-
-/**用户IP
+@property (nonatomic,copy) NSString *username;
+/**
+ *  id
  */
-@property (copy, nonatomic) NSString *ipAddress;
-
-/**参与次数
+@property (nonatomic,copy) NSString *userid;
+/**
+ *  头像
  */
-@property (copy, nonatomic) NSNumber *partInTimes;
+@property (nonatomic,copy) NSString *img;
 
-/**时间
+/**
+ *  ip
  */
-@property (copy, nonatomic) NSString *time;
+@property (nonatomic,copy) NSString *user_ip;
+
+/**
+ *  参与数
+ */
+@property (nonatomic,copy) NSString *buynum;
+
+
++ (NSMutableArray*)kh_objectWithKeyValuesArray:(NSArray *)array;
 
 @end

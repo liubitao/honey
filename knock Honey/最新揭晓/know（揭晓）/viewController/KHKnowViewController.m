@@ -11,6 +11,7 @@
 #import "KHKnowModel.h"
 #import "KHPulishedTableViewCell.h"
 #import "KHDetailViewController.h"
+#import "KHProductModel.h"
 
 static NSString * nopublished = @"nopublished";
 static NSString * published = @"published";
@@ -126,17 +127,26 @@ static NSString * published = @"published";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [MBProgressHUD showMessage:@"加载中..."];
     KHKnowModel *knowModel = _dataArray[indexPath.row];
-    KHDetailViewController *DetailVC = [[KHDetailViewController alloc]init];
-    DetailVC.model = _dataArray[indexPath.row];
-    DetailVC.showType = TreasureDetailHeaderTypeNotParticipate;
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"goodsid"] = knowModel.goodsid;
+    parameter[@"qishu"] = knowModel.qishu;
     [YWHttptool GET:PortGoodsdetails parameters:parameter success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
         NSLog(@"%@",responseObject);
-        if ([responseObject[@"isError"] integerValue])return ;
+        if ([responseObject[@"isError"] integerValue])return;
+        KHDetailViewController *DetailVC = [[KHDetailViewController alloc]init];
+        DetailVC.model = [KHProductModel kh_objectWithKeyValues:responseObject[@"result"]];
+        DetailVC.goodsid = knowModel.goodsid;
+        if ([DetailVC.model.winner.newtime doubleValue] >[[NSDate date] timeIntervalSince1970]){
+            DetailVC.showType = TreasureDetailHeaderTypeCountdown;
+        }else{
+        DetailVC.showType = TreasureDetailHeaderTypeWon;
+        }
         [self pushController:DetailVC];
     } failure:^(NSError *error) {
+        [MBProgressHUD hideHUD];
         [MBProgressHUD showError:@"网络连接有误"];
     }];
     
@@ -144,7 +154,10 @@ static NSString * published = @"published";
 
 #pragma mark - LatestPublishCellDelegate
 - (void)countdownDidEnd:(NSIndexPath *)indexpath {
-    [_tableView reloadData];
+    CGFloat delayTime = dispatch_time(DISPATCH_TIME_NOW, 2);
+    dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+        [_tableView reloadRowAtIndexPath:indexpath withRowAnimation:UITableViewRowAnimationFade];
+    });
 }
 
 
