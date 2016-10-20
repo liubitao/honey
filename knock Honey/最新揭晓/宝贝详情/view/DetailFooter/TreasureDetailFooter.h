@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class KHProductModel;
 typedef NS_ENUM(NSUInteger, TreasureDetailFooterType) {
     TreasureUnPublishedType = 0,//没揭晓
     TreasurePublishedType
@@ -17,12 +17,14 @@ typedef NS_ENUM(NSUInteger, TreasureDetailFooterType) {
 
 @interface TreasureDetailFooter : UIView
 
+@property (nonatomic,strong)KHProductModel *model;
+
 @property (assign, nonatomic) TreasureDetailFooterType type;
 
 
 @property (weak, nonatomic) id<TreasureDetailFooterDelegate>delegate;
 
-- (instancetype)initWithType:(TreasureDetailFooterType)type;
+- (instancetype)initWithType:(TreasureDetailFooterType)type Model:(KHProductModel*)model;
 
 @end
 

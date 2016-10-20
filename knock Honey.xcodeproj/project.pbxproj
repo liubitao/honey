@@ -95,6 +95,7 @@
 		0CBD1A6E1DACD05E003E8150 /* TSAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CBD1A6D1DACD05E003E8150 /* TSAnimation.m */; };
 		0CBD1A761DACD466003E8150 /* VerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CBD1A751DACD466003E8150 /* VerticalButton.m */; };
 		0CBD1A7E1DACEF97003E8150 /* HomeFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CBD1A7D1DACEF97003E8150 /* HomeFooter.m */; };
+		0CC4964F1DB707650008F647 /* KHPersonHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC4964E1DB707650008F647 /* KHPersonHeader.m */; };
 		1940049D3EBD15A1FE12CC6B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C462ABFC3A89753851B1E5B4 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -288,6 +289,8 @@
 		0CBD1A751DACD466003E8150 /* VerticalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticalButton.m; sourceTree = "<group>"; };
 		0CBD1A7C1DACEF97003E8150 /* HomeFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeFooter.h; sourceTree = "<group>"; };
 		0CBD1A7D1DACEF97003E8150 /* HomeFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeFooter.m; sourceTree = "<group>"; };
+		0CC4964D1DB707650008F647 /* KHPersonHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHPersonHeader.h; sourceTree = "<group>"; };
+		0CC4964E1DB707650008F647 /* KHPersonHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPersonHeader.m; sourceTree = "<group>"; };
 		74E0C9D2929A91D4AB2D6BA5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B30030C39E55FCBDA7B7F09D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C462ABFC3A89753851B1E5B4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -340,6 +343,8 @@
 				0C01B5CA1DB623C400D41F43 /* KHPersonCell.h */,
 				0C01B5CB1DB623C400D41F43 /* KHPersonCell.m */,
 				0C01B5CC1DB623C400D41F43 /* KHPersonCell.xib */,
+				0CC4964D1DB707650008F647 /* KHPersonHeader.h */,
+				0CC4964E1DB707650008F647 /* KHPersonHeader.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1315,6 +1320,7 @@
 				0CBD1A661DACC415003E8150 /* WinTreasureMenuHeader.m in Sources */,
 				0C5E05FC1DAE3B7C00B2133F /* KHProductModel.m in Sources */,
 				0CB129371DAA28ED005A0A4D /* MBProgressHUD+MJ.m in Sources */,
+				0CC4964F1DB707650008F647 /* KHPersonHeader.m in Sources */,
 				0CBD1A1A1DACB650003E8150 /* IQPreviousNextView.m in Sources */,
 				0C5E05F01DAE36FE00B2133F /* TAAbstractDotView.m in Sources */,
 				0C2705991DAF27A600CE2F15 /* KHTenModel.m in Sources */,

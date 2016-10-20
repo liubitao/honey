@@ -23,7 +23,7 @@
     [super awakeFromNib];
 
     _addListButton.layer.cornerRadius = 4.0;
-    _addListButton.layer.borderWidth = CGFloatFromPixel(0.6);
+    _addListButton.layer.borderWidth = CGFloatFromPixel(1);
     _addListButton.layer.borderColor = kDefaultColor.CGColor;
     _addListButton.layer.masksToBounds = YES;
     _addListButton.layer.shouldRasterize = YES;

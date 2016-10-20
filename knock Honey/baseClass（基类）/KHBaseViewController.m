@@ -129,6 +129,16 @@
     self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
 }
+
+- (void)setNavigationBarBackgroundImage:(UIImage *)image
+                              tintColor:(UIColor *)tintColor
+                              textColor:(UIColor *)textColor
+                         statusBarStyle:(UIStatusBarStyle)style {
+    [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBarTintColor:tintColor];
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:textColor,NSFontAttributeName:SYSTEM_FONT(18)};
+    [UIApplication sharedApplication].statusBarStyle = style;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

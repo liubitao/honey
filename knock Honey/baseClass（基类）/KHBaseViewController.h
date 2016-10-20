@@ -59,5 +59,10 @@
  */
 - (void)hideBottomBarPush:(KHBaseViewController *)controller;
 
-
+/**设置导航栏
+ */
+- (void)setNavigationBarBackgroundImage:(UIImage *)image
+                              tintColor:(UIColor *)tintColor
+                              textColor:(UIColor *)textColor
+                         statusBarStyle:(UIStatusBarStyle)style;
 @end

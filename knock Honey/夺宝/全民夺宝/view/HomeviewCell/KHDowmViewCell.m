@@ -38,8 +38,8 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_TIME_CELL object:nil];
 }
 
-- (void)notificationCenterEvent:(id)sender{
-    [self setModel:self.model];
+- (void)notificationCenterEvent:(NSNotification*)sender{
+    [self reset:sender.object];
 }
 
 -(void)setModel:(KHKnowModel *)model{
@@ -47,9 +47,18 @@
     [_goodsImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",portPic,model.thumb]] placeholderImage:IMAGE_NAMED(@"placeholder")];
     _goodsName.text = model.title;
     _timeDown.text = [model valueForKey:@"valueString"];
-    if ([model.newtime doubleValue] <[[NSDate date] timeIntervalSince1970]) {
+    if ([model.newtime doubleValue]<[[NSDate date] timeIntervalSince1970]) {
         _timeDown.text = @"即将揭晓";
     }
+}
+- (void)reset:(KHKnowModel*)model{
+    _timeDown.text = [model valueForKey:@"valueString"];
+    
+//    if (![Utils isNull:model]&&[model.newtime doubleValue]<[[NSDate date] timeIntervalSince1970]) {
+//            if ([self.delagate respondsToSelector:@selector(reloadDown)]) {
+//                [self.delagate reloadDown];
+//            }
+  
 }
 
 - (void)dealloc {

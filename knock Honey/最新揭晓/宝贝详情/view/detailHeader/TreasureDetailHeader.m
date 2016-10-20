@@ -229,12 +229,9 @@ const CGFloat kTreasureDetailHeaderPageControlHeight = 30.0; //pagecontroll heig
 #pragma mark - TSCountLabelDelegate
 //倒计时完成
 - (void)countdownDidEnd {
-    CGFloat delayTime = dispatch_time(DISPATCH_TIME_NOW, 2);
-    dispatch_after(delayTime, dispatch_get_main_queue(), ^{
-        _treasureProgressView.type = TreasureDetailHeaderTypeWon;
-        [self setNeedsLayout];
-        self.headerHeight();
-    });
+    _treasureProgressView.type = TreasureDetailHeaderTypeWon;
+    [self setNeedsLayout];
+    self.headerHeight();
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -363,7 +360,11 @@ const CGFloat kBackImageViewHeight = 45.0;
             _totalLabel.attributedText = [Utils stringWith:totalStr font1:SYSTEM_FONT(12) color1:UIColorHex(999999) font2:SYSTEM_FONT(12) color2:UIColorHex(7cade8) range:NSMakeRange(2, totalStr.length-4)];
             [self addSubview:_totalLabel];
             
+            if ([Utils isNull:_model.winner.qishu]) {
+                self.height = _totalLabel.bottom ;
+            } else{
             [self setupWinnerView:_totalLabel.bottom+20];
+            }
         }
             break;
         case TreasureDetailHeaderTypeCountdown:{//倒计时
@@ -435,8 +436,8 @@ const CGFloat kBackImageViewHeight = 45.0;
     KHWinner *winner= _model.winner;
     
     UIImageView *iamgeView = [UIImageView new];
-    iamgeView.origin = CGPointMake(0, 0);
-    iamgeView.size = CGSizeMake(40, 40);
+    iamgeView.origin = CGPointMake(-5, -5);
+    iamgeView.size = CGSizeMake(45, 45);
     iamgeView.contentMode = UIViewContentModeScaleAspectFit;
     iamgeView.image = IMAGE_NAMED(@"lottery_container_user");
     [view addSubview:iamgeView];

@@ -27,7 +27,7 @@
                         <constraint firstAttribute="height" constant="1" id="RvH-Wl-A2m"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3q-Co-QBz" customClass="KHChangButton">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3q-Co-QBz" customClass="KHChangButton">
                     <rect key="frame" x="230" y="13" width="80" height="17"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="80" id="Xxw-2u-D69"/>

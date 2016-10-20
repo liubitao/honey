@@ -8,9 +8,17 @@
 
 #import <UIKit/UIKit.h>
 @class KHKnowModel;
+
+@protocol KHDowmViewCellDelegate <NSObject>
+
+- (void)reloadDown;
+
+@end
 @interface KHDowmViewCell : UICollectionViewCell
 
 @property (nonatomic,strong) KHKnowModel *model;
+
+@property (nonatomic,assign) id <KHDowmViewCellDelegate>delagate;
 
 +(CGSize)size;
 

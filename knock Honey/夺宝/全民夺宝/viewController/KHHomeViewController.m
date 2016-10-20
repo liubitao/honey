@@ -25,7 +25,7 @@
 
 
 
-@interface KHHomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,WinTreasureCellDelegate,TSAnimationDelegate>
+@interface KHHomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,WinTreasureCellDelegate,TSAnimationDelegate,KHDowmViewCellDelegate>
 {
     NSMutableArray *_images;
     NSMutableArray *_dataArray;
@@ -113,7 +113,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
    
     KHHOmeViewLayout *layout = [[KHHOmeViewLayout alloc]init];
 
-    _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, KscreenHeight) collectionViewLayout:layout];
+    _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, KscreenHeight+kTabBarHeight) collectionViewLayout:layout];
      _collectionView.contentInset = UIEdgeInsetsMake([WinTreasureHeader height], 0, 0, 0);
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
@@ -263,6 +263,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     }else if (indexPath.section == 1){
         KHDowmViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:Cell1Identifier forIndexPath:indexPath];
         cell.model = _downArray[indexPath.row];
+        cell.delagate = self;
         return cell;
     }
     NSMutableArray *array = _dataArray[_currentIndex];
@@ -328,7 +329,6 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
         parameter[@"qishu"] = knowModel.qishu;
         goodsid = knowModel.ID;
     }
-    
     [YWHttptool GET:PortGoodsdetails parameters:parameter success:^(id responseObject) {
         [MBProgressHUD hideHUD];
         NSLog(@"%@",responseObject);
@@ -342,10 +342,10 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
             }else{
                 DetailVC.showType = TreasureDetailHeaderTypeWon;
             }
-            DetailVC.showType = TreasureDetailHeaderTypeCountdown;
         }else{
             DetailVC.showType = TreasureDetailHeaderTypeNotParticipate;
         }
+
         [self pushController:DetailVC];
     } failure:^(NSError *error) {
         [MBProgressHUD hideHUD];
@@ -384,9 +384,9 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     CGRect listRect = self.tabBarController.tabBar.frame;
     listRect.origin.x = 3*KscreenWidth/5+KscreenWidth/5/2;
     listRect.size.width = KscreenWidth/5.0;
-    KHHomeModel *model = _dataArray[indexPath.row];
+    KHHomeModel *model = _dataArray[indexPath.section][indexPath.row];
 //    model.isAdded = YES;
-    [_dataArray replaceObjectAtIndex:indexPath.row withObject:model];
+//    [_dataArray replaceObjectAtIndex:indexPath.row withObject:model];
     
     CGRect parentRectA = [cell.contentView convertRect:cell.productImgView.frame toView:self.tabBarController.view];
     CGRect parentRectB = [self.view convertRect:listRect toView:self.tabBarController.view];
@@ -400,9 +400,30 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     [[TSAnimation sharedAnimation] throwTheView:self.productView path:path isRotated:YES endScale:0.1];
 }
 
+- (void)reloadDown{
+    NSMutableDictionary *parameter = [Utils parameter];
+    parameter[@"p"] = @"1";
+    [YWHttptool GET:PortGoodsIndex parameters:parameter success:^(id responseObject) {
+        NSLog(@"%@",responseObject);
+        for (KHKnowModel *model in _downArray) {
+            [model stop];
+        }
+        [_downArray removeAllObjects];
+        
+        _images = [KHIMage kh_objectWithKeyValuesArray:responseObject[@"result"][@"banner"]];
+        self.header.images = _images;
+        [self.header resetImage];
+        _downArray = [KHKnowModel kh_objectWithKeyValuesArray:responseObject[@"result"][@"zxjx"]];
+        [_collectionView reloadSections:[NSIndexSet indexSetWithIndex:1]];
+    } failure:^(NSError *error) {
+        [MBProgressHUD showError:@"网络连接有误"];
+    }];
+
+}
 #pragma mark - TSAnimationDelegate;//动画完成
 - (void)animationFinished {
     NSLog(@"动画完成");
+    
     [self.productView removeFromSuperview];
 }
 

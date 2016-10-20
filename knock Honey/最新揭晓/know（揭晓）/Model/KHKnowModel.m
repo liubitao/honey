@@ -22,6 +22,7 @@
 
 @property (nonatomic, assign) BOOL running;
 
+
 @end
 
 @implementation KHKnowModel
@@ -73,7 +74,7 @@ MJCodingImplementation
     NSTimeInterval time=[dat timeIntervalSince1970];
     _value =  ([_newtime doubleValue]- time)*1000;
     [self updateDisplay];
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_TIME_CELL object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_TIME_CELL object:self];
     
 }
 

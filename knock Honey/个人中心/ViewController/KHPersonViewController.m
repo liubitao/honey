@@ -8,11 +8,16 @@
 
 #import "KHPersonViewController.h"
 #import "KHPersonCell.h"
+#import "KHPersonHeader.h"
 
 @interface KHPersonViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *titleArray;
 @property (nonatomic,strong) NSMutableArray *imageArray;
+/**
+ *  头视图
+ */
+@property (nonatomic,strong) KHPersonHeader *header;
 
 @end
 
@@ -27,24 +32,41 @@
 
 - (NSMutableArray*)imageArray{
     if (_imageArray == nil) {
-        _imageArray = [NSMutableArray arrayWithArray:@[@[@"winList",@"takeList",@"apperList",@"paperMoney",@"address",@"card",@"winList"],@[@"coin"],@[@"phone",@"message"]]];
+        _imageArray = [NSMutableArray arrayWithArray:@[@[@"winList",@"takeList",@"apperList",@"paperMoney",@"address",@"card",@"winList"],@[@"coin"],@[@"phone",@"messages"]]];
     }
     return _imageArray;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
     self.title = @"个人中心";
     self.view.backgroundColor = [UIColor whiteColor];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getTopupResult:) name:@"kTopupNotification" object:nil];
     [self configNavi];
     [self configTableView];
 }
-
+#pragma mark - notice
+- (void)getTopupResult:(NSNotification *)notice {
+    NSNumber *remainSum = (NSNumber *)notice.object;
+    _header.remainSum = remainSum;
+}
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
 - (void)configNavi{
-  
-//    [self setBackItem];
+    [self setBackItem];
+    [self setNavigationBarBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]]
+                                tintColor:[UIColor clearColor]
+                                textColor:[UIColor clearColor]
+                           statusBarStyle:UIStatusBarStyleLightContent];
+    [self setRightImageNamed:@"install" action:@selector(rightClick)];
+}
+
+/**
+ *  设置
+ */
+- (void)rightClick{
+    
 }
 
 - (void)configTableView{
@@ -53,14 +75,35 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
-    
+    [self setupHeader];
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 30)];
     label.text = @"声明：所有奖品抽奖活动与苹果公司(Apple Inc)无关";
-    label.font = [UIFont systemFontOfSize:15];
+    label.font = [UIFont systemFontOfSize:12];
     label.textAlignment = NSTextAlignmentCenter;
     label.textColor = UIColorHex(999999);
     self.tableView.tableFooterView = label;
     [self.tableView registerNib:NIB_NAMED(@"KHPersonCell") forCellReuseIdentifier:@"personCell"];
+}
+
+- (void)setupHeader{
+    _header = [[KHPersonHeader alloc]initWithFrame:({
+        CGRect rect = {0, 0, kScreenWidth, 190};
+        rect;
+    })];
+    _tableView.tableHeaderView = _header;
+    __weak typeof(self) weakSelf = self;
+    _header.headImgBlock = ^{
+        NSLog(@"头像");
+    };
+    
+    _header.topupBlock = ^{
+        NSLog(@"充值");
+    };
+    
+    _header.diamondBlock = ^{
+        NSLog(@"积分");
+    };
+
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -70,7 +113,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     switch (section) {
         case 0:
-            return  7;
+            return 7;
         case 1:
             return 1;
         case 2:
@@ -82,8 +125,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     KHPersonCell *cell = [tableView dequeueReusableCellWithIdentifier:@"personCell" forIndexPath:indexPath];
     [cell setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, 0)];
-    cell.textLabel.text = _titleArray[indexPath.section][indexPath.row];
-    cell.imageView.image = IMAGE_NAMED(self.imageArray[indexPath.section][indexPath.row]);
+    cell.title.text = _titleArray[indexPath.section][indexPath.row];
+    cell.pic.image = IMAGE_NAMED(self.imageArray[indexPath.section][indexPath.row]);
     return cell;
 }
 
@@ -94,10 +137,19 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 10;
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.1;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView.contentOffset.y < 0) {
+        [_header makeScaleForScrollView:scrollView];;
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

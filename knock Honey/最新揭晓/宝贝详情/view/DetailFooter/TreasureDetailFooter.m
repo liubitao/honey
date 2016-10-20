@@ -7,6 +7,7 @@
 //
 
 #import "TreasureDetailFooter.h"
+#import "KHProductModel.h"
 
 @interface TreasureDetailFooter ()
 
@@ -26,15 +27,17 @@ const CGFloat kFooterButtonHeight = 40.0;
     return _titles;
 }
 
-- (instancetype)initWithType:(TreasureDetailFooterType)type {
+- (instancetype)initWithType:(TreasureDetailFooterType)type Model:(KHProductModel*)model{
     self = [super init];
     if (self) {
         _type = type;
+        _model = model;
         self.backgroundColor = [UIColor whiteColor];
         self.frame = ({
             CGRect rect = {0,kScreenHeight-60,kScreenWidth,60};
             rect;
         });
+        
         [self commonInit];
     }
     return self;
@@ -92,7 +95,7 @@ const CGFloat kFooterButtonHeight = 40.0;
             label.size = CGSizeMake(150, 15);
             label.font = SYSTEM_FONT(14);
             label.textColor = UIColorHex(666666);
-            label.text = @"最新一期正在进行中..";
+            label.text = [NSString stringWithFormat:@"第%@期正在进行..",_model.qishu];
             [self addSubview:label];
             [label sizeToFit];
             

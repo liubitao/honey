@@ -138,7 +138,7 @@
 
 //加载下面菜单视图
 - (void)configBottomMenu{
-    _footer = [[TreasureDetailFooter alloc]initWithType:(_showType==TreasureDetailHeaderTypeNotParticipate)?TreasureUnPublishedType:TreasurePublishedType];
+    _footer = [[TreasureDetailFooter alloc]initWithType:(_showType==TreasureDetailHeaderTypeNotParticipate)?TreasureUnPublishedType:TreasurePublishedType Model:_model];
     _footer.delegate = self;
     [self.view addSubview:_footer];
 }

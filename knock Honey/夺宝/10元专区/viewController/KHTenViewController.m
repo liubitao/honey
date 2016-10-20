@@ -71,7 +71,7 @@
     [self.tableView.mj_header beginRefreshing];
     
     //上拉刷新
-    _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+    _tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
         [weakSelf getMoreData];
         [weakSelf.tableView.mj_footer endRefreshing];
     }];
