@@ -29,7 +29,7 @@
     _leftBtn.frame = CGRectMake(0, 0, size.width <= 10 ? 70 : size.width + 10, 44);
     _leftBtn.titleLabel.textAlignment = NSTextAlignmentLeft;
     _leftBtn.titleLabel.font = SYSTEM_FONT(15);
-    [_leftBtn setTitleColor:UIColorHex(333333) forState:UIControlStateNormal];
+    [_leftBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_leftBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     [_leftBtn setTitle:title forState:UIControlStateNormal];
     

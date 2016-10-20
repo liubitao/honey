@@ -10,4 +10,5 @@
 
 @interface KHCartViewController :  KHBaseViewController
 
+@property (nonatomic,assign) BOOL isPushed;
 @end

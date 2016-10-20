@@ -1,16 +1,16 @@
 //
-//  KHKnowModel.m
+//  KHPublishModel.m
 //  knock Honey
 //
-//  Created by 刘毕涛 on 16/10/10.
+//  Created by 刘毕涛 on 16/10/20.
 //  Copyright © 2016年 liubitao. All rights reserved.
 //
 
-#import "KHKnowModel.h"
+#import "KHPublishModel.h"
 #import <MJExtension/MJExtension.h>
 
-@interface KHKnowModel ()
 
+@interface KHPublishModel ()
 /**
  *  倒计时时间字符串
  */
@@ -25,7 +25,7 @@
 
 @end
 
-@implementation KHKnowModel
+@implementation KHPublishModel
 MJCodingImplementation
 
 + (instancetype)kh_objectWithKeyValues:(NSDictionary*)dict{
@@ -40,7 +40,7 @@ MJCodingImplementation
 + (NSMutableArray*)kh_objectWithKeyValuesArray:(NSArray *)array{
     NSMutableArray *result = [NSMutableArray array];
     for (NSDictionary *dict in array) {
-        KHKnowModel *model = [self kh_objectWithKeyValues:dict];
+        KHPublishModel *model = [self kh_objectWithKeyValues:dict];
         if ([model.newtime doubleValue] >[[NSDate date] timeIntervalSince1970]){
             [model start];
         }
@@ -80,6 +80,7 @@ MJCodingImplementation
 
 - (void)stop {
     if (self.timer) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_STOP_CELL object:nil];
         [self.timer invalidate];
         self.timer = nil;
     }
@@ -109,4 +110,5 @@ MJCodingImplementation
     
     return formattedString;
 }
+
 @end

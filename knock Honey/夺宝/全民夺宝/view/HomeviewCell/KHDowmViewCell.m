@@ -7,7 +7,7 @@
 //
 
 #import "KHDowmViewCell.h"
-#import "KHKnowModel.h"
+#import "KHPublishModel.h"
 
 @interface KHDowmViewCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *goodsImage;
@@ -32,17 +32,29 @@
                                              selector:@selector(notificationCenterEvent:)
                                                  name:NOTIFICATION_TIME_CELL
                                                object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(reloadViewController)
+                                                 name:NOTIFICATION_STOP_CELL
+                                               object:nil];
 }
 
 - (void)removeNSNotificationCenter {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_TIME_CELL object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_STOP_CELL object:nil];
 }
 
+- (void)reloadViewController{
+        if (![Utils isNull:_model]&&[_model.newtime doubleValue]<=[[NSDate date] timeIntervalSince1970]) {
+                if ([self.delagate respondsToSelector:@selector(reloadDown)]) {
+                    [self.delagate reloadDown];
+                }
+        }
+}
 - (void)notificationCenterEvent:(NSNotification*)sender{
-    [self reset:sender.object];
+    [self reset];
 }
 
--(void)setModel:(KHKnowModel *)model{
+-(void)setModel:(KHPublishModel *)model{
     _model = model;
     [_goodsImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",portPic,model.thumb]] placeholderImage:IMAGE_NAMED(@"placeholder")];
     _goodsName.text = model.title;
@@ -51,14 +63,8 @@
         _timeDown.text = @"即将揭晓";
     }
 }
-- (void)reset:(KHKnowModel*)model{
-    _timeDown.text = [model valueForKey:@"valueString"];
-    
-//    if (![Utils isNull:model]&&[model.newtime doubleValue]<[[NSDate date] timeIntervalSince1970]) {
-//            if ([self.delagate respondsToSelector:@selector(reloadDown)]) {
-//                [self.delagate reloadDown];
-//            }
-  
+- (void)reset{
+    _timeDown.text = [_model valueForKey:@"valueString"];
 }
 
 - (void)dealloc {

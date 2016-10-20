@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class KHKnowModel;
+@class KHPublishModel;
 
 @protocol KHDowmViewCellDelegate <NSObject>
 
@@ -16,7 +16,7 @@
 @end
 @interface KHDowmViewCell : UICollectionViewCell
 
-@property (nonatomic,strong) KHKnowModel *model;
+@property (nonatomic,strong) KHPublishModel *model;
 
 @property (nonatomic,assign) id <KHDowmViewCellDelegate>delagate;
 

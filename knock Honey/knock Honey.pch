@@ -32,6 +32,7 @@
 #import "UIAlertController+BTAdd.h"
 #import "MBProgressHUD+MJ.h"
 #import "UIImage+YWimage.h"
+#import "UITableView+Custom.h"
 
 //工具类
 #import "Utils.h"

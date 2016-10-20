@@ -17,7 +17,7 @@
 #import "TSAnimation.h"
 #import "HomeFooter.h"
 #import "KHDowmViewCell.h"
-#import "KHKnowModel.h"
+#import "KHPublishModel.h"
 #import "KHheard2View.h"
 #import "KHTenViewController.h"
 #import "KHDetailViewController.h"
@@ -166,7 +166,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     
     [YWHttptool GET:PortGoodsIndex parameters:parameter success:^(id responseObject) {
         NSLog(@"%@",responseObject);
-        for (KHKnowModel *model in _downArray) {
+        for (KHPublishModel *model in _downArray) {
             [model stop];
         }
         [_downArray removeAllObjects];
@@ -174,7 +174,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
         _images = [KHIMage kh_objectWithKeyValuesArray:responseObject[@"result"][@"banner"]];
         self.header.images = _images;
         [self.header resetImage];
-        _downArray = [KHKnowModel kh_objectWithKeyValuesArray:responseObject[@"result"][@"zxjx"]];
+        _downArray = [KHPublishModel kh_objectWithKeyValuesArray:responseObject[@"result"][@"zxjx"]];
         [_collectionView reloadSections:[NSIndexSet indexSetWithIndex:1]];
     } failure:^(NSError *error) {
         [MBProgressHUD showError:@"网络连接有误"];
@@ -319,7 +319,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     NSMutableDictionary *parameter = [Utils parameter];
     NSString *goodsid;
     if (indexPath.section == 1) {
-        KHKnowModel * knowModel = _downArray[indexPath.row];
+        KHPublishModel * knowModel = _downArray[indexPath.row];
         parameter[@"goodsid"] = knowModel.goodsid;
         parameter[@"qishu"] = knowModel.qishu;
         goodsid = knowModel.goodsid;
@@ -405,15 +405,12 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     parameter[@"p"] = @"1";
     [YWHttptool GET:PortGoodsIndex parameters:parameter success:^(id responseObject) {
         NSLog(@"%@",responseObject);
-        for (KHKnowModel *model in _downArray) {
+        for (KHPublishModel *model in _downArray) {
             [model stop];
         }
         [_downArray removeAllObjects];
         
-        _images = [KHIMage kh_objectWithKeyValuesArray:responseObject[@"result"][@"banner"]];
-        self.header.images = _images;
-        [self.header resetImage];
-        _downArray = [KHKnowModel kh_objectWithKeyValuesArray:responseObject[@"result"][@"zxjx"]];
+        _downArray = [KHPublishModel kh_objectWithKeyValuesArray:responseObject[@"result"][@"zxjx"]];
         [_collectionView reloadSections:[NSIndexSet indexSetWithIndex:1]];
     } failure:^(NSError *error) {
         [MBProgressHUD showError:@"网络连接有误"];
