@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#define NOTIFICATION_TIME_CELL  @"NotificationTimeCell"
+#define NOTIFICATION_PUSH_CELL  @"NotificationPushCell"
 #define NOTIFICATION_STOP_CELL  @"NotificationStopCell"
 
 @interface KHPublishModel : NSObject

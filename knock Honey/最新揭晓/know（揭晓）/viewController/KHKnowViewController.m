@@ -71,6 +71,11 @@ static NSString * published = @"published";
     NSMutableDictionary *parameter = [Utils parameter];
     [YWHttptool GET:PortGoodszxjx parameters:parameter success:^(id responseObject) {
         NSLog(@"%@",responseObject);
+        for (KHKnowModel *model in _dataArray) {
+            [model stop];
+        }
+        [_dataArray removeAllObjects];
+        
         _currentPage = 1;
         _dataArray = [KHKnowModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
         [self.tableView reloadData];
@@ -154,10 +159,7 @@ static NSString * published = @"published";
 
 #pragma mark - LatestPublishCellDelegate
 - (void)countdownDidEnd:(NSIndexPath *)indexpath {
-    CGFloat delayTime = dispatch_time(DISPATCH_TIME_NOW, 2);
-    dispatch_after(delayTime, dispatch_get_main_queue(), ^{
-        [_tableView reloadRowAtIndexPath:indexpath withRowAnimation:UITableViewRowAnimationFade];
-    });
+    [_tableView reloadData];
 }
 
 

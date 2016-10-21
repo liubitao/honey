@@ -22,7 +22,7 @@
 
 @property (nonatomic, assign) BOOL running;
 
-
+@property (nonatomic,assign) BOOL Frist;
 @end
 
 @implementation KHPublishModel
@@ -74,13 +74,16 @@ MJCodingImplementation
     NSTimeInterval time=[dat timeIntervalSince1970];
     _value =  ([_newtime doubleValue]- time)*1000;
     [self updateDisplay];
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_TIME_CELL object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_PUSH_CELL object:nil];
     
 }
 
 - (void)stop {
     if (self.timer) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_STOP_CELL object:nil];
+        if ((self.newtime.doubleValue - 0.2)<[[NSDate date] timeIntervalSince1970]&& !_Frist) {
+            _Frist = YES;
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_STOP_CELL object:nil];
+        }
         [self.timer invalidate];
         self.timer = nil;
     }

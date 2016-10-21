@@ -30,7 +30,7 @@
     
    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(notificationCenterEvent:)
-                                                 name:NOTIFICATION_TIME_CELL
+                                                 name:NOTIFICATION_PUSH_CELL
                                                object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(reloadViewController)
@@ -39,12 +39,13 @@
 }
 
 - (void)removeNSNotificationCenter {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_TIME_CELL object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_PUSH_CELL object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_STOP_CELL object:nil];
 }
 
 - (void)reloadViewController{
-        if (![Utils isNull:_model]&&[_model.newtime doubleValue]<=[[NSDate date] timeIntervalSince1970]) {
+    
+        if (![Utils isNull:_model]&&([[self.model valueForKey:@"value"] integerValue]<200)) {
                 if ([self.delagate respondsToSelector:@selector(reloadDown)]) {
                     [self.delagate reloadDown];
                 }
@@ -58,9 +59,9 @@
     _model = model;
     [_goodsImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",portPic,model.thumb]] placeholderImage:IMAGE_NAMED(@"placeholder")];
     _goodsName.text = model.title;
-    _timeDown.text = [model valueForKey:@"valueString"];
-    if ([model.newtime doubleValue]<[[NSDate date] timeIntervalSince1970]) {
-        _timeDown.text = @"即将揭晓";
+    _timeDown.text = [model valueForKey:@"valueString"]?[model valueForKey:@"valueString"]:@"正在揭晓";
+    if ((model.newtime.doubleValue - 0.2)<[[NSDate date] timeIntervalSince1970]) {
+        _timeDown.text = @"正在揭晓";
     }
 }
 - (void)reset{

@@ -167,6 +167,8 @@
         [self.timer invalidate];
         self.timer = nil;
     }
+    self.running = NO;
+    self.isRunning = self.running;
 }
 
 @end

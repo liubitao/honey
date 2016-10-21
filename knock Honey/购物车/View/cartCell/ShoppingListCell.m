@@ -23,7 +23,9 @@
  */
 @property (nonatomic, strong) YYLabel *productCountLabel;
 
-
+/**人次
+ */
+@property (nonatomic, strong) YYLabel *renci;
 
 @end
 
@@ -56,6 +58,7 @@
         _productNameLabel = [YYLabel new];
         _productNameLabel.origin = CGPointMake(_productImgView.right+kProductImagePadding, 15);
         _productNameLabel.size = CGSizeMake(kProductNameWidth, 39);
+
         [self.contentView addSubview:_productNameLabel];
 
         _productCountLabel = [YYLabel new];
@@ -69,11 +72,18 @@
         })];
         [self.contentView addSubview:_listView];
         
-        @weakify(self);
+        _renci = [YYLabel new];
+        _renci.origin = CGPointMake(_listView.right+12, _productNameLabel.bottom+25);
+        _renci.size = CGSizeMake(40, 16);
+        _renci.font = SYSTEM_FONT(12);
+        _renci.textColor = UIColorHex(999999);
+        _renci.text = @"人次";
+        [self.contentView addSubview:_renci];
+        
+        __weak typeof(self) weakSelf = self;
         _listView.latestCount = ^(NSNumber *listCount) {
-            @strongify(self);
-            if (self.delegate && [self.delegate respondsToSelector:@selector(listCount:atIndexPath:)]) {
-                [self.delegate listCount:listCount atIndexPath:self.indexPath];
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(listCount:atIndexPath:)]) {
+                [weakSelf.delegate listCount:listCount atIndexPath:weakSelf.indexPath];
             }
         };
     }
@@ -98,18 +108,25 @@
     _productNameLabel.top = top;
     _productNameLabel.height = _layout.nameHeight;
     _productNameLabel.width = self.editing ? kProductNameWidth-47 : kProductNameWidth;
+  
     _productNameLabel.textLayout = _layout.nameLayout;
 
     top += _layout.nameHeight;
     _productCountLabel.top = top;
     _productCountLabel.textLayout = _layout.paticipateLayout;
     _productCountLabel.height = _layout.partInAmountHeight;
+    NSString *str = [NSString stringWithFormat:@"总需:%@人次,剩余:%@人次",layout.model.totalAmount,layout.model.leftAmount];
+    NSMutableAttributedString *attributeString = [Utils stringWith:str font1:SYSTEM_FONT(12) color1:UIColorHex(999999) font2:SYSTEM_FONT(12) color2:kDefaultColor range:NSMakeRange(layout.model.totalAmount.length+9, layout.model.leftAmount.length)];
+    _productCountLabel.attributedText = attributeString;
     
     top += _layout.partInAmountHeight;
     _listView.top = top;
     _listView.selectedCount = _layout.model.selectCount.integerValue;
     [_listView setSelectedCount:_layout.model.selectCount.integerValue totalCount:99];
     _listView.userInteractionEnabled = self.editing ? NO : YES;
+    
+    top += _layout.partInAmountHeight+15;
+    _renci.top = top;
 }
 
 @end

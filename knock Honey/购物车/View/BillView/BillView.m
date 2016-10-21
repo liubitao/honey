@@ -61,7 +61,7 @@ const CGFloat kBillButtonheight = 30.0;
     _selectButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [_selectButton setImage:IMAGE_NAMED(@"cartnoSelected") forState:UIControlStateNormal];
     [_selectButton setImage:IMAGE_NAMED(@"cartSelected") forState:UIControlStateSelected];
-    NSMutableAttributedString *title = [Utils stringWith:@"全选\n共选中0件商品" font1:SYSTEM_FONT(14) color1:UIColorHex(666666) font2:SYSTEM_FONT(15) color2:[UIColor blackColor] range:NSMakeRange(0, 2)];
+    NSMutableAttributedString *title = [Utils stringWith:@"全选\n\n共选中0件商品" font1:SYSTEM_FONT(14) color1:UIColorHex(666666) font2:SYSTEM_FONT(15) color2:[UIColor blackColor] range:NSMakeRange(0, 2)];
     [_selectButton setAttributedTitle:title forState:UIControlStateNormal];
     [_selectButton setTitleColor:UIColorHex(666666) forState:UIControlStateNormal];
     [_selectButton setTitleColor:UIColorHex(666666) forState:UIControlStateSelected];
@@ -137,7 +137,10 @@ const CGFloat kBillButtonheight = 30.0;
 }
 
 - (void)setMoneyNumber:(NSInteger)number Sum:(NSNumber *)money;{
-    _totalLabel.text = [NSString stringWithFormat:@"共%ld件商品,总计：%@抢币",number,money];
+    NSString *str = [NSString stringWithFormat:@"共%ld件商品,总计:%@抢币",number,money];
+    NSString *numberstr =[NSString stringWithFormat:@"%ld",number];
+    NSString *moneyStr = [NSString stringWithFormat:@"%@",money];
+    _totalLabel.attributedText = [Utils stringWith:str font1:SYSTEM_FONT(16) color1:[UIColor blackColor] font2:SYSTEM_FONT(16) color2:kDefaultColor range:NSMakeRange(8+numberstr.length, moneyStr.length)];
     _totalLabel.width = [_totalLabel.text sizeWithAttributes:@{NSFontAttributeName :  SYSTEM_FONT(16)}].width;
 }
 

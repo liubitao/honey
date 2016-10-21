@@ -8,9 +8,9 @@
 
 #import "ListCountView.h"
 
-const CGFloat kChangeListViewWidth = 80.0+36*2;
-const CGFloat kHandleButtonWidth = 36.0;
-const CGFloat kNumberTextFieldWidth = 80.0;
+const CGFloat kChangeListViewWidth = 60.0+40*2;
+const CGFloat kHandleButtonWidth = 40.0;
+const CGFloat kNumberTextFieldWidth = 60.0;
 
 @interface ListCountView () <UITextFieldDelegate>
 

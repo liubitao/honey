@@ -418,7 +418,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
 
 }
 #pragma mark - TSAnimationDelegate;//动画完成
-- (void)animationFinished {
+- (void)animationFinished{
     NSLog(@"动画完成");
     
     [self.productView removeFromSuperview];

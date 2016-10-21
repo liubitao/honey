@@ -51,7 +51,7 @@
     if (attributeName.length == 0) {
         return;
     }
-    attributeName.font = SYSTEM_FONT(16);
+    attributeName.font = SYSTEM_FONT(14);
     attributeName.color = UIColorHex(333333);
     attributeName.lineBreakMode = NSLineBreakByWordWrapping;
     YYTextContainer *container = [YYTextContainer containerWithSize:CGSizeMake(kProductNameWidth, 16)];
@@ -63,7 +63,8 @@
 - (void)layoutProductParticipte {
     _partInAmountHeight = 0;
     _paticipateLayout = nil;
-    NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@,%@",_model.totalAmount,_model.leftAmount]];
+    NSString *str = [NSString stringWithFormat:@"总需:%@人次,剩余%@人次",_model.totalAmount,_model.leftAmount];
+    NSMutableAttributedString *attributeString = [Utils stringWith:str font1:SYSTEM_FONT(12) color1:UIColorHex(999999) font2:SYSTEM_FONT(14) color2:kDefaultColor range:NSMakeRange(_model.totalAmount.length+8, _model.leftAmount.length)];
     if (attributeString.length == 0) {
         return;
     }
