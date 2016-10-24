@@ -99,6 +99,7 @@ const CGFloat kTimeLineCellHeight = 35.0; //cell高度
 }
 
 - (void)setTimeLine:(NSString *)timeLine {
+    
     _timeLine = timeLine;
     CGFloat width = [_timeLine sizeWithAttributes:@{NSFontAttributeName : SYSTEM_FONT(11)}].width + 8;
     _timeLabel.size = CGSizeMake(width, _timeLabel.height);
