@@ -23,7 +23,6 @@
 		0C2705AF1DAF66EB00CE2F15 /* TreaureHeaderMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2705AB1DAF66EB00CE2F15 /* TreaureHeaderMenu.m */; };
 		0C2705B31DAF7CA500CE2F15 /* TSCountLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2705B21DAF7CA500CE2F15 /* TSCountLabel.m */; };
 		0C3693131DAB209A00BB3EE0 /* KHTabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3693121DAB209A00BB3EE0 /* KHTabbarViewController.m */; };
-		0C36931C1DAB27C000BB3EE0 /* KHAppearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C36931B1DAB27C000BB3EE0 /* KHAppearViewController.m */; };
 		0C3693251DAB281000BB3EE0 /* KHNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3693241DAB281000BB3EE0 /* KHNavigationViewController.m */; };
 		0C3693281DAB2DD700BB3EE0 /* KHBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3693271DAB2DD700BB3EE0 /* KHBaseViewController.m */; };
 		0C36932F1DAB5AE400BB3EE0 /* KHKnowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C36932E1DAB5AE400BB3EE0 /* KHKnowViewController.m */; };
@@ -104,6 +103,9 @@
 		0CBD1A761DACD466003E8150 /* VerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CBD1A751DACD466003E8150 /* VerticalButton.m */; };
 		0CBD1A7E1DACEF97003E8150 /* HomeFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CBD1A7D1DACEF97003E8150 /* HomeFooter.m */; };
 		0CC4964F1DB707650008F647 /* KHPersonHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC4964E1DB707650008F647 /* KHPersonHeader.m */; };
+		0CD77C901DBF44A600F72AA5 /* KHAppearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD77C8F1DBF44A600F72AA5 /* KHAppearViewController.m */; };
+		0CD77C941DBF44D300F72AA5 /* KHAppearTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD77C921DBF44D300F72AA5 /* KHAppearTableViewCell.m */; };
+		0CD77C951DBF44D300F72AA5 /* KHAppearTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD77C931DBF44D300F72AA5 /* KHAppearTableViewCell.xib */; };
 		1940049D3EBD15A1FE12CC6B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C462ABFC3A89753851B1E5B4 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -155,8 +157,6 @@
 		0C2705B21DAF7CA500CE2F15 /* TSCountLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCountLabel.m; sourceTree = "<group>"; };
 		0C3693111DAB209A00BB3EE0 /* KHTabbarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHTabbarViewController.h; sourceTree = "<group>"; };
 		0C3693121DAB209A00BB3EE0 /* KHTabbarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHTabbarViewController.m; sourceTree = "<group>"; };
-		0C36931A1DAB27C000BB3EE0 /* KHAppearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHAppearViewController.h; sourceTree = "<group>"; };
-		0C36931B1DAB27C000BB3EE0 /* KHAppearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHAppearViewController.m; sourceTree = "<group>"; };
 		0C3693231DAB281000BB3EE0 /* KHNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHNavigationViewController.h; sourceTree = "<group>"; };
 		0C3693241DAB281000BB3EE0 /* KHNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHNavigationViewController.m; sourceTree = "<group>"; };
 		0C3693261DAB2DD700BB3EE0 /* KHBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHBaseViewController.h; sourceTree = "<group>"; };
@@ -315,6 +315,11 @@
 		0CBD1A7D1DACEF97003E8150 /* HomeFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeFooter.m; sourceTree = "<group>"; };
 		0CC4964D1DB707650008F647 /* KHPersonHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHPersonHeader.h; sourceTree = "<group>"; };
 		0CC4964E1DB707650008F647 /* KHPersonHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPersonHeader.m; sourceTree = "<group>"; };
+		0CD77C8E1DBF44A600F72AA5 /* KHAppearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHAppearViewController.h; sourceTree = "<group>"; };
+		0CD77C8F1DBF44A600F72AA5 /* KHAppearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHAppearViewController.m; sourceTree = "<group>"; };
+		0CD77C911DBF44D300F72AA5 /* KHAppearTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHAppearTableViewCell.h; sourceTree = "<group>"; };
+		0CD77C921DBF44D300F72AA5 /* KHAppearTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHAppearTableViewCell.m; sourceTree = "<group>"; };
+		0CD77C931DBF44D300F72AA5 /* KHAppearTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHAppearTableViewCell.xib; sourceTree = "<group>"; };
 		74E0C9D2929A91D4AB2D6BA5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B30030C39E55FCBDA7B7F09D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C462ABFC3A89753851B1E5B4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -811,8 +816,7 @@
 		0CB128F41DAA1EF3005A0A4D /* 晒单 */ = {
 			isa = PBXGroup;
 			children = (
-				0C36931A1DAB27C000BB3EE0 /* KHAppearViewController.h */,
-				0C36931B1DAB27C000BB3EE0 /* KHAppearViewController.m */,
+				0CD77C8A1DBF44A600F72AA5 /* 晒单首页 */,
 			);
 			path = "晒单";
 			sourceTree = "<group>";
@@ -1195,6 +1199,42 @@
 			path = footer;
 			sourceTree = "<group>";
 		};
+		0CD77C8A1DBF44A600F72AA5 /* 晒单首页 */ = {
+			isa = PBXGroup;
+			children = (
+				0CD77C8D1DBF44A600F72AA5 /* ViewController */,
+				0CD77C8C1DBF44A600F72AA5 /* view */,
+				0CD77C8B1DBF44A600F72AA5 /* Model */,
+			);
+			path = "晒单首页";
+			sourceTree = "<group>";
+		};
+		0CD77C8B1DBF44A600F72AA5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0CD77C8C1DBF44A600F72AA5 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				0CD77C911DBF44D300F72AA5 /* KHAppearTableViewCell.h */,
+				0CD77C921DBF44D300F72AA5 /* KHAppearTableViewCell.m */,
+				0CD77C931DBF44D300F72AA5 /* KHAppearTableViewCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		0CD77C8D1DBF44A600F72AA5 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0CD77C8E1DBF44A600F72AA5 /* KHAppearViewController.h */,
+				0CD77C8F1DBF44A600F72AA5 /* KHAppearViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		AB43EC70D2FC0A6A6B3B5B58 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1316,6 +1356,7 @@
 				0C01B5CE1DB623C400D41F43 /* KHPersonCell.xib in Resources */,
 				0CBD1A1E1DACB650003E8150 /* IQKeyboardManager.bundle in Resources */,
 				0C3693461DAB8F8000BB3EE0 /* KHPulishedTableViewCell.xib in Resources */,
+				0CD77C951DBF44D300F72AA5 /* KHAppearTableViewCell.xib in Resources */,
 				0CB128CD1DAA0467005A0A4D /* LaunchScreen.storyboard in Resources */,
 				0CBD1A5D1DACC130003E8150 /* WinTreasureCell.xib in Resources */,
 				0C27059E1DAF287A00CE2F15 /* CategoryDetailCell.xib in Resources */,
@@ -1420,6 +1461,7 @@
 				0CC4964F1DB707650008F647 /* KHPersonHeader.m in Sources */,
 				0CBD1A1A1DACB650003E8150 /* IQPreviousNextView.m in Sources */,
 				0C5E05F01DAE36FE00B2133F /* TAAbstractDotView.m in Sources */,
+				0CD77C901DBF44A600F72AA5 /* KHAppearViewController.m in Sources */,
 				0C2705991DAF27A600CE2F15 /* KHTenModel.m in Sources */,
 				0C6F59DF1DB89D6D00105C8C /* UITableView+Custom.m in Sources */,
 				0C5E05CA1DADCF7700B2133F /* KHDowmViewCell.m in Sources */,
@@ -1453,7 +1495,6 @@
 				0CB129391DAA28ED005A0A4D /* UIColor+YWcolor.m in Sources */,
 				0CBD1A121DACB650003E8150 /* IQUITextFieldView+Additions.m in Sources */,
 				0CB1293D1DAA28ED005A0A4D /* UIView+YWViewController.m in Sources */,
-				0C36931C1DAB27C000BB3EE0 /* KHAppearViewController.m in Sources */,
 				0CBD19D81DAC8A5D003E8150 /* KHHomeModel.m in Sources */,
 				0C3693411DAB6EE600BB3EE0 /* KHKnowModel.m in Sources */,
 				0C3693131DAB209A00BB3EE0 /* KHTabbarViewController.m in Sources */,
@@ -1465,6 +1506,7 @@
 				0CBD1A1D1DACB650003E8150 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				0CB1294F1DAA2C15005A0A4D /* YWUser.m in Sources */,
 				0C36932F1DAB5AE400BB3EE0 /* KHKnowViewController.m in Sources */,
+				0CD77C941DBF44D300F72AA5 /* KHAppearTableViewCell.m in Sources */,
 				0CB1293B1DAA28ED005A0A4D /* UINavigationBar+BTsome.m in Sources */,
 				0C6F59E31DB8CB2000105C8C /* EditingCell.m in Sources */,
 				0CB128F91DAA1F2E005A0A4D /* AppDelegate.m in Sources */,
