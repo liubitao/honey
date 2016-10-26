@@ -137,8 +137,8 @@ const CGFloat kBillButtonheight = 30.0;
 }
 
 - (void)setMoneyNumber:(NSInteger)number Sum:(NSNumber *)money;{
-    NSString *str = [NSString stringWithFormat:@"共%ld件商品,总计:%@抢币",number,money];
-    NSString *numberstr =[NSString stringWithFormat:@"%ld",number];
+    NSString *str = [NSString stringWithFormat:@"共%ld件商品,总计:%@抢币",(long)number,money];
+    NSString *numberstr =[NSString stringWithFormat:@"%ld",(long)number];
     NSString *moneyStr = [NSString stringWithFormat:@"%@",money];
     _totalLabel.attributedText = [Utils stringWith:str font1:SYSTEM_FONT(16) color1:[UIColor blackColor] font2:SYSTEM_FONT(16) color2:kDefaultColor range:NSMakeRange(8+numberstr.length, moneyStr.length)];
     _totalLabel.width = [_totalLabel.text sizeWithAttributes:@{NSFontAttributeName :  SYSTEM_FONT(16)}].width;

@@ -235,7 +235,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     }];
     
     _header.imageBlock = ^(UIImageView *sender) {
-        NSLog(@"图片点击%ld",sender.tag);
+        NSLog(@"图片点击%ld",(long)sender.tag);
     };
 }
 
@@ -384,7 +384,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     CGRect listRect = self.tabBarController.tabBar.frame;
     listRect.origin.x = 3*KscreenWidth/5+KscreenWidth/5/2;
     listRect.size.width = KscreenWidth/5.0;
-    KHHomeModel *model = _dataArray[indexPath.section][indexPath.row];
+//    KHHomeModel *model = _dataArray[indexPath.section][indexPath.row];
 //    model.isAdded = YES;
 //    [_dataArray replaceObjectAtIndex:indexPath.row withObject:model];
     

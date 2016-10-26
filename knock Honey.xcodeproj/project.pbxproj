@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C009FCD1DC073DB002F4470 /* KHAppearModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C009FCC1DC073DB002F4470 /* KHAppearModel.m */; };
+		0C009FD01DC07E5B002F4470 /* NSString+TSTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C009FCF1DC07E5B002F4470 /* NSString+TSTime.m */; };
+		0C009FD71DC08F74002F4470 /* KHAppearDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C009FD61DC08F74002F4470 /* KHAppearDetailController.m */; };
+		0C009FDA1DC09574002F4470 /* KHAppearDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C009FD91DC09574002F4470 /* KHAppearDetailView.m */; };
 		0C01B5BB1DB5B6C700D41F43 /* KHWinner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C01B5BA1DB5B6C700D41F43 /* KHWinner.m */; };
 		0C01B5BE1DB6007600D41F43 /* KHIMage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C01B5BD1DB6007600D41F43 /* KHIMage.m */; };
 		0C01B5C41DB607C300D41F43 /* KHPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C01B5C31DB607C300D41F43 /* KHPersonViewController.m */; };
@@ -106,6 +110,7 @@
 		0CD77C901DBF44A600F72AA5 /* KHAppearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD77C8F1DBF44A600F72AA5 /* KHAppearViewController.m */; };
 		0CD77C941DBF44D300F72AA5 /* KHAppearTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD77C921DBF44D300F72AA5 /* KHAppearTableViewCell.m */; };
 		0CD77C951DBF44D300F72AA5 /* KHAppearTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD77C931DBF44D300F72AA5 /* KHAppearTableViewCell.xib */; };
+		0CE379661DC0B3BF00F42A4F /* BtButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CE379651DC0B3BE00F42A4F /* BtButton.m */; };
 		1940049D3EBD15A1FE12CC6B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C462ABFC3A89753851B1E5B4 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -127,6 +132,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C009FCB1DC073DB002F4470 /* KHAppearModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHAppearModel.h; sourceTree = "<group>"; };
+		0C009FCC1DC073DB002F4470 /* KHAppearModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHAppearModel.m; sourceTree = "<group>"; };
+		0C009FCE1DC07E5B002F4470 /* NSString+TSTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TSTime.h"; sourceTree = "<group>"; };
+		0C009FCF1DC07E5B002F4470 /* NSString+TSTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TSTime.m"; sourceTree = "<group>"; };
+		0C009FD51DC08F74002F4470 /* KHAppearDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHAppearDetailController.h; sourceTree = "<group>"; };
+		0C009FD61DC08F74002F4470 /* KHAppearDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHAppearDetailController.m; sourceTree = "<group>"; };
+		0C009FD81DC09574002F4470 /* KHAppearDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHAppearDetailView.h; sourceTree = "<group>"; };
+		0C009FD91DC09574002F4470 /* KHAppearDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHAppearDetailView.m; sourceTree = "<group>"; };
 		0C01B5B81DB496DF00D41F43 /* port.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = port.h; sourceTree = "<group>"; };
 		0C01B5B91DB5B6C700D41F43 /* KHWinner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHWinner.h; sourceTree = "<group>"; };
 		0C01B5BA1DB5B6C700D41F43 /* KHWinner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHWinner.m; sourceTree = "<group>"; };
@@ -320,6 +333,8 @@
 		0CD77C911DBF44D300F72AA5 /* KHAppearTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHAppearTableViewCell.h; sourceTree = "<group>"; };
 		0CD77C921DBF44D300F72AA5 /* KHAppearTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHAppearTableViewCell.m; sourceTree = "<group>"; };
 		0CD77C931DBF44D300F72AA5 /* KHAppearTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHAppearTableViewCell.xib; sourceTree = "<group>"; };
+		0CE379641DC0B3BE00F42A4F /* BtButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BtButton.h; path = ../../view/BtButton.h; sourceTree = "<group>"; };
+		0CE379651DC0B3BE00F42A4F /* BtButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BtButton.m; path = ../../view/BtButton.m; sourceTree = "<group>"; };
 		74E0C9D2929A91D4AB2D6BA5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B30030C39E55FCBDA7B7F09D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C462ABFC3A89753851B1E5B4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -357,6 +372,44 @@
 				C462ABFC3A89753851B1E5B4 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0C009FD11DC08F17002F4470 /* 晒单详情 */ = {
+			isa = PBXGroup;
+			children = (
+				0C009FD41DC08F17002F4470 /* ViewController */,
+				0C009FD31DC08F17002F4470 /* View */,
+				0C009FD21DC08F17002F4470 /* Model */,
+			);
+			name = "晒单详情";
+			path = "晒单首页/晒单详情";
+			sourceTree = "<group>";
+		};
+		0C009FD21DC08F17002F4470 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0C009FD31DC08F17002F4470 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0C009FD81DC09574002F4470 /* KHAppearDetailView.h */,
+				0C009FD91DC09574002F4470 /* KHAppearDetailView.m */,
+				0CE379641DC0B3BE00F42A4F /* BtButton.h */,
+				0CE379651DC0B3BE00F42A4F /* BtButton.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0C009FD41DC08F17002F4470 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C009FD51DC08F74002F4470 /* KHAppearDetailController.h */,
+				0C009FD61DC08F74002F4470 /* KHAppearDetailController.m */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		0C01B5BF1DB607C300D41F43 /* Model */ = {
@@ -816,6 +869,7 @@
 		0CB128F41DAA1EF3005A0A4D /* 晒单 */ = {
 			isa = PBXGroup;
 			children = (
+				0C009FD11DC08F17002F4470 /* 晒单详情 */,
 				0CD77C8A1DBF44A600F72AA5 /* 晒单首页 */,
 			);
 			path = "晒单";
@@ -858,6 +912,8 @@
 				0CB129341DAA28ED005A0A4D /* UIView+YWViewController.m */,
 				0C6F59DD1DB89D6D00105C8C /* UITableView+Custom.h */,
 				0C6F59DE1DB89D6D00105C8C /* UITableView+Custom.m */,
+				0C009FCE1DC07E5B002F4470 /* NSString+TSTime.h */,
+				0C009FCF1DC07E5B002F4470 /* NSString+TSTime.m */,
 			);
 			path = "Category（分类）";
 			sourceTree = "<group>";
@@ -1212,6 +1268,8 @@
 		0CD77C8B1DBF44A600F72AA5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0C009FCB1DC073DB002F4470 /* KHAppearModel.h */,
+				0C009FCC1DC073DB002F4470 /* KHAppearModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1440,6 +1498,7 @@
 				0CBD1A191DACB650003E8150 /* IQBarButtonItem.m in Sources */,
 				0CBD1A5C1DACC130003E8150 /* WinTreasureCell.m in Sources */,
 				0CBD1A7E1DACEF97003E8150 /* HomeFooter.m in Sources */,
+				0C009FCD1DC073DB002F4470 /* KHAppearModel.m in Sources */,
 				0C2705AC1DAF66EB00CE2F15 /* TreasureDetailCell.m in Sources */,
 				0C3693451DAB8F8000BB3EE0 /* KHPulishedTableViewCell.m in Sources */,
 				0C5E05F51DAE36FE00B2133F /* SDCycleScrollView.m in Sources */,
@@ -1452,15 +1511,18 @@
 				0CBD1A1C1DACB650003E8150 /* IQToolbar.m in Sources */,
 				0CB129481DAA2977005A0A4D /* YWUserTool.m in Sources */,
 				0CB129491DAA2977005A0A4D /* YWHttptool.m in Sources */,
+				0C009FDA1DC09574002F4470 /* KHAppearDetailView.m in Sources */,
 				0C6F59D91DB86BCF00105C8C /* ListCountView.m in Sources */,
 				0C5E05CF1DADDD3900B2133F /* KHheard2View.m in Sources */,
 				0C27059D1DAF287A00CE2F15 /* CategoryDetailCell.m in Sources */,
 				0CBD1A661DACC415003E8150 /* WinTreasureMenuHeader.m in Sources */,
 				0C5E05FC1DAE3B7C00B2133F /* KHProductModel.m in Sources */,
 				0CB129371DAA28ED005A0A4D /* MBProgressHUD+MJ.m in Sources */,
+				0C009FD71DC08F74002F4470 /* KHAppearDetailController.m in Sources */,
 				0CC4964F1DB707650008F647 /* KHPersonHeader.m in Sources */,
 				0CBD1A1A1DACB650003E8150 /* IQPreviousNextView.m in Sources */,
 				0C5E05F01DAE36FE00B2133F /* TAAbstractDotView.m in Sources */,
+				0CE379661DC0B3BF00F42A4F /* BtButton.m in Sources */,
 				0CD77C901DBF44A600F72AA5 /* KHAppearViewController.m in Sources */,
 				0C2705991DAF27A600CE2F15 /* KHTenModel.m in Sources */,
 				0C6F59DF1DB89D6D00105C8C /* UITableView+Custom.m in Sources */,
@@ -1495,6 +1557,7 @@
 				0CB129391DAA28ED005A0A4D /* UIColor+YWcolor.m in Sources */,
 				0CBD1A121DACB650003E8150 /* IQUITextFieldView+Additions.m in Sources */,
 				0CB1293D1DAA28ED005A0A4D /* UIView+YWViewController.m in Sources */,
+				0C009FD01DC07E5B002F4470 /* NSString+TSTime.m in Sources */,
 				0CBD19D81DAC8A5D003E8150 /* KHHomeModel.m in Sources */,
 				0C3693411DAB6EE600BB3EE0 /* KHKnowModel.m in Sources */,
 				0C3693131DAB209A00BB3EE0 /* KHTabbarViewController.m in Sources */,
