@@ -35,4 +35,15 @@
 #define PortGoodsarea   @"http://oneshop.zhongwenyu1987.com/index.php/api/goods/goodsarea"
 
 
+
+//8.会员登录
+#define PortLogin       @"http://oneshop.zhongwenyu1987.com/index.php/api/User/login"
+
+//9.加入购物车
+#define PortAddCart     @"http://oneshop.zhongwenyu1987.com/index.php/api/Cart/addCart"
+
+//10.查看购物车
+#define PortIndex       @"http://oneshop.zhongwenyu1987.com/index.php/api/Cart/index"
+
+
 #endif /* port_h */

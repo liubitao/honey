@@ -36,6 +36,10 @@
     [self setRightImageNamed:@"share" action:@selector(share)];
     
     [self.view addSubview:self.scrollView];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     
     KHAppearDetailView *detailView = [[KHAppearDetailView alloc]initWithFrame:({
         CGRect rect = {0,0,kScreenWidth-10,1};
@@ -47,7 +51,6 @@
     
     [self.scrollView addSubview:detailView];
     self.scrollView.contentSize = CGSizeMake(kScreenWidth-10, detailView.height);
-    
 }
 /**
  *  分享

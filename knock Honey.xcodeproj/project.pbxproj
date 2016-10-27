@@ -35,6 +35,12 @@
 		0C3693411DAB6EE600BB3EE0 /* KHKnowModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3693401DAB6EE600BB3EE0 /* KHKnowModel.m */; };
 		0C3693451DAB8F8000BB3EE0 /* KHPulishedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3693431DAB8F8000BB3EE0 /* KHPulishedTableViewCell.m */; };
 		0C3693461DAB8F8000BB3EE0 /* KHPulishedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C3693441DAB8F8000BB3EE0 /* KHPulishedTableViewCell.xib */; };
+		0C5782D01DC1B8AB00DB0B9A /* KHRegiterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5782CE1DC1B8AB00DB0B9A /* KHRegiterViewController.m */; };
+		0C5782D11DC1B8AB00DB0B9A /* KHRegiterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C5782CF1DC1B8AB00DB0B9A /* KHRegiterViewController.xib */; };
+		0C5782D51DC1D60100DB0B9A /* KHRegiterSecondController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5782D31DC1D60100DB0B9A /* KHRegiterSecondController.m */; };
+		0C5782D61DC1D60100DB0B9A /* KHRegiterSecondController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C5782D41DC1D60100DB0B9A /* KHRegiterSecondController.xib */; };
+		0C5782DA1DC1DD5000DB0B9A /* KHRegiterThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5782D81DC1DD5000DB0B9A /* KHRegiterThirdViewController.m */; };
+		0C5782DB1DC1DD5000DB0B9A /* KHRegiterThirdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C5782D91DC1DD5000DB0B9A /* KHRegiterThirdViewController.xib */; };
 		0C5E05CA1DADCF7700B2133F /* KHDowmViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E05C81DADCF7700B2133F /* KHDowmViewCell.m */; };
 		0C5E05CB1DADCF7700B2133F /* KHDowmViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C5E05C91DADCF7700B2133F /* KHDowmViewCell.xib */; };
 		0C5E05CF1DADDD3900B2133F /* KHheard2View.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E05CD1DADDD3900B2133F /* KHheard2View.m */; };
@@ -111,6 +117,9 @@
 		0CD77C941DBF44D300F72AA5 /* KHAppearTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD77C921DBF44D300F72AA5 /* KHAppearTableViewCell.m */; };
 		0CD77C951DBF44D300F72AA5 /* KHAppearTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD77C931DBF44D300F72AA5 /* KHAppearTableViewCell.xib */; };
 		0CE379661DC0B3BF00F42A4F /* BtButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CE379651DC0B3BE00F42A4F /* BtButton.m */; };
+		0CEDEE391DC199C60063C690 /* PooCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEDEE381DC199C60063C690 /* PooCodeView.m */; };
+		0CEDEE3D1DC199F90063C690 /* KHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEDEE3B1DC199F90063C690 /* KHLoginViewController.m */; };
+		0CEDEE3E1DC199F90063C690 /* KHLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CEDEE3C1DC199F90063C690 /* KHLoginViewController.xib */; };
 		1940049D3EBD15A1FE12CC6B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C462ABFC3A89753851B1E5B4 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -184,6 +193,15 @@
 		0C3693421DAB8F8000BB3EE0 /* KHPulishedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHPulishedTableViewCell.h; sourceTree = "<group>"; };
 		0C3693431DAB8F8000BB3EE0 /* KHPulishedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPulishedTableViewCell.m; sourceTree = "<group>"; };
 		0C3693441DAB8F8000BB3EE0 /* KHPulishedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHPulishedTableViewCell.xib; sourceTree = "<group>"; };
+		0C5782CD1DC1B8AB00DB0B9A /* KHRegiterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHRegiterViewController.h; sourceTree = "<group>"; };
+		0C5782CE1DC1B8AB00DB0B9A /* KHRegiterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHRegiterViewController.m; sourceTree = "<group>"; };
+		0C5782CF1DC1B8AB00DB0B9A /* KHRegiterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHRegiterViewController.xib; sourceTree = "<group>"; };
+		0C5782D21DC1D60100DB0B9A /* KHRegiterSecondController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHRegiterSecondController.h; sourceTree = "<group>"; };
+		0C5782D31DC1D60100DB0B9A /* KHRegiterSecondController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHRegiterSecondController.m; sourceTree = "<group>"; };
+		0C5782D41DC1D60100DB0B9A /* KHRegiterSecondController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHRegiterSecondController.xib; sourceTree = "<group>"; };
+		0C5782D71DC1DD5000DB0B9A /* KHRegiterThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHRegiterThirdViewController.h; sourceTree = "<group>"; };
+		0C5782D81DC1DD5000DB0B9A /* KHRegiterThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHRegiterThirdViewController.m; sourceTree = "<group>"; };
+		0C5782D91DC1DD5000DB0B9A /* KHRegiterThirdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHRegiterThirdViewController.xib; sourceTree = "<group>"; };
 		0C5E05C71DADCF7700B2133F /* KHDowmViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHDowmViewCell.h; sourceTree = "<group>"; };
 		0C5E05C81DADCF7700B2133F /* KHDowmViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHDowmViewCell.m; sourceTree = "<group>"; };
 		0C5E05C91DADCF7700B2133F /* KHDowmViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHDowmViewCell.xib; sourceTree = "<group>"; };
@@ -335,6 +353,11 @@
 		0CD77C931DBF44D300F72AA5 /* KHAppearTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHAppearTableViewCell.xib; sourceTree = "<group>"; };
 		0CE379641DC0B3BE00F42A4F /* BtButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BtButton.h; path = ../../view/BtButton.h; sourceTree = "<group>"; };
 		0CE379651DC0B3BE00F42A4F /* BtButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BtButton.m; path = ../../view/BtButton.m; sourceTree = "<group>"; };
+		0CEDEE371DC199C60063C690 /* PooCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PooCodeView.h; sourceTree = "<group>"; };
+		0CEDEE381DC199C60063C690 /* PooCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PooCodeView.m; sourceTree = "<group>"; };
+		0CEDEE3A1DC199F90063C690 /* KHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHLoginViewController.h; sourceTree = "<group>"; };
+		0CEDEE3B1DC199F90063C690 /* KHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHLoginViewController.m; sourceTree = "<group>"; };
+		0CEDEE3C1DC199F90063C690 /* KHLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHLoginViewController.xib; sourceTree = "<group>"; };
 		74E0C9D2929A91D4AB2D6BA5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B30030C39E55FCBDA7B7F09D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C462ABFC3A89753851B1E5B4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -569,6 +592,7 @@
 		0C3693361DAB5F2200BB3EE0 /* customFunc（自定义视图） */ = {
 			isa = PBXGroup;
 			children = (
+				0CEDEE361DC199C60063C690 /* 图片验证码 */,
 				0C2705B01DAF7CA500CE2F15 /* CountLabel */,
 				0C5E05D11DADFAC700B2133F /* 左文右图 */,
 				0CBD1A731DACD43C003E8150 /* 上图下字按钮 */,
@@ -782,6 +806,7 @@
 				0CB1293E1DAA291A005A0A4D /* baseClass（基类） */,
 				0CB128F61DAA1F2E005A0A4D /* AppDelegate */,
 				0C3693101DAB205800BB3EE0 /* menu */,
+				0CEDEE331DC193E50063C690 /* 登录注册 */,
 				0CB128F01DAA1EF3005A0A4D /* 夺宝 */,
 				0CB128F51DAA1EF3005A0A4D /* 最新揭晓 */,
 				0CB128F41DAA1EF3005A0A4D /* 晒单 */,
@@ -1293,6 +1318,50 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		0CEDEE331DC193E50063C690 /* 登录注册 */ = {
+			isa = PBXGroup;
+			children = (
+				0CEDEE351DC193E50063C690 /* 登录 */,
+				0CEDEE341DC193E50063C690 /* 注册 */,
+			);
+			path = "登录注册";
+			sourceTree = "<group>";
+		};
+		0CEDEE341DC193E50063C690 /* 注册 */ = {
+			isa = PBXGroup;
+			children = (
+				0C5782CD1DC1B8AB00DB0B9A /* KHRegiterViewController.h */,
+				0C5782CE1DC1B8AB00DB0B9A /* KHRegiterViewController.m */,
+				0C5782CF1DC1B8AB00DB0B9A /* KHRegiterViewController.xib */,
+				0C5782D21DC1D60100DB0B9A /* KHRegiterSecondController.h */,
+				0C5782D31DC1D60100DB0B9A /* KHRegiterSecondController.m */,
+				0C5782D41DC1D60100DB0B9A /* KHRegiterSecondController.xib */,
+				0C5782D71DC1DD5000DB0B9A /* KHRegiterThirdViewController.h */,
+				0C5782D81DC1DD5000DB0B9A /* KHRegiterThirdViewController.m */,
+				0C5782D91DC1DD5000DB0B9A /* KHRegiterThirdViewController.xib */,
+			);
+			path = "注册";
+			sourceTree = "<group>";
+		};
+		0CEDEE351DC193E50063C690 /* 登录 */ = {
+			isa = PBXGroup;
+			children = (
+				0CEDEE3A1DC199F90063C690 /* KHLoginViewController.h */,
+				0CEDEE3B1DC199F90063C690 /* KHLoginViewController.m */,
+				0CEDEE3C1DC199F90063C690 /* KHLoginViewController.xib */,
+			);
+			path = "登录";
+			sourceTree = "<group>";
+		};
+		0CEDEE361DC199C60063C690 /* 图片验证码 */ = {
+			isa = PBXGroup;
+			children = (
+				0CEDEE371DC199C60063C690 /* PooCodeView.h */,
+				0CEDEE381DC199C60063C690 /* PooCodeView.m */,
+			);
+			path = "图片验证码";
+			sourceTree = "<group>";
+		};
 		AB43EC70D2FC0A6A6B3B5B58 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1409,8 +1478,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C5782DB1DC1DD5000DB0B9A /* KHRegiterThirdViewController.xib in Resources */,
 				0C5E05CB1DADCF7700B2133F /* KHDowmViewCell.xib in Resources */,
 				0C2705AD1DAF66EB00CE2F15 /* TreasureDetailCell.xib in Resources */,
+				0C5782D11DC1B8AB00DB0B9A /* KHRegiterViewController.xib in Resources */,
+				0C5782D61DC1D60100DB0B9A /* KHRegiterSecondController.xib in Resources */,
 				0C01B5CE1DB623C400D41F43 /* KHPersonCell.xib in Resources */,
 				0CBD1A1E1DACB650003E8150 /* IQKeyboardManager.bundle in Resources */,
 				0C3693461DAB8F8000BB3EE0 /* KHPulishedTableViewCell.xib in Resources */,
@@ -1421,6 +1493,7 @@
 				0C5E05D01DADDD3900B2133F /* KHheard2View.xib in Resources */,
 				0C36933E1DAB66C800BB3EE0 /* KHKnowTableViewCell.xib in Resources */,
 				0CB128CA1DAA0467005A0A4D /* Assets.xcassets in Resources */,
+				0CEDEE3E1DC199F90063C690 /* KHLoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1530,6 +1603,7 @@
 				0C5E05D41DADFAEC00B2133F /* KHChangButton.m in Sources */,
 				0C2705961DAF279200CE2F15 /* KHTenViewController.m in Sources */,
 				0C5E05F91DAE3A7E00B2133F /* KHDetailModel.m in Sources */,
+				0CEDEE3D1DC199F90063C690 /* KHLoginViewController.m in Sources */,
 				0C6F59DC1DB88DAE00105C8C /* KHcartModel.m in Sources */,
 				0C01B5BB1DB5B6C700D41F43 /* KHWinner.m in Sources */,
 				0C5E05F11DAE36FE00B2133F /* TAAnimatedDotView.m in Sources */,
@@ -1544,6 +1618,7 @@
 				0CB1293A1DAA28ED005A0A4D /* UIImage+YWimage.m in Sources */,
 				0CBD1A171DACB650003E8150 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				0C6F59E91DB8CB3700105C8C /* ShoppingListLayout.m in Sources */,
+				0C5782DA1DC1DD5000DB0B9A /* KHRegiterThirdViewController.m in Sources */,
 				0CBD1A131DACB650003E8150 /* IQUIView+Hierarchy.m in Sources */,
 				0CBD1A141DACB650003E8150 /* IQUIViewController+Additions.m in Sources */,
 				0C01B5C41DB607C300D41F43 /* KHPersonViewController.m in Sources */,
@@ -1574,11 +1649,14 @@
 				0C6F59E31DB8CB2000105C8C /* EditingCell.m in Sources */,
 				0CB128F91DAA1F2E005A0A4D /* AppDelegate.m in Sources */,
 				0C01B5CD1DB623C400D41F43 /* KHPersonCell.m in Sources */,
+				0C5782D01DC1B8AB00DB0B9A /* KHRegiterViewController.m in Sources */,
 				0CB129381DAA28ED005A0A4D /* UIAlertController+BTAdd.m in Sources */,
 				0CBD1A561DACB78B003E8150 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
+				0C5782D51DC1D60100DB0B9A /* KHRegiterSecondController.m in Sources */,
 				0C3693251DAB281000BB3EE0 /* KHNavigationViewController.m in Sources */,
 				0C2705A21DAF666C00CE2F15 /* TreasureDetailFooter.m in Sources */,
 				0CB128BF1DAA0467005A0A4D /* main.m in Sources */,
+				0CEDEE391DC199C60063C690 /* PooCodeView.m in Sources */,
 				0C2705AE1DAF66EB00CE2F15 /* TreasureDetailHeader.m in Sources */,
 				0C36933D1DAB66C800BB3EE0 /* KHKnowTableViewCell.m in Sources */,
 				0CBD19EA1DAC9116003E8150 /* KHMessageViewController.m in Sources */,

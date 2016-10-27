@@ -12,14 +12,6 @@
 @implementation YWUser
 // 底层便利当前的类的所有属性，一个一个归档和接档
 MJCodingImplementation
-+ (instancetype)yw_objectWithKeyValues:(NSDictionary*)dict{
-    
-    [self mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
-        return @{
-                 @"ID":@"id"
-                 };
-    }];
-    return [self mj_objectWithKeyValues:dict];
-}
+
 
 @end

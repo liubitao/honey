@@ -39,6 +39,9 @@
 //工具类
 #import "Utils.h"
 #import "YWHttptool.h"
+#import "YWUserTool.h"
+#import "YWUser.h"
+
 
 
 // Include any system framework and library headers here that should be included in all compilation units.

@@ -100,8 +100,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     KHAppearDetailController *detailVC = [[KHAppearDetailController alloc]init];
     detailVC.AppearModel = _dataArray[indexPath.row];
-    [self hideBottomBarPush:detailVC];
-    
+    [self pushController:detailVC];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

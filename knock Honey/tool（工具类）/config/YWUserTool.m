@@ -12,7 +12,7 @@
 #define YWAccountFileName [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0] stringByAppendingPathComponent:@"account.data"]
 
 @implementation YWUserTool
-
+//不能缺少 底层便利当前的类的所有属性，一个一个归档和接档  MJCodingImplementation
 + (void)saveAccount:(YWUser *)account{
     [NSKeyedArchiver archiveRootObject:account toFile:YWAccountFileName];
 }
