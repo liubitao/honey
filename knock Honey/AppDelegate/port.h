@@ -14,6 +14,7 @@
 #define sKey        @"bf9024c8e834146606c7f364e73f743a"
 #define mKey        @"oneshopgoods"
 #define portPic     @"http://"
+#define PortCartPic @"http://oneshop.zhongwenyu1987.com"
 
 
 //2.商品列表

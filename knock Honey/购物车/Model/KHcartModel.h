@@ -7,20 +7,43 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KHCartGoodsModel.h"
+
 
 @interface KHcartModel : NSObject
 
 @property (nonatomic, assign) BOOL isChecked;
 
-@property (nonatomic, copy) NSString *imgUrl;
+/**
+ *  添加时间
+ */
+@property (nonatomic,copy) NSString *addtime;
 
-@property (nonatomic, copy) NSString *name;
+/**
+ *  商品购买次数
+ */
+@property (nonatomic,copy) NSString *buynum;
 
-@property (nonatomic, copy) NSString *totalAmount;
+/**
+ *  商品id
+ */
+@property (nonatomic,copy) NSString *goodsid;
 
-@property (nonatomic, copy) NSString *leftAmount;
+/**
+ *  购物车id
+ */
+@property (nonatomic,copy) NSString *ID;
 
-@property (nonatomic, copy) NSNumber *selectCount;
+/**
+ *  用户id
+ */
+@property (nonatomic,copy) NSString *userid;
 
-@property (nonatomic, copy) NSNumber *unitCost;
+
+@property (nonatomic,strong) KHCartGoodsModel *goods;
+
+
++ (instancetype)kh_objectWithKeyValues:(NSDictionary*)dict;
+
++ (NSMutableArray*)kh_objectWithKeyValuesArray:(NSArray *)array;
 @end

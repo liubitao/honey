@@ -194,7 +194,10 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
         parameter[@"sort"] = array[i];
         [YWHttptool GET:PortGoodslist parameters:parameter success:^(id responseObject) {
             NSLog(@"%@",responseObject);
-            if ([responseObject[@"isError"] integerValue])return ;
+            if ([responseObject[@"isError"] integerValue]){
+                [MBProgressHUD showError:@"没有更多的商品了！"];
+                return ;
+            }
             NSMutableArray *data = [KHHomeModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
             [_dataArray[i] addObjectsFromArray:data];
             if (i == 0) {
@@ -384,9 +387,19 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     CGRect listRect = self.tabBarController.tabBar.frame;
     listRect.origin.x = 3*KscreenWidth/5+KscreenWidth/5/2;
     listRect.size.width = KscreenWidth/5.0;
-//    KHHomeModel *model = _dataArray[indexPath.section][indexPath.row];
-//    model.isAdded = YES;
-//    [_dataArray replaceObjectAtIndex:indexPath.row withObject:model];
+    
+    KHHomeModel *model = _dataArray[_currentIndex][indexPath.row];
+    NSMutableDictionary *parameter = [Utils parameter];
+    parameter[@"userid"] = [YWUserTool account].userid;
+    parameter[@"goodsid"] = model.ID;
+    [YWHttptool GET:PortAddCart parameters:parameter success:^(id responseObject) {
+        NSLog(@"%@",responseObject);
+        if ([responseObject[@"isError"] integerValue]) return ;
+        [MBProgressHUD showSuccess:@"已添加"];
+    } failure:^(NSError *error) {
+        [MBProgressHUD showError:@"添加失败"];
+    }];
+
     
     CGRect parentRectA = [cell.contentView convertRect:cell.productImgView.frame toView:self.tabBarController.view];
     CGRect parentRectB = [self.view convertRect:listRect toView:self.tabBarController.view];
@@ -419,8 +432,6 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
 }
 #pragma mark - TSAnimationDelegate;//动画完成
 - (void)animationFinished{
-    NSLog(@"动画完成");
-    
     [self.productView removeFromSuperview];
 }
 

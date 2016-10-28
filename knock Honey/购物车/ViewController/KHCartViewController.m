@@ -13,9 +13,6 @@
 #import "ShoppingListLayout.h"
 
 @interface KHCartViewController ()<UITableViewDataSource,UITableViewDelegate,ShoppingListCellDelegate>
-{
-    NSInteger _currentPage;
-}
 @property (nonatomic, strong) NSNumber *moneySum;
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *dataArray;
@@ -78,6 +75,18 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"购物车";
     [self.view addSubview:self.tableView];
+    
+    //下拉刷新
+    __weak typeof(self) weakSelf = self;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf getDatasource];
+        //结束刷新
+        [weakSelf.tableView.mj_header endRefreshing];
+    }];
+    
+    //开始下拉刷新
+    [self.tableView.mj_header beginRefreshing];
+
     [self setRightImageNamed:@"help" action:@selector(helpClick)];
 }
 
@@ -94,15 +103,24 @@
 
 
 - (void)getDatasource{
-    [self.dataArray removeAllObjects];
-    for (int i=0; i<3; i++) {
-        KHcartModel *model = [[KHcartModel alloc]init];
-        ShoppingListLayout *layout = [[ShoppingListLayout alloc]initWithModel:model];
-        [self.dataArray addObject:layout];
-    }
-    [_tableView reloadData];
-    [self getMoneySum];
-    [self setupBillview];
+    NSMutableDictionary *parameter = [Utils parameter];
+    parameter[@"userid"] = [YWUserTool account].userid;
+    [YWHttptool GET:PortIndex parameters:parameter success:^(id responseObject) {
+        NSLog(@"%@",responseObject);
+        if ([responseObject[@"isError"] integerValue]) return ;
+        [_dataArray removeAllObjects];
+        NSMutableArray *mutableArray = [KHcartModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
+        for (KHcartModel *cartModel in mutableArray) {
+            ShoppingListLayout *layout = [[ShoppingListLayout alloc]initWithModel:cartModel];
+            [self.dataArray addObject:layout];
+        }
+        [self.tableView reloadData];
+        [self getMoneySum];
+        [self setupBillview];
+    } failure:^(NSError *error) {
+        [MBProgressHUD showError:@"网络连接有误"];
+    }];
+  
 }
 
 - (void)setupBillview {
@@ -225,7 +243,7 @@
                                                   NSUInteger idx,
                                                   BOOL * _Nonnull stop) {
             ShoppingListLayout *oneLayout = (ShoppingListLayout *)obj;
-            sum += (oneLayout.model.unitCost.integerValue * oneLayout.model.selectCount.integerValue);
+            sum += oneLayout.model.buynum.integerValue;
             weakSelf.moneySum = @(sum);
         }];
 }
@@ -280,7 +298,7 @@
 #pragma mark - ShoppingListCellDelegate
 - (void)listCount:(NSNumber *)listCount atIndexPath:(NSIndexPath *)indexPath {
     ShoppingListLayout *layout = _dataArray[indexPath.row];
-    layout.model.selectCount = listCount;
+    layout.model.buynum = [NSString stringWithFormat:@"%@",listCount];
     [_dataArray replaceObjectAtIndex:indexPath.row withObject:layout];
     [self getMoneySum];
     [_billView setMoneyNumber:_dataArray.count Sum:_moneySum];

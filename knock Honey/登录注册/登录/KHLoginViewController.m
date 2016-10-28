@@ -181,11 +181,11 @@
         [MBProgressHUD showError:@"网络不佳"];
     }];
 }
+
 /**
  *  注册
  */
 - (IBAction)registerAccount:(id)sender {
-//    KHNavigationViewController *naVC = [[KHNavigationViewController alloc]initWithRootViewController:self];
     KHRegiterViewController *regiterVC = [[KHRegiterViewController alloc]init];
     [self hideBottomBarPush:regiterVC];
 }

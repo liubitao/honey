@@ -26,7 +26,6 @@
 @end
 
 @implementation KHPublishModel
-MJCodingImplementation
 
 + (instancetype)kh_objectWithKeyValues:(NSDictionary*)dict{
     [self mj_setupReplacedKeyFromPropertyName:^NSDictionary *{

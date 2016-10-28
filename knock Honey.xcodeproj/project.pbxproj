@@ -65,6 +65,7 @@
 		0C6F59E31DB8CB2000105C8C /* EditingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6F59E21DB8CB2000105C8C /* EditingCell.m */; };
 		0C6F59E81DB8CB3700105C8C /* ShoppingListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6F59E51DB8CB3700105C8C /* ShoppingListCell.m */; };
 		0C6F59E91DB8CB3700105C8C /* ShoppingListLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6F59E71DB8CB3700105C8C /* ShoppingListLayout.m */; };
+		0C7C02E41DC346CC00C5ED85 /* KHCartGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7C02E31DC346CC00C5ED85 /* KHCartGoodsModel.m */; };
 		0CB128BF1DAA0467005A0A4D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB128BE1DAA0467005A0A4D /* main.m */; };
 		0CB128CA1DAA0467005A0A4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CB128C91DAA0467005A0A4D /* Assets.xcassets */; };
 		0CB128CD1DAA0467005A0A4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CB128CB1DAA0467005A0A4D /* LaunchScreen.storyboard */; };
@@ -248,6 +249,8 @@
 		0C6F59E51DB8CB3700105C8C /* ShoppingListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListCell.m; sourceTree = "<group>"; };
 		0C6F59E61DB8CB3700105C8C /* ShoppingListLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListLayout.h; sourceTree = "<group>"; };
 		0C6F59E71DB8CB3700105C8C /* ShoppingListLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListLayout.m; sourceTree = "<group>"; };
+		0C7C02E21DC346CC00C5ED85 /* KHCartGoodsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHCartGoodsModel.h; sourceTree = "<group>"; };
+		0C7C02E31DC346CC00C5ED85 /* KHCartGoodsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHCartGoodsModel.m; sourceTree = "<group>"; };
 		0CB128BA1DAA0467005A0A4D /* knock Honey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "knock Honey.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CB128BE1DAA0467005A0A4D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0CB128C91DAA0467005A0A4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -715,6 +718,8 @@
 			children = (
 				0C6F59DA1DB88DAE00105C8C /* KHcartModel.h */,
 				0C6F59DB1DB88DAE00105C8C /* KHcartModel.m */,
+				0C7C02E21DC346CC00C5ED85 /* KHCartGoodsModel.h */,
+				0C7C02E31DC346CC00C5ED85 /* KHCartGoodsModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1621,6 +1626,7 @@
 				0C5782DA1DC1DD5000DB0B9A /* KHRegiterThirdViewController.m in Sources */,
 				0CBD1A131DACB650003E8150 /* IQUIView+Hierarchy.m in Sources */,
 				0CBD1A141DACB650003E8150 /* IQUIViewController+Additions.m in Sources */,
+				0C7C02E41DC346CC00C5ED85 /* KHCartGoodsModel.m in Sources */,
 				0C01B5C41DB607C300D41F43 /* KHPersonViewController.m in Sources */,
 				0C5E05DF1DAE32F800B2133F /* KHDetailViewController.m in Sources */,
 				0C01B5BE1DB6007600D41F43 /* KHIMage.m in Sources */,

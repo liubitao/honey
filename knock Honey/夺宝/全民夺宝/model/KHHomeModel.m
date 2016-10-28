@@ -11,7 +11,6 @@
 
 
 @implementation KHHomeModel
-MJCodingImplementation
 
 + (instancetype)kh_objectWithKeyValues:(NSDictionary*)dict{
     [self mj_setupReplacedKeyFromPropertyName:^NSDictionary *{

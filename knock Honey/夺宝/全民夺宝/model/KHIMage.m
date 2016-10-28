@@ -9,7 +9,6 @@
 #import "KHIMage.h"
 #import <MJExtension/MJExtension.h>
 @implementation KHIMage
-MJCodingImplementation
 
 + (NSMutableArray*)kh_objectWithKeyValuesArray:(NSArray *)array{
     NSMutableArray *result = [NSMutableArray array];

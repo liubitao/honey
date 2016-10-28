@@ -58,7 +58,6 @@
         _productNameLabel = [YYLabel new];
         _productNameLabel.origin = CGPointMake(_productImgView.right+kProductImagePadding, 15);
         _productNameLabel.size = CGSizeMake(kProductNameWidth, 39);
-
         [self.contentView addSubview:_productNameLabel];
 
         _productCountLabel = [YYLabel new];
@@ -73,7 +72,7 @@
         [self.contentView addSubview:_listView];
         
         _renci = [YYLabel new];
-        _renci.origin = CGPointMake(_listView.right+12, _productNameLabel.bottom+25);
+        _renci.origin = CGPointMake(_listView.right+8, _listView.top);
         _renci.size = CGSizeMake(40, 16);
         _renci.font = SYSTEM_FONT(12);
         _renci.textColor = UIColorHex(999999);
@@ -104,7 +103,7 @@
         top += kProductImageDefaultMargin;
     }
     _productImgView.top = top;
-    [_productImgView setImageWithURL:[NSURL URLWithString:layout.model.imgUrl] options:YYWebImageOptionProgressiveBlur];
+    [_productImgView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",PortCartPic,layout.model.goods.thumb]] options:YYWebImageOptionProgressiveBlur];
     _productNameLabel.top = top;
     _productNameLabel.height = _layout.nameHeight;
     _productNameLabel.width = self.editing ? kProductNameWidth-47 : kProductNameWidth;
@@ -115,18 +114,20 @@
     _productCountLabel.top = top;
     _productCountLabel.textLayout = _layout.paticipateLayout;
     _productCountLabel.height = _layout.partInAmountHeight;
-    NSString *str = [NSString stringWithFormat:@"总需:%@人次,剩余:%@人次",layout.model.totalAmount,layout.model.leftAmount];
-    NSMutableAttributedString *attributeString = [Utils stringWith:str font1:SYSTEM_FONT(12) color1:UIColorHex(999999) font2:SYSTEM_FONT(12) color2:kDefaultColor range:NSMakeRange(layout.model.totalAmount.length+9, layout.model.leftAmount.length)];
+    NSInteger  surplus = [layout.model.goods.zongrenshu integerValue] - [layout.model.goods.canyurenshu integerValue];
+    NSString *surplusStr = [NSString stringWithFormat:@"%ld",(long)surplus];
+    NSString *str = [NSString stringWithFormat:@"总需:%@人次,剩余:%@人次",layout.model.goods.zongrenshu,surplusStr];
+    NSMutableAttributedString *attributeString = [Utils stringWith:str font1:SYSTEM_FONT(12) color1:UIColorHex(999999) font2:SYSTEM_FONT(12) color2:kDefaultColor range:NSMakeRange(layout.model.goods.zongrenshu.length+9, surplusStr.length)];
     _productCountLabel.attributedText = attributeString;
     
     top += _layout.partInAmountHeight;
     _listView.top = top;
-    _listView.selectedCount = _layout.model.selectCount.integerValue;
-    [_listView setSelectedCount:_layout.model.selectCount.integerValue totalCount:99];
+    _listView.selectedCount = _layout.model.buynum.integerValue;
+    [_listView setSelectedCount:_layout.model.buynum.integerValue totalCount:99];
     _listView.userInteractionEnabled = self.editing ? NO : YES;
     
-    top += _layout.partInAmountHeight+15;
-    _renci.top = top;
+    _renci.top = top+10;
+    
 }
 
 @end

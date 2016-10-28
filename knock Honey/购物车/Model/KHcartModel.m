@@ -7,24 +7,27 @@
 //
 
 #import "KHcartModel.h"
+#import <MJExtension.h>
 
 @implementation KHcartModel
 
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.imgUrl = @"http://onegoods.nosdn.127.net/goods/1093/5095bc4b3f4228b69d6b58acf67cae1c.jpg";
-        self.name = @"iPhone 6s 64G 玫瑰金 玫瑰金玫瑰金玫瑰金玫瑰金玫瑰金玫瑰金金";
-        self.totalAmount = @"6400";
-        self.leftAmount = @"300";
-        self.selectCount = @6;
-        self.isChecked = NO;
-        self.unitCost = @1;
-    }
-    return self;
++ (instancetype)kh_objectWithKeyValues:(NSDictionary*)dict{
+    [self mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
+        return @{
+                 @"ID":@"id"
+                 };
+    }];
+    return [self mj_objectWithKeyValues:dict];
 }
 
++ (NSMutableArray*)kh_objectWithKeyValuesArray:(NSArray *)array{
+    NSMutableArray *result = [NSMutableArray array];
+    for (NSDictionary *dict in array) {
+        KHcartModel *model = [self kh_objectWithKeyValues:dict];
+        model.goods = [KHCartGoodsModel kh_objectWithKeyValues:dict[@"goods"]];
+        [result addObject:model];
+    }
+    return result;
+}
 
 @end

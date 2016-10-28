@@ -10,7 +10,6 @@
 #import <MJExtension/MJExtension.h>
 
 @implementation KHTenModel
-MJCodingImplementation
 
 + (instancetype)kh_objectWithKeyValues:(NSDictionary*)dict{
     [self mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
