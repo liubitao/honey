@@ -1,0 +1,32 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "605B60A466E815E02F1F690A8704F107B1F633C2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "b0ee9f78-3d31-be4f-b21b-c15cee1859db++1809" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "b0ee9f78-3d31-be4f-b21b-c15cee1859db++1809" : 0,
+    "605B60A466E815E02F1F690A8704F107B1F633C2" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "781C660E-B510-4DBF-A3EC-EAD8E104ABA5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "b0ee9f78-3d31-be4f-b21b-c15cee1859db++1809" : "%E5%A4%BA%E5%AE%9D\/knock%20Honey\/customFunc%EF%BC%88%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A7%86%E5%9B%BE%EF%BC%89\/%E8%BF%9B%E5%BA%A6%E6%9D%A1\/",
+    "605B60A466E815E02F1F690A8704F107B1F633C2" : "%E5%A4%BA%E5%AE%9D\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "knock Honey",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "knock Honey.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/liubitao\/honey.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "605B60A466E815E02F1F690A8704F107B1F633C2"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/192.168.6.7:8443\/svn\/IMyBest_Shopping",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "b0ee9f78-3d31-be4f-b21b-c15cee1859db++1809"
+    }
+  ]
+}

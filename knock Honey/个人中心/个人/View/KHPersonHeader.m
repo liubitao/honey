@@ -23,6 +23,8 @@ CGFloat balanceViewHeight = 45.0;
  */
 @property (nonatomic, strong) UIImageView *headImageView;
 
+@property (nonatomic,strong) UIButton *settingButton;
+
 /**昵称
  */
 @property (nonatomic, strong) YYLabel *nameLabel;
@@ -63,6 +65,9 @@ CGFloat balanceViewHeight = 45.0;
 }
 
 - (void)_init {
+    
+    
+    
     _bgImageView = [UIImageView new];
     _bgImageView.origin = CGPointMake(0, 0);
     _bgImageView.size = CGSizeMake(kScreenWidth, bgImageViewHeight);
@@ -71,9 +76,18 @@ CGFloat balanceViewHeight = 45.0;
     _bgImageView.clipsToBounds = YES;
     [self addSubview:_bgImageView];
     
+    _settingButton = [[UIButton alloc]initWithFrame:CGRectZero];
+    _settingButton.origin = CGPointMake(kScreenWidth - 50, 30);
+    _settingButton.size = CGSizeMake(40, 40);
+    [_settingButton setImage:IMAGE_NAMED(@"install") forState:UIControlStateNormal];
+    [_settingButton addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:_settingButton];
+    
+    
     _headImageView = [UIImageView new];
     _headImageView.origin = CGPointMake(headImageViewLeftMargin, _bgImageView.bottom-45);
     _headImageView.size = CGSizeMake(headImageViewWidth, headImageViewWidth);
+    _headImageView.contentMode = UIViewContentModeScaleToFill;
     _headImageView.layer.cornerRadius = 5;
     _headImageView.layer.masksToBounds = YES;
     _headImageView.layer.borderWidth = 5;
@@ -81,8 +95,9 @@ CGFloat balanceViewHeight = 45.0;
     _headImageView.layer.shouldRasterize = YES;
     _headImageView.layer.rasterizationScale = kScreenScale;
     _headImageView.userInteractionEnabled = YES;
-
-    _headImageView.image = [UIImage imageNamed:@"2"];
+    
+    YWUser *user = [YWUserTool account];
+    [_headImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",portPic,user.img]] placeholderImage:[UIImage imageNamed:@"kongren"]];
     __weak typeof(self) weakSelf = self;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithActionBlock:^(id  _Nonnull sender) {
         if (weakSelf.headImgBlock) {
@@ -92,8 +107,9 @@ CGFloat balanceViewHeight = 45.0;
     [_headImageView addGestureRecognizer:tap];
     
     
+    
     _nameLabel = [YYLabel new];
-    _nameLabel.text = @"湮灭&尘事";
+    _nameLabel.text = user.username;
     _nameLabel.origin = CGPointMake(_headImageView.right+headImageViewRightMargin, _headImageView.top);
     _nameLabel.size = CGSizeMake(kScreenWidth-_headImageView.right-10*2, 19);
     _nameLabel.textColor = [UIColor whiteColor];
@@ -101,7 +117,7 @@ CGFloat balanceViewHeight = 45.0;
     [self addSubview:_nameLabel];
     
     _IDLabel = [YYLabel new];
-    _IDLabel.text = [NSString stringWithFormat:@"推荐ID:30611576"];
+    _IDLabel.text = [NSString stringWithFormat:@"推荐ID:%@",user.userid];
     _IDLabel.origin = CGPointMake(_headImageView.right+headImageViewRightMargin, _nameLabel.bottom+7);
     _IDLabel.size = CGSizeMake((kScreenWidth-_headImageView.right)/2, 12);
     _IDLabel.textColor = [UIColor whiteColor];
@@ -109,7 +125,7 @@ CGFloat balanceViewHeight = 45.0;
     [self addSubview:_IDLabel];
     
     _integralLabel = [YYLabel new];
-    _integralLabel.text = [NSString stringWithFormat:@"积分:0"];
+    _integralLabel.text = [NSString stringWithFormat:@"积分:%@",user.score];
     _integralLabel.origin = CGPointMake(KscreenWidth-160, _nameLabel.bottom+10);
     _integralLabel.size = CGSizeMake(150, 12);
     _integralLabel.textAlignment = NSTextAlignmentRight;
@@ -131,7 +147,7 @@ CGFloat balanceViewHeight = 45.0;
             balanceViewHeight};
         rect;
     })];
-    _balanceView.balanceAmount = @0;
+    _balanceView.balanceAmount = user.money;
     _balanceView.topupBlock = ^(){
         if (weakSelf.topupBlock) {
             weakSelf.topupBlock();
@@ -142,6 +158,12 @@ CGFloat balanceViewHeight = 45.0;
     [self addSubview:_headImageView];
 }
 
+- (void)click:(UIButton *)sender{
+    if (_settingBlock) {
+        _settingBlock();
+    }
+}
+
 
 - (void)makeScaleForScrollView:(UIScrollView *)scrollView {
     CGFloat scale = fabs(scrollView.contentOffset.y/bgImageViewHeight);
@@ -150,7 +172,7 @@ CGFloat balanceViewHeight = 45.0;
     
 }
 
-- (void)setRemainSum:(NSNumber *)remainSum {
+- (void)setRemainSum:(NSString *)remainSum {
     _remainSum = remainSum;
     _balanceView.balanceAmount = _remainSum;
 }
@@ -158,10 +180,6 @@ CGFloat balanceViewHeight = 45.0;
 - (void)layoutSubviews {
     [super layoutSubviews];
     self.height = _balanceView.bottom;
-}
-
-- (void)dealloc {
-    NSLog(@"%s",__func__);
 }
 
 @end
@@ -180,13 +198,12 @@ CGFloat topupButtonHeight = 25.0;
 
 @implementation BalanceView
 
-- (void)setBalanceAmount:(NSNumber *)balanceAmount {
+- (void)setBalanceAmount:(NSString *)balanceAmount {
     _balanceAmount = balanceAmount;
     NSString *aString = [NSString stringWithFormat:@"抢币：%@",_balanceAmount];
     NSMutableAttributedString *attString = [[NSMutableAttributedString alloc]initWithString:aString];
     [attString addAttributes:@{NSForegroundColorAttributeName:UIColorHex(999999),NSFontAttributeName:SYSTEM_FONT(13)} range:NSMakeRange(0, 3)];
-    [attString addAttributes:@{NSForegroundColorAttributeName:kDefaultColor,NSFontAttributeName:SYSTEM_FONT(13)} range:NSMakeRange(3, _balanceAmount.stringValue.length)];
-    [attString addAttributes:@{NSForegroundColorAttributeName:UIColorHex(999999),NSFontAttributeName:SYSTEM_FONT(13)} range:NSMakeRange(attString.length-1, 1)];
+    [attString addAttributes:@{NSForegroundColorAttributeName:kDefaultColor,NSFontAttributeName:SYSTEM_FONT(13)} range:NSMakeRange(3, _balanceAmount.length)];
     _balanceLabel.attributedText = attString;
     _balanceLabel.size = [attString size];
     _topupButton.left = _balanceLabel.right + 8;

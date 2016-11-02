@@ -12,6 +12,8 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property (nonatomic, assign) NSInteger value;
 
++ (AppDelegate *)getAppDelegate;
 @end
 

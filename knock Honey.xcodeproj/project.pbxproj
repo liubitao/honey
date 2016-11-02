@@ -13,9 +13,6 @@
 		0C009FDA1DC09574002F4470 /* KHAppearDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C009FD91DC09574002F4470 /* KHAppearDetailView.m */; };
 		0C01B5BB1DB5B6C700D41F43 /* KHWinner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C01B5BA1DB5B6C700D41F43 /* KHWinner.m */; };
 		0C01B5BE1DB6007600D41F43 /* KHIMage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C01B5BD1DB6007600D41F43 /* KHIMage.m */; };
-		0C01B5C41DB607C300D41F43 /* KHPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C01B5C31DB607C300D41F43 /* KHPersonViewController.m */; };
-		0C01B5CD1DB623C400D41F43 /* KHPersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C01B5CB1DB623C400D41F43 /* KHPersonCell.m */; };
-		0C01B5CE1DB623C400D41F43 /* KHPersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C01B5CC1DB623C400D41F43 /* KHPersonCell.xib */; };
 		0C2705961DAF279200CE2F15 /* KHTenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2705951DAF279200CE2F15 /* KHTenViewController.m */; };
 		0C2705991DAF27A600CE2F15 /* KHTenModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2705981DAF27A600CE2F15 /* KHTenModel.m */; };
 		0C27059D1DAF287A00CE2F15 /* CategoryDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C27059B1DAF287A00CE2F15 /* CategoryDetailCell.m */; };
@@ -29,12 +26,13 @@
 		0C3693131DAB209A00BB3EE0 /* KHTabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3693121DAB209A00BB3EE0 /* KHTabbarViewController.m */; };
 		0C3693251DAB281000BB3EE0 /* KHNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3693241DAB281000BB3EE0 /* KHNavigationViewController.m */; };
 		0C3693281DAB2DD700BB3EE0 /* KHBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3693271DAB2DD700BB3EE0 /* KHBaseViewController.m */; };
-		0C36932F1DAB5AE400BB3EE0 /* KHKnowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C36932E1DAB5AE400BB3EE0 /* KHKnowViewController.m */; };
 		0C36933D1DAB66C800BB3EE0 /* KHKnowTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C36933A1DAB66C800BB3EE0 /* KHKnowTableViewCell.m */; };
 		0C36933E1DAB66C800BB3EE0 /* KHKnowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C36933B1DAB66C800BB3EE0 /* KHKnowTableViewCell.xib */; };
 		0C3693411DAB6EE600BB3EE0 /* KHKnowModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3693401DAB6EE600BB3EE0 /* KHKnowModel.m */; };
 		0C3693451DAB8F8000BB3EE0 /* KHPulishedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3693431DAB8F8000BB3EE0 /* KHPulishedTableViewCell.m */; };
 		0C3693461DAB8F8000BB3EE0 /* KHPulishedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C3693441DAB8F8000BB3EE0 /* KHPulishedTableViewCell.xib */; };
+		0C5609991DC9EDF600B7BEBC /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5609981DC9EDF600B7BEBC /* UIView+Frame.m */; };
+		0C5609A21DC9EF9E00B7BEBC /* KHAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5609A11DC9EF9E00B7BEBC /* KHAddressViewController.m */; };
 		0C5782D01DC1B8AB00DB0B9A /* KHRegiterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5782CE1DC1B8AB00DB0B9A /* KHRegiterViewController.m */; };
 		0C5782D11DC1B8AB00DB0B9A /* KHRegiterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C5782CF1DC1B8AB00DB0B9A /* KHRegiterViewController.xib */; };
 		0C5782D51DC1D60100DB0B9A /* KHRegiterSecondController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5782D31DC1D60100DB0B9A /* KHRegiterSecondController.m */; };
@@ -56,6 +54,15 @@
 		0C5E05F61DAE36FE00B2133F /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E05EF1DAE36FE00B2133F /* UIView+SDExtension.m */; };
 		0C5E05F91DAE3A7E00B2133F /* KHDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E05F81DAE3A7E00B2133F /* KHDetailModel.m */; };
 		0C5E05FC1DAE3B7C00B2133F /* KHProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E05FB1DAE3B7C00B2133F /* KHProductModel.m */; };
+		0C62AD271DC876FF0091119D /* KHTopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C62AD261DC876FF0091119D /* KHTopupViewController.m */; };
+		0C62AD2A1DC87B500091119D /* KHTopupHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C62AD291DC87B500091119D /* KHTopupHeader.m */; };
+		0C62AD2E1DC87BD60091119D /* KHTopupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C62AD2C1DC87BD60091119D /* KHTopupTableViewCell.m */; };
+		0C62AD2F1DC87BD60091119D /* KHTopupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C62AD2D1DC87BD60091119D /* KHTopupTableViewCell.xib */; };
+		0C645ECB1DC82809000E9B98 /* KHAppearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD77C8F1DBF44A600F72AA5 /* KHAppearViewController.m */; };
+		0C645ECC1DC8288C000E9B98 /* KHKnowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C36932E1DAB5AE400BB3EE0 /* KHKnowViewController.m */; };
+		0C645ECE1DC8294A000E9B98 /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C645ECD1DC8294A000E9B98 /* libAFNetworking.a */; };
+		0C645ED01DC8294F000E9B98 /* libYYKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C645ECF1DC8294F000E9B98 /* libYYKit.a */; };
+		0C645ED21DC82953000E9B98 /* libMJRefresh.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C645ED11DC82953000E9B98 /* libMJRefresh.a */; };
 		0C6F59C21DB85D2800105C8C /* KHPublishModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6F59C11DB85D2800105C8C /* KHPublishModel.m */; };
 		0C6F59C81DB868F100105C8C /* KHCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6F59C71DB868F100105C8C /* KHCartViewController.m */; };
 		0C6F59D51DB86BCF00105C8C /* BillView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6F59CB1DB86BCF00105C8C /* BillView.m */; };
@@ -66,6 +73,17 @@
 		0C6F59E81DB8CB3700105C8C /* ShoppingListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6F59E51DB8CB3700105C8C /* ShoppingListCell.m */; };
 		0C6F59E91DB8CB3700105C8C /* ShoppingListLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6F59E71DB8CB3700105C8C /* ShoppingListLayout.m */; };
 		0C7C02E41DC346CC00C5ED85 /* KHCartGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7C02E31DC346CC00C5ED85 /* KHCartGoodsModel.m */; };
+		0C9B05551DC71684008D7BFA /* UITabBar+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9B05541DC71684008D7BFA /* UITabBar+Badge.m */; };
+		0C9B055A1DC71F37008D7BFA /* UIBarButtonItem+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9B05571DC71F37008D7BFA /* UIBarButtonItem+Badge.m */; };
+		0C9B055B1DC71F37008D7BFA /* UIButton+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9B05591DC71F37008D7BFA /* UIButton+Badge.m */; };
+		0C9B05671DC72B0E008D7BFA /* YZDisplayTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9B05601DC72B0E008D7BFA /* YZDisplayTitleLabel.m */; };
+		0C9B05681DC72B0E008D7BFA /* YZDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9B05621DC72B0E008D7BFA /* YZDisplayViewController.m */; };
+		0C9B05691DC72B0E008D7BFA /* YZFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9B05651DC72B0E008D7BFA /* YZFlowLayout.m */; };
+		0C9B057C1DC72D92008D7BFA /* KHPersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9B056F1DC72D92008D7BFA /* KHPersonCell.m */; };
+		0C9B057D1DC72D92008D7BFA /* KHPersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C9B05701DC72D92008D7BFA /* KHPersonCell.xib */; };
+		0C9B057E1DC72D92008D7BFA /* KHPersonHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9B05721DC72D92008D7BFA /* KHPersonHeader.m */; };
+		0C9B057F1DC72D92008D7BFA /* KHPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9B05751DC72D92008D7BFA /* KHPersonViewController.m */; };
+		0C9B05851DC72EBA008D7BFA /* KHSnatchListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9B05841DC72EBA008D7BFA /* KHSnatchListController.m */; };
 		0CB128BF1DAA0467005A0A4D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB128BE1DAA0467005A0A4D /* main.m */; };
 		0CB128CA1DAA0467005A0A4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CB128C91DAA0467005A0A4D /* Assets.xcassets */; };
 		0CB128CD1DAA0467005A0A4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CB128CB1DAA0467005A0A4D /* LaunchScreen.storyboard */; };
@@ -113,8 +131,6 @@
 		0CBD1A6E1DACD05E003E8150 /* TSAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CBD1A6D1DACD05E003E8150 /* TSAnimation.m */; };
 		0CBD1A761DACD466003E8150 /* VerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CBD1A751DACD466003E8150 /* VerticalButton.m */; };
 		0CBD1A7E1DACEF97003E8150 /* HomeFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CBD1A7D1DACEF97003E8150 /* HomeFooter.m */; };
-		0CC4964F1DB707650008F647 /* KHPersonHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC4964E1DB707650008F647 /* KHPersonHeader.m */; };
-		0CD77C901DBF44A600F72AA5 /* KHAppearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD77C8F1DBF44A600F72AA5 /* KHAppearViewController.m */; };
 		0CD77C941DBF44D300F72AA5 /* KHAppearTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD77C921DBF44D300F72AA5 /* KHAppearTableViewCell.m */; };
 		0CD77C951DBF44D300F72AA5 /* KHAppearTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD77C931DBF44D300F72AA5 /* KHAppearTableViewCell.xib */; };
 		0CE379661DC0B3BF00F42A4F /* BtButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CE379651DC0B3BE00F42A4F /* BtButton.m */; };
@@ -155,11 +171,6 @@
 		0C01B5BA1DB5B6C700D41F43 /* KHWinner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHWinner.m; sourceTree = "<group>"; };
 		0C01B5BC1DB6007600D41F43 /* KHIMage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHIMage.h; sourceTree = "<group>"; };
 		0C01B5BD1DB6007600D41F43 /* KHIMage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHIMage.m; sourceTree = "<group>"; };
-		0C01B5C21DB607C300D41F43 /* KHPersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHPersonViewController.h; sourceTree = "<group>"; };
-		0C01B5C31DB607C300D41F43 /* KHPersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPersonViewController.m; sourceTree = "<group>"; };
-		0C01B5CA1DB623C400D41F43 /* KHPersonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHPersonCell.h; sourceTree = "<group>"; };
-		0C01B5CB1DB623C400D41F43 /* KHPersonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPersonCell.m; sourceTree = "<group>"; };
-		0C01B5CC1DB623C400D41F43 /* KHPersonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHPersonCell.xib; sourceTree = "<group>"; };
 		0C2705941DAF279200CE2F15 /* KHTenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHTenViewController.h; sourceTree = "<group>"; };
 		0C2705951DAF279200CE2F15 /* KHTenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHTenViewController.m; sourceTree = "<group>"; };
 		0C2705971DAF27A600CE2F15 /* KHTenModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHTenModel.h; sourceTree = "<group>"; };
@@ -194,6 +205,10 @@
 		0C3693421DAB8F8000BB3EE0 /* KHPulishedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHPulishedTableViewCell.h; sourceTree = "<group>"; };
 		0C3693431DAB8F8000BB3EE0 /* KHPulishedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPulishedTableViewCell.m; sourceTree = "<group>"; };
 		0C3693441DAB8F8000BB3EE0 /* KHPulishedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHPulishedTableViewCell.xib; sourceTree = "<group>"; };
+		0C5609971DC9EDF600B7BEBC /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		0C5609981DC9EDF600B7BEBC /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		0C5609A01DC9EF9E00B7BEBC /* KHAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHAddressViewController.h; sourceTree = "<group>"; };
+		0C5609A11DC9EF9E00B7BEBC /* KHAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHAddressViewController.m; sourceTree = "<group>"; };
 		0C5782CD1DC1B8AB00DB0B9A /* KHRegiterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHRegiterViewController.h; sourceTree = "<group>"; };
 		0C5782CE1DC1B8AB00DB0B9A /* KHRegiterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHRegiterViewController.m; sourceTree = "<group>"; };
 		0C5782CF1DC1B8AB00DB0B9A /* KHRegiterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHRegiterViewController.xib; sourceTree = "<group>"; };
@@ -231,6 +246,16 @@
 		0C5E05F81DAE3A7E00B2133F /* KHDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHDetailModel.m; sourceTree = "<group>"; };
 		0C5E05FA1DAE3B7C00B2133F /* KHProductModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHProductModel.h; sourceTree = "<group>"; };
 		0C5E05FB1DAE3B7C00B2133F /* KHProductModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHProductModel.m; sourceTree = "<group>"; };
+		0C62AD251DC876FF0091119D /* KHTopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHTopupViewController.h; sourceTree = "<group>"; };
+		0C62AD261DC876FF0091119D /* KHTopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHTopupViewController.m; sourceTree = "<group>"; };
+		0C62AD281DC87B500091119D /* KHTopupHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHTopupHeader.h; sourceTree = "<group>"; };
+		0C62AD291DC87B500091119D /* KHTopupHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHTopupHeader.m; sourceTree = "<group>"; };
+		0C62AD2B1DC87BD60091119D /* KHTopupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHTopupTableViewCell.h; sourceTree = "<group>"; };
+		0C62AD2C1DC87BD60091119D /* KHTopupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHTopupTableViewCell.m; sourceTree = "<group>"; };
+		0C62AD2D1DC87BD60091119D /* KHTopupTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHTopupTableViewCell.xib; sourceTree = "<group>"; };
+		0C645ECD1DC8294A000E9B98 /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "Pods/../build/Debug-iphoneos/libAFNetworking.a"; sourceTree = "<group>"; };
+		0C645ECF1DC8294F000E9B98 /* libYYKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libYYKit.a; path = "Pods/../build/Debug-iphoneos/libYYKit.a"; sourceTree = "<group>"; };
+		0C645ED11DC82953000E9B98 /* libMJRefresh.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMJRefresh.a; path = "Pods/../build/Debug-iphoneos/libMJRefresh.a"; sourceTree = "<group>"; };
 		0C6F59C01DB85D2800105C8C /* KHPublishModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHPublishModel.h; sourceTree = "<group>"; };
 		0C6F59C11DB85D2800105C8C /* KHPublishModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPublishModel.m; sourceTree = "<group>"; };
 		0C6F59C61DB868F100105C8C /* KHCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHCartViewController.h; sourceTree = "<group>"; };
@@ -251,6 +276,28 @@
 		0C6F59E71DB8CB3700105C8C /* ShoppingListLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListLayout.m; sourceTree = "<group>"; };
 		0C7C02E21DC346CC00C5ED85 /* KHCartGoodsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHCartGoodsModel.h; sourceTree = "<group>"; };
 		0C7C02E31DC346CC00C5ED85 /* KHCartGoodsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHCartGoodsModel.m; sourceTree = "<group>"; };
+		0C9B05531DC71684008D7BFA /* UITabBar+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBar+Badge.h"; sourceTree = "<group>"; };
+		0C9B05541DC71684008D7BFA /* UITabBar+Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+Badge.m"; sourceTree = "<group>"; };
+		0C9B05561DC71F37008D7BFA /* UIBarButtonItem+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Badge.h"; sourceTree = "<group>"; };
+		0C9B05571DC71F37008D7BFA /* UIBarButtonItem+Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Badge.m"; sourceTree = "<group>"; };
+		0C9B05581DC71F37008D7BFA /* UIButton+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Badge.h"; sourceTree = "<group>"; };
+		0C9B05591DC71F37008D7BFA /* UIButton+Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Badge.m"; sourceTree = "<group>"; };
+		0C9B055F1DC72B0E008D7BFA /* YZDisplayTitleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZDisplayTitleLabel.h; sourceTree = "<group>"; };
+		0C9B05601DC72B0E008D7BFA /* YZDisplayTitleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZDisplayTitleLabel.m; sourceTree = "<group>"; };
+		0C9B05611DC72B0E008D7BFA /* YZDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZDisplayViewController.h; sourceTree = "<group>"; };
+		0C9B05621DC72B0E008D7BFA /* YZDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZDisplayViewController.m; sourceTree = "<group>"; };
+		0C9B05631DC72B0E008D7BFA /* YZDisplayViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZDisplayViewHeader.h; sourceTree = "<group>"; };
+		0C9B05641DC72B0E008D7BFA /* YZFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZFlowLayout.h; sourceTree = "<group>"; };
+		0C9B05651DC72B0E008D7BFA /* YZFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZFlowLayout.m; sourceTree = "<group>"; };
+		0C9B056E1DC72D92008D7BFA /* KHPersonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHPersonCell.h; sourceTree = "<group>"; };
+		0C9B056F1DC72D92008D7BFA /* KHPersonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPersonCell.m; sourceTree = "<group>"; };
+		0C9B05701DC72D92008D7BFA /* KHPersonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHPersonCell.xib; sourceTree = "<group>"; };
+		0C9B05711DC72D92008D7BFA /* KHPersonHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHPersonHeader.h; sourceTree = "<group>"; };
+		0C9B05721DC72D92008D7BFA /* KHPersonHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPersonHeader.m; sourceTree = "<group>"; };
+		0C9B05741DC72D92008D7BFA /* KHPersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHPersonViewController.h; sourceTree = "<group>"; };
+		0C9B05751DC72D92008D7BFA /* KHPersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPersonViewController.m; sourceTree = "<group>"; };
+		0C9B05831DC72EBA008D7BFA /* KHSnatchListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHSnatchListController.h; sourceTree = "<group>"; };
+		0C9B05841DC72EBA008D7BFA /* KHSnatchListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHSnatchListController.m; sourceTree = "<group>"; };
 		0CB128BA1DAA0467005A0A4D /* knock Honey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "knock Honey.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CB128BE1DAA0467005A0A4D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0CB128C91DAA0467005A0A4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -347,8 +394,6 @@
 		0CBD1A751DACD466003E8150 /* VerticalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticalButton.m; sourceTree = "<group>"; };
 		0CBD1A7C1DACEF97003E8150 /* HomeFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeFooter.h; sourceTree = "<group>"; };
 		0CBD1A7D1DACEF97003E8150 /* HomeFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeFooter.m; sourceTree = "<group>"; };
-		0CC4964D1DB707650008F647 /* KHPersonHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHPersonHeader.h; sourceTree = "<group>"; };
-		0CC4964E1DB707650008F647 /* KHPersonHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPersonHeader.m; sourceTree = "<group>"; };
 		0CD77C8E1DBF44A600F72AA5 /* KHAppearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHAppearViewController.h; sourceTree = "<group>"; };
 		0CD77C8F1DBF44A600F72AA5 /* KHAppearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHAppearViewController.m; sourceTree = "<group>"; };
 		0CD77C911DBF44D300F72AA5 /* KHAppearTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHAppearTableViewCell.h; sourceTree = "<group>"; };
@@ -371,6 +416,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C645ED21DC82953000E9B98 /* libMJRefresh.a in Frameworks */,
+				0C645ED01DC8294F000E9B98 /* libYYKit.a in Frameworks */,
+				0C645ECE1DC8294A000E9B98 /* libAFNetworking.a in Frameworks */,
 				1940049D3EBD15A1FE12CC6B /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,6 +443,9 @@
 		0606D3066CB5E18E899A3B54 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0C645ED11DC82953000E9B98 /* libMJRefresh.a */,
+				0C645ECF1DC8294F000E9B98 /* libYYKit.a */,
+				0C645ECD1DC8294A000E9B98 /* libAFNetworking.a */,
 				C462ABFC3A89753851B1E5B4 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -434,34 +485,6 @@
 			children = (
 				0C009FD51DC08F74002F4470 /* KHAppearDetailController.h */,
 				0C009FD61DC08F74002F4470 /* KHAppearDetailController.m */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		0C01B5BF1DB607C300D41F43 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		0C01B5C01DB607C300D41F43 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				0C01B5CA1DB623C400D41F43 /* KHPersonCell.h */,
-				0C01B5CB1DB623C400D41F43 /* KHPersonCell.m */,
-				0C01B5CC1DB623C400D41F43 /* KHPersonCell.xib */,
-				0CC4964D1DB707650008F647 /* KHPersonHeader.h */,
-				0CC4964E1DB707650008F647 /* KHPersonHeader.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		0C01B5C11DB607C300D41F43 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				0C01B5C21DB607C300D41F43 /* KHPersonViewController.h */,
-				0C01B5C31DB607C300D41F43 /* KHPersonViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -633,6 +656,53 @@
 			path = "publishedCell(已经发布的)";
 			sourceTree = "<group>";
 		};
+		0C56099A1DC9EF6E00B7BEBC /* 地址编辑 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "地址编辑";
+			sourceTree = "<group>";
+		};
+		0C56099B1DC9EF6E00B7BEBC /* 充值账号 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "充值账号";
+			sourceTree = "<group>";
+		};
+		0C56099C1DC9EF6E00B7BEBC /* 收货地址 */ = {
+			isa = PBXGroup;
+			children = (
+				0C56099F1DC9EF6E00B7BEBC /* viewController */,
+				0C56099D1DC9EF6E00B7BEBC /* Model */,
+				0C56099E1DC9EF6E00B7BEBC /* View */,
+			);
+			path = "收货地址";
+			sourceTree = "<group>";
+		};
+		0C56099D1DC9EF6E00B7BEBC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0C56099E1DC9EF6E00B7BEBC /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0C56099F1DC9EF6E00B7BEBC /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C5609A01DC9EF9E00B7BEBC /* KHAddressViewController.h */,
+				0C5609A11DC9EF9E00B7BEBC /* KHAddressViewController.m */,
+			);
+			path = viewController;
+			sourceTree = "<group>";
+		};
 		0C5E05D11DADFAC700B2133F /* 左文右图 */ = {
 			isa = PBXGroup;
 			children = (
@@ -713,6 +783,44 @@
 			path = PageControl;
 			sourceTree = "<group>";
 		};
+		0C62AD211DC876D10091119D /* 充值 */ = {
+			isa = PBXGroup;
+			children = (
+				0C62AD241DC876D10091119D /* Viewcontroller */,
+				0C62AD221DC876D10091119D /* model */,
+				0C62AD231DC876D10091119D /* view */,
+			);
+			path = "充值";
+			sourceTree = "<group>";
+		};
+		0C62AD221DC876D10091119D /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		0C62AD231DC876D10091119D /* view */ = {
+			isa = PBXGroup;
+			children = (
+				0C62AD281DC87B500091119D /* KHTopupHeader.h */,
+				0C62AD291DC87B500091119D /* KHTopupHeader.m */,
+				0C62AD2B1DC87BD60091119D /* KHTopupTableViewCell.h */,
+				0C62AD2C1DC87BD60091119D /* KHTopupTableViewCell.m */,
+				0C62AD2D1DC87BD60091119D /* KHTopupTableViewCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		0C62AD241DC876D10091119D /* Viewcontroller */ = {
+			isa = PBXGroup;
+			children = (
+				0C62AD251DC876FF0091119D /* KHTopupViewController.h */,
+				0C62AD261DC876FF0091119D /* KHTopupViewController.m */,
+			);
+			path = Viewcontroller;
+			sourceTree = "<group>";
+		};
 		0C6F59C31DB868F100105C8C /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -780,6 +888,138 @@
 				0C6F59E21DB8CB2000105C8C /* EditingCell.m */,
 			);
 			path = EditingCell;
+			sourceTree = "<group>";
+		};
+		0C9B055C1DC72B0E008D7BFA /* YZDisplayViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C5609971DC9EDF600B7BEBC /* UIView+Frame.h */,
+				0C5609981DC9EDF600B7BEBC /* UIView+Frame.m */,
+				0C9B055F1DC72B0E008D7BFA /* YZDisplayTitleLabel.h */,
+				0C9B05601DC72B0E008D7BFA /* YZDisplayTitleLabel.m */,
+				0C9B05611DC72B0E008D7BFA /* YZDisplayViewController.h */,
+				0C9B05621DC72B0E008D7BFA /* YZDisplayViewController.m */,
+				0C9B05631DC72B0E008D7BFA /* YZDisplayViewHeader.h */,
+				0C9B05641DC72B0E008D7BFA /* YZFlowLayout.h */,
+				0C9B05651DC72B0E008D7BFA /* YZFlowLayout.m */,
+			);
+			path = YZDisplayViewController;
+			sourceTree = "<group>";
+		};
+		0C9B056A1DC72D92008D7BFA /* 夺宝纪录 */ = {
+			isa = PBXGroup;
+			children = (
+				0C9B05821DC72DC7008D7BFA /* Viewcontroller */,
+				0C9B05801DC72DC7008D7BFA /* model */,
+				0C9B05811DC72DC7008D7BFA /* View */,
+			);
+			path = "夺宝纪录";
+			sourceTree = "<group>";
+		};
+		0C9B056B1DC72D92008D7BFA /* 个人 */ = {
+			isa = PBXGroup;
+			children = (
+				0C9B05731DC72D92008D7BFA /* ViewController */,
+				0C9B056C1DC72D92008D7BFA /* Model */,
+				0C9B056D1DC72D92008D7BFA /* View */,
+			);
+			path = "个人";
+			sourceTree = "<group>";
+		};
+		0C9B056C1DC72D92008D7BFA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0C9B056D1DC72D92008D7BFA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0C9B056E1DC72D92008D7BFA /* KHPersonCell.h */,
+				0C9B056F1DC72D92008D7BFA /* KHPersonCell.m */,
+				0C9B05701DC72D92008D7BFA /* KHPersonCell.xib */,
+				0C9B05711DC72D92008D7BFA /* KHPersonHeader.h */,
+				0C9B05721DC72D92008D7BFA /* KHPersonHeader.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0C9B05731DC72D92008D7BFA /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C9B05741DC72D92008D7BFA /* KHPersonViewController.h */,
+				0C9B05751DC72D92008D7BFA /* KHPersonViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		0C9B05761DC72D92008D7BFA /* 卡密自提 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "卡密自提";
+			sourceTree = "<group>";
+		};
+		0C9B05771DC72D92008D7BFA /* 全价购买记录 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "全价购买记录";
+			sourceTree = "<group>";
+		};
+		0C9B05781DC72D92008D7BFA /* 中奖纪录 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "中奖纪录";
+			sourceTree = "<group>";
+		};
+		0C9B05791DC72D92008D7BFA /* 收货地址 */ = {
+			isa = PBXGroup;
+			children = (
+				0C56099C1DC9EF6E00B7BEBC /* 收货地址 */,
+				0C56099A1DC9EF6E00B7BEBC /* 地址编辑 */,
+				0C56099B1DC9EF6E00B7BEBC /* 充值账号 */,
+			);
+			path = "收货地址";
+			sourceTree = "<group>";
+		};
+		0C9B057A1DC72D92008D7BFA /* 我的红包 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "我的红包";
+			sourceTree = "<group>";
+		};
+		0C9B057B1DC72D92008D7BFA /* 我的晒单 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "我的晒单";
+			sourceTree = "<group>";
+		};
+		0C9B05801DC72DC7008D7BFA /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		0C9B05811DC72DC7008D7BFA /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0C9B05821DC72DC7008D7BFA /* Viewcontroller */ = {
+			isa = PBXGroup;
+			children = (
+				0C9B05831DC72EBA008D7BFA /* KHSnatchListController.h */,
+				0C9B05841DC72EBA008D7BFA /* KHSnatchListController.m */,
+			);
+			path = Viewcontroller;
 			sourceTree = "<group>";
 		};
 		0CB128B11DAA0467005A0A4D = {
@@ -879,9 +1119,15 @@
 		0CB128F21DAA1EF3005A0A4D /* 个人中心 */ = {
 			isa = PBXGroup;
 			children = (
-				0C01B5C11DB607C300D41F43 /* ViewController */,
-				0C01B5C01DB607C300D41F43 /* View */,
-				0C01B5BF1DB607C300D41F43 /* Model */,
+				0C62AD211DC876D10091119D /* 充值 */,
+				0C9B056B1DC72D92008D7BFA /* 个人 */,
+				0C9B056A1DC72D92008D7BFA /* 夺宝纪录 */,
+				0C9B05761DC72D92008D7BFA /* 卡密自提 */,
+				0C9B05771DC72D92008D7BFA /* 全价购买记录 */,
+				0C9B05781DC72D92008D7BFA /* 中奖纪录 */,
+				0C9B05791DC72D92008D7BFA /* 收货地址 */,
+				0C9B057A1DC72D92008D7BFA /* 我的红包 */,
+				0C9B057B1DC72D92008D7BFA /* 我的晒单 */,
 			);
 			path = "个人中心";
 			sourceTree = "<group>";
@@ -944,6 +1190,12 @@
 				0C6F59DE1DB89D6D00105C8C /* UITableView+Custom.m */,
 				0C009FCE1DC07E5B002F4470 /* NSString+TSTime.h */,
 				0C009FCF1DC07E5B002F4470 /* NSString+TSTime.m */,
+				0C9B05531DC71684008D7BFA /* UITabBar+Badge.h */,
+				0C9B05541DC71684008D7BFA /* UITabBar+Badge.m */,
+				0C9B05561DC71F37008D7BFA /* UIBarButtonItem+Badge.h */,
+				0C9B05571DC71F37008D7BFA /* UIBarButtonItem+Badge.m */,
+				0C9B05581DC71F37008D7BFA /* UIButton+Badge.h */,
+				0C9B05591DC71F37008D7BFA /* UIButton+Badge.m */,
 			);
 			path = "Category（分类）";
 			sourceTree = "<group>";
@@ -960,6 +1212,7 @@
 		0CB129351DAA28ED005A0A4D /* lib（三方库） */ = {
 			isa = PBXGroup;
 			children = (
+				0C9B055C1DC72B0E008D7BFA /* YZDisplayViewController */,
 				0C5E05E01DAE36FE00B2133F /* SDCycleScrollView */,
 				0CBD1A531DACB78B003E8150 /* FDFullscreenPopGesture */,
 				0CBD19EB1DACB650003E8150 /* IQKeyboardManager */,
@@ -1488,13 +1741,14 @@
 				0C2705AD1DAF66EB00CE2F15 /* TreasureDetailCell.xib in Resources */,
 				0C5782D11DC1B8AB00DB0B9A /* KHRegiterViewController.xib in Resources */,
 				0C5782D61DC1D60100DB0B9A /* KHRegiterSecondController.xib in Resources */,
-				0C01B5CE1DB623C400D41F43 /* KHPersonCell.xib in Resources */,
 				0CBD1A1E1DACB650003E8150 /* IQKeyboardManager.bundle in Resources */,
 				0C3693461DAB8F8000BB3EE0 /* KHPulishedTableViewCell.xib in Resources */,
 				0CD77C951DBF44D300F72AA5 /* KHAppearTableViewCell.xib in Resources */,
+				0C62AD2F1DC87BD60091119D /* KHTopupTableViewCell.xib in Resources */,
 				0CB128CD1DAA0467005A0A4D /* LaunchScreen.storyboard in Resources */,
 				0CBD1A5D1DACC130003E8150 /* WinTreasureCell.xib in Resources */,
 				0C27059E1DAF287A00CE2F15 /* CategoryDetailCell.xib in Resources */,
+				0C9B057D1DC72D92008D7BFA /* KHPersonCell.xib in Resources */,
 				0C5E05D01DADDD3900B2133F /* KHheard2View.xib in Resources */,
 				0C36933E1DAB66C800BB3EE0 /* KHKnowTableViewCell.xib in Resources */,
 				0CB128CA1DAA0467005A0A4D /* Assets.xcassets in Resources */,
@@ -1571,15 +1825,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C645ECC1DC8288C000E9B98 /* KHKnowViewController.m in Sources */,
+				0C645ECB1DC82809000E9B98 /* KHAppearViewController.m in Sources */,
 				0C2705AF1DAF66EB00CE2F15 /* TreaureHeaderMenu.m in Sources */,
+				0C9B057F1DC72D92008D7BFA /* KHPersonViewController.m in Sources */,
 				0C2705B31DAF7CA500CE2F15 /* TSCountLabel.m in Sources */,
 				0CBD1A191DACB650003E8150 /* IQBarButtonItem.m in Sources */,
+				0C62AD2E1DC87BD60091119D /* KHTopupTableViewCell.m in Sources */,
+				0C62AD2A1DC87B500091119D /* KHTopupHeader.m in Sources */,
 				0CBD1A5C1DACC130003E8150 /* WinTreasureCell.m in Sources */,
 				0CBD1A7E1DACEF97003E8150 /* HomeFooter.m in Sources */,
 				0C009FCD1DC073DB002F4470 /* KHAppearModel.m in Sources */,
 				0C2705AC1DAF66EB00CE2F15 /* TreasureDetailCell.m in Sources */,
 				0C3693451DAB8F8000BB3EE0 /* KHPulishedTableViewCell.m in Sources */,
 				0C5E05F51DAE36FE00B2133F /* SDCycleScrollView.m in Sources */,
+				0C9B057C1DC72D92008D7BFA /* KHPersonCell.m in Sources */,
 				0CBD1A111DACB650003E8150 /* IQUIScrollView+Additions.m in Sources */,
 				0CBD19DF1DAC8DD0003E8150 /* KHSearchViewController.m in Sources */,
 				0C3693281DAB2DD700BB3EE0 /* KHBaseViewController.m in Sources */,
@@ -1597,19 +1857,22 @@
 				0C5E05FC1DAE3B7C00B2133F /* KHProductModel.m in Sources */,
 				0CB129371DAA28ED005A0A4D /* MBProgressHUD+MJ.m in Sources */,
 				0C009FD71DC08F74002F4470 /* KHAppearDetailController.m in Sources */,
-				0CC4964F1DB707650008F647 /* KHPersonHeader.m in Sources */,
 				0CBD1A1A1DACB650003E8150 /* IQPreviousNextView.m in Sources */,
 				0C5E05F01DAE36FE00B2133F /* TAAbstractDotView.m in Sources */,
 				0CE379661DC0B3BF00F42A4F /* BtButton.m in Sources */,
-				0CD77C901DBF44A600F72AA5 /* KHAppearViewController.m in Sources */,
 				0C2705991DAF27A600CE2F15 /* KHTenModel.m in Sources */,
 				0C6F59DF1DB89D6D00105C8C /* UITableView+Custom.m in Sources */,
+				0C9B05551DC71684008D7BFA /* UITabBar+Badge.m in Sources */,
+				0C9B055B1DC71F37008D7BFA /* UIButton+Badge.m in Sources */,
+				0C5609991DC9EDF600B7BEBC /* UIView+Frame.m in Sources */,
 				0C5E05CA1DADCF7700B2133F /* KHDowmViewCell.m in Sources */,
 				0C5E05D41DADFAEC00B2133F /* KHChangButton.m in Sources */,
+				0C9B05681DC72B0E008D7BFA /* YZDisplayViewController.m in Sources */,
 				0C2705961DAF279200CE2F15 /* KHTenViewController.m in Sources */,
 				0C5E05F91DAE3A7E00B2133F /* KHDetailModel.m in Sources */,
 				0CEDEE3D1DC199F90063C690 /* KHLoginViewController.m in Sources */,
 				0C6F59DC1DB88DAE00105C8C /* KHcartModel.m in Sources */,
+				0C9B055A1DC71F37008D7BFA /* UIBarButtonItem+Badge.m in Sources */,
 				0C01B5BB1DB5B6C700D41F43 /* KHWinner.m in Sources */,
 				0C5E05F11DAE36FE00B2133F /* TAAnimatedDotView.m in Sources */,
 				0C5E05F21DAE36FE00B2133F /* TADotView.m in Sources */,
@@ -1621,13 +1884,15 @@
 				0CBD19E31DAC8E36003E8150 /* SearchBar.m in Sources */,
 				0C6F59D51DB86BCF00105C8C /* BillView.m in Sources */,
 				0CB1293A1DAA28ED005A0A4D /* UIImage+YWimage.m in Sources */,
+				0C9B05851DC72EBA008D7BFA /* KHSnatchListController.m in Sources */,
+				0C9B05671DC72B0E008D7BFA /* YZDisplayTitleLabel.m in Sources */,
 				0CBD1A171DACB650003E8150 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				0C6F59E91DB8CB3700105C8C /* ShoppingListLayout.m in Sources */,
 				0C5782DA1DC1DD5000DB0B9A /* KHRegiterThirdViewController.m in Sources */,
+				0C5609A21DC9EF9E00B7BEBC /* KHAddressViewController.m in Sources */,
 				0CBD1A131DACB650003E8150 /* IQUIView+Hierarchy.m in Sources */,
 				0CBD1A141DACB650003E8150 /* IQUIViewController+Additions.m in Sources */,
 				0C7C02E41DC346CC00C5ED85 /* KHCartGoodsModel.m in Sources */,
-				0C01B5C41DB607C300D41F43 /* KHPersonViewController.m in Sources */,
 				0C5E05DF1DAE32F800B2133F /* KHDetailViewController.m in Sources */,
 				0C01B5BE1DB6007600D41F43 /* KHIMage.m in Sources */,
 				0C6F59E81DB8CB3700105C8C /* ShoppingListCell.m in Sources */,
@@ -1636,6 +1901,7 @@
 				0CBD1A181DACB650003E8150 /* IQTextView.m in Sources */,
 				0CBD1A161DACB650003E8150 /* IQKeyboardManager.m in Sources */,
 				0CB129391DAA28ED005A0A4D /* UIColor+YWcolor.m in Sources */,
+				0C9B057E1DC72D92008D7BFA /* KHPersonHeader.m in Sources */,
 				0CBD1A121DACB650003E8150 /* IQUITextFieldView+Additions.m in Sources */,
 				0CB1293D1DAA28ED005A0A4D /* UIView+YWViewController.m in Sources */,
 				0C009FD01DC07E5B002F4470 /* NSString+TSTime.m in Sources */,
@@ -1649,17 +1915,17 @@
 				0CB1293C1DAA28ED005A0A4D /* UIView+Frame.m in Sources */,
 				0CBD1A1D1DACB650003E8150 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				0CB1294F1DAA2C15005A0A4D /* YWUser.m in Sources */,
-				0C36932F1DAB5AE400BB3EE0 /* KHKnowViewController.m in Sources */,
 				0CD77C941DBF44D300F72AA5 /* KHAppearTableViewCell.m in Sources */,
 				0CB1293B1DAA28ED005A0A4D /* UINavigationBar+BTsome.m in Sources */,
 				0C6F59E31DB8CB2000105C8C /* EditingCell.m in Sources */,
 				0CB128F91DAA1F2E005A0A4D /* AppDelegate.m in Sources */,
-				0C01B5CD1DB623C400D41F43 /* KHPersonCell.m in Sources */,
+				0C9B05691DC72B0E008D7BFA /* YZFlowLayout.m in Sources */,
 				0C5782D01DC1B8AB00DB0B9A /* KHRegiterViewController.m in Sources */,
 				0CB129381DAA28ED005A0A4D /* UIAlertController+BTAdd.m in Sources */,
 				0CBD1A561DACB78B003E8150 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				0C5782D51DC1D60100DB0B9A /* KHRegiterSecondController.m in Sources */,
 				0C3693251DAB281000BB3EE0 /* KHNavigationViewController.m in Sources */,
+				0C62AD271DC876FF0091119D /* KHTopupViewController.m in Sources */,
 				0C2705A21DAF666C00CE2F15 /* TreasureDetailFooter.m in Sources */,
 				0CB128BF1DAA0467005A0A4D /* main.m in Sources */,
 				0CEDEE391DC199C60063C690 /* PooCodeView.m in Sources */,
@@ -1802,14 +2068,17 @@
 			baseConfigurationReference = B30030C39E55FCBDA7B7F09D /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "knock Honey/knock Honey.pch";
 				INFOPLIST_FILE = "knock Honey/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				ONLY_ACTIVE_ARCH = NO;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "cn.liubitao.knock-Honey";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
 		};
@@ -1818,14 +2087,17 @@
 			baseConfigurationReference = 74E0C9D2929A91D4AB2D6BA5 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "knock Honey/knock Honey.pch";
 				INFOPLIST_FILE = "knock Honey/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "cn.liubitao.knock-Honey";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
 		};

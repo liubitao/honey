@@ -35,8 +35,6 @@
 //7.十元专区
 #define PortGoodsarea   @"http://oneshop.zhongwenyu1987.com/index.php/api/goods/goodsarea"
 
-
-
 //8.会员登录
 #define PortLogin       @"http://oneshop.zhongwenyu1987.com/index.php/api/User/login"
 
@@ -46,5 +44,37 @@
 //10.查看购物车
 #define PortIndex       @"http://oneshop.zhongwenyu1987.com/index.php/api/Cart/index"
 
+//11.会员充值=====
+#define PortRecharge    @"http://oneshop.zhongwenyu1987.com/index.php/api/User/recharge"
+
+//12.会员充值处理=====
+#define PortRecharge_handle @"http://oneshop.zhongwenyu1987.com/index.php/api/User/recharge_handle"
+
+//13.订单提交=====
+#define PortOrder_submit    @"http://oneshop.zhongwenyu1987.com/index.php/api/Cart/order_submit"
+
+//14.订单支付=====
+#define PortOrder_pay       @"http://oneshop.zhongwenyu1987.com/index.php/api/Cart/order_pay"
+
+//15.购物车批量变更=====
+#define PortCart_change     @"http://oneshop.zhongwenyu1987.com/index.php/api/Cart/cart_change"
+
+//16.地址列表=====
+#define PortAddress_list    @"http://oneshop.zhongwenyu1987.com/index.php/api/User/address_list"
+
+//17.编辑地址=====
+#define PortAddress_detail   @"http://oneshop.zhongwenyu1987.com/index.php/api/User/address_detail"
+
+//18.添加编辑地址处理=====
+#define PortAddress_handle  @"http://oneshop.zhongwenyu1987.com/index.php/api/User/address_handle"
+
+//19.夺宝纪录=====
+#define PortA
+
+//20.中奖纪录=====
+#define PortWin_list    @"http://oneshop.zhongwenyu1987.com/index.php/api/User/win_list"
+
+//21.红包列表=====
+#define PortCoupon_list     @"http://oneshop.zhongwenyu1987.com/index.php/api/User/coupon_list"
 
 #endif /* port_h */

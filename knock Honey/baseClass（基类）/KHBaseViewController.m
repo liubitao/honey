@@ -103,6 +103,24 @@
     self.navigationItem.titleView = imageView;
 }
 
+- (void)setBadgeValue:(NSInteger)value atIndex:(NSInteger)index {
+    [self.tabBarController.tabBar setBadgeValue:value AtIndex:index];
+}
+
+- (void)setItemBadge:(NSInteger)value {
+    if (value==0) {
+        _badge.hidden = YES;
+        return;
+    }
+    _badge.hidden = NO;
+    if (value>=99) {
+        value = 99;
+    }
+    [_rightBtn addSubview:self.badge];
+    _badge.origin = CGPointMake(ceilf(0.85 * _rightBtn.width), ceilf(0.1*_rightBtn.height));
+    _badge.hidden = NO;
+    _badge.text = [NSString stringWithFormat:@"%@",@(value)];
+}
 
 - (void)setBackItem {
     [self setBackItemAction:nil];

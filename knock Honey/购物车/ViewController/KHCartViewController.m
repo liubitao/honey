@@ -12,7 +12,7 @@
 #import "KHcartModel.h"
 #import "ShoppingListLayout.h"
 
-@interface KHCartViewController ()<UITableViewDataSource,UITableViewDelegate,ShoppingListCellDelegate>
+@interface KHCartViewController ()<UITableViewDataSource,UITableViewDelegate,ShoppingListCellDelegate,DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>
 @property (nonatomic, strong) NSNumber *moneySum;
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *dataArray;
@@ -51,7 +51,7 @@
         _tableView.dataSource = self;
         _tableView.delegate = self;
         _tableView.backgroundColor = UIColorHex(f0f0f0);
-        _tableView.separatorColor = UIColorHex(f0f0f0);
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.allowsMultipleSelection = YES;
         _tableView.allowsSelectionDuringEditing = YES;
         [_tableView setCustomSeparatorInset:UIEdgeInsetsZero];
@@ -72,10 +72,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(notificationCenterEvent)
+                                                 name:@"refreshCart"
+                                               object:nil];
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"购物车";
     [self.view addSubview:self.tableView];
     
+        _tableView.emptyDataSetDelegate = self;
+        _tableView.emptyDataSetSource = self;
+  
+    [self setRightImageNamed:@"help" action:@selector(helpClick)];
     //下拉刷新
     __weak typeof(self) weakSelf = self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -83,16 +91,18 @@
         //结束刷新
         [weakSelf.tableView.mj_header endRefreshing];
     }];
-    
-    //开始下拉刷新
-    [self.tableView.mj_header beginRefreshing];
-
-    [self setRightImageNamed:@"help" action:@selector(helpClick)];
+}
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
+- (void)notificationCenterEvent{
+    [self getDatasource];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self getDatasource];
+    //开始下拉刷新
+    [self.tableView.mj_header beginRefreshing];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -135,6 +145,7 @@
     [self excuteDeleteEvent];
     [self excuteSelectEvent];
 }
+
 - (void)excuteBuyEvent{
     __weak typeof(self) weakSelf = self;
     _billView.buyBlock = ^{
@@ -158,7 +169,6 @@
                             ShoppingListLayout *layout = (ShoppingListLayout *)obj;
                             if (layout.model.isChecked) {
                                 NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
-                                NSLog(@"index Path %@",indexPath);
                                 [indexPaths addObject:indexPath];
                                 [weakSelf.deleteArray addObject:layout];
 
@@ -295,6 +305,26 @@
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
     return UITableViewCellEditingStyleNone;
 }
+
+
+#pragma mark - DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    return [UIImage imageNamed:@"empty_placeholder"];
+}
+
+
+
+- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
+    return YES;
+}
+
+- (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView{
+    return YES;
+}
+- (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button{
+    [self getDatasource];
+}
+
 #pragma mark - ShoppingListCellDelegate
 - (void)listCount:(NSNumber *)listCount atIndexPath:(NSIndexPath *)indexPath {
     ShoppingListLayout *layout = _dataArray[indexPath.row];

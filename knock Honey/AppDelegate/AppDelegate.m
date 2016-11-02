@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "KHTabbarViewController.h"
+#import "KHcartModel.h"
 
 @interface AppDelegate ()
 
@@ -23,6 +24,10 @@
     [self.window makeKeyAndVisible];
     
     [self configApper];
+
+    //购物车中的商品数
+    [self cartNumber];
+    
     return YES;
 }
 
@@ -54,6 +59,26 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
++ (AppDelegate *)getAppDelegate {
+    return (AppDelegate *)[UIApplication sharedApplication].delegate;
+}
+
+//购物车中的商品数
+- (void)cartNumber{
+    if ([YWUserTool account]) {
+        NSMutableDictionary *parameter = [Utils parameter];
+        parameter[@"userid"] = [YWUserTool account].userid;
+        [YWHttptool GET:PortIndex parameters:parameter success:^(id responseObject) {
+            if ([responseObject[@"isError"] integerValue]) return ;
+            NSMutableArray *mutableArray = [KHcartModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
+            _value = mutableArray.count;
+        } failure:^(NSError *error) {
+        }];
+    }else{
+            _value = 0;
+    }
 }
 
 @end

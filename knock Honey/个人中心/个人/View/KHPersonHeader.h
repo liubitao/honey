@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 
 typedef void(^MeHeaderBlock)(void);
-typedef void(^MeHeaderBlock)(void);
 
 @interface KHPersonHeader : UIView
 /**背景图
  */
 @property (nonatomic, strong) UIImageView *bgImageView;
+
+@property (nonatomic,copy) MeHeaderBlock settingBlock;
 /**
  *  头像
  */
@@ -30,7 +31,7 @@ typedef void(^MeHeaderBlock)(void);
 
 /**余额
  */
-@property (nonatomic, copy) NSNumber *remainSum;
+@property (nonatomic, copy) NSString *remainSum;
 
 - (void)makeScaleForScrollView:(UIScrollView *)scrollView;
 
@@ -46,7 +47,7 @@ typedef void(^BalanceViewBlock) (void);
 
 /**余额数
  */
-@property (nonatomic, copy) NSNumber *balanceAmount;
+@property (nonatomic, copy) NSString *balanceAmount;
 
 @property (nonatomic, copy) BalanceViewBlock topupBlock;
 

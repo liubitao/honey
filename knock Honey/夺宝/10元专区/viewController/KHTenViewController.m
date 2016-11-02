@@ -162,8 +162,16 @@
     }
     NSIndexPath *indexPath = cell.indexpath;
     KHTenModel *model = _dataArray[indexPath.row];
-    //    model.isAdded = YES;
-    [_dataArray replaceObjectAtIndex:indexPath.row withObject:model];
+    NSMutableDictionary *parameter = [Utils parameter];
+    parameter[@"userid"] = [YWUserTool account].userid;
+    parameter[@"goodsid"] = model.ID;
+    [YWHttptool GET:PortAddCart parameters:parameter success:^(id responseObject) {
+        NSLog(@"%@",responseObject);
+        if ([responseObject[@"isError"] integerValue]) return ;
+        [MBProgressHUD showSuccess:@"已添加"];
+    } failure:^(NSError *error) {
+        [MBProgressHUD showError:@"添加失败"];
+    }];
     
     CGRect parentRectA = [cell.contentView convertRect:cell.productImgView.frame toView:self.view];
     CGRect parentRectB = CGRectMake(KscreenWidth-60, 20, 40, 40);
@@ -178,8 +186,8 @@
 }
 #pragma mark - TSAnimationDelegate;//动画完成
 - (void)animationFinished {
-    NSLog(@"动画完成");
-    [self.productView removeFromSuperview];
+     [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshCart" object:nil userInfo:nil];
+      [self setItemBadge:[AppDelegate getAppDelegate].value];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -87,7 +87,10 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     [self configCollectionView];
 
 }
-
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+//    [self setBadgeValue:[AppDelegate getAppDelegate].value atIndex:3];
+}
 
 
 //创建导航栏
@@ -153,8 +156,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     for (int i = 0 ; i<=3; i++) {
         parameter[@"sort"] = array[i];
         [YWHttptool GET:PortGoodslist parameters:parameter success:^(id responseObject) {
-            NSLog(@"%@",responseObject);
-            
+//            NSLog(@"%@",responseObject);
             _dataArray[i] = [KHHomeModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
             if (i == 0) {
                  [_collectionView reloadData];
@@ -166,6 +168,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     
     [YWHttptool GET:PortGoodsIndex parameters:parameter success:^(id responseObject) {
         NSLog(@"%@",responseObject);
+        if ([responseObject[@"isError"] integerValue]) return;
         for (KHPublishModel *model in _downArray) {
             [model stop];
         }
@@ -176,8 +179,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
         [self.header resetImage];
         _downArray = [KHPublishModel kh_objectWithKeyValuesArray:responseObject[@"result"][@"zxjx"]];
         [_collectionView reloadSections:[NSIndexSet indexSetWithIndex:1]];
-    } failure:^(NSError *error) {
-        [MBProgressHUD showError:@"网络连接有误"];
+    } failure:^(NSError *error){
     }];
     
     //轮播图
@@ -432,7 +434,8 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
 }
 #pragma mark - TSAnimationDelegate;//动画完成
 - (void)animationFinished{
-    [self.productView removeFromSuperview];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshCart" object:nil userInfo:nil];
+    [self setBadgeValue:[AppDelegate getAppDelegate].value atIndex:3];
 }
 
 - (void)didReceiveMemoryWarning {

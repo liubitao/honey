@@ -13,6 +13,8 @@
 
 @property (nonatomic, strong) UIButton *leftBtn;
 
+@property (nonatomic, strong) YYLabel *badge;
+
 /**导航栏LeftItem文字
  */
 - (void)setLeftItemTitle:(NSString *)title
@@ -44,6 +46,14 @@
  */
 - (void)setTitleView:(NSString *)imageName;
 
+/**隐藏tabBar徽标
+ */
+- (void)setBadgeValue:(NSInteger)value
+              atIndex:(NSInteger)index;
+
+/**设置右侧导航栏徽标
+ */
+- (void)setItemBadge:(NSInteger)value;
 
 /**设置返回按钮
  */

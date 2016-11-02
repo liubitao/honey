@@ -9,6 +9,7 @@
 #import "KHPersonViewController.h"
 #import "KHPersonCell.h"
 #import "KHPersonHeader.h"
+#import "KHTopupViewController.h"
 
 @interface KHPersonViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *tableView;
@@ -45,9 +46,19 @@
     [self configNavi];
     [self configTableView];
 }
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO];
+}
 #pragma mark - notice
 - (void)getTopupResult:(NSNotification *)notice {
-    NSNumber *remainSum = (NSNumber *)notice.object;
+    NSString *remainSum = (NSString *)notice.object;
     _header.remainSum = remainSum;
 }
 - (void)dealloc{
@@ -55,11 +66,6 @@
 }
 - (void)configNavi{
     [self setBackItem];
-    [self setNavigationBarBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]]
-                                tintColor:[UIColor clearColor]
-                                textColor:[UIColor clearColor]
-                           statusBarStyle:UIStatusBarStyleLightContent];
-    [self setRightImageNamed:@"install" action:@selector(rightClick)];
 }
 
 /**
@@ -92,12 +98,17 @@
     })];
     _tableView.tableHeaderView = _header;
     __weak typeof(self) weakSelf = self;
+    _header.settingBlock = ^{
+        NSLog(@"设置");
+    };
+    
     _header.headImgBlock = ^{
         NSLog(@"头像");
     };
     
     _header.topupBlock = ^{
-        NSLog(@"充值");
+        KHTopupViewController *topupVC = [[KHTopupViewController alloc]init];
+        [weakSelf pushController:topupVC];
     };
     
     _header.diamondBlock = ^{

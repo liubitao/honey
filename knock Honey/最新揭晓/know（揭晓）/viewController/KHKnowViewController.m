@@ -16,7 +16,7 @@
 static NSString * nopublished = @"nopublished";
 static NSString * published = @"published";
 
-@interface KHKnowViewController ()<UITableViewDataSource,UITableViewDelegate,KHKnowtableViewCellDelegate>{
+@interface KHKnowViewController ()<UITableViewDataSource,UITableViewDelegate,KHKnowtableViewCellDelegate,DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>{
     NSInteger _currentPage;
 }
 @property (nonatomic,strong) UITableView *tableView;
@@ -41,7 +41,8 @@ static NSString * published = @"published";
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.tableFooterView = [[UIView alloc]init];
- 
+    _tableView.emptyDataSetDelegate = self;
+    _tableView.emptyDataSetSource = self;
     [self.view addSubview:_tableView];
     
     
@@ -156,6 +157,20 @@ static NSString * published = @"published";
     }];
     
 }
+#pragma mark - DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    return [UIImage imageNamed:@"empty_placeholder"];
+}
+
+
+- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
+    return YES;
+}
+
+- (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView{
+    return YES;
+}
+
 
 #pragma mark - LatestPublishCellDelegate
 - (void)countdownDidEnd:(NSIndexPath *)indexpath {

@@ -11,7 +11,7 @@
 #import "KHAppearModel.h"
 #import "KHAppearDetailController.h"
 
-@interface KHAppearViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface KHAppearViewController ()<UITableViewDataSource,UITableViewDelegate,DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>
 
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *dataArray;
@@ -44,6 +44,9 @@
     [self.tableView setLayoutMargins:UIEdgeInsetsZero];
     [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     [self.view addSubview:self.tableView];
+    _tableView.emptyDataSetDelegate = self;
+    _tableView.emptyDataSetSource = self;
+
     
     [self.tableView registerNib:[UINib nibWithNibName:@"KHAppearTableViewCell" bundle:nil] forCellReuseIdentifier:@"AppearCell"];
     //下拉刷新
@@ -68,6 +71,7 @@
 }
 - (void)getLatestPubData{
     for (int i=0; i<10; i++) {
+      
         KHAppearModel *model = [[KHAppearModel alloc]init];
         [self.dataArray addObject:model];
     }
@@ -101,6 +105,23 @@
     KHAppearDetailController *detailVC = [[KHAppearDetailController alloc]init];
     detailVC.AppearModel = _dataArray[indexPath.row];
     [self pushController:detailVC];
+}
+
+#pragma mark - DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    return [UIImage imageNamed:@"empty_placeholder"];
+}
+
+
+- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
+    return YES;
+}
+
+- (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView{
+    return YES;
+}
+- (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button{
+    [self getLatestPubData];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

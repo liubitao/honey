@@ -3,20 +3,15 @@
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
     "b0ee9f78-3d31-be4f-b21b-c15cee1859db++1809" : {
 
-    },
-    "b0ee9f78-3d31-be4f-b21b-c15cee1859db++2286" : {
-
     }
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "b0ee9f78-3d31-be4f-b21b-c15cee1859db++2286" : 0,
     "b0ee9f78-3d31-be4f-b21b-c15cee1859db++1809" : 0,
     "605B60A466E815E02F1F690A8704F107B1F633C2" : 0
   },
-  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "E52A9B94-7605-40CF-A934-461404E3588D",
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "4B8A419E-BC62-45C0-B286-40A4621173EA",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "b0ee9f78-3d31-be4f-b21b-c15cee1859db++2286" : "%E5%A4%BA%E5%AE%9D\/knock%20Honey\/%E5%A4%BA%E5%AE%9D\/%E5%85%A8%E6%B0%91%E5%A4%BA%E5%AE%9D\/view\/AdvertiseView\/",
-    "b0ee9f78-3d31-be4f-b21b-c15cee1859db++1809" : "%E5%A4%BA%E5%AE%9D\/knock%20Honey\/customFunc%EF%BC%88%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A7%86%E5%9B%BE%EF%BC%89\/TSMenu\/",
+    "b0ee9f78-3d31-be4f-b21b-c15cee1859db++1809" : "%E5%A4%BA%E5%AE%9D\/knock%20Honey\/customFunc%EF%BC%88%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A7%86%E5%9B%BE%EF%BC%89\/%E8%BF%9B%E5%BA%A6%E6%9D%A1\/",
     "605B60A466E815E02F1F690A8704F107B1F633C2" : "%E5%A4%BA%E5%AE%9D\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "knock Honey",
@@ -32,11 +27,6 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/192.168.6.7:8443\/svn\/IMyBest_Shopping",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "b0ee9f78-3d31-be4f-b21b-c15cee1859db++1809"
-    },
-    {
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/192.168.6.7:8443\/svn\/IMyBest_Shopping",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "b0ee9f78-3d31-be4f-b21b-c15cee1859db++2286"
     }
   ]
 }
