@@ -59,7 +59,7 @@
 
 //设置右边按钮的文字
 - (void)setRightItemTitle:(NSString *)title action:(SEL)action {
-    [self setRightItemTitle:title titleColor:UIColorHex(666666) action:action];
+    [self setRightItemTitle:title titleColor:[UIColor whiteColor] action:action];
 }
 
 /**导航栏RightItem图片

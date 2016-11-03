@@ -12,20 +12,8 @@
 
 @implementation Utils
 
-//创建一个等待框
-+ (MBProgressHUD *)createHUD
-{
-    //取出最后的一个窗口
-    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
-    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:window];
-    HUD.backgroundColor = [UIColor colorWithWhite:0.f alpha:.2f] ;
-    HUD.detailsLabel.font = [UIFont boldSystemFontOfSize:16];
-    [window addSubview:HUD];
-    [HUD showAnimated:YES];
-    HUD.removeFromSuperViewOnHide = YES;
-    return HUD;
-    
-}
+
+
 
 //检测手机号码
 + (BOOL)checkTelNumber:(NSString *) telNumber
@@ -162,5 +150,38 @@
     parameter[@"mKey"] = [[NSString stringWithFormat:@"%@%@",[mKey MD5Digest],sKey]MD5Digest];
     return parameter;
 }
+
+//手机号
++ (BOOL) validateMobile:(NSString *)mobile {
+    NSString *phoneRegex =@"^1\\d{10}$";
+    NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];
+    return [phoneTest evaluateWithObject:mobile];
+}
+
+//密码
++ (BOOL)validatePassword:(NSString *)passWord {
+    NSString *passWordRegex = @"^[a-zA-Z0-9]{6,16}+$";
+    NSPredicate *passWordPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",passWordRegex];
+    return [passWordPredicate evaluateWithObject:passWord];
+}
+//验证码
++ (BOOL)validateVerifyCode:(NSString *)verifyCode {
+    BOOL flag;
+    if (verifyCode.length != 6) {
+        flag = NO;
+        return flag;
+    }
+    NSString *regex2 = @"^(\\d{6})";
+    NSPredicate *verifyCodePredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex2];
+    return [verifyCodePredicate evaluateWithObject:verifyCode];
+}
+
+//昵称 最长不得超过7个汉字，或20个字节(数字，字母和下划线)正则表达式
++ (BOOL) validateNickname:(NSString *)nickname {
+    NSString *nicknameRegex = @"^[\u4e00-\u9fa5]{1,7}$|^[\\dA-Za-z_]{4,20}$";
+    NSPredicate *passWordPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",nicknameRegex];
+    return [passWordPredicate evaluateWithObject:nickname];
+}
+
 
 @end

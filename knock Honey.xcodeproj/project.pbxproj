@@ -63,6 +63,18 @@
 		0C645ECE1DC8294A000E9B98 /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C645ECD1DC8294A000E9B98 /* libAFNetworking.a */; };
 		0C645ED01DC8294F000E9B98 /* libYYKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C645ECF1DC8294F000E9B98 /* libYYKit.a */; };
 		0C645ED21DC82953000E9B98 /* libMJRefresh.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C645ED11DC82953000E9B98 /* libMJRefresh.a */; };
+		0C6C689C1DCB0C5F00B06535 /* KHInformationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6C68901DCB0C5F00B06535 /* KHInformationCell.m */; };
+		0C6C689D1DCB0C5F00B06535 /* KHInformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C6C68911DCB0C5F00B06535 /* KHInformationCell.xib */; };
+		0C6C689E1DCB0C5F00B06535 /* KHInformationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6C68941DCB0C5F00B06535 /* KHInformationController.m */; };
+		0C6C689F1DCB0C5F00B06535 /* NicknameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6C68981DCB0C5F00B06535 /* NicknameViewController.m */; };
+		0C6C68A01DCB0C5F00B06535 /* NicknameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C6C68991DCB0C5F00B06535 /* NicknameViewController.xib */; };
+		0C6C68A81DCB107200B06535 /* KHPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6C68A61DCB107200B06535 /* KHPhoneViewController.m */; };
+		0C6C68A91DCB107200B06535 /* KHPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C6C68A71DCB107200B06535 /* KHPhoneViewController.xib */; };
+		0C6C68AD1DCB205900B06535 /* KHAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6C68AB1DCB205900B06535 /* KHAddressTableViewCell.m */; };
+		0C6C68AE1DCB205900B06535 /* KHAddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C6C68AC1DCB205900B06535 /* KHAddressTableViewCell.xib */; };
+		0C6C68B21DCB273F00B06535 /* KHPhoneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6C68B01DCB273F00B06535 /* KHPhoneTableViewCell.m */; };
+		0C6C68B31DCB273F00B06535 /* KHPhoneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C6C68B11DCB273F00B06535 /* KHPhoneTableViewCell.xib */; };
+		0C6C68B61DCB2F4B00B06535 /* KHAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6C68B51DCB2F4B00B06535 /* KHAddressModel.m */; };
 		0C6F59C21DB85D2800105C8C /* KHPublishModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6F59C11DB85D2800105C8C /* KHPublishModel.m */; };
 		0C6F59C81DB868F100105C8C /* KHCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6F59C71DB868F100105C8C /* KHCartViewController.m */; };
 		0C6F59D51DB86BCF00105C8C /* BillView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6F59CB1DB86BCF00105C8C /* BillView.m */; };
@@ -256,6 +268,25 @@
 		0C645ECD1DC8294A000E9B98 /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "Pods/../build/Debug-iphoneos/libAFNetworking.a"; sourceTree = "<group>"; };
 		0C645ECF1DC8294F000E9B98 /* libYYKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libYYKit.a; path = "Pods/../build/Debug-iphoneos/libYYKit.a"; sourceTree = "<group>"; };
 		0C645ED11DC82953000E9B98 /* libMJRefresh.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMJRefresh.a; path = "Pods/../build/Debug-iphoneos/libMJRefresh.a"; sourceTree = "<group>"; };
+		0C6C688F1DCB0C5F00B06535 /* KHInformationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHInformationCell.h; sourceTree = "<group>"; };
+		0C6C68901DCB0C5F00B06535 /* KHInformationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHInformationCell.m; sourceTree = "<group>"; };
+		0C6C68911DCB0C5F00B06535 /* KHInformationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHInformationCell.xib; sourceTree = "<group>"; };
+		0C6C68931DCB0C5F00B06535 /* KHInformationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHInformationController.h; sourceTree = "<group>"; };
+		0C6C68941DCB0C5F00B06535 /* KHInformationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHInformationController.m; sourceTree = "<group>"; };
+		0C6C68971DCB0C5F00B06535 /* NicknameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NicknameViewController.h; sourceTree = "<group>"; };
+		0C6C68981DCB0C5F00B06535 /* NicknameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NicknameViewController.m; sourceTree = "<group>"; };
+		0C6C68991DCB0C5F00B06535 /* NicknameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NicknameViewController.xib; sourceTree = "<group>"; };
+		0C6C68A51DCB107200B06535 /* KHPhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHPhoneViewController.h; sourceTree = "<group>"; };
+		0C6C68A61DCB107200B06535 /* KHPhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPhoneViewController.m; sourceTree = "<group>"; };
+		0C6C68A71DCB107200B06535 /* KHPhoneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHPhoneViewController.xib; sourceTree = "<group>"; };
+		0C6C68AA1DCB205900B06535 /* KHAddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHAddressTableViewCell.h; sourceTree = "<group>"; };
+		0C6C68AB1DCB205900B06535 /* KHAddressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHAddressTableViewCell.m; sourceTree = "<group>"; };
+		0C6C68AC1DCB205900B06535 /* KHAddressTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHAddressTableViewCell.xib; sourceTree = "<group>"; };
+		0C6C68AF1DCB273F00B06535 /* KHPhoneTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHPhoneTableViewCell.h; sourceTree = "<group>"; };
+		0C6C68B01DCB273F00B06535 /* KHPhoneTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPhoneTableViewCell.m; sourceTree = "<group>"; };
+		0C6C68B11DCB273F00B06535 /* KHPhoneTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHPhoneTableViewCell.xib; sourceTree = "<group>"; };
+		0C6C68B41DCB2F4B00B06535 /* KHAddressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHAddressModel.h; sourceTree = "<group>"; };
+		0C6C68B51DCB2F4B00B06535 /* KHAddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHAddressModel.m; sourceTree = "<group>"; };
 		0C6F59C01DB85D2800105C8C /* KHPublishModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHPublishModel.h; sourceTree = "<group>"; };
 		0C6F59C11DB85D2800105C8C /* KHPublishModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPublishModel.m; sourceTree = "<group>"; };
 		0C6F59C61DB868F100105C8C /* KHCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHCartViewController.h; sourceTree = "<group>"; };
@@ -683,6 +714,8 @@
 		0C56099D1DC9EF6E00B7BEBC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0C6C68B41DCB2F4B00B06535 /* KHAddressModel.h */,
+				0C6C68B51DCB2F4B00B06535 /* KHAddressModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -690,6 +723,12 @@
 		0C56099E1DC9EF6E00B7BEBC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0C6C68AA1DCB205900B06535 /* KHAddressTableViewCell.h */,
+				0C6C68AB1DCB205900B06535 /* KHAddressTableViewCell.m */,
+				0C6C68AC1DCB205900B06535 /* KHAddressTableViewCell.xib */,
+				0C6C68AF1DCB273F00B06535 /* KHPhoneTableViewCell.h */,
+				0C6C68B01DCB273F00B06535 /* KHPhoneTableViewCell.m */,
+				0C6C68B11DCB273F00B06535 /* KHPhoneTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -819,6 +858,121 @@
 				0C62AD261DC876FF0091119D /* KHTopupViewController.m */,
 			);
 			path = Viewcontroller;
+			sourceTree = "<group>";
+		};
+		0C6C688B1DCB0C5F00B06535 /* 个人信息 */ = {
+			isa = PBXGroup;
+			children = (
+				0C6C688C1DCB0C5F00B06535 /* 信息 */,
+				0C6C68A11DCB105300B06535 /* 修改电话 */,
+				0C6C68951DCB0C5F00B06535 /* 修改信息 */,
+			);
+			path = "个人信息";
+			sourceTree = "<group>";
+		};
+		0C6C688C1DCB0C5F00B06535 /* 信息 */ = {
+			isa = PBXGroup;
+			children = (
+				0C6C68921DCB0C5F00B06535 /* ViewController */,
+				0C6C688D1DCB0C5F00B06535 /* Model */,
+				0C6C688E1DCB0C5F00B06535 /* view */,
+			);
+			name = "信息";
+			path = "个人信息";
+			sourceTree = "<group>";
+		};
+		0C6C688D1DCB0C5F00B06535 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0C6C688E1DCB0C5F00B06535 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				0C6C688F1DCB0C5F00B06535 /* KHInformationCell.h */,
+				0C6C68901DCB0C5F00B06535 /* KHInformationCell.m */,
+				0C6C68911DCB0C5F00B06535 /* KHInformationCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		0C6C68921DCB0C5F00B06535 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C6C68931DCB0C5F00B06535 /* KHInformationController.h */,
+				0C6C68941DCB0C5F00B06535 /* KHInformationController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		0C6C68951DCB0C5F00B06535 /* 修改信息 */ = {
+			isa = PBXGroup;
+			children = (
+				0C6C68961DCB0C5F00B06535 /* Controller */,
+				0C6C689A1DCB0C5F00B06535 /* Model */,
+				0C6C689B1DCB0C5F00B06535 /* View */,
+			);
+			path = "修改信息";
+			sourceTree = "<group>";
+		};
+		0C6C68961DCB0C5F00B06535 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0C6C68971DCB0C5F00B06535 /* NicknameViewController.h */,
+				0C6C68981DCB0C5F00B06535 /* NicknameViewController.m */,
+				0C6C68991DCB0C5F00B06535 /* NicknameViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0C6C689A1DCB0C5F00B06535 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0C6C689B1DCB0C5F00B06535 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0C6C68A11DCB105300B06535 /* 修改电话 */ = {
+			isa = PBXGroup;
+			children = (
+				0C6C68A21DCB105300B06535 /* Controller */,
+				0C6C68A31DCB105300B06535 /* Model */,
+				0C6C68A41DCB105300B06535 /* View */,
+			);
+			path = "修改电话";
+			sourceTree = "<group>";
+		};
+		0C6C68A21DCB105300B06535 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0C6C68A51DCB107200B06535 /* KHPhoneViewController.h */,
+				0C6C68A61DCB107200B06535 /* KHPhoneViewController.m */,
+				0C6C68A71DCB107200B06535 /* KHPhoneViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0C6C68A31DCB105300B06535 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0C6C68A41DCB105300B06535 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		0C6F59C31DB868F100105C8C /* Model */ = {
@@ -1119,6 +1273,7 @@
 		0CB128F21DAA1EF3005A0A4D /* 个人中心 */ = {
 			isa = PBXGroup;
 			children = (
+				0C6C688B1DCB0C5F00B06535 /* 个人信息 */,
 				0C62AD211DC876D10091119D /* 充值 */,
 				0C9B056B1DC72D92008D7BFA /* 个人 */,
 				0C9B056A1DC72D92008D7BFA /* 夺宝纪录 */,
@@ -1736,18 +1891,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C6C68A01DCB0C5F00B06535 /* NicknameViewController.xib in Resources */,
 				0C5782DB1DC1DD5000DB0B9A /* KHRegiterThirdViewController.xib in Resources */,
 				0C5E05CB1DADCF7700B2133F /* KHDowmViewCell.xib in Resources */,
 				0C2705AD1DAF66EB00CE2F15 /* TreasureDetailCell.xib in Resources */,
 				0C5782D11DC1B8AB00DB0B9A /* KHRegiterViewController.xib in Resources */,
 				0C5782D61DC1D60100DB0B9A /* KHRegiterSecondController.xib in Resources */,
 				0CBD1A1E1DACB650003E8150 /* IQKeyboardManager.bundle in Resources */,
+				0C6C68AE1DCB205900B06535 /* KHAddressTableViewCell.xib in Resources */,
 				0C3693461DAB8F8000BB3EE0 /* KHPulishedTableViewCell.xib in Resources */,
 				0CD77C951DBF44D300F72AA5 /* KHAppearTableViewCell.xib in Resources */,
 				0C62AD2F1DC87BD60091119D /* KHTopupTableViewCell.xib in Resources */,
+				0C6C68A91DCB107200B06535 /* KHPhoneViewController.xib in Resources */,
 				0CB128CD1DAA0467005A0A4D /* LaunchScreen.storyboard in Resources */,
 				0CBD1A5D1DACC130003E8150 /* WinTreasureCell.xib in Resources */,
 				0C27059E1DAF287A00CE2F15 /* CategoryDetailCell.xib in Resources */,
+				0C6C68B31DCB273F00B06535 /* KHPhoneTableViewCell.xib in Resources */,
+				0C6C689D1DCB0C5F00B06535 /* KHInformationCell.xib in Resources */,
 				0C9B057D1DC72D92008D7BFA /* KHPersonCell.xib in Resources */,
 				0C5E05D01DADDD3900B2133F /* KHheard2View.xib in Resources */,
 				0C36933E1DAB66C800BB3EE0 /* KHKnowTableViewCell.xib in Resources */,
@@ -1855,8 +2015,10 @@
 				0C27059D1DAF287A00CE2F15 /* CategoryDetailCell.m in Sources */,
 				0CBD1A661DACC415003E8150 /* WinTreasureMenuHeader.m in Sources */,
 				0C5E05FC1DAE3B7C00B2133F /* KHProductModel.m in Sources */,
+				0C6C68A81DCB107200B06535 /* KHPhoneViewController.m in Sources */,
 				0CB129371DAA28ED005A0A4D /* MBProgressHUD+MJ.m in Sources */,
 				0C009FD71DC08F74002F4470 /* KHAppearDetailController.m in Sources */,
+				0C6C689E1DCB0C5F00B06535 /* KHInformationController.m in Sources */,
 				0CBD1A1A1DACB650003E8150 /* IQPreviousNextView.m in Sources */,
 				0C5E05F01DAE36FE00B2133F /* TAAbstractDotView.m in Sources */,
 				0CE379661DC0B3BF00F42A4F /* BtButton.m in Sources */,
@@ -1876,10 +2038,12 @@
 				0C01B5BB1DB5B6C700D41F43 /* KHWinner.m in Sources */,
 				0C5E05F11DAE36FE00B2133F /* TAAnimatedDotView.m in Sources */,
 				0C5E05F21DAE36FE00B2133F /* TADotView.m in Sources */,
+				0C6C689F1DCB0C5F00B06535 /* NicknameViewController.m in Sources */,
 				0CBD1A601DACC368003E8150 /* KHHOmeViewLayout.m in Sources */,
 				0C5E05F41DAE36FE00B2133F /* SDCollectionViewCell.m in Sources */,
 				0CBD1A151DACB650003E8150 /* IQUIWindow+Hierarchy.m in Sources */,
 				0CBD1A101DACB650003E8150 /* IQNSArray+Sort.m in Sources */,
+				0C6C68B61DCB2F4B00B06535 /* KHAddressModel.m in Sources */,
 				0CB1294A1DAA2977005A0A4D /* Utils.m in Sources */,
 				0CBD19E31DAC8E36003E8150 /* SearchBar.m in Sources */,
 				0C6F59D51DB86BCF00105C8C /* BillView.m in Sources */,
@@ -1887,6 +2051,8 @@
 				0C9B05851DC72EBA008D7BFA /* KHSnatchListController.m in Sources */,
 				0C9B05671DC72B0E008D7BFA /* YZDisplayTitleLabel.m in Sources */,
 				0CBD1A171DACB650003E8150 /* IQKeyboardReturnKeyHandler.m in Sources */,
+				0C6C68B21DCB273F00B06535 /* KHPhoneTableViewCell.m in Sources */,
+				0C6C68AD1DCB205900B06535 /* KHAddressTableViewCell.m in Sources */,
 				0C6F59E91DB8CB3700105C8C /* ShoppingListLayout.m in Sources */,
 				0C5782DA1DC1DD5000DB0B9A /* KHRegiterThirdViewController.m in Sources */,
 				0C5609A21DC9EF9E00B7BEBC /* KHAddressViewController.m in Sources */,
@@ -1928,6 +2094,7 @@
 				0C62AD271DC876FF0091119D /* KHTopupViewController.m in Sources */,
 				0C2705A21DAF666C00CE2F15 /* TreasureDetailFooter.m in Sources */,
 				0CB128BF1DAA0467005A0A4D /* main.m in Sources */,
+				0C6C689C1DCB0C5F00B06535 /* KHInformationCell.m in Sources */,
 				0CEDEE391DC199C60063C690 /* PooCodeView.m in Sources */,
 				0C2705AE1DAF66EB00CE2F15 /* TreasureDetailHeader.m in Sources */,
 				0C36933D1DAB66C800BB3EE0 /* KHKnowTableViewCell.m in Sources */,

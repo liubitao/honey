@@ -140,8 +140,12 @@
 
 
 - (IBAction)changeCode:(id)sender {
+       [_validatePic changeCode];
 }
 - (IBAction)registerAcoount:(id)sender {
+    NSMutableString *string = [NSMutableString stringWithString:_userPhone.text];
+    [string deleteCharactersInRange:NSMakeRange(3, 1)];
+    [string deleteCharactersInRange:NSMakeRange(7, 1)];
 }
 
 - (void)didReceiveMemoryWarning {

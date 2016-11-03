@@ -10,6 +10,8 @@
 #import "KHPersonCell.h"
 #import "KHPersonHeader.h"
 #import "KHTopupViewController.h"
+#import "KHInformationController.h"
+#import "KHAddressViewController.h"
 
 @interface KHPersonViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *tableView;
@@ -68,13 +70,6 @@
     [self setBackItem];
 }
 
-/**
- *  设置
- */
-- (void)rightClick{
-    
-}
-
 - (void)configTableView{
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, KscreenHeight-kTabBarHeight) style:UITableViewStyleGrouped];
@@ -100,10 +95,12 @@
     __weak typeof(self) weakSelf = self;
     _header.settingBlock = ^{
         NSLog(@"设置");
+        [YWUserTool quit];
     };
     
     _header.headImgBlock = ^{
-        NSLog(@"头像");
+        KHInformationController *inforVC = [[KHInformationController alloc]init];
+        [weakSelf pushController:inforVC];
     };
     
     _header.topupBlock = ^{
@@ -154,7 +151,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    if (indexPath.section == 0) {
+        if (indexPath.row == 4) {//地址管理
+            KHAddressViewController *addresVC = [[KHAddressViewController alloc]init];
+            [self pushController:addresVC];
+        }
+    }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

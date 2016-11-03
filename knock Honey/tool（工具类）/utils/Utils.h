@@ -14,16 +14,13 @@
 @interface Utils : NSObject
 
 
-+ (MBProgressHUD *)createHUD;
-
-//检查手机号
-+ (BOOL)checkTelNumber:(NSString *) telNumber;
-
 //检查银行卡号
 + (BOOL)checkCardNo:(NSString*) cardNo;
 
 //倒计时
 +(void)timeDecrease:(UIButton *)button;
+
+
 //判断对象是不是空的
 +(BOOL)isNull:(id)object;
 
@@ -35,5 +32,22 @@
 + (NSMutableAttributedString *)stringWith:(NSString *)string font1:(UIFont*)font1 color1:(UIColor *)color1 font2:(UIFont*)font2 color2:(UIColor *)color2 range:(NSRange)range;
 
 + (NSMutableDictionary *)parameter;
+
+
+/**手机号码
+ */
++ (BOOL)validateMobile:(NSString *)mobile;
+
+/**密码
+ */
++ (BOOL)validatePassword:(NSString *)passWord;
+
+/**验证码
+ */
++ (BOOL)validateVerifyCode:(NSString *)verifyCode;
+
+/**昵称
+ */
++ (BOOL)validateNickname:(NSString *)nickname;
 
 @end

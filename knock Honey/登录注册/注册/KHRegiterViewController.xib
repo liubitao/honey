@@ -121,7 +121,7 @@
                                 <constraint firstAttribute="height" constant="30" id="XHe-jJ-ltk"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            <textInputTraits key="textInputTraits"/>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7bN-so-ejb" customClass="PooCodeView">
                             <rect key="frame" x="225" y="8" width="80" height="30"/>

@@ -24,6 +24,7 @@
 
 @property (assign, nonatomic) BOOL isAllSelected;
 
+@property (nonatomic, getter=isLoading) BOOL loading;
 @end
 
 @implementation KHCartViewController
@@ -50,6 +51,8 @@
         }) style:UITableViewStylePlain];
         _tableView.dataSource = self;
         _tableView.delegate = self;
+        _tableView.emptyDataSetDelegate = self;
+        _tableView.emptyDataSetSource = self;
         _tableView.backgroundColor = UIColorHex(f0f0f0);
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.allowsMultipleSelection = YES;
@@ -79,9 +82,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"购物车";
     [self.view addSubview:self.tableView];
-    
-        _tableView.emptyDataSetDelegate = self;
-        _tableView.emptyDataSetSource = self;
+
   
     [self setRightImageNamed:@"help" action:@selector(helpClick)];
     //下拉刷新
@@ -91,6 +92,8 @@
         //结束刷新
         [weakSelf.tableView.mj_header endRefreshing];
     }];
+    //开始下拉刷新
+    [self getDatasource];
 }
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter]removeObserver:self];
@@ -101,8 +104,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    //开始下拉刷新
-    [self.tableView.mj_header beginRefreshing];
+
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -111,8 +113,18 @@
     [_billView setNormalStyle];
 }
 
+- (void)setLoading:(BOOL)loading
+{
+    if (self.isLoading == loading) {
+        return;
+    }
+    _loading = loading;
+    
+    [self.tableView reloadEmptyDataSet];
+}
 
 - (void)getDatasource{
+    self.loading = YES;
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"userid"] = [YWUserTool account].userid;
     [YWHttptool GET:PortIndex parameters:parameter success:^(id responseObject) {
@@ -124,11 +136,12 @@
             ShoppingListLayout *layout = [[ShoppingListLayout alloc]initWithModel:cartModel];
             [self.dataArray addObject:layout];
         }
+        self.loading = NO;
         [self.tableView reloadData];
         [self getMoneySum];
         [self setupBillview];
     } failure:^(NSError *error) {
-        [MBProgressHUD showError:@"网络连接有误"];
+        self.loading = NO;
     }];
   
 }
@@ -307,24 +320,6 @@
 }
 
 
-#pragma mark - DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
-- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
-    return [UIImage imageNamed:@"empty_placeholder"];
-}
-
-
-
-- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
-    return YES;
-}
-
-- (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView{
-    return YES;
-}
-- (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button{
-    [self getDatasource];
-}
-
 #pragma mark - ShoppingListCellDelegate
 - (void)listCount:(NSNumber *)listCount atIndexPath:(NSIndexPath *)indexPath {
     ShoppingListLayout *layout = _dataArray[indexPath.row];
@@ -334,7 +329,63 @@
     [_billView setMoneyNumber:_dataArray.count Sum:_moneySum];
 }
 
+#pragma mark - DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
 
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView{
+    NSString *text;
+    if (self.isLoading) {
+        text = @"加载中...";
+    }else{
+        text = @"数据加载失败...";
+    }
+    NSMutableDictionary *attributes = [NSMutableDictionary new];
+    [attributes setObject:SYSTEM_FONT(16) forKey:NSFontAttributeName];
+    [attributes setObject:[UIColor grayColor] forKey:NSForegroundColorAttributeName];
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    if (self.isLoading) {
+        return [UIImage imageNamed:@"loading"];
+    }
+    return [UIImage imageNamed:@"empty_placeholder"];
+}
+
+- (CAAnimation *)imageAnimationForEmptyDataSet:(UIScrollView *)scrollView
+{
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform"];
+    animation.fromValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
+    animation.toValue = [NSValue valueWithCATransform3D: CATransform3DMakeRotation(M_PI_2, 0.0, 0.0, 1.0) ];
+    animation.duration = 0.25;
+    animation.cumulative = YES;
+    animation.repeatCount = MAXFLOAT;
+    
+    return animation;
+}
+
+- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
+    return YES;
+}
+
+- (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView{
+    return YES;
+}
+
+- (BOOL)emptyDataSetShouldAnimateImageView:(UIScrollView *)scrollView
+{
+    return self.isLoading;
+}
+- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView
+{
+    return YES;
+}
+
+- (void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view
+{
+
+    [self getDatasource];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

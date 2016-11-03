@@ -21,6 +21,7 @@ static NSString * published = @"published";
 }
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *dataArray;
+@property (nonatomic, getter=isLoading) BOOL loading;
 
 @end
 
@@ -54,11 +55,11 @@ static NSString * published = @"published";
         [weakSelf.tableView.mj_header endRefreshing];
     }];
     
-    //开始下拉刷新
-    [self.tableView.mj_header beginRefreshing];
+    [self getLatestPubData];
     
     //上拉刷新
     _tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+        
         [weakSelf getMoreData];
         [weakSelf.tableView.mj_footer endRefreshing];
     }];
@@ -68,7 +69,19 @@ static NSString * published = @"published";
     
 }
 
-- (void)getLatestPubData {
+- (void)setLoading:(BOOL)loading
+{
+    if (self.isLoading == loading) {
+        return;
+    }
+    _loading = loading;
+    
+    [self.tableView reloadEmptyDataSet];
+}
+
+
+- (void)getLatestPubData{
+    self.loading = YES;
     NSMutableDictionary *parameter = [Utils parameter];
     [YWHttptool GET:PortGoodszxjx parameters:parameter success:^(id responseObject) {
         NSLog(@"%@",responseObject);
@@ -76,12 +89,12 @@ static NSString * published = @"published";
             [model stop];
         }
         [_dataArray removeAllObjects];
-        
         _currentPage = 1;
         _dataArray = [KHKnowModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
+        self.loading = NO;
         [self.tableView reloadData];
-    } failure:^(NSError *error) {
-        [MBProgressHUD showError:@"网络连接有误"];
+    } failure:^(NSError *error){
+        self.loading = NO;
     }];
 }
 
@@ -93,7 +106,7 @@ static NSString * published = @"published";
         if ([responseObject[@"isError"] integerValue])return ;
         NSMutableArray *array = [KHKnowModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
         [_dataArray addObjectsFromArray:array];
-        [self.tableView reloadData];
+        [self.tableView reloadEmptyDataSet];
     } failure:^(NSError *error) {
         [MBProgressHUD showError:@"网络连接有误"];
     }];
@@ -158,10 +171,39 @@ static NSString * published = @"published";
     
 }
 #pragma mark - DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView{
+    NSString *text;
+    if (self.isLoading) {
+        text = @"加载中...";
+    }else{
+        text = @"数据加载失败...";
+    }
+    NSMutableDictionary *attributes = [NSMutableDictionary new];
+    [attributes setObject:SYSTEM_FONT(16) forKey:NSFontAttributeName];
+    [attributes setObject:[UIColor grayColor] forKey:NSForegroundColorAttributeName];
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    if (self.isLoading) {
+        return [UIImage imageNamed:@"loading"];
+    }
     return [UIImage imageNamed:@"empty_placeholder"];
 }
 
+- (CAAnimation *)imageAnimationForEmptyDataSet:(UIScrollView *)scrollView
+{
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform"];
+    animation.fromValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
+    animation.toValue = [NSValue valueWithCATransform3D: CATransform3DMakeRotation(M_PI_2, 0.0, 0.0, 1.0) ];
+    animation.duration = 0.25;
+    animation.cumulative = YES;
+    animation.repeatCount = MAXFLOAT;
+    
+    return animation;
+}
 
 - (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
     return YES;
@@ -171,6 +213,19 @@ static NSString * published = @"published";
     return YES;
 }
 
+- (BOOL)emptyDataSetShouldAnimateImageView:(UIScrollView *)scrollView
+{
+    return self.isLoading;
+}
+- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView
+{
+    return YES;
+}
+
+- (void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view
+{
+    [self getLatestPubData];
+}
 
 #pragma mark - LatestPublishCellDelegate
 - (void)countdownDidEnd:(NSIndexPath *)indexpath {
