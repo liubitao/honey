@@ -13,6 +13,16 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
 }
+- (void)setModel:(KHAddressModel *)model{
+    _model = model;
+    _phone.text = [NSString stringWithFormat:@"手机号码:%@",model.czmobile];
+    _QQnumber.text = [NSString stringWithFormat:@"QQ号码:%@",model.czqq];
+}
+- (IBAction)editPhone:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(editPhone:indexpath:)]) {
+        [self.delegate editPhone:_model indexpath:_indexpath];
+    }
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

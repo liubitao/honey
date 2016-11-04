@@ -89,7 +89,7 @@
     _rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     UIImage *image2=  [UIImage imageNamed:name];
     _rightBtn.frame =CGRectMake(0, 0, 50, 44);
-    _rightBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 18, 0, -10);
+    _rightBtn.imageEdgeInsets = UIEdgeInsetsMake(0, -5, 0, -10);
     [_rightBtn setImage:image2 forState:UIControlStateNormal];
     [_rightBtn addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_rightBtn];

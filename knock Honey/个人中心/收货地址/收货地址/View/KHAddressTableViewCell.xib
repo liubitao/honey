@@ -24,16 +24,16 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="实物收货地址1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHD-xW-AhL">
-                                <rect key="frame" x="50" y="15" width="104" height="21"/>
+                                <rect key="frame" x="50" y="15" width="110" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="rbg-HF-YTN"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.81568627450980391" green="0.13725490196078433" blue="0.33725490196078434" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="默认" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rlF-HG-Hqq">
-                                <rect key="frame" x="164" y="17" width="35" height="16"/>
+                                <rect key="frame" x="170" y="17" width="35" height="16"/>
                                 <color key="backgroundColor" red="0.058330066502094269" green="0.76007574796676636" blue="0.16294208168983459" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="0dd-9Y-W9G"/>
@@ -66,7 +66,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="daK-oG-qGT"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.58816933631896973" green="0.58827334642410278" blue="0.58816277980804443" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -75,13 +75,13 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="IKY-eu-9W5"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.58816933630000001" green="0.58827334639999995" blue="0.58816277979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nnj-GZ-6rk">
                                 <rect key="frame" x="24" y="113" width="331" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.58816933630000001" green="0.58827334639999995" blue="0.58816277979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -121,12 +121,13 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="addressNumber" destination="iHD-xW-AhL" id="kFX-7M-abB"/>
                 <outlet property="moren" destination="rlF-HG-Hqq" id="gQs-k1-dV5"/>
                 <outlet property="phone" destination="wjx-im-zoa" id="JWK-kF-CUk"/>
                 <outlet property="takeAddress" destination="nnj-GZ-6rk" id="Hko-df-baS"/>
                 <outlet property="takeMan" destination="QIT-EI-GdH" id="Jvu-xj-osj"/>
             </connections>
-            <point key="canvasLocation" x="287.5" y="348.5"/>
+            <point key="canvasLocation" x="214.5" y="183.5"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -24,11 +24,11 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="充值账号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBh-M7-5Ap">
-                                <rect key="frame" x="50" y="15" width="64" height="21"/>
+                                <rect key="frame" x="50" y="15" width="68" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="DqE-Pg-mAG"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.81568627449999997" green="0.13725490200000001" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -39,6 +39,9 @@
                                     <constraint firstAttribute="width" constant="30" id="hps-NE-P3f"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="eddit"/>
+                                <connections>
+                                    <action selector="editPhone:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ivt-Qw-i9w"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QqD-n9-1Ut">
                                 <rect key="frame" x="20" y="50" width="330" height="1"/>
@@ -48,20 +51,20 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手机号码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jeC-iC-xsu">
-                                <rect key="frame" x="24" y="61" width="326" height="14"/>
+                                <rect key="frame" x="24" y="61" width="326" height="15"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="14" id="mF8-PS-CU6"/>
+                                    <constraint firstAttribute="height" constant="15" id="mF8-PS-CU6"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.58816933630000001" green="0.58827334639999995" blue="0.58816277979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QQ号码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="omI-Jl-UwR">
-                                <rect key="frame" x="24" y="85" width="326" height="14"/>
+                                <rect key="frame" x="24" y="86" width="326" height="15"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="14" id="gVH-HH-xvF"/>
+                                    <constraint firstAttribute="height" constant="15" id="gVH-HH-xvF"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.58816933630000001" green="0.58827334639999995" blue="0.58816277979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -94,6 +97,10 @@
                     <constraint firstItem="iTt-PG-EkR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="qHC-qm-ueO"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="QQnumber" destination="omI-Jl-UwR" id="AHk-Uy-RAs"/>
+                <outlet property="phone" destination="jeC-iC-xsu" id="Xnl-lB-lan"/>
+            </connections>
             <point key="canvasLocation" x="312" y="377.5"/>
         </tableViewCell>
     </objects>

@@ -12,11 +12,12 @@
 
 @protocol KHAddressDelegate <NSObject>
 
-- (void)edit:(KHAddressModel*)model indexpath:(NSIndexPath*)indexpath;
+- (void)editAddress:(KHAddressModel*)model indexpath:(NSIndexPath*)indexpath;
 
 @end
 
 @interface KHAddressTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *addressNumber;
 
 @property (weak, nonatomic) IBOutlet UILabel *moren;
 @property (weak, nonatomic) IBOutlet UILabel *takeMan;
@@ -27,6 +28,6 @@
 @property (nonatomic,strong) NSIndexPath *indexPath;
 @property (nonatomic,assign) id <KHAddressDelegate>delegate;
 
-- (void)serModel:(KHAddressModel *)model;
+- (void)setModel:(KHAddressModel *)model;
 +(CGFloat)height;
 @end

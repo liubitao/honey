@@ -17,13 +17,20 @@
     _moren.layer.masksToBounds = YES;
     
 }
-- (void)serModel:(KHAddressModel *)model{
+- (void)setModel:(KHAddressModel *)model{
     _model = model;
+    if (![model.isdefault integerValue]) {
+        _moren.hidden = YES;
+    }
+    _addressNumber.text = [NSString stringWithFormat:@"实物收货地址%ld",(_indexPath.section+1)];
+    _takeMan.text = [NSString stringWithFormat:@"收货人:%@",model.consignee];
+    _phone.text = [NSString stringWithFormat:@"手机号码:%@",model.mobile];
+    _takeAddress.text = [NSString stringWithFormat:@"收货地址:%@",model.address];
     
 }
 - (IBAction)edit:(id)sender {
-    if ([self.delegate respondsToSelector:@selector(edit:indexpath:)]) {
-        [self.delegate edit:_model indexpath:_indexPath];
+    if ([self.delegate respondsToSelector:@selector(editAddress:indexpath:)]) {
+            [self.delegate editAddress:_model indexpath:_indexPath];
     }
 }
 

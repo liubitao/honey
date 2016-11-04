@@ -85,6 +85,17 @@
 		0C6F59E81DB8CB3700105C8C /* ShoppingListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6F59E51DB8CB3700105C8C /* ShoppingListCell.m */; };
 		0C6F59E91DB8CB3700105C8C /* ShoppingListLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6F59E71DB8CB3700105C8C /* ShoppingListLayout.m */; };
 		0C7C02E41DC346CC00C5ED85 /* KHCartGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7C02E31DC346CC00C5ED85 /* KHCartGoodsModel.m */; };
+		0C7F832E1DCC2BBE003EA29C /* GSPopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7F832D1DCC2BBE003EA29C /* GSPopoverViewController.m */; };
+		0C7F833B1DCC4707003EA29C /* KHEditAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7F83391DCC4707003EA29C /* KHEditAddressViewController.m */; };
+		0C7F833C1DCC4707003EA29C /* KHEditAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C7F833A1DCC4707003EA29C /* KHEditAddressViewController.xib */; };
+		0C7F83401DCC4F84003EA29C /* KHEditPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7F833E1DCC4F84003EA29C /* KHEditPhoneViewController.m */; };
+		0C7F83411DCC4F84003EA29C /* KHEditPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C7F833F1DCC4F84003EA29C /* KHEditPhoneViewController.xib */; };
+		0C7F834E1DCC647C003EA29C /* CityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7F83441DCC647C003EA29C /* CityModel.m */; };
+		0C7F834F1DCC647C003EA29C /* DistrictModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7F83461DCC647C003EA29C /* DistrictModel.m */; };
+		0C7F83501DCC647C003EA29C /* LocalProvince.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C7F83471DCC647C003EA29C /* LocalProvince.plist */; };
+		0C7F83511DCC647C003EA29C /* LocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7F83491DCC647C003EA29C /* LocationModel.m */; };
+		0C7F83521DCC647C003EA29C /* LocationPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7F834B1DCC647C003EA29C /* LocationPickerView.m */; };
+		0C7F83531DCC647C003EA29C /* StreetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7F834D1DCC647C003EA29C /* StreetModel.m */; };
 		0C9B05551DC71684008D7BFA /* UITabBar+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9B05541DC71684008D7BFA /* UITabBar+Badge.m */; };
 		0C9B055A1DC71F37008D7BFA /* UIBarButtonItem+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9B05571DC71F37008D7BFA /* UIBarButtonItem+Badge.m */; };
 		0C9B055B1DC71F37008D7BFA /* UIButton+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9B05591DC71F37008D7BFA /* UIButton+Badge.m */; };
@@ -307,6 +318,25 @@
 		0C6F59E71DB8CB3700105C8C /* ShoppingListLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListLayout.m; sourceTree = "<group>"; };
 		0C7C02E21DC346CC00C5ED85 /* KHCartGoodsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHCartGoodsModel.h; sourceTree = "<group>"; };
 		0C7C02E31DC346CC00C5ED85 /* KHCartGoodsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHCartGoodsModel.m; sourceTree = "<group>"; };
+		0C7F832C1DCC2BBE003EA29C /* GSPopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSPopoverViewController.h; sourceTree = "<group>"; };
+		0C7F832D1DCC2BBE003EA29C /* GSPopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSPopoverViewController.m; sourceTree = "<group>"; };
+		0C7F83381DCC4707003EA29C /* KHEditAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHEditAddressViewController.h; sourceTree = "<group>"; };
+		0C7F83391DCC4707003EA29C /* KHEditAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHEditAddressViewController.m; sourceTree = "<group>"; };
+		0C7F833A1DCC4707003EA29C /* KHEditAddressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHEditAddressViewController.xib; sourceTree = "<group>"; };
+		0C7F833D1DCC4F84003EA29C /* KHEditPhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHEditPhoneViewController.h; sourceTree = "<group>"; };
+		0C7F833E1DCC4F84003EA29C /* KHEditPhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHEditPhoneViewController.m; sourceTree = "<group>"; };
+		0C7F833F1DCC4F84003EA29C /* KHEditPhoneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHEditPhoneViewController.xib; sourceTree = "<group>"; };
+		0C7F83431DCC647C003EA29C /* CityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityModel.h; sourceTree = "<group>"; };
+		0C7F83441DCC647C003EA29C /* CityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityModel.m; sourceTree = "<group>"; };
+		0C7F83451DCC647C003EA29C /* DistrictModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistrictModel.h; sourceTree = "<group>"; };
+		0C7F83461DCC647C003EA29C /* DistrictModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistrictModel.m; sourceTree = "<group>"; };
+		0C7F83471DCC647C003EA29C /* LocalProvince.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LocalProvince.plist; sourceTree = "<group>"; };
+		0C7F83481DCC647C003EA29C /* LocationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationModel.h; sourceTree = "<group>"; };
+		0C7F83491DCC647C003EA29C /* LocationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationModel.m; sourceTree = "<group>"; };
+		0C7F834A1DCC647C003EA29C /* LocationPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationPickerView.h; sourceTree = "<group>"; };
+		0C7F834B1DCC647C003EA29C /* LocationPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationPickerView.m; sourceTree = "<group>"; };
+		0C7F834C1DCC647C003EA29C /* StreetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreetModel.h; sourceTree = "<group>"; };
+		0C7F834D1DCC647C003EA29C /* StreetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreetModel.m; sourceTree = "<group>"; };
 		0C9B05531DC71684008D7BFA /* UITabBar+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBar+Badge.h"; sourceTree = "<group>"; };
 		0C9B05541DC71684008D7BFA /* UITabBar+Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+Badge.m"; sourceTree = "<group>"; };
 		0C9B05561DC71F37008D7BFA /* UIBarButtonItem+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Badge.h"; sourceTree = "<group>"; };
@@ -690,6 +720,9 @@
 		0C56099A1DC9EF6E00B7BEBC /* 地址编辑 */ = {
 			isa = PBXGroup;
 			children = (
+				0C7F83311DCC4544003EA29C /* viewController */,
+				0C7F832F1DCC4544003EA29C /* model */,
+				0C7F83301DCC4544003EA29C /* view */,
 			);
 			path = "地址编辑";
 			sourceTree = "<group>";
@@ -697,6 +730,9 @@
 		0C56099B1DC9EF6E00B7BEBC /* 充值账号 */ = {
 			isa = PBXGroup;
 			children = (
+				0C7F83341DCC4561003EA29C /* viewController */,
+				0C7F83321DCC4561003EA29C /* model */,
+				0C7F83331DCC4561003EA29C /* view */,
 			);
 			path = "充值账号";
 			sourceTree = "<group>";
@@ -1044,6 +1080,82 @@
 			path = EditingCell;
 			sourceTree = "<group>";
 		};
+		0C7F832B1DCC2BBE003EA29C /* GSPopoverViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C7F832C1DCC2BBE003EA29C /* GSPopoverViewController.h */,
+				0C7F832D1DCC2BBE003EA29C /* GSPopoverViewController.m */,
+			);
+			path = GSPopoverViewController;
+			sourceTree = "<group>";
+		};
+		0C7F832F1DCC4544003EA29C /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		0C7F83301DCC4544003EA29C /* view */ = {
+			isa = PBXGroup;
+			children = (
+				0C7F83421DCC647C003EA29C /* LocationPickerView */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		0C7F83311DCC4544003EA29C /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C7F83381DCC4707003EA29C /* KHEditAddressViewController.h */,
+				0C7F83391DCC4707003EA29C /* KHEditAddressViewController.m */,
+				0C7F833A1DCC4707003EA29C /* KHEditAddressViewController.xib */,
+			);
+			path = viewController;
+			sourceTree = "<group>";
+		};
+		0C7F83321DCC4561003EA29C /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		0C7F83331DCC4561003EA29C /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		0C7F83341DCC4561003EA29C /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C7F833D1DCC4F84003EA29C /* KHEditPhoneViewController.h */,
+				0C7F833E1DCC4F84003EA29C /* KHEditPhoneViewController.m */,
+				0C7F833F1DCC4F84003EA29C /* KHEditPhoneViewController.xib */,
+			);
+			path = viewController;
+			sourceTree = "<group>";
+		};
+		0C7F83421DCC647C003EA29C /* LocationPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				0C7F83431DCC647C003EA29C /* CityModel.h */,
+				0C7F83441DCC647C003EA29C /* CityModel.m */,
+				0C7F83451DCC647C003EA29C /* DistrictModel.h */,
+				0C7F83461DCC647C003EA29C /* DistrictModel.m */,
+				0C7F83471DCC647C003EA29C /* LocalProvince.plist */,
+				0C7F83481DCC647C003EA29C /* LocationModel.h */,
+				0C7F83491DCC647C003EA29C /* LocationModel.m */,
+				0C7F834A1DCC647C003EA29C /* LocationPickerView.h */,
+				0C7F834B1DCC647C003EA29C /* LocationPickerView.m */,
+				0C7F834C1DCC647C003EA29C /* StreetModel.h */,
+				0C7F834D1DCC647C003EA29C /* StreetModel.m */,
+			);
+			path = LocationPickerView;
+			sourceTree = "<group>";
+		};
 		0C9B055C1DC72B0E008D7BFA /* YZDisplayViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1367,6 +1479,7 @@
 		0CB129351DAA28ED005A0A4D /* lib（三方库） */ = {
 			isa = PBXGroup;
 			children = (
+				0C7F832B1DCC2BBE003EA29C /* GSPopoverViewController */,
 				0C9B055C1DC72B0E008D7BFA /* YZDisplayViewController */,
 				0C5E05E01DAE36FE00B2133F /* SDCycleScrollView */,
 				0CBD1A531DACB78B003E8150 /* FDFullscreenPopGesture */,
@@ -1898,7 +2011,9 @@
 				0C5782D11DC1B8AB00DB0B9A /* KHRegiterViewController.xib in Resources */,
 				0C5782D61DC1D60100DB0B9A /* KHRegiterSecondController.xib in Resources */,
 				0CBD1A1E1DACB650003E8150 /* IQKeyboardManager.bundle in Resources */,
+				0C7F833C1DCC4707003EA29C /* KHEditAddressViewController.xib in Resources */,
 				0C6C68AE1DCB205900B06535 /* KHAddressTableViewCell.xib in Resources */,
+				0C7F83501DCC647C003EA29C /* LocalProvince.plist in Resources */,
 				0C3693461DAB8F8000BB3EE0 /* KHPulishedTableViewCell.xib in Resources */,
 				0CD77C951DBF44D300F72AA5 /* KHAppearTableViewCell.xib in Resources */,
 				0C62AD2F1DC87BD60091119D /* KHTopupTableViewCell.xib in Resources */,
@@ -1906,6 +2021,7 @@
 				0CB128CD1DAA0467005A0A4D /* LaunchScreen.storyboard in Resources */,
 				0CBD1A5D1DACC130003E8150 /* WinTreasureCell.xib in Resources */,
 				0C27059E1DAF287A00CE2F15 /* CategoryDetailCell.xib in Resources */,
+				0C7F83411DCC4F84003EA29C /* KHEditPhoneViewController.xib in Resources */,
 				0C6C68B31DCB273F00B06535 /* KHPhoneTableViewCell.xib in Resources */,
 				0C6C689D1DCB0C5F00B06535 /* KHInformationCell.xib in Resources */,
 				0C9B057D1DC72D92008D7BFA /* KHPersonCell.xib in Resources */,
@@ -1986,6 +2102,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C645ECC1DC8288C000E9B98 /* KHKnowViewController.m in Sources */,
+				0C7F83521DCC647C003EA29C /* LocationPickerView.m in Sources */,
 				0C645ECB1DC82809000E9B98 /* KHAppearViewController.m in Sources */,
 				0C2705AF1DAF66EB00CE2F15 /* TreaureHeaderMenu.m in Sources */,
 				0C9B057F1DC72D92008D7BFA /* KHPersonViewController.m in Sources */,
@@ -1997,6 +2114,7 @@
 				0CBD1A7E1DACEF97003E8150 /* HomeFooter.m in Sources */,
 				0C009FCD1DC073DB002F4470 /* KHAppearModel.m in Sources */,
 				0C2705AC1DAF66EB00CE2F15 /* TreasureDetailCell.m in Sources */,
+				0C7F833B1DCC4707003EA29C /* KHEditAddressViewController.m in Sources */,
 				0C3693451DAB8F8000BB3EE0 /* KHPulishedTableViewCell.m in Sources */,
 				0C5E05F51DAE36FE00B2133F /* SDCycleScrollView.m in Sources */,
 				0C9B057C1DC72D92008D7BFA /* KHPersonCell.m in Sources */,
@@ -2009,6 +2127,7 @@
 				0CBD1A1C1DACB650003E8150 /* IQToolbar.m in Sources */,
 				0CB129481DAA2977005A0A4D /* YWUserTool.m in Sources */,
 				0CB129491DAA2977005A0A4D /* YWHttptool.m in Sources */,
+				0C7F834E1DCC647C003EA29C /* CityModel.m in Sources */,
 				0C009FDA1DC09574002F4470 /* KHAppearDetailView.m in Sources */,
 				0C6F59D91DB86BCF00105C8C /* ListCountView.m in Sources */,
 				0C5E05CF1DADDD3900B2133F /* KHheard2View.m in Sources */,
@@ -2016,6 +2135,7 @@
 				0CBD1A661DACC415003E8150 /* WinTreasureMenuHeader.m in Sources */,
 				0C5E05FC1DAE3B7C00B2133F /* KHProductModel.m in Sources */,
 				0C6C68A81DCB107200B06535 /* KHPhoneViewController.m in Sources */,
+				0C7F834F1DCC647C003EA29C /* DistrictModel.m in Sources */,
 				0CB129371DAA28ED005A0A4D /* MBProgressHUD+MJ.m in Sources */,
 				0C009FD71DC08F74002F4470 /* KHAppearDetailController.m in Sources */,
 				0C6C689E1DCB0C5F00B06535 /* KHInformationController.m in Sources */,
@@ -2024,6 +2144,7 @@
 				0CE379661DC0B3BF00F42A4F /* BtButton.m in Sources */,
 				0C2705991DAF27A600CE2F15 /* KHTenModel.m in Sources */,
 				0C6F59DF1DB89D6D00105C8C /* UITableView+Custom.m in Sources */,
+				0C7F83401DCC4F84003EA29C /* KHEditPhoneViewController.m in Sources */,
 				0C9B05551DC71684008D7BFA /* UITabBar+Badge.m in Sources */,
 				0C9B055B1DC71F37008D7BFA /* UIButton+Badge.m in Sources */,
 				0C5609991DC9EDF600B7BEBC /* UIView+Frame.m in Sources */,
@@ -2041,12 +2162,15 @@
 				0C6C689F1DCB0C5F00B06535 /* NicknameViewController.m in Sources */,
 				0CBD1A601DACC368003E8150 /* KHHOmeViewLayout.m in Sources */,
 				0C5E05F41DAE36FE00B2133F /* SDCollectionViewCell.m in Sources */,
+				0C7F832E1DCC2BBE003EA29C /* GSPopoverViewController.m in Sources */,
 				0CBD1A151DACB650003E8150 /* IQUIWindow+Hierarchy.m in Sources */,
 				0CBD1A101DACB650003E8150 /* IQNSArray+Sort.m in Sources */,
 				0C6C68B61DCB2F4B00B06535 /* KHAddressModel.m in Sources */,
 				0CB1294A1DAA2977005A0A4D /* Utils.m in Sources */,
+				0C7F83511DCC647C003EA29C /* LocationModel.m in Sources */,
 				0CBD19E31DAC8E36003E8150 /* SearchBar.m in Sources */,
 				0C6F59D51DB86BCF00105C8C /* BillView.m in Sources */,
+				0C7F83531DCC647C003EA29C /* StreetModel.m in Sources */,
 				0CB1293A1DAA28ED005A0A4D /* UIImage+YWimage.m in Sources */,
 				0C9B05851DC72EBA008D7BFA /* KHSnatchListController.m in Sources */,
 				0C9B05671DC72B0E008D7BFA /* YZDisplayTitleLabel.m in Sources */,
