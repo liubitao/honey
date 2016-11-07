@@ -11,6 +11,7 @@
 #import "ShoppingListCell.h"
 #import "KHcartModel.h"
 #import "ShoppingListLayout.h"
+#import <MJExtension.h>
 
 @interface KHCartViewController ()<UITableViewDataSource,UITableViewDelegate,ShoppingListCellDelegate,DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>
 @property (nonatomic, strong) NSNumber *moneySum;
@@ -82,7 +83,6 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"购物车";
     [self.view addSubview:self.tableView];
-
   
     [self setRightImageNamed:@"help" action:@selector(helpClick)];
     //下拉刷新
@@ -102,8 +102,28 @@
     [self getDatasource];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self refreshe];
+}
+
+//购物车批量更新
+- (void)refreshe{
+    NSMutableDictionary *parameter = [Utils parameter];
+    parameter[@"userid"] = [YWUserTool account].userid;
+    NSMutableArray *array = [NSMutableArray array];
+    for (ShoppingListLayout *layout in self.dataArray) {
+        [array addObject:layout.model.mj_keyValues];
+    }
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:array options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    parameter[@"cart"] = jsonString;
+    [YWHttptool Post:PortCart_change parameters:parameter success:^(id responseObject){
+        if ([responseObject[@"isError"] integerValue]) return ;
+        
+    } failure:^(NSError *error){
+        NSLog(@"%@",error);
+    }];
 
 }
 

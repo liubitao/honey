@@ -107,6 +107,9 @@
 		0C9B057E1DC72D92008D7BFA /* KHPersonHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9B05721DC72D92008D7BFA /* KHPersonHeader.m */; };
 		0C9B057F1DC72D92008D7BFA /* KHPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9B05751DC72D92008D7BFA /* KHPersonViewController.m */; };
 		0C9B05851DC72EBA008D7BFA /* KHSnatchListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9B05841DC72EBA008D7BFA /* KHSnatchListController.m */; };
+		0CA598B41DD05242000F007B /* KHWinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA598B31DD05242000F007B /* KHWinViewController.m */; };
+		0CA598B81DD057D8000F007B /* KHWinTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA598B61DD057D8000F007B /* KHWinTableViewCell.m */; };
+		0CA598B91DD057D8000F007B /* KHWinTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CA598B71DD057D8000F007B /* KHWinTableViewCell.xib */; };
 		0CB128BF1DAA0467005A0A4D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB128BE1DAA0467005A0A4D /* main.m */; };
 		0CB128CA1DAA0467005A0A4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CB128C91DAA0467005A0A4D /* Assets.xcassets */; };
 		0CB128CD1DAA0467005A0A4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CB128CB1DAA0467005A0A4D /* LaunchScreen.storyboard */; };
@@ -359,6 +362,11 @@
 		0C9B05751DC72D92008D7BFA /* KHPersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPersonViewController.m; sourceTree = "<group>"; };
 		0C9B05831DC72EBA008D7BFA /* KHSnatchListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHSnatchListController.h; sourceTree = "<group>"; };
 		0C9B05841DC72EBA008D7BFA /* KHSnatchListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHSnatchListController.m; sourceTree = "<group>"; };
+		0CA598B21DD05242000F007B /* KHWinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHWinViewController.h; sourceTree = "<group>"; };
+		0CA598B31DD05242000F007B /* KHWinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHWinViewController.m; sourceTree = "<group>"; };
+		0CA598B51DD057D8000F007B /* KHWinTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHWinTableViewCell.h; sourceTree = "<group>"; };
+		0CA598B61DD057D8000F007B /* KHWinTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHWinTableViewCell.m; sourceTree = "<group>"; };
+		0CA598B71DD057D8000F007B /* KHWinTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHWinTableViewCell.xib; sourceTree = "<group>"; };
 		0CB128BA1DAA0467005A0A4D /* knock Honey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "knock Honey.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CB128BE1DAA0467005A0A4D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0CB128C91DAA0467005A0A4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -1237,6 +1245,9 @@
 		0C9B05781DC72D92008D7BFA /* 中奖纪录 */ = {
 			isa = PBXGroup;
 			children = (
+				0CA598B11DD0522A000F007B /* viewController */,
+				0CA598AF1DD0522A000F007B /* model */,
+				0CA598B01DD0522A000F007B /* view */,
 			);
 			path = "中奖纪录";
 			sourceTree = "<group>";
@@ -1286,6 +1297,32 @@
 				0C9B05841DC72EBA008D7BFA /* KHSnatchListController.m */,
 			);
 			path = Viewcontroller;
+			sourceTree = "<group>";
+		};
+		0CA598AF1DD0522A000F007B /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		0CA598B01DD0522A000F007B /* view */ = {
+			isa = PBXGroup;
+			children = (
+				0CA598B51DD057D8000F007B /* KHWinTableViewCell.h */,
+				0CA598B61DD057D8000F007B /* KHWinTableViewCell.m */,
+				0CA598B71DD057D8000F007B /* KHWinTableViewCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		0CA598B11DD0522A000F007B /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				0CA598B21DD05242000F007B /* KHWinViewController.h */,
+				0CA598B31DD05242000F007B /* KHWinViewController.m */,
+			);
+			path = viewController;
 			sourceTree = "<group>";
 		};
 		0CB128B11DAA0467005A0A4D = {
@@ -2019,6 +2056,7 @@
 				0C62AD2F1DC87BD60091119D /* KHTopupTableViewCell.xib in Resources */,
 				0C6C68A91DCB107200B06535 /* KHPhoneViewController.xib in Resources */,
 				0CB128CD1DAA0467005A0A4D /* LaunchScreen.storyboard in Resources */,
+				0CA598B91DD057D8000F007B /* KHWinTableViewCell.xib in Resources */,
 				0CBD1A5D1DACC130003E8150 /* WinTreasureCell.xib in Resources */,
 				0C27059E1DAF287A00CE2F15 /* CategoryDetailCell.xib in Resources */,
 				0C7F83411DCC4F84003EA29C /* KHEditPhoneViewController.xib in Resources */,
@@ -2186,6 +2224,7 @@
 				0C5E05DF1DAE32F800B2133F /* KHDetailViewController.m in Sources */,
 				0C01B5BE1DB6007600D41F43 /* KHIMage.m in Sources */,
 				0C6F59E81DB8CB3700105C8C /* ShoppingListCell.m in Sources */,
+				0CA598B81DD057D8000F007B /* KHWinTableViewCell.m in Sources */,
 				0CBD1A651DACC415003E8150 /* WinTreasureHeader.m in Sources */,
 				0C6F59C81DB868F100105C8C /* KHCartViewController.m in Sources */,
 				0CBD1A181DACB650003E8150 /* IQTextView.m in Sources */,
@@ -2217,6 +2256,7 @@
 				0C3693251DAB281000BB3EE0 /* KHNavigationViewController.m in Sources */,
 				0C62AD271DC876FF0091119D /* KHTopupViewController.m in Sources */,
 				0C2705A21DAF666C00CE2F15 /* TreasureDetailFooter.m in Sources */,
+				0CA598B41DD05242000F007B /* KHWinViewController.m in Sources */,
 				0CB128BF1DAA0467005A0A4D /* main.m in Sources */,
 				0C6C689C1DCB0C5F00B06535 /* KHInformationCell.m in Sources */,
 				0CEDEE391DC199C60063C690 /* PooCodeView.m in Sources */,

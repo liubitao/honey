@@ -32,7 +32,7 @@
         return;
     }
     [super setEditing:editting animated:animated];
-    if (editting) {
+    if (editting){
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.backgroundView = [[UIView alloc]init];
         self.backgroundView.backgroundColor = [UIColor whiteColor];

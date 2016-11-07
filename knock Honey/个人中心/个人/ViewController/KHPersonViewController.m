@@ -12,6 +12,7 @@
 #import "KHTopupViewController.h"
 #import "KHInformationController.h"
 #import "KHAddressViewController.h"
+#import "KHWinViewController.h"
 
 @interface KHPersonViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *tableView;
@@ -152,10 +153,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            KHWinViewController *winVC = [[KHWinViewController alloc]init];
+            [self pushController:winVC];
+        }
         if (indexPath.row == 4) {//地址管理
             KHAddressViewController *addresVC = [[KHAddressViewController alloc]init];
             [self pushController:addresVC];
         }
+        
     }
 }
 

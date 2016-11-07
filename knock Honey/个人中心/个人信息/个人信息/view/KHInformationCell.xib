@@ -21,14 +21,14 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZAz-Py-W6L">
-                        <rect key="frame" x="276" y="10" width="64" height="64"/>
+                        <rect key="frame" x="291" y="10" width="64" height="64"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="ZAz-Py-W6L" secondAttribute="height" multiplier="33:33" id="IgI-9m-YCh"/>
                         </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="ZAz-Py-W6L" secondAttribute="trailing" constant="35" id="NTI-wO-g7r"/>
+                    <constraint firstAttribute="trailing" secondItem="ZAz-Py-W6L" secondAttribute="trailing" constant="20" id="NTI-wO-g7r"/>
                     <constraint firstItem="gw8-7g-To3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Wo5-QR-21R"/>
                     <constraint firstItem="gw8-7g-To3" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Ww7-ew-Qlg"/>
                     <constraint firstAttribute="bottom" secondItem="ZAz-Py-W6L" secondAttribute="bottom" constant="10" id="jh2-Mn-B45"/>

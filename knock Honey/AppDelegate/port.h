@@ -56,20 +56,20 @@
 //14.订单支付=====
 #define PortOrder_pay       @"http://oneshop.zhongwenyu1987.com/index.php/api/Cart/order_pay"
 
-//15.购物车批量变更=====
+//15.购物车批量变更
 #define PortCart_change     @"http://oneshop.zhongwenyu1987.com/index.php/api/Cart/cart_change"
 
-//16.地址列表=====
+//16.地址列表
 #define PortAddress_list    @"http://oneshop.zhongwenyu1987.com/index.php/api/User/address_list"
 
-//17.编辑地址=====
+//17.编辑地址-----无用
 #define PortAddress_detail   @"http://oneshop.zhongwenyu1987.com/index.php/api/User/address_detail"
 
-//18.添加编辑地址处理=====
+//18.添加编辑地址处理
 #define PortAddress_handle  @"http://oneshop.zhongwenyu1987.com/index.php/api/User/address_handle"
 
 //19.夺宝纪录=====
-#define PortA
+#define PortOrder_list      @"http://oneshop.zhongwenyu1987.com/index.php/api/User/order_list"
 
 //20.中奖纪录=====
 #define PortWin_list    @"http://oneshop.zhongwenyu1987.com/index.php/api/User/win_list"
