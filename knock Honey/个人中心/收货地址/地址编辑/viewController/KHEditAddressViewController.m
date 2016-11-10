@@ -45,7 +45,25 @@
 
 //删除
 - (void)delete{
-    
+    [UIAlertController showAlertViewWithTitle:nil Message:@"确定删除" BtnTitles:@[@"取消",@"确定"] ClickBtn:^(NSInteger index) {
+        if (index == 1) {
+            NSMutableDictionary *parameter = [Utils parameter];
+            parameter[@"addressid"] = _model.ID;
+            [YWHttptool GET:PortDel_address parameters:parameter success:^(id responseObject) {
+                NSLog(@"%@",responseObject);
+                if ([responseObject[@"isError"] integerValue] == 1){
+                    [MBProgressHUD showError:@"删除失败"];
+                    return ;
+                }
+                [UIAlertController showAlertViewWithTitle:nil Message:@"删除成功" BtnTitles:@[@"确定"] ClickBtn:^(NSInteger index) {
+                    [self.navigationController popViewControllerAnimated:YES];
+                }];
+            } failure:^(NSError *error){
+                [MBProgressHUD showError:@"删除失败"];
+            }];
+  
+        }
+    }];
 }
 
 - (IBAction)chooseAddress:(id)sender {
@@ -80,13 +98,19 @@
     }
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"userid"] = [YWUserTool account].userid;
-    parameter[@"act"] = _editType == KHAddressEdit ? @"edit":@"add";
-    parameter[@"addressid"] = _model.ID;
-    parameter[@"type"] = @1;
-    parameter[@"consignee"] = _takeName.text;
-    parameter[@"mobile"] = _takePhone.text;
-    parameter[@"address"] = [NSString stringWithFormat:@"%@%@",_addressFirst.text,_addressSecone.text];
-    parameter[@"isdefault"] = _moren.selected ? @1:@0;
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[@"act"] = _editType == KHAddressEdit ? @"edit":@"add";
+    dict[@"addressid"] = _model.ID;
+    dict[@"type"] = @1;
+    dict[@"consignee"] = _takeName.text;
+    dict[@"mobile"] = _takePhone.text;
+    dict[@"address"] = [NSString stringWithFormat:@"%@%@",_addressFirst.text,_addressSecone.text];
+    dict[@"isdefault"] = _moren.selected ? @1:@0;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+    parameter[@"address"] = jsonString;
     
     [YWHttptool Post:PortAddress_handle parameters:parameter success:^(id responseObject) {
         NSLog(@"%@",responseObject);
@@ -95,9 +119,6 @@
             return ;
         }
         [UIAlertController showAlertViewWithTitle:nil Message:@"保存成功" BtnTitles:@[@"确定"] ClickBtn:^(NSInteger index) {
-            if (self.block) {
-                self.block();
-            }
             [self.navigationController popViewControllerAnimated:YES];
         }];
     } failure:^(NSError *error){

@@ -41,7 +41,7 @@
 - (void)setModel:(KHHomeModel *)model {
     _model = model;
     _nameLabel.text = _model.title;
-    [_productImgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",portPic,model.thumb]] placeholderImage:IMAGE_NAMED(@"placeholder")];
+    [_productImgView sd_setImageWithURL:[NSURL URLWithString:model.thumb] placeholderImage:IMAGE_NAMED(@"placeholder")];
     NSMutableAttributedString *attrProgress = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"开奖进度%@%%",_model.jindu]];
     [attrProgress addAttribute:NSForegroundColorAttributeName value:UIColorHex(0x007AFF) range:NSMakeRange(4, _model.jindu.length+5-4)];
 

@@ -57,7 +57,7 @@
 
 -(void)setModel:(KHPublishModel *)model{
     _model = model;
-    [_goodsImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",portPic,model.thumb]] placeholderImage:IMAGE_NAMED(@"placeholder")];
+    [_goodsImage sd_setImageWithURL:[NSURL URLWithString:model.thumb] placeholderImage:IMAGE_NAMED(@"placeholder")];
     _goodsName.text = model.title;
     _timeDown.text = [model valueForKey:@"valueString"]?[model valueForKey:@"valueString"]:@"正在揭晓";
     if ((model.newtime.doubleValue - 0.2)<[[NSDate date] timeIntervalSince1970]) {

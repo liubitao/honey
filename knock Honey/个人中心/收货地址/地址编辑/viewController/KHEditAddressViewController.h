@@ -14,13 +14,12 @@ typedef NS_ENUM(NSInteger, KHEditAddressType) {
     KHAddressEdit = 1,   //修改
 };
 
-typedef void(^ReloadBlock)();
+
 
 @interface KHEditAddressViewController : KHBaseViewController
 
 @property (nonatomic,strong) KHAddressModel *model;
 @property (nonatomic,assign) KHEditAddressType editType;
 
-@property (nonatomic,copy) ReloadBlock block;
 
 @end

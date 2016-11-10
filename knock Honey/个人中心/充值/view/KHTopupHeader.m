@@ -60,7 +60,7 @@ const CGFloat kHeaderButtonPadding = 15.0;
     
     _headerImage.layer.cornerRadius = 5;
     _headerImage.layer.masksToBounds = YES;
-    [_headerImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",portPic,user.img]] placeholderImage:[UIImage imageNamed:@"kongren"]];
+    [_headerImage sd_setImageWithURL:[NSURL URLWithString:user.img] placeholderImage:[UIImage imageNamed:@"kongren"]];
     [view addSubview:_headerImage];
     
     _userNameLabel = [UILabel new];

@@ -50,4 +50,9 @@
  */
 + (BOOL)validateNickname:(NSString *)nickname;
 
+
++(void)POST:(NSString *)urlstr paramter:(NSDictionary *)parameter completionHandler:(void(^)(id responseObject))success failure:(void(^)(NSError *error))failure;
+
++(void)GET:(NSString *)urlstr paramter:(NSDictionary *)parameter completionHandler:(void(^)(id responseObject))success failure:(void(^)(NSError *error))failure;
+
 @end

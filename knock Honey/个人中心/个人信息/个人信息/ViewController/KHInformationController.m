@@ -65,7 +65,7 @@
     if (indexPath.row == 0) {
         KHInformationCell *cell = [KHInformationCell cellWithTableView:tableView];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        [cell.headImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",portPic,user.img]] placeholderImage:IMAGE_NAMED(@"kongren")];
+        [cell.headImage sd_setImageWithURL:[NSURL URLWithString:user.img] placeholderImage:IMAGE_NAMED(@"kongren")];
         return cell;
     }
     ProfileDetailCell *cell = [ProfileDetailCell cellWithTableView:tableView];

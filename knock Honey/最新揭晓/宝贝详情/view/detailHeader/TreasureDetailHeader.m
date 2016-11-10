@@ -51,7 +51,7 @@ const CGFloat kTreasureDetailHeaderPageControlHeight = 30.0; //pagecontroll heig
             UIImageView *imgView = [UIImageView new];
             imgView.tag = idx;
             imgView.userInteractionEnabled = YES;
-            [imgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",portPic,_model.picarr[idx]]]];
+            [imgView sd_setImageWithURL:[NSURL URLWithString:_model.picarr[idx]]];
             imgView.origin = CGPointMake(idx*kScreenWidth, 0);
             imgView.size = CGSizeMake(_scrollView.width, _scrollView.height);
             imgView.contentMode = UIViewContentModeScaleAspectFill;
@@ -453,7 +453,7 @@ const CGFloat kBackImageViewHeight = 45.0;
     _winnerImgView = [UIImageView new];
     _winnerImgView.origin = CGPointMake(kWinnerImagePadding, kWinnerImagePadding);
     _winnerImgView.size = CGSizeMake(kWinnerImageWidth, kWinnerImageWidth);
-    [_winnerImgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",portPic,winner.img]]];
+    [_winnerImgView sd_setImageWithURL:[NSURL URLWithString:winner.img]];
     [view addSubview:_winnerImgView];
     
     YYLabel *aLabel = [YYLabel new];

@@ -13,6 +13,8 @@
 #import "KHInformationController.h"
 #import "KHAddressViewController.h"
 #import "KHWinViewController.h"
+#import "KHBounsViewController.h"
+#import "KHMyAppearViewController.h"
 
 @interface KHPersonViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *tableView;
@@ -29,14 +31,14 @@
 
 - (NSMutableArray*)titleArray{
     if (_titleArray == nil) {
-        _titleArray = [NSMutableArray arrayWithArray:@[@[@"中奖纪录",@"夺宝纪录",@"我的晒单",@"我的红包",@"收货地址",@"卡密自提",@"全价购买纪录"],@[@"免费抢币"],@[@"客服",@"消息"]]];
+        _titleArray = [NSMutableArray arrayWithArray:@[@[@"中奖纪录",@"夺宝纪录",@"我的晒单",@"我的红包",@"收货地址"],@[@"免费抢币"],@[@"客服",@"消息"]]];
     }
     return _titleArray;
 }
 
 - (NSMutableArray*)imageArray{
     if (_imageArray == nil) {
-        _imageArray = [NSMutableArray arrayWithArray:@[@[@"winList",@"takeList",@"apperList",@"paperMoney",@"address",@"card",@"winList"],@[@"coin"],@[@"phone",@"messages"]]];
+        _imageArray = [NSMutableArray arrayWithArray:@[@[@"winList",@"takeList",@"apperList",@"paperMoney",@"address"],@[@"coin"],@[@"phone",@"messages"]]];
     }
     return _imageArray;
 }
@@ -46,6 +48,7 @@
     self.title = @"个人中心";
     self.view.backgroundColor = [UIColor whiteColor];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getTopupResult:) name:@"kTopupNotification" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(freshenPerson) name:@"freshenPerson" object:nil];
     [self configNavi];
     [self configTableView];
 }
@@ -58,6 +61,10 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO];
+}
+
+- (void)freshenPerson{
+    [_header freshen];
 }
 #pragma mark - notice
 - (void)getTopupResult:(NSNotification *)notice {
@@ -120,15 +127,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    switch (section) {
-        case 0:
-            return 7;
-        case 1:
-            return 1;
-        case 2:
-            return 2;
-    }
-    return 1;
+    NSArray *array = self.titleArray[section];
+    return array.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -156,8 +156,13 @@
         if (indexPath.row == 0) {
             KHWinViewController *winVC = [[KHWinViewController alloc]init];
             [self pushController:winVC];
-        }
-        if (indexPath.row == 4) {//地址管理
+        }else if (indexPath.row == 2) {
+            KHMyAppearViewController *myAppearVC = [[KHMyAppearViewController alloc]init];
+            [self pushController:myAppearVC];
+        }else if (indexPath.row == 3) {
+            KHBounsViewController *bounsVC = [[KHBounsViewController alloc]init];
+            [self pushController:bounsVC];
+        }else if (indexPath.row == 4) {//地址管理
             KHAddressViewController *addresVC = [[KHAddressViewController alloc]init];
             [self pushController:addresVC];
         }

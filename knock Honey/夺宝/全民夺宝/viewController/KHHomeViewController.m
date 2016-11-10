@@ -397,11 +397,9 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     [YWHttptool GET:PortAddCart parameters:parameter success:^(id responseObject) {
         NSLog(@"%@",responseObject);
         if ([responseObject[@"isError"] integerValue]) return ;
-        [MBProgressHUD showSuccess:@"已添加"];
+        [AppDelegate getAppDelegate].value = [responseObject[@"result"][@"count_cart"] integerValue];
     } failure:^(NSError *error) {
-        [MBProgressHUD showError:@"添加失败"];
     }];
-
     
     CGRect parentRectA = [cell.contentView convertRect:cell.productImgView.frame toView:self.tabBarController.view];
     CGRect parentRectB = [self.view convertRect:listRect toView:self.tabBarController.view];
@@ -428,7 +426,6 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
         _downArray = [KHPublishModel kh_objectWithKeyValuesArray:responseObject[@"result"][@"zxjx"]];
         [_collectionView reloadSections:[NSIndexSet indexSetWithIndex:1]];
     } failure:^(NSError *error) {
-        [MBProgressHUD showError:@"网络连接有误"];
     }];
 
 }

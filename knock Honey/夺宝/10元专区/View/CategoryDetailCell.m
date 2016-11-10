@@ -56,7 +56,7 @@
 
 - (void)setModel:(KHTenModel *)model {
     _model = model;
-    [_productImgView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",portPic,model.thumb]] options:YYWebImageOptionProgressive];
+    [_productImgView setImageWithURL:[NSURL URLWithString:model.thumb] options:YYWebImageOptionProgressive];
     _productNameLabel.text = _model.title;
     
     _totalLabel.text = [NSString stringWithFormat:@"已参与:%@",_model.canyurenshu];

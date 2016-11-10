@@ -6,7 +6,8 @@
 //  Copyright © 2015年 yz. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "KHBaseViewController.h"
+
 
 /* 
 **************用法*****************
@@ -39,7 +40,7 @@ typedef enum : NSUInteger {
  
  */
 
-@interface YZDisplayViewController : UIViewController
+@interface YZDisplayViewController :   KHBaseViewController
 
 /** 整体内容View 包含标题行和内容滚动视图 */
 @property (nonatomic, weak) UIView *contentView;

@@ -11,7 +11,7 @@
 #import "KHRegiterViewController.h"
 #import "KHNavigationViewController.h"
 #import <MJExtension.h>
-
+#import <UMSocialCore/UMSocialCore.h>
 
 @interface KHLoginViewController ()<UITextFieldDelegate>
 {
@@ -163,22 +163,26 @@
         return;
     }
     
+    [MBProgressHUD showMessage:@"登录中" toView:self.view];
     NSMutableDictionary *parameters = [Utils parameter];
     NSMutableString *string = [NSMutableString stringWithString:_userPhone.text];
     [string deleteCharactersInRange:NSMakeRange(3, 1)];
     [string deleteCharactersInRange:NSMakeRange(7, 1)];
     parameters[@"mobile"] = string;
     parameters[@"password"] = [[NSString stringWithFormat:@"YWTEAM%@",_passWord.text] MD5Digest];
+    
     [YWHttptool GET:PortLogin parameters:parameters success:^(id responseObject) {
         NSLog(@"%@",responseObject);
+        [MBProgressHUD hideHUDForView:self.view];
         if ([responseObject[@"isError"] integerValue]) return ;
-        
         YWUser *user = [YWUser mj_objectWithKeyValues:responseObject[@"result"]];
         [YWUserTool saveAccount:user];
         [MBProgressHUD showSuccess:@"登录成功"];
         [self dismissViewControllerAnimated:YES completion:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"freshenPerson" object:nil];
     } failure:^(NSError *error) {
-        [MBProgressHUD showError:@"网络不佳"];
+        [MBProgressHUD hideHUDForView:self.view];
+        [MBProgressHUD showError:@"登录失败"];
     }];
 }
 
@@ -197,7 +201,106 @@
 /**
  *  第三方登录
  */
-- (IBAction)loginWithThird:(id)sender {
+- (IBAction)loginWithThird:(UIButton *)sender {
+    switch (sender.tag) {
+        case 0:
+        {
+            [[UMSocialManager defaultManager] cancelAuthWithPlatform:UMSocialPlatformType_QQ completion:^(id result, NSError *error) {
+                [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_QQ currentViewController:self completion:^(id result, NSError *error) {
+                    NSString *message = nil;
+                    if (error) {
+                        [MBProgressHUD showError:@"登录失败"];
+                        UMSocialLogInfo(@"Auth fail with error %@", error);
+                        message = @"Auth fail";
+                    }else{
+                        if ([result isKindOfClass:[UMSocialUserInfoResponse class]]) {
+                            UMSocialAuthResponse *resp = result;
+                            NSDictionary *dict = resp.originalResponse;
+                            NSMutableDictionary *parameter = [Utils parameter];
+                            NSMutableDictionary *dictUser = [NSMutableDictionary dictionary];
+                            dictUser[@"appid"] = resp.openid;
+                            dictUser[@"username"] = dict[@"nickname"];
+                            dictUser[@"img"] = dict[@"headimgurl"];
+                            dictUser[@"province"] = dict[@"province"];
+                            dictUser[@"city"] = dict[@"city"];
+                            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictUser options:NSJSONWritingPrettyPrinted error:nil];
+                            NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+                            parameter[@"user"] = jsonString;
+                            
+                            [YWHttptool Post:PortThird_login parameters:parameter success:^(id responseObject) {
+                                NSLog(@"%@",responseObject);
+                                if ([responseObject[@"isError"] integerValue]) return ;
+                                YWUser *user = [YWUser mj_objectWithKeyValues:responseObject[@"result"]];
+                                [YWUserTool saveAccount:user];
+                                [self.navigationController popToRootViewControllerAnimated:NO];
+                                [self dismissViewControllerAnimated:NO completion:nil];
+                                [[NSNotificationCenter defaultCenter] postNotificationName:@"freshenPerson" object:nil];
+                                [MBProgressHUD showSuccess:@"登录成功"];
+                            } failure:^(NSError *error) {
+                                NSLog(@"%@",error);
+                            }];
+                        }else{
+                            UMSocialLogInfo(@"Auth fail with unknow error");
+                            message = @"Auth fail";
+                        }
+                    }
+                }];
+            }];
+        }
+            break;
+        case 1:{
+            [[UMSocialManager defaultManager] cancelAuthWithPlatform:UMSocialPlatformType_WechatSession completion:^(id result, NSError *error) {
+            [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_WechatSession currentViewController:self completion:^(id result, NSError *error) {
+                                NSString *message = nil;
+                                if (error) {
+                                    [MBProgressHUD showError:@"登录失败"];
+                                    UMSocialLogInfo(@"Auth fail with error %@", error);
+                                    message = @"Auth fail";
+                                }else{
+                                    if ([result isKindOfClass:[UMSocialUserInfoResponse class]]) {
+                                        UMSocialAuthResponse *resp = result;
+                                        NSDictionary *dict = resp.originalResponse;
+                                        NSMutableDictionary *parameter = [Utils parameter];
+                                        NSMutableDictionary *dictUser = [NSMutableDictionary dictionary];
+                                        dictUser[@"appid"] = resp.openid;
+                                        dictUser[@"username"] = dict[@"nickname"];
+                                        dictUser[@"img"] = dict[@"headimgurl"];
+                                        dictUser[@"province"] = dict[@"province"];
+                                        dictUser[@"city"] = dict[@"city"];
+                                        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictUser options:NSJSONWritingPrettyPrinted error:nil];
+                                        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+                                        parameter[@"user"] = jsonString;
+                                        
+                                        [YWHttptool Post:PortThird_login parameters:parameter success:^(id responseObject) {
+                                            NSLog(@"%@",responseObject);
+                                            if ([responseObject[@"isError"] integerValue]) return ;
+                                            YWUser *user = [YWUser mj_objectWithKeyValues:responseObject[@"result"]];
+                                            [YWUserTool saveAccount:user];
+                                            [self.navigationController popToRootViewControllerAnimated:NO];
+                                            [self dismissViewControllerAnimated:NO completion:nil];
+                                            [[NSNotificationCenter defaultCenter] postNotificationName:@"freshenPerson" object:nil];
+                                            [MBProgressHUD showSuccess:@"登录成功"];
+                                        } failure:^(NSError *error) {
+                                            NSLog(@"%@",error);
+                                        }];
+                                    }else{
+                                        UMSocialLogInfo(@"Auth fail with unknow error");
+                                        message = @"Auth fail";
+                                    }
+                                }
+                            }];
+            }];
+        }
+            break;
+        case 2:
+         
+            break;
+        default:
+            break;
+            
+    }
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -13,7 +13,6 @@ typedef NS_ENUM(NSInteger, KHEditPhoneType) {
     KHPhoneAdd = 0,    // 添加
     KHPhoneEdit = 1,   //修改
 };
-typedef void(^ReloadBlock)();
 
 @interface KHEditPhoneViewController : KHBaseViewController
 
@@ -21,5 +20,4 @@ typedef void(^ReloadBlock)();
 
 @property (nonatomic,assign) KHEditPhoneType editType;
 
-@property (nonatomic,copy) ReloadBlock block;
 @end

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "KHAppearModel.h"
+#import "KHAppearDetailModel.h"
 #import "BtButton.h"
 
 
@@ -33,17 +33,18 @@
  */
 @property (nonatomic, strong) UILabel *publishTimeLabel;
 
-@property (nonatomic,strong) KHAppearModel *model;
+@property (nonatomic,strong) KHAppearDetailModel *model;
 
-- (instancetype)initWithFrame:(CGRect)frame model:(KHAppearModel*)model;
+- (instancetype)initWithFrame:(CGRect)frame model:(KHAppearDetailModel*)model;
 @end
 
 
 
-typedef void(^DetailClickBlcok)();
+
+
 @interface KHAppearDetailView : UIView
 
-
+typedef void(^DetailClickBlcok)();
 @property (nonatomic,copy) DetailClickBlcok ClickBlcok;
 
 @property (nonatomic,strong) UIView *containerView;
@@ -77,10 +78,9 @@ typedef void(^DetailClickBlcok)();
 
 @property (nonatomic, strong) ProductInfoView *infoView;
 
-@property (nonatomic,strong) KHAppearModel *model;
+@property (nonatomic,strong) KHAppearDetailModel *model;
 
-- (instancetype)initWithFrame:(CGRect)frame model:(KHAppearModel*)model;
+- (instancetype)initWithFrame:(CGRect)frame model:(KHAppearDetailModel*)model;
 
-//- (void)_hideImageViews;
 
 @end

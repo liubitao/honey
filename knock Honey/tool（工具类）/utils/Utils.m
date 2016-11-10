@@ -183,5 +183,89 @@
     return [passWordPredicate evaluateWithObject:nickname];
 }
 
++(void)POST:(NSString *)urlstr paramter:(NSDictionary *)parameter completionHandler:(void(^)(id))success failure:(void(^)(NSError *))failure{
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    //转化为URL
+    NSURL *baseURL = [NSURL URLWithString:urlstr];
+    //根据 baseURL 创建网络请求对象
+    NSMutableURLRequest *requset = [NSMutableURLRequest requestWithURL:baseURL];
+    //设置参数：1.POST 2.参数体（body）
+    [requset setHTTPMethod:@"POST"];
+    
+    NSString *bodyString = [self stringWithDictiongary:parameter];
+    
+    NSData *badyData = [bodyString dataUsingEncoding:NSUTF8StringEncoding];
+    //设置 body（POST参数）
+    [requset setHTTPBody:badyData];
+    
+    NSURLSessionTask *task = [session dataTaskWithRequest:requset completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (error) {
+                if (failure) {
+                    failure(error);
+                }
+            }
+            else{
+                NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                if (success) {
+                    success(dict);
+                }
+            }
+        });
+        
+    }];
+    [task resume];
+    
+}
+
++(void)GET:(NSString *)urlstr paramter:(NSDictionary *)parameter completionHandler:(void(^)(id responseObject))success failure:(void(^)(NSError *error))failure{
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    
+    NSString *act1 = [self stringWithDictiongary:parameter];
+    urlstr = [NSString stringWithFormat:@"%@?%@",urlstr,act1];
+    //转化为URL
+    NSURL *baseURL = [NSURL URLWithString:urlstr];
+    //根据 baseURL 创建网络请求对象
+    NSMutableURLRequest *requset = [NSMutableURLRequest requestWithURL:baseURL];
+    //设置参数：1.POST 2.参数体（body）
+    [requset setHTTPMethod:@"GET"];
+    
+    NSURLSessionTask *task = [session dataTaskWithRequest:requset completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (error) {
+                if (failure) {
+                    failure(error);
+                }
+            }
+            else{
+                NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                if (success) {
+                    success(dict);
+                }
+            }
+        });
+        
+    }];
+    [task resume];
+}
+
++(NSString *)stringWithDictiongary:(NSDictionary *)dictionary{
+    //把字典转化为可以网络请求的字符串
+    NSArray *keys = [dictionary allKeys];
+    NSArray *values = [dictionary allValues];
+    NSString *str;
+    for (int i= 0; i<keys.count; i++) {
+        if (i == 0) {
+            str = [NSString stringWithFormat:@"%@=%@",keys[i],values[i]];
+        }
+        else{
+            str = [NSString stringWithFormat:@"%@&%@=%@",str,keys[i],values[i]];
+        }
+    }
+    return str;
+}
+
 
 @end

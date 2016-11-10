@@ -68,6 +68,7 @@ static NSString * rightCell = @"rightCell";
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.view addSubview:self.tableView];
+    self.title = @"地址管理";
     [self setRightImageNamed:@"add" action:@selector(addAddress:forEvent:)];
     [self setBackItem];
     //下拉刷新
@@ -84,19 +85,23 @@ static NSString * rightCell = @"rightCell";
     [self.tableView registerNib:NIB_NAMED(@"KHPhoneTableViewCell") forCellReuseIdentifier:phoneCell];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.tableView.mj_header beginRefreshing];
+}
 - (void)addAddress:(id)sender forEvent:(UIEvent *)event{
     self.popView = [[GSPopoverViewController alloc] initWithShowView:self.RightTableView];
     self.popView.borderWidth = 0;
     self.popView.borderColor = UIColorHex(434343);
-    [self.popView showPopoverWithBarButtonItemTouch:event animation:YES];
+    [self.popView showPopoverWithBarButtonItemTouch:event animation
+:YES];
 }
 
 - (void)setLoading:(BOOL)loading
 {
     if (self.isLoading == loading) {
         return;
-    }
-    _loading = loading;
+    }    _loading = loading;
     
     [self.tableView reloadEmptyDataSet];
 }
@@ -112,7 +117,7 @@ static NSString * rightCell = @"rightCell";
         NSLog(@"%@",responseObject);
         self.dataSoure = [KHAddressModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
         NSInteger j = 0;
-        for (int i = 0 ; i <self.dataSoure.count; i++) {
+        for (int i = 0 ; i <self.dataSoure.count; i++){
             KHAddressModel *model = self.dataSoure[i];
             if ([model.type integerValue] == 1) {
                 addressCount++;
@@ -121,8 +126,8 @@ static NSString * rightCell = @"rightCell";
                 phoneCount ++;
             }
         }
-        if (j!=(self.dataSoure.count - 1)) {
-              [self.dataSoure exchangeObjectAtIndex:j withObjectAtIndex:self.dataSoure.count-1];
+        if (j!=(self.dataSoure.count - 1) &&self.dataSoure.count !=0) {
+            [self.dataSoure exchangeObjectAtIndex:j withObjectAtIndex:self.dataSoure.count-1];
         }
         self.loading = NO;
         [self.tableView reloadData];
@@ -138,7 +143,7 @@ static NSString * rightCell = @"rightCell";
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (tableView.tag == 1) {
+    if (tableView.tag == 1){
         return 1;
     }
     return 2;
@@ -213,6 +218,7 @@ static NSString * rightCell = @"rightCell";
                 [UIAlertController showAlertViewWithTitle:nil Message:@"您已经添加了三个收货地址了" BtnTitles:@[@"确定"] ClickBtn:nil];
                 return;
             }
+        
             KHEditAddressViewController *editAddressVC = [[KHEditAddressViewController alloc]init];
             editAddressVC.editType = KHAddressAdd;
             [self hideBottomBarPush:editAddressVC];
@@ -234,10 +240,6 @@ static NSString * rightCell = @"rightCell";
     KHEditAddressViewController *editAddressVC = [[KHEditAddressViewController alloc]init];
     editAddressVC.editType = KHAddressEdit;
     editAddressVC.model = self.dataSoure[indexpath.section];
-    __weak typeof(self) weakSelf = self;
-    editAddressVC.block =^{
-        [weakSelf getLatestPubData];
-    };
     [self hideBottomBarPush:editAddressVC];
 }
 
@@ -246,10 +248,6 @@ static NSString * rightCell = @"rightCell";
     KHEditPhoneViewController *editPhoneVC = [[KHEditPhoneViewController alloc]init];
     editPhoneVC.editType = KHPhoneEdit;
     editPhoneVC.model = self.dataSoure[indexpath.section];
-    __weak typeof(self) weakSelf = self;
-    editPhoneVC.block =^{
-        [weakSelf getLatestPubData];
-    };
     [self hideBottomBarPush:editPhoneVC];
 }
 

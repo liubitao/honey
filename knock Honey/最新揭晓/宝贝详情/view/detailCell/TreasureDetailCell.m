@@ -42,7 +42,7 @@ const CGFloat kTimeLineCellHeight = 35.0; //cell高度
     _model = model;
     CGRect detailSize = [model.username boundingRectWithSize:CGSizeMake(MAXFLOAT, 15) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:14]}context:nil];
     _userNameWidth.constant = detailSize.size.width;
-    [_headImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",portPic,model.img]] options:YYWebImageOptionProgressive];
+    [_headImageView setImageWithURL:[NSURL URLWithString:model.img] options:YYWebImageOptionProgressive];
     _usernameLabel.text = model.username;
     _IPLabel.text = [NSString stringWithFormat:@"(%@)",model.user_ip];
     NSString *participateStr = [NSString stringWithFormat:@"参与了%@人次",model.buynum];

@@ -44,7 +44,7 @@
 
 - (void)setModel:(KHKnowModel *)model indexPath:(NSIndexPath *)indexPath{
     [self storeWeakValueWithData:model indexPath:indexPath];
-    [_goodImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",portPic,model.thumb]] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+    [_goodImage sd_setImageWithURL:[NSURL URLWithString:model.thumb] placeholderImage:[UIImage imageNamed:@"placeholder"]];
     _timeLabel.text = [model valueForKey:@"valueString"];
     _title.text = model.title;
     _sprice.text = [NSString stringWithFormat:@"总需:￥%@",model.zongrenshu];

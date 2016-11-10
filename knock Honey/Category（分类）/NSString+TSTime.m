@@ -10,7 +10,7 @@
 
 @implementation NSString (TSTime)
 
-//时间戳--->时间
+//时间戳--->时间 yyyy-MM-dd
 + (NSString *)transToTime:(NSString *)timsp{
     
     NSTimeInterval time=[timsp doubleValue];//如果不使用本地时区,因为时差问题要加8小时 == 28800 sec

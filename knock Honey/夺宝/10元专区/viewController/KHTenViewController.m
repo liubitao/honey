@@ -44,8 +44,8 @@
 
 - (void)createNavi{
     self.title = @"十元专区";
-    [self setRightImageNamed:@"tabbarcart" action:@selector(gotoCart)];
-    
+    [self setRightImageNamed:@"tenCart" action:@selector(gotoCart)];
+    [self setItemBadge:[AppDelegate getAppDelegate].value];
 }
 
 - (void)createTableView{
@@ -106,9 +106,9 @@
 }
 //进去购物车
 - (void)gotoCart{
-    
+    [self.tabBarController setSelectedIndex:3];
+    [self.navigationController popViewControllerAnimated:NO];
 }
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _dataArray.count;
@@ -140,7 +140,6 @@
     goodsid = Model.ID;
     [YWHttptool GET:PortGoodsdetails parameters:parameter success:^(id responseObject) {
         [MBProgressHUD hideHUD];
-        NSLog(@"%@",responseObject);
         if ([responseObject[@"isError"] integerValue])return;
         KHDetailViewController *DetailVC = [[KHDetailViewController alloc]init];
         DetailVC.model = [KHProductModel kh_objectWithKeyValues:responseObject[@"result"]];
@@ -149,7 +148,6 @@
         [self pushController:DetailVC];
     } failure:^(NSError *error) {
         [MBProgressHUD hideHUD];
-        [MBProgressHUD showError:@"网络连接有误"];
     }];
 
 }
@@ -168,11 +166,9 @@
     [YWHttptool GET:PortAddCart parameters:parameter success:^(id responseObject) {
         NSLog(@"%@",responseObject);
         if ([responseObject[@"isError"] integerValue]) return ;
-        [MBProgressHUD showSuccess:@"已添加"];
+        [AppDelegate getAppDelegate].value = [responseObject[@"result"][@"count_cart"] integerValue];
     } failure:^(NSError *error) {
-        [MBProgressHUD showError:@"添加失败"];
     }];
-    
     CGRect parentRectA = [cell.contentView convertRect:cell.productImgView.frame toView:self.view];
     CGRect parentRectB = CGRectMake(KscreenWidth-60, 20, 40, 40);
     [self.view addSubview:self.productView];
@@ -187,7 +183,8 @@
 #pragma mark - TSAnimationDelegate;//动画完成
 - (void)animationFinished {
      [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshCart" object:nil userInfo:nil];
-      [self setItemBadge:[AppDelegate getAppDelegate].value];
+    [self setItemBadge:[AppDelegate getAppDelegate].value];
+    [self setBadgeValue:[AppDelegate getAppDelegate].value atIndex:3];
 }
 
 - (void)didReceiveMemoryWarning {

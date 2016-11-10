@@ -34,7 +34,6 @@
     self.title = @"晒单详情";
     self.view.backgroundColor = UIColorHex(efeff4);
     [self setRightImageNamed:@"share" action:@selector(share)];
-    
     [self.view addSubview:self.scrollView];
 }
 
@@ -45,8 +44,15 @@
         CGRect rect = {0,0,kScreenWidth-10,1};
         rect;
     }) model:_AppearModel];
-    detailView.ClickBlcok = ^(){
-        NSLog(@"zan");
+    detailView.ClickBlcok = ^(){//点赞
+        NSMutableDictionary *parameter = [Utils parameter];
+        parameter[@"userid"] = [YWUserTool account].userid;
+        parameter[@"commentid"] = _AppearModel.ID;
+        [YWHttptool GET:PortComment_support parameters:parameter success:^(id responseObject) {
+            [MBProgressHUD showSuccess:@"点赞成功"];
+        } failure:^(NSError *error) {
+            [MBProgressHUD showError:@"点赞失败"];
+        }];
     };
     
     [self.scrollView addSubview:detailView];

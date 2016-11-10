@@ -23,29 +23,33 @@
     [super setSelected:selected animated:animated];
 }
 - (void)setModel:(KHAppearModel *)model{
-    
-    [_winPic sd_setImageWithURL:[NSURL URLWithString:model.headImageUrl]];
+    NSString *tring = [model.userimg stringByReplacingOccurrencesOfString:@"\%" withString:@""];
+    [_winPic sd_setImageWithURL:[NSURL URLWithString:tring]];
     _winName.text = model.username;
     _winTitle.text = model.title;
-    _proudceName.text = model.productName;
-    _qishu.text = [NSString stringWithFormat:@"商品期数：%@",model.productPeriod];
+    _proudceName.text = model.goodstitle;
+    _qishu.text = [NSString stringWithFormat:@"商品期数：%@",model.qishu];
     _winContent.text = model.content;
     
-    _time.text = [NSString transToTime:model.publishTime];
-    NSString *str = [NSString stringWithFormat:@"(%@)",model.number];
+    _time.text = [NSString transToTime:model.addtime];
+    NSString *str = [NSString stringWithFormat:@"(%@)",model.support];
     CGRect detailSize = [str boundingRectWithSize:CGSizeMake(MAXFLOAT, 20) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]}context:nil];
     _width.constant = detailSize.size.width;
     _number.text = str;
     
-    _zanPic.image = [UIImage imageNamed:@"zan"];
+    if (model.support.integerValue >= 50) {
+        _zanPic.hidden = NO;
+    }else{
+        _zanPic.hidden = YES;
+    }
     
     NSArray *array = @[_pic1,_pic2,_pic3];
     
-    for (int i = 0; i<model.imageList.count; i++) {
+    for (int i = 0; i<model.img.count; i++) {
         if (i == 3) {
             break;
         }
-        [array[i] sd_setImageWithURL:[NSURL URLWithString:model.imageList[i]]];
+        [array[i] sd_setImageWithURL:[NSURL URLWithString:model.img[i]]];
     }
  
 }

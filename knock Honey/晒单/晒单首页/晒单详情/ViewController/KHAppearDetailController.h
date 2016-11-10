@@ -7,10 +7,10 @@
 //
 
 #import "KHBaseViewController.h"
-#import "KHAppearModel.h"
+#import "KHAppearDetailModel.h"
 
 @interface KHAppearDetailController : KHBaseViewController
 
-@property (nonatomic,strong) KHAppearModel *AppearModel;
+@property (nonatomic,strong) KHAppearDetailModel *AppearModel;
 
 @end

@@ -11,11 +11,12 @@
 #import "KHAppearModel.h"
 #import "KHAppearDetailController.h"
 
-@interface KHAppearViewController ()<UITableViewDataSource,UITableViewDelegate,DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>
+@interface KHAppearViewController ()<UITableViewDataSource,UITableViewDelegate,DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>{
+    NSInteger _pageCount;
+}
 
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *dataArray;
-@property (nonatomic, getter=isLoading) BOOL loading;
 @end
 
 @implementation KHAppearViewController
@@ -52,13 +53,12 @@
     //下拉刷新
     __weak typeof(self) weakSelf = self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        self.loading = YES;
         [weakSelf getLatestPubData];
         //结束刷新
         [weakSelf.tableView.mj_header endRefreshing];
     }];
     
-    [self getLatestPubData];
+    [self.tableView.mj_header beginRefreshing];
     
     //上拉刷新
     _tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
@@ -67,27 +67,29 @@
     }];  
     
 }
-
-- (void)setLoading:(BOOL)loading
-{
-    if (self.isLoading == loading) {
-        return;
-    }
-    _loading = loading;
-    
-    [self.tableView reloadEmptyDataSet];
-}
-
 - (void)getLatestPubData{
-    for (int i=0; i<10; i++) {
-        KHAppearModel *model = [[KHAppearModel alloc]init];
-        [self.dataArray addObject:model];
-    }
-    self.loading = NO;
+    NSMutableDictionary *parameter = [Utils parameter];
+    parameter[@"p"] = @1;
+    [YWHttptool GET:PortComment_list parameters:parameter success:^(id responseObject){
+         if ([responseObject[@"isError"] integerValue]) return ;
+        _pageCount = 1;
+        [self.dataArray removeAllObjects];
+        self.dataArray = [KHAppearModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
+        [self.tableView reloadData];
+    } failure:^(NSError *error){
+    }];
 }
 
 - (void)getMoreData{
-    
+    NSMutableDictionary *parameter = [Utils parameter];
+    parameter[@"userid"] = [YWUserTool account].userid;
+    parameter[@"p"] = @(++_pageCount);
+    [YWHttptool GET:PortComment_list parameters:parameter success:^(id responseObject){
+        if ([responseObject[@"isError"] integerValue]) return ;
+        [self.dataArray addObjectsFromArray:[KHAppearModel kh_objectWithKeyValuesArray:responseObject[@"result"]]];
+        [self.tableView reloadData];
+    } failure:^(NSError *error){
+    }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -110,45 +112,29 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    KHAppearDetailController *detailVC = [[KHAppearDetailController alloc]init];
-    detailVC.AppearModel = _dataArray[indexPath.row];
-    [self pushController:detailVC];
+
+    NSMutableDictionary *parameter = [Utils parameter];
+    KHAppearModel *apperModel = self.dataArray[indexPath.row];
+    parameter[@"comment_id"] = apperModel.ID;
+    parameter[@"userid"] = [YWUserTool account].userid;
+    [YWHttptool GET:PortComment_detail parameters:parameter success:^(id responseObject){
+        if ([responseObject[@"isError"] integerValue]) return ;
+        KHAppearDetailModel *model = [KHAppearDetailModel kh_objectWithKeyValues:responseObject[@"result"]];
+        KHAppearDetailController *detailVC = [[KHAppearDetailController alloc]init];
+        detailVC.AppearModel = model;
+        [self pushController:detailVC];
+    } failure:^(NSError *error){
+    }];
+    
 }
 
 #pragma mark - DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
 
-- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView{
-    NSString *text;
-    if (self.isLoading) {
-        text = @"加载中...";
-    }else{
-        text = @"数据加载失败...";
-    }
-    NSMutableDictionary *attributes = [NSMutableDictionary new];
-    [attributes setObject:SYSTEM_FONT(16) forKey:NSFontAttributeName];
-    [attributes setObject:[UIColor grayColor] forKey:NSForegroundColorAttributeName];
-    
-    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
-}
-
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
-    if (self.isLoading) {
-        return [UIImage imageNamed:@"loading"];
-    }
     return [UIImage imageNamed:@"empty_placeholder"];
 }
 
-- (CAAnimation *)imageAnimationForEmptyDataSet:(UIScrollView *)scrollView
-{
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform"];
-    animation.fromValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
-    animation.toValue = [NSValue valueWithCATransform3D: CATransform3DMakeRotation(M_PI_2, 0.0, 0.0, 1.0) ];
-    animation.duration = 0.25;
-    animation.cumulative = YES;
-    animation.repeatCount = MAXFLOAT;
-    
-    return animation;
-}
+
 
 - (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
     return YES;
@@ -158,10 +144,7 @@
     return YES;
 }
 
-- (BOOL)emptyDataSetShouldAnimateImageView:(UIScrollView *)scrollView
-{
-    return self.isLoading;
-}
+
 - (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView
 {
     return YES;
@@ -169,8 +152,7 @@
 
 - (void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view
 {
-    self.loading = YES;
-    [self getLatestPubData];
+    [self.tableView.mj_header beginRefreshing];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -178,14 +160,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -47,11 +47,18 @@
     }
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"userid"] = [YWUserTool account].userid;
-    parameter[@"act"] = _editType == KHPhoneEdit ? @"edit":@"add";
-    parameter[@"addressid"] = _model.ID;
-    parameter[@"type"] = @2;
-    parameter[@"czmobile"] = _phoneNumber.text;
-    parameter[@"czqq"] = _QQnumber.text;
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[@"act"] = _editType == KHPhoneEdit ? @"edit":@"add";
+    dict[@"addressid"] = _model.ID;
+    dict[@"type"] = @2;
+    dict[@"czmobile"] = _phoneNumber.text;
+    dict[@"czqq"] = _QQnumber.text;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+    parameter[@"address"] = jsonString;
+    
     [YWHttptool Post:PortAddress_handle parameters:parameter success:^(id responseObject) {
         NSLog(@"%@",responseObject);
         if ([responseObject[@"isError"] integerValue]){
@@ -59,9 +66,6 @@
             return ;
         }
         [UIAlertController showAlertViewWithTitle:nil Message:@"保存成功" BtnTitles:@[@"确定"] ClickBtn:^(NSInteger index) {
-            if (self.block) {
-                self.block();
-            }
             [self.navigationController popViewControllerAnimated:YES];
         }];
     } failure:^(NSError *error){

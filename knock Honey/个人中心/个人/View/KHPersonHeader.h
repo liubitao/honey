@@ -35,6 +35,8 @@ typedef void(^MeHeaderBlock)(void);
 
 - (void)makeScaleForScrollView:(UIScrollView *)scrollView;
 
+- (void)freshen;
+
 
 @end
 

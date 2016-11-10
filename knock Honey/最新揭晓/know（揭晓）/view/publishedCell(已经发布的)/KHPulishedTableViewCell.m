@@ -26,7 +26,7 @@
 
 
 - (void)setModel:(KHKnowModel *)model indexPath:(NSIndexPath *)indexPath{
-    [_goodImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",portPic,model.thumb]] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+    [_goodImage sd_setImageWithURL:[NSURL URLWithString:model.thumb] placeholderImage:[UIImage imageNamed:@"placeholder"]];
     _title.text = model.title;
     _sprice.text = [NSString stringWithFormat:@"总需:￥%@",model.zongrenshu];
     _name.attributedText = [Utils stringWith:[NSString stringWithFormat:@"获奖者:%@",model.winner] font1:[UIFont systemFontOfSize:12.f] color1:[UIColor colorWithHexString:@"2a99f4"] font2:[UIFont systemFontOfSize:12.f] color2:[UIColor colorWithWhite:0 alpha:0.5] range:NSMakeRange(0, 3)];

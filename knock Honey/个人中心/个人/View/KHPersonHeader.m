@@ -97,7 +97,7 @@ CGFloat balanceViewHeight = 45.0;
     _headImageView.userInteractionEnabled = YES;
     
     YWUser *user = [YWUserTool account];
-    [_headImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",portPic,user.img]] placeholderImage:[UIImage imageNamed:@"kongren"]];
+    [_headImageView sd_setImageWithURL:[NSURL URLWithString:user.img] placeholderImage:[UIImage imageNamed:@"kongren"]];
     __weak typeof(self) weakSelf = self;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithActionBlock:^(id  _Nonnull sender) {
         if (weakSelf.headImgBlock) {
@@ -169,7 +169,6 @@ CGFloat balanceViewHeight = 45.0;
     CGFloat scale = fabs(scrollView.contentOffset.y/bgImageViewHeight);
     _bgImageView.layer.position = CGPointMake(kScreenWidth/2.0, (scrollView.contentOffset.y+ (0.5*bgImageViewHeight)*2)/2);
     _bgImageView.transform = CGAffineTransformMakeScale(1+scale, 1+scale);
-    
 }
 
 - (void)setRemainSum:(NSString *)remainSum {
@@ -180,6 +179,15 @@ CGFloat balanceViewHeight = 45.0;
 - (void)layoutSubviews {
     [super layoutSubviews];
     self.height = _balanceView.bottom;
+}
+
+- (void)freshen{
+    YWUser *user = [YWUserTool account];
+    [_headImageView sd_setImageWithURL:[NSURL URLWithString:user.img] placeholderImage:[UIImage imageNamed:@"kongren"]];
+    _nameLabel.text = user.username;
+    _IDLabel.text = [NSString stringWithFormat:@"推荐ID:%@",user.userid];
+    _integralLabel.text = [NSString stringWithFormat:@"积分:%@",user.score];
+    [self setRemainSum:user.money];
 }
 
 @end
