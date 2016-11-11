@@ -19,8 +19,10 @@
 }
 - (void)setModel:(KHAddressModel *)model{
     _model = model;
-    if (![model.isdefault integerValue]) {
+    if ([model.isdefault integerValue] == 0) {
         _moren.hidden = YES;
+    }else{
+        _moren.hidden = NO;
     }
     _addressNumber.text = [NSString stringWithFormat:@"实物收货地址%ld",(_indexPath.section+1)];
     _takeMan.text = [NSString stringWithFormat:@"收货人:%@",model.consignee];

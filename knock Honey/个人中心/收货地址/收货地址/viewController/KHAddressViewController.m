@@ -20,7 +20,6 @@
 }
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *dataSoure;
-@property (nonatomic, getter=isLoading) BOOL loading;
 @property (nonatomic, strong) UITableView *RightTableView;
 @property (nonatomic,strong) GSPopoverViewController *popView;
 @end
@@ -79,8 +78,6 @@ static NSString * rightCell = @"rightCell";
         [weakSelf.tableView.mj_header endRefreshing];
     }];
     
-    [self getLatestPubData];
-    
     [self.tableView registerNib:NIB_NAMED(@"KHAddressTableViewCell") forCellReuseIdentifier:addressCell];
     [self.tableView registerNib:NIB_NAMED(@"KHPhoneTableViewCell") forCellReuseIdentifier:phoneCell];
 }
@@ -93,24 +90,13 @@ static NSString * rightCell = @"rightCell";
     self.popView = [[GSPopoverViewController alloc] initWithShowView:self.RightTableView];
     self.popView.borderWidth = 0;
     self.popView.borderColor = UIColorHex(434343);
-    [self.popView showPopoverWithBarButtonItemTouch:event animation
-:YES];
-}
-
-- (void)setLoading:(BOOL)loading
-{
-    if (self.isLoading == loading) {
-        return;
-    }    _loading = loading;
-    
-    [self.tableView reloadEmptyDataSet];
+    [self.popView showPopoverWithBarButtonItemTouch:event animation:YES];
 }
 
 
 - (void)getLatestPubData{
     addressCount = 0;
     phoneCount = 0;
-    self.loading = YES;
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"userid"] = [YWUserTool account].userid;
     [YWHttptool GET:PortAddress_list parameters:parameter success:^(id responseObject) {
@@ -129,10 +115,9 @@ static NSString * rightCell = @"rightCell";
         if (j!=(self.dataSoure.count - 1) &&self.dataSoure.count !=0) {
             [self.dataSoure exchangeObjectAtIndex:j withObjectAtIndex:self.dataSoure.count-1];
         }
-        self.loading = NO;
         [self.tableView reloadData];
     } failure:^(NSError *error){
-        self.loading = NO;
+
     }];
 }
 
@@ -212,13 +197,12 @@ static NSString * rightCell = @"rightCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView.tag == 2) {
         [GSPopoverViewController dissPopoverViewWithAnimation:NO];
-        _tableView = nil;
+        _RightTableView = nil;//右上角的表视图
         if (indexPath.row == 0) {
             if (addressCount >= 3) {
                 [UIAlertController showAlertViewWithTitle:nil Message:@"您已经添加了三个收货地址了" BtnTitles:@[@"确定"] ClickBtn:nil];
                 return;
             }
-        
             KHEditAddressViewController *editAddressVC = [[KHEditAddressViewController alloc]init];
             editAddressVC.editType = KHAddressAdd;
             [self hideBottomBarPush:editAddressVC];
@@ -254,22 +238,7 @@ static NSString * rightCell = @"rightCell";
 #pragma mark - DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
-    if (self.isLoading) {
-        return [UIImage imageNamed:@"loading"];
-    }
     return [UIImage imageNamed:@"empty_placeholder"];
-}
-
-- (CAAnimation *)imageAnimationForEmptyDataSet:(UIScrollView *)scrollView
-{
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform"];
-    animation.fromValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
-    animation.toValue = [NSValue valueWithCATransform3D: CATransform3DMakeRotation(M_PI_2, 0.0, 0.0, 1.0) ];
-    animation.duration = 0.25;
-    animation.cumulative = YES;
-    animation.repeatCount = MAXFLOAT;
-    
-    return animation;
 }
 
 - (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
@@ -280,10 +249,6 @@ static NSString * rightCell = @"rightCell";
     return YES;
 }
 
-- (BOOL)emptyDataSetShouldAnimateImageView:(UIScrollView *)scrollView
-{
-    return self.isLoading;
-}
 - (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView
 {
     return YES;
@@ -291,7 +256,7 @@ static NSString * rightCell = @"rightCell";
 
 - (void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view
 {
-    [self getLatestPubData];
+    [self.tableView.mj_header beginRefreshing];
 }
 
 - (void)didReceiveMemoryWarning {

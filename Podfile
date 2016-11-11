@@ -8,3 +8,7 @@ pod 'Masonry', '~> 1.0.0'
 pod 'MJRefresh' ,'~>3.1.0'
 pod 'YYKit', '~>1.0.1'
 pod 'DZNEmptyDataSet'
+pod ‘UMengUShare/UI’
+pod ‘UMengUShare/Social/Sina'
+pod ‘UMengUShare/Social/WeChat'
+pod ‘UMengUShare/Social/QQ'

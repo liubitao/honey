@@ -12,6 +12,7 @@
 #import "KHNavigationViewController.h"
 #import <MJExtension.h>
 #import <UMSocialCore/UMSocialCore.h>
+#import "KHTabbarViewController.h"
 
 @interface KHLoginViewController ()<UITextFieldDelegate>
 {
@@ -214,13 +215,14 @@
                         message = @"Auth fail";
                     }else{
                         if ([result isKindOfClass:[UMSocialUserInfoResponse class]]) {
-                            UMSocialAuthResponse *resp = result;
+                            UMSocialUserInfoResponse *resp = result;
                             NSDictionary *dict = resp.originalResponse;
+                            
                             NSMutableDictionary *parameter = [Utils parameter];
                             NSMutableDictionary *dictUser = [NSMutableDictionary dictionary];
                             dictUser[@"appid"] = resp.openid;
-                            dictUser[@"username"] = dict[@"nickname"];
-                            dictUser[@"img"] = dict[@"headimgurl"];
+                            dictUser[@"username"] = resp.name;
+                            dictUser[@"img"] = resp.iconurl;
                             dictUser[@"province"] = dict[@"province"];
                             dictUser[@"city"] = dict[@"city"];
                             NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictUser options:NSJSONWritingPrettyPrinted error:nil];
@@ -233,11 +235,12 @@
                                 YWUser *user = [YWUser mj_objectWithKeyValues:responseObject[@"result"]];
                                 [YWUserTool saveAccount:user];
                                 [self.navigationController popToRootViewControllerAnimated:NO];
-                                [self dismissViewControllerAnimated:NO completion:nil];
+                                [self dismissViewControllerAnimated:YES completion:nil];
+                                KHTabbarViewController *tabBarVC = (KHTabbarViewController *)[AppDelegate getAppDelegate].window.rootViewController;
+                                [tabBarVC setSelectedIndex:4];
                                 [[NSNotificationCenter defaultCenter] postNotificationName:@"freshenPerson" object:nil];
                                 [MBProgressHUD showSuccess:@"登录成功"];
                             } failure:^(NSError *error) {
-                                NSLog(@"%@",error);
                             }];
                         }else{
                             UMSocialLogInfo(@"Auth fail with unknow error");
@@ -277,7 +280,9 @@
                                             YWUser *user = [YWUser mj_objectWithKeyValues:responseObject[@"result"]];
                                             [YWUserTool saveAccount:user];
                                             [self.navigationController popToRootViewControllerAnimated:NO];
-                                            [self dismissViewControllerAnimated:NO completion:nil];
+                                            [self dismissViewControllerAnimated:YES completion:nil];
+                                            KHTabbarViewController *tabBarVC = (KHTabbarViewController *)[AppDelegate getAppDelegate].window.rootViewController;
+                                            [tabBarVC setSelectedIndex:4];
                                             [[NSNotificationCenter defaultCenter] postNotificationName:@"freshenPerson" object:nil];
                                             [MBProgressHUD showSuccess:@"登录成功"];
                                         } failure:^(NSError *error) {

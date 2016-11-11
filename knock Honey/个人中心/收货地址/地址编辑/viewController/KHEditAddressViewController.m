@@ -106,7 +106,7 @@
     dict[@"consignee"] = _takeName.text;
     dict[@"mobile"] = _takePhone.text;
     dict[@"address"] = [NSString stringWithFormat:@"%@%@",_addressFirst.text,_addressSecone.text];
-    dict[@"isdefault"] = _moren.selected ? @1:@0;
+    dict[@"isdefault"] = _moren.isOn ? @1:@0;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
     NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     
@@ -119,7 +119,7 @@
             return ;
         }
         [UIAlertController showAlertViewWithTitle:nil Message:@"保存成功" BtnTitles:@[@"确定"] ClickBtn:^(NSInteger index) {
-            [self.navigationController popViewControllerAnimated:YES];
+            [self.navigationController popViewControllerAnimated:NO];
         }];
     } failure:^(NSError *error){
         [MBProgressHUD showError:@"保存失败"];

@@ -24,7 +24,7 @@
 }
 - (void)setModel:(KHAppearModel *)model{
     NSString *tring = [model.userimg stringByReplacingOccurrencesOfString:@"\%" withString:@""];
-    [_winPic sd_setImageWithURL:[NSURL URLWithString:tring]];
+    [_winPic sd_setImageWithURL:[NSURL URLWithString:tring] placeholderImage:IMAGE_NAMED(@"kongren")];
     _winName.text = model.username;
     _winTitle.text = model.title;
     _proudceName.text = model.goodstitle;

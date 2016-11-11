@@ -97,7 +97,7 @@
     _headerImage.size = CGSizeMake(40, 40);
     _headerImage.layer.cornerRadius = 3;
     _headerImage.layer.masksToBounds = YES;
-    [_headerImage sd_setImageWithURL:[NSURL URLWithString:_model.userimg]];
+    [_headerImage sd_setImageWithURL:[NSURL URLWithString:_model.userimg] placeholderImage:IMAGE_NAMED(@"kongren")];
     [_containerView addSubview:_headerImage];
     
     _usernameLabel = [UILabel new];
@@ -163,16 +163,21 @@
     [_containerView addSubview:_contentLabel];
     
     self.height = _contentLabel.bottom+5;
+    _containerView.height = _contentLabel.bottom;
     for (int i = 0; i<_model.img.count; i++) {
         [self addImageView:self.height url:_model.img[i]];
     }
 }
 
+
 - (void)addImageView:(CGFloat)top url:(NSString *)urlStr{
 
     // ，获取下载图片，获取尺寸
     NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlStr]];
-               UIImage *image = [UIImage imageWithData:data];
+    UIImage *image = [UIImage imageWithData:data];
+    if (!image) {
+        return;
+    }
     CGSize size = image.size;
     // 回到主线程执行
     UIImageView *imageView = [UIImageView new];
@@ -190,6 +195,7 @@
         [MBProgressHUD showError:@"已点过赞"];
         return;
     }
+    [_zanButton setImage:[UIImage imageNamed:@"zanSelect"] title:[NSString stringWithFormat:@"(%@)",_model.support] forState:UIControlStateNormal];
     if (_ClickBlcok) {
         _ClickBlcok();
     }

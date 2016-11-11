@@ -25,6 +25,9 @@
     [self.window makeKeyAndVisible];
     
     [self configApper];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cartNumber) name:@"freshenPerson" object:nil];
 
     //购物车中的商品数
     [self cartNumber];
@@ -46,7 +49,6 @@
     
     //设置友盟appkey
     [[UMSocialManager defaultManager] setUmSocialAppkey:UMsocialAppKey];
-    NSLog(@"UMeng social version: %@", [UMSocialGlobal umSocialSDKVersion]);
 
     //设置微信的appKey和appSecret
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:UMWeixinAppID   appSecret:UMWeixinAPPsecret redirectURL:@"http://mobile.umeng.com/social"];

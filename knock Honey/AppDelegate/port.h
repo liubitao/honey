@@ -94,10 +94,10 @@
 //21.红包列表
 #define PortCoupon_list     @"http://oneshop.zhongwenyu1987.com/index.php/api/User/coupon_list"
 
-//22.消息中心=====
+//22.消息中心
 #define PortMessage_count   @"http://oneshop.zhongwenyu1987.com/index.php/api/User/message_count"
 
-//23.消息列表=====
+//23.消息列表
 #define PortMessage_list    @"http://oneshop.zhongwenyu1987.com/index.php/api/User/message_list"
 
 //24.晒单列表

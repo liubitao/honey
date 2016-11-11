@@ -41,12 +41,12 @@
     
     KHCartViewController *cartVC = [[KHCartViewController alloc]init];
     KHNavigationViewController *cartNavi = [[KHNavigationViewController alloc]initWithRootViewController:cartVC];
-    cartNavi.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"晒单" image:[UIImage imageNamed:@"tabbarappear"] selectedImage:[UIImage imageWithOriginalName:@"tabbarappearsel"]];
+    cartNavi.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"晒单" image:[UIImage imageNamed:@"tabbarcart"] selectedImage:[UIImage imageWithOriginalName:@"tabbarcartsel"]];
     [cartNavi.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName :kDefaultColor} forState:UIControlStateSelected];
     
     KHAppearViewController *appearVC = [[KHAppearViewController alloc]init];
     KHNavigationViewController *appearNavi = [[KHNavigationViewController alloc]initWithRootViewController:appearVC];
-    appearNavi.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"购物车" image:[UIImage imageNamed:@"tabbarcart"] selectedImage:[UIImage imageWithOriginalName:@"tabbarcartsel"]];
+    appearNavi.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"购物车" image:[UIImage imageNamed:@"tabbarappear"] selectedImage:[UIImage imageWithOriginalName:@"tabbarappearsel"]];
     [appearNavi.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName :kDefaultColor} forState:UIControlStateSelected];
     
     KHPersonViewController *personVC = [[KHPersonViewController alloc]init];

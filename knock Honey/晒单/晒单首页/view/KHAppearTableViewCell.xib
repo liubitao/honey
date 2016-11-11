@@ -112,10 +112,10 @@
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appearshow" translatesAutoresizingMaskIntoConstraints="NO" id="nTv-iY-Avf">
-                        <rect key="frame" x="288" y="0.0" width="70" height="70"/>
+                        <rect key="frame" x="268" y="0.0" width="100" height="100"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="70" id="2D2-kI-IEu"/>
-                            <constraint firstAttribute="height" constant="70" id="x50-fs-wfm"/>
+                            <constraint firstAttribute="width" constant="100" id="2D2-kI-IEu"/>
+                            <constraint firstAttribute="height" constant="100" id="x50-fs-wfm"/>
                         </constraints>
                     </imageView>
                 </subviews>
@@ -133,7 +133,7 @@
                     <constraint firstItem="nTv-iY-Avf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="FAV-Z3-IJ9"/>
                     <constraint firstItem="xyG-t6-PcL" firstAttribute="top" secondItem="uIg-gw-yxc" secondAttribute="bottom" constant="10" id="HHX-sB-Vh0"/>
                     <constraint firstAttribute="trailing" secondItem="cXt-RH-0gx" secondAttribute="trailing" constant="15" id="O69-4F-r9J"/>
-                    <constraint firstAttribute="trailing" secondItem="nTv-iY-Avf" secondAttribute="trailing" constant="10" id="OIp-xH-ciC"/>
+                    <constraint firstAttribute="trailing" secondItem="nTv-iY-Avf" secondAttribute="trailing" id="OIp-xH-ciC"/>
                     <constraint firstItem="2w4-PY-1L7" firstAttribute="leading" secondItem="881-9K-0Ec" secondAttribute="trailing" constant="5" id="OqR-p7-Ifq"/>
                     <constraint firstItem="uIg-gw-yxc" firstAttribute="top" secondItem="0mv-h9-KvR" secondAttribute="bottom" constant="5" id="Pr8-H2-Gmu"/>
                     <constraint firstAttribute="bottom" secondItem="DAZ-nP-1hq" secondAttribute="bottom" constant="5" id="PxA-Is-qeJ"/>

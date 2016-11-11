@@ -15,6 +15,7 @@
 #import "KHWinViewController.h"
 #import "KHBounsViewController.h"
 #import "KHMyAppearViewController.h"
+#import "KHMessageViewController.h"
 
 @interface KHPersonViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *tableView;
@@ -153,20 +154,31 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 0) {
-        if (indexPath.row == 0) {
+        if (indexPath.row == 0) {//中奖
             KHWinViewController *winVC = [[KHWinViewController alloc]init];
             [self pushController:winVC];
-        }else if (indexPath.row == 2) {
+        }else if (indexPath.row == 1){//夺宝纪录
+            
+        }
+        else if (indexPath.row == 2) {//我的晒单
             KHMyAppearViewController *myAppearVC = [[KHMyAppearViewController alloc]init];
             [self pushController:myAppearVC];
-        }else if (indexPath.row == 3) {
+        }else if (indexPath.row == 3) {//我的红包
             KHBounsViewController *bounsVC = [[KHBounsViewController alloc]init];
             [self pushController:bounsVC];
         }else if (indexPath.row == 4) {//地址管理
             KHAddressViewController *addresVC = [[KHAddressViewController alloc]init];
             [self pushController:addresVC];
         }
+    }else if (indexPath.section == 1){//免费抢币
         
+    }else if (indexPath.section == 2){
+        if (indexPath.row == 0) {//客服
+            
+        }else if (indexPath.row == 1){//消息
+            KHMessageViewController *messageVC= [[KHMessageViewController alloc]init];
+            [self pushController:messageVC];
+        }
     }
 }
 
