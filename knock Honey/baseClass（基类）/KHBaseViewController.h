@@ -55,6 +55,11 @@
  */
 - (void)setItemBadge:(NSInteger)value;
 
+/**隐藏右侧导航栏徽标
+ */
+- (void)hideItemBadge;
+
+
 /**设置返回按钮
  */
 - (void)setBackItem;

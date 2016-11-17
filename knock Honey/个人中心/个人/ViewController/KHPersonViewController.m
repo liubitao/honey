@@ -16,6 +16,8 @@
 #import "KHBounsViewController.h"
 #import "KHMyAppearViewController.h"
 #import "KHMessageViewController.h"
+#import "KHFreeViewController.h"
+#import "KHSnatchListController.h"
 
 @interface KHPersonViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *tableView;
@@ -105,6 +107,8 @@
     _header.settingBlock = ^{
         NSLog(@"设置");
         [YWUserTool quit];
+        [weakSelf.navigationController.tabBarController.tabBar hideBadgeValueAtIndex:3];
+        [weakSelf.tabBarController setSelectedIndex:0];
     };
     
     _header.headImgBlock = ^{
@@ -158,7 +162,8 @@
             KHWinViewController *winVC = [[KHWinViewController alloc]init];
             [self pushController:winVC];
         }else if (indexPath.row == 1){//夺宝纪录
-            
+            KHSnatchListController *snatchVC = [[KHSnatchListController alloc]init];
+            [self pushController:snatchVC];
         }
         else if (indexPath.row == 2) {//我的晒单
             KHMyAppearViewController *myAppearVC = [[KHMyAppearViewController alloc]init];
@@ -171,7 +176,8 @@
             [self pushController:addresVC];
         }
     }else if (indexPath.section == 1){//免费抢币
-        
+        KHFreeViewController *freeVC = [[KHFreeViewController alloc]init];
+        [self pushController:freeVC];
     }else if (indexPath.section == 2){
         if (indexPath.row == 0) {//客服
             

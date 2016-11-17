@@ -29,107 +29,139 @@
 #define sKey        @"bf9024c8e834146606c7f364e73f743a"
 #define mKey        @"oneshopgoods"
 //#define portPic     @"http://"
-//#define PortCartPic @"http://oneshop.zhongwenyu1987.com"
+//#define PortCartPic @"http://www.ywduobao.com"
 
 //1.万能接口
-#define PortUniversal_api @"http://oneshop.zhongwenyu1987.com/index.php/Api/Index/universal_api"
+#define PortUniversal_api @"http://www.ywduobao.com/index.php/Api/Index/universal_api"
 
 //2.商品列表
-#define PortGoodslist   @"http://oneshop.zhongwenyu1987.com/index.php/Api/Goods/goodslist"
+#define PortGoodslist   @"http://www.ywduobao.com/index.php/Api/Goods/goodslist"
 
 //3.商品详情
-#define PortGoodsdetails @"http://oneshop.zhongwenyu1987.com/index.php/Api/Goods/goodsdetail"
+#define PortGoodsdetails @"http://www.ywduobao.com/index.php/Api/Goods/goodsdetail"
 
 //4.最新揭晓列表
-#define PortGoodszxjx    @"http://oneshop.zhongwenyu1987.com/index.php/Api/Goods/goodszxjx"
+#define PortGoodszxjx    @"http://www.ywduobao.com/index.php/Api/Goods/goodszxjx"
 
 //5.app首页
-#define PortGoodsIndex  @"http://oneshop.zhongwenyu1987.com/index.php/Api/Index/index"
+#define PortGoodsIndex  @"http://www.ywduobao.com/index.php/Api/Index/index"
 
 //6.购买记录
-#define PortGoodsOrder  @"http://oneshop.zhongwenyu1987.com/index.php/Api/goods/goodsorder"
+#define PortGoodsOrder  @"http://www.ywduobao.com/index.php/Api/goods/goodsorder"
 
-//7.十元专区
-#define PortGoodsarea   @"http://oneshop.zhongwenyu1987.com/index.php/api/goods/goodsarea"
 
 //8.会员登录
-#define PortLogin       @"http://oneshop.zhongwenyu1987.com/index.php/api/User/login"
+#define PortLogin       @"http://www.ywduobao.com/index.php/api/User/login"
 
 //9.加入购物车
-#define PortAddCart     @"http://oneshop.zhongwenyu1987.com/index.php/api/Cart/addCart"
+#define PortAddCart     @"http://www.ywduobao.com/index.php/api/Cart/addCart"
 
 //10.查看购物车
-#define PortIndex       @"http://oneshop.zhongwenyu1987.com/index.php/api/Cart/index"
+#define PortIndex       @"http://www.ywduobao.com/index.php/api/Cart/index"
 
 //11.会员充值=====
-#define PortRecharge    @"http://oneshop.zhongwenyu1987.com/index.php/api/User/recharge"
+#define PortRecharge    @"http://www.ywduobao.com/index.php/api/User/recharge"
 
 //12.会员充值处理=====
-#define PortRecharge_handle @"http://oneshop.zhongwenyu1987.com/index.php/api/User/recharge_handle"
+#define PortRecharge_handle @"http://www.ywduobao.com/index.php/api/User/recharge_handle"
 
 //13.订单提交
-#define PortOrder_submit    @"http://oneshop.zhongwenyu1987.com/index.php/api/Cart/order_submit"
+#define PortOrder_submit    @"http://www.ywduobao.com/index.php/api/Cart/order_submit"
 
 //14.订单支付
-#define PortOrder_pay       @"http://oneshop.zhongwenyu1987.com/index.php/api/Cart/order_pay"
+#define PortOrder_pay       @"http://www.ywduobao.com/index.php/api/Cart/order_pay"
 
 //15.购物车批量变更
-#define PortCart_change     @"http://oneshop.zhongwenyu1987.com/index.php/api/Cart/cart_change"
+#define PortCart_change     @"http://www.ywduobao.com/index.php/api/Cart/cart_change"
 
 //16.地址列表
-#define PortAddress_list    @"http://oneshop.zhongwenyu1987.com/index.php/api/User/address_list"
+#define PortAddress_list    @"http://www.ywduobao.com/index.php/api/User/address_list"
 
 //17.第三方登录
-#define PortThird_login   @"http://oneshop.zhongwenyu1987.com/index.php/api/User/third_login"
+#define PortThird_login   @"http://www.ywduobao.com/index.php/api/User/third_login"
 
 //18.添加编辑地址处理
-#define PortAddress_handle  @"http://oneshop.zhongwenyu1987.com/index.php/api/User/address_handle"
+#define PortAddress_handle  @"http://www.ywduobao.com/index.php/api/User/address_handle"
 
-//19.夺宝纪录=====
-#define PortOrder_list      @"http://oneshop.zhongwenyu1987.com/index.php/api/User/order_list"
+//19.夺宝纪录
+#define PortOrder_list      @"http://www.ywduobao.com/index.php/api/User/order_list"
 
 //20.中奖纪录
-#define PortWin_list        @"http://oneshop.zhongwenyu1987.com/index.php/api/User/win_list"
+#define PortWin_list        @"http://www.ywduobao.com/index.php/api/User/win_list"
 
 //21.红包列表
-#define PortCoupon_list     @"http://oneshop.zhongwenyu1987.com/index.php/api/User/coupon_list"
+#define PortCoupon_list     @"http://www.ywduobao.com/index.php/api/User/coupon_list"
 
 //22.消息中心
-#define PortMessage_count   @"http://oneshop.zhongwenyu1987.com/index.php/api/User/message_count"
+#define PortMessage_count   @"http://www.ywduobao.com/index.php/api/User/message_count"
 
 //23.消息列表
-#define PortMessage_list    @"http://oneshop.zhongwenyu1987.com/index.php/api/User/message_list"
+#define PortMessage_list    @"http://www.ywduobao.com/index.php/api/User/message_list"
 
 //24.晒单列表
-#define PortComment_list    @"http://oneshop.zhongwenyu1987.com/index.php/api/User/comment_list"
+#define PortComment_list    @"http://www.ywduobao.com/index.php/api/User/comment_list"
 
 //25.晒单详情
-#define PortComment_detail  @"http://oneshop.zhongwenyu1987.com/index.php/api/User/comment_detail"
+#define PortComment_detail  @"http://www.ywduobao.com/index.php/api/User/comment_detail"
 
 //26.计算详情=====
-#define PortFormula         @"http://oneshop.zhongwenyu1987.com/index.php/api/Goods/formula"
+#define PortFormula         @"http://www.ywduobao.com/index.php/api/Goods/formula"
 
 //27.签到页面=====
-#define PortSign_index      @"http://oneshop.zhongwenyu1987.com/index.php/api/User/sign_index"
+#define PortSign_index      @"http://www.ywduobao.com/index.php/mobile/prom/sign_day"
 
-//28.每日签到=====
-#define PortMember_sign     @"http://oneshop.zhongwenyu1987.com/index.php/api/User/member_sign"
 
-//29.免费抢币=====
-#define PortScore_coupon    @"http://oneshop.zhongwenyu1987.com/index.php/api/User/score_coupon"
+//29.免费抢币
+#define PortScore_coupon    @"http://www.ywduobao.com/index.php/api/User/score_coupon"
 
-//30.积分兑换红包=====
-#define PortScore_coupon_handle @"http://oneshop.zhongwenyu1987.com/index.php/api/User/score_coupon_handle"
+//30.积分兑换红包
+#define PortScore_coupon_handle @"http://www.ywduobao.com/index.php/api/User/score_coupon_handle"
 
-//31.积分明细=====
-#define PortScore_record       @"http://oneshop.zhongwenyu1987.com/index.php/api/User/score_record"
+//31.积分明细
+#define PortScore_record       @"http://www.ywduobao.com/index.php/api/User/score_record"
 
 //32.移除购物车
-#define PortCart_del           @"http://oneshop.zhongwenyu1987.com/index.php/api/Cart/cart_del"
+#define PortCart_del           @"http://www.ywduobao.com/index.php/api/Cart/cart_del"
 
 //33.删除地址
-#define PortDel_address         @"http://oneshop.zhongwenyu1987.com/index.php/api/User/del_address"
+#define PortDel_address         @"http://www.ywduobao.com/index.php/api/User/del_address"
 
 //34.评论点赞
-#define PortComment_support     @"http://oneshop.zhongwenyu1987.com/index.php/api/User/comment_support"
+#define PortComment_support     @"http://www.ywduobao.com/index.php/api/User/comment_support"
+
+//35.发送短信验证码
+#define PortDuanxin_send        @"http://www.ywduobao.com/index.php/api/User/duanxin_send"
+
+//36.短息验证码验证
+#define PortDuanxin_check       @"http://www.ywduobao.com/index.php/api/User/duanxin_check"
+
+//37.通知点击
+#define PortNotice_read        @"http://www.ywduobao.com/index.php/api/User/notice_read"
+
+//38.手机号码注册
+#define PortMobile_regist       @"http://www.ywduobao.com/index.php/api/User/mobile_regist"
+
+//39.客户反馈-发送消息===
+#define PortMessage_send        @"http://www.ywduobao.com/index.php/api/User/message_send"
+
+//40.客户反馈-获取消息===
+#define PortMessage_back        @"http://www.ywduobao.com/index.php/api/User/message_back"
+
+//41.客户反馈-获取最新消息===
+#define Message_backnew         @"http://www.ywduobao.com/index.php/api/User/message_backnew"
+
+//42.商品类型-商品搜索页面
+#define PortCategory_list       @"http://www.ywduobao.com/index.php/api/Goods/category_list"
+
+//43.商品搜索
+#define PortGoods_search        @"http://www.ywduobao.com/index.php/api/Goods/goods_search"
+
+//44.商品专区
+#define PortGoods_area          @"http://www.ywduobao.com/index.php/api/Goods/goods_area"
+
+//45.往期揭晓
+#define PortPast_lottery        @"http://www.ywduobao.com/index.php/api/Goods/past_lottery"
+
+//46.支付宝
+#define PortAlipaysign          @"http://www.ywduobao.com/alipay/alipaysign.php"
 #endif /* port_h */

@@ -88,8 +88,7 @@
 - (void)setRightImageNamed:(NSString *)name action:(SEL)action {
     _rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     UIImage *image2=  [UIImage imageNamed:name];
-    _rightBtn.frame =CGRectMake(0, 0, 50, 44);
-    _rightBtn.imageEdgeInsets = UIEdgeInsetsMake(0, -5, 0, -10);
+    _rightBtn.frame =CGRectMake(0, 0, 30, 44);
     [_rightBtn setImage:image2 forState:UIControlStateNormal];
     [_rightBtn addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_rightBtn];
@@ -117,11 +116,28 @@
         value = 99;
     }
     [_rightBtn addSubview:self.badge];
-    _badge.origin = CGPointMake(ceilf(0.85 * _rightBtn.width), ceilf(0.1*_rightBtn.height));
+    _badge.origin = CGPointMake(ceilf(0.80 * _rightBtn.width), ceilf(0.1*_rightBtn.height));
     _badge.hidden = NO;
     _badge.text = [NSString stringWithFormat:@"%@",@(value)];
 }
 
+
+- (void)hideItemBadge {
+    _badge.hidden = YES;
+}
+
+- (YYLabel *)badge {
+    if (!_badge) {
+        _badge = [YYLabel new];
+        _badge.size = CGSizeMake(17, 17);
+        _badge.font = SYSTEM_FONT(10);
+        _badge.textColor = kDefaultColor;
+        _badge.textAlignment = NSTextAlignmentCenter;
+        _badge.layer.cornerRadius = _badge.height/2.0;
+        _badge.backgroundColor = [UIColor whiteColor];
+    }
+    return _badge;
+}
 - (void)setBackItem {
     [self setBackItemAction:nil];
 }

@@ -33,14 +33,19 @@
     
     _time.text = [NSString transToTime:model.addtime];
     NSString *str = [NSString stringWithFormat:@"(%@)",model.support];
-    CGRect detailSize = [str boundingRectWithSize:CGSizeMake(MAXFLOAT, 20) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]}context:nil];
-    _width.constant = detailSize.size.width;
     _number.text = str;
     
-    if (model.support.integerValue >= 50) {
-        _zanPic.hidden = NO;
+    if (model.issupport.integerValue == 1) {
+        _zanPic.image = IMAGE_NAMED(@"zanSelect");
     }else{
-        _zanPic.hidden = YES;
+        _zanPic.image = IMAGE_NAMED(@"zan");
+    }
+    
+    
+    if (model.support.integerValue >= 50) {
+        _sharePic.hidden = NO;
+    }else{
+        _sharePic.hidden = YES;
     }
     
     NSArray *array = @[_pic1,_pic2,_pic3];

@@ -46,6 +46,7 @@
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.view addSubview:self.tableView];
+    self.view.backgroundColor = [UIColor whiteColor];
     NSArray *array = @[@"客服消息",@"中奖消息",@"发货消息",@"系统消息"];
     self.title = array[_type.integerValue -1];
     //下拉刷新

@@ -44,6 +44,7 @@ static NSString *Wincell = @"winCell";
         _tableView.emptyDataSetDelegate = self;
         _tableView.emptyDataSetSource = self;
         _tableView.backgroundColor = [UIColor whiteColor];
+        _tableView.tableFooterView = [UIView new];
     }
     return _tableView;
 }

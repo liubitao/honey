@@ -12,7 +12,7 @@
 
 @property (nonatomic,copy) NSString *buynum;
 
-@property (nonatomic,copy) NSString *gid;
+@property (nonatomic,copy) NSString *goodsid;
 
 @property (nonatomic,copy) NSString *title;
 

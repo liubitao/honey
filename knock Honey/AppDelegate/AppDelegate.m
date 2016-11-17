@@ -10,6 +10,7 @@
 #import "KHTabbarViewController.h"
 #import "KHcartModel.h"
 #import <UMSocialCore/UMSocialCore.h>
+#import <AlipaySDK/AlipaySDK.h>
 
 @interface AppDelegate ()
 
@@ -70,13 +71,24 @@
     return result;
 }
 
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+// NOTE: 9.0以后使用新API接口
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options
 {
-    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];
-    if (!result) {
+    if ([url.host isEqualToString:@"safepay"]) {
+        //跳转支付宝钱包进行支付，处理支付结果
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+            NSLog(@"result = %@",resultDic);
+        }];
         
+    }else{
+        BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];
+        if (!result) {
+            
+        }
+        return result;
     }
-    return result;
+    
+    return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -116,6 +128,8 @@
             if ([responseObject[@"isError"] integerValue]) return ;
             NSMutableArray *mutableArray = [KHcartModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
             _value = mutableArray.count;
+            KHTabbarViewController *tabbarVC = (KHTabbarViewController *)self.window.rootViewController;
+            [tabbarVC.tabBar setBadgeValue:_value AtIndex:3];
         } failure:^(NSError *error) {
         }];
     }else{

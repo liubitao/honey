@@ -61,7 +61,7 @@
     [self.tableView.mj_header beginRefreshing];
     
     //上拉刷新
-    _tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+    self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
         [weakSelf getMoreData];
         [weakSelf.tableView.mj_footer endRefreshing];
     }];  
@@ -70,6 +70,7 @@
 - (void)getLatestPubData{
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"p"] = @1;
+    parameter[@"userid"] = [YWUserTool account].userid;
     [YWHttptool GET:PortComment_list parameters:parameter success:^(id responseObject){
          if ([responseObject[@"isError"] integerValue]) return ;
         _pageCount = 1;
@@ -84,6 +85,7 @@
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"userid"] = [YWUserTool account].userid;
     parameter[@"p"] = @(++_pageCount);
+    parameter[@"userid"] = [YWUserTool account].userid;
     [YWHttptool GET:PortComment_list parameters:parameter success:^(id responseObject){
         if ([responseObject[@"isError"] integerValue]) return ;
         [self.dataArray addObjectsFromArray:[KHAppearModel kh_objectWithKeyValuesArray:responseObject[@"result"]]];
@@ -112,7 +114,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    
     NSMutableDictionary *parameter = [Utils parameter];
     KHAppearModel *apperModel = self.dataArray[indexPath.row];
     parameter[@"comment_id"] = apperModel.ID;
@@ -121,8 +123,17 @@
         if ([responseObject[@"isError"] integerValue]) return ;
         KHAppearDetailModel *model = [KHAppearDetailModel kh_objectWithKeyValues:responseObject[@"result"]];
         KHAppearDetailController *detailVC = [[KHAppearDetailController alloc]init];
+        __weak typeof(self) weakSelf = self;
+        detailVC.block = ^{
+            KHAppearModel *appearModel = weakSelf.dataArray[indexPath.row];
+            appearModel.issupport = @"1";
+            [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:appearModel];
+            [weakSelf.tableView reloadData];
+        };
         detailVC.AppearModel = model;
+        detailVC.indexPath = indexPath;
         [self pushController:detailVC];
+        [MBProgressHUD showMessage:@"加载中..."];
     } failure:^(NSError *error){
     }];
     
@@ -134,19 +145,7 @@
     return [UIImage imageNamed:@"empty_placeholder"];
 }
 
-
-
 - (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
-    return YES;
-}
-
-- (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView{
-    return YES;
-}
-
-
-- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView
-{
     return YES;
 }
 

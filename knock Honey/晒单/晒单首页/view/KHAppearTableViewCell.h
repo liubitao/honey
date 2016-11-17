@@ -23,7 +23,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *time;
 @property (weak, nonatomic) IBOutlet UILabel *number;
 @property (weak, nonatomic) IBOutlet UIImageView *zanPic;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *width;
 
 - (void)setModel:(KHAppearModel *)model;
 + (CGFloat)height;

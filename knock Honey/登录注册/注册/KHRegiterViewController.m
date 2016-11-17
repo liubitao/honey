@@ -8,6 +8,7 @@
 
 #import "KHRegiterViewController.h"
 #import "PooCodeView.h"
+#import "KHRegiterSecondController.h"
 
 @interface KHRegiterViewController ()<UITextFieldDelegate>
 {
@@ -28,6 +29,7 @@
     [super viewDidLoad];
     _registerButton.layer.cornerRadius = 5;
     _registerButton.layer.masksToBounds = YES;
+    self.title = @"注册";
     NSString *remindStr = @"距离获得新手礼包还有2步！";
     _remindLabel.attributedText = [Utils stringWith:remindStr font1:SYSTEM_FONT(14) color1:UIColorHex(51B2EA) font2:SYSTEM_FONT(14) color2:kDefaultColor range:NSMakeRange(10, 1)];
     
@@ -146,6 +148,42 @@
     NSMutableString *string = [NSMutableString stringWithString:_userPhone.text];
     [string deleteCharactersInRange:NSMakeRange(3, 1)];
     [string deleteCharactersInRange:NSMakeRange(7, 1)];
+    
+    if (![Utils validateMobile:string]) {
+        [MBProgressHUD showError:@"手机号码填写有误"];
+        return;
+    }
+    
+    if (![_validateCode.text compare:_validatePic.changeString
+                             options:NSCaseInsensitiveSearch | NSNumericSearch] == NSOrderedSame) {
+        [MBProgressHUD showError:@"图形验证码错误"];
+        return;
+    }
+    NSMutableDictionary *parameters = [Utils parameter];
+    parameters[@"mobile"] = string;
+    
+    [YWHttptool GET:PortDuanxin_send parameters:parameters success:^(id responseObject) {
+        if ([responseObject[@"result"][@"status"] integerValue] == 2) {
+            [self.view endEditing:YES];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"注册失败" message:@"号码已经被注册"  preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"去登陆" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+                 [self.navigationController popViewControllerAnimated:YES];
+            }];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"重新输入" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            }];
+            [alert addAction:cancel];
+            [alert addAction:action];
+            [self presentViewController:alert animated:YES completion:nil];
+            return;
+        }
+        KHRegiterSecondController *secondVC = [[KHRegiterSecondController alloc]init];
+        secondVC.phone = string;
+        [self pushController:secondVC];
+        
+    } failure:^(NSError *error) {
+        [MBProgressHUD hideHUDForView:self.view];
+    }];
+
 }
 
 - (void)didReceiveMemoryWarning {

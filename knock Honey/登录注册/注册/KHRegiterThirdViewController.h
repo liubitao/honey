@@ -9,5 +9,5 @@
 #import "KHBaseViewController.h"
 
 @interface KHRegiterThirdViewController : KHBaseViewController
-
+@property (nonatomic,copy) NSString *phone;
 @end

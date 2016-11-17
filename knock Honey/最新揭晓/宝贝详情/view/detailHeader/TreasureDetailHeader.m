@@ -145,6 +145,13 @@ const CGFloat kTreasureDetailHeaderPageControlHeight = 30.0; //pagecontroll heig
     }) type:_type countTime:_count Model:_model];
     _treasureProgressView.countDownLabel.delegate = self;
     __weak typeof(self) weakSelf = self;
+    
+    _treasureProgressView.codeBlock = ^{
+        if (weakSelf.codeBlock) {
+            weakSelf.codeBlock();
+        }
+    };
+    
     _treasureProgressView.block = ^() {
         if (weakSelf.countDetailBlock) {
             weakSelf.countDetailBlock();
@@ -216,7 +223,6 @@ const CGFloat kTreasureDetailHeaderPageControlHeight = 30.0; //pagecontroll heig
     _declareBtn.top = _declareLabel.bottom+5;
     _headerMenu.top = _declareBtn.bottom+5;
     self.height = _headerMenu.bottom;
-    NSLog(@"%f",_headerMenu.bottom);
 }
 
 //点击声明
@@ -499,6 +505,14 @@ const CGFloat kBackImageViewHeight = 45.0;
     _totalLabel.size = CGSizeMake(self.width-(_winnerImgView.right+5)-5, 13);
     NSString *str = [NSString stringWithFormat:@"本次参与:%@人次",winner.buynum];
     
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithActionBlock:^(id  _Nonnull sender) {
+        if (self.codeBlock) {
+            self.codeBlock();
+        }
+    }];
+    [_totalLabel addGestureRecognizer:tap];
+    
+    
     _totalLabel.attributedText = [Utils stringWith:str font1:defaultFont color1:defaultColor font2:defaultFont color2:kDefaultColor range:NSMakeRange(5, str.length-7)] ;
     [view addSubview:_totalLabel];
     [_totalLabel sizeToFit];
@@ -547,6 +561,7 @@ const CGFloat kBackImageViewHeight = 45.0;
     
     self.height = _backImgView.bottom+top;
 }
+
 
 - (void)countDetail {
     if (_block) {

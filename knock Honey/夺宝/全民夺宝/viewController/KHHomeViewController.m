@@ -22,6 +22,8 @@
 #import "KHTenViewController.h"
 #import "KHDetailViewController.h"
 #import "KHIMage.h"
+#import "KHLoginViewController.h"
+#import "KHQiandaoViewController.h"
 
 
 
@@ -89,7 +91,6 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    //    [self setBadgeValue:[AppDelegate getAppDelegate].value atIndex:3];
 }
 
 
@@ -221,13 +222,18 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
                 
             }
                 break;
-            case 1: {
+            case 1: {//十元专区
                 KHTenViewController *tenVC = [[KHTenViewController alloc]init];
+                tenVC.area = @"12";
+                tenVC.port = PortGoods_area;
+                tenVC.title = @"十元专区";
                 [weakSelf pushController:tenVC];
             }
                 break;
-            case 2: {
-                
+            case 2: {//签到
+                KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
+                VC.title = @"签到";
+                [self pushController:VC];
             }
                 break;
             case 3: {
@@ -336,7 +342,6 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     }
     [YWHttptool GET:PortGoodsdetails parameters:parameter success:^(id responseObject) {
         [MBProgressHUD hideHUD];
-        NSLog(@"%@",responseObject);
         if ([responseObject[@"isError"] integerValue])return;
         KHDetailViewController *DetailVC = [[KHDetailViewController alloc]init];
         DetailVC.model = [KHProductModel kh_objectWithKeyValues:responseObject[@"result"]];
@@ -383,6 +388,12 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
 #pragma mark - WinTreasureCellDelegate
 #pragma mark - 加入清单
 - (void)addShoppingList:(WinTreasureCell *)cell indexPath:(NSIndexPath *)indexPath {
+    if (![YWUserTool account]) {
+        KHLoginViewController *vc = [[KHLoginViewController alloc]init];
+        KHNavigationViewController *nav = [[KHNavigationViewController alloc] initWithRootViewController:vc];
+        [self presentViewController:nav animated:YES completion:nil];
+        return;
+    }
     if ([TSAnimation sharedAnimation].isShowing) {
         return;
     }
@@ -397,6 +408,10 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     [YWHttptool GET:PortAddCart parameters:parameter success:^(id responseObject) {
         NSLog(@"%@",responseObject);
         if ([responseObject[@"isError"] integerValue]) return ;
+        [AppDelegate getAppDelegate].value = [responseObject[@"result"][@"count_cart"] integerValue];
+         [self setBadgeValue:[AppDelegate getAppDelegate].value atIndex:3];
+        //刷新购物车
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshCart" object:nil userInfo:nil];
         [MBProgressHUD showSuccess:@"已添加"];
     } failure:^(NSError *error) {
         [MBProgressHUD showError:@"添加失败"];
@@ -433,9 +448,8 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     
 }
 #pragma mark - TSAnimationDelegate;//动画完成
-- (void)animationFinished{
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshCart" object:nil userInfo:nil];
-    [self setBadgeValue:[AppDelegate getAppDelegate].value atIndex:3];
+- (void)animationFinished{    
+   
 }
 
 - (void)didReceiveMemoryWarning {

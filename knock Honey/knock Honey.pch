@@ -21,6 +21,8 @@
 #import <MD5Digest/NSString+MD5.h>
 #import <MJRefresh.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <SDWebImage/UIButton+WebCache.h>
+
 #import "UINavigationController+FDFullscreenPopGesture.h"
 #import <YYKit.h>
 #import <Masonry.h>
@@ -37,6 +39,7 @@
 #import "UITableView+Custom.h"
 #import "NSString+TSTime.h"
 #import "UITabBar+Badge.h"
+#import "UIButton+Badge.h"
 
 
 //工具类
@@ -44,12 +47,17 @@
 #import "YWHttptool.h"
 #import "YWUserTool.h"
 #import "YWUser.h"
+#import "KHNavigationViewController.h"
 
 
 
-// Include any system framework and library headers here that should be included in all compilation units.
-// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#ifdef  DEBUG
+#define NSLog(...) NSLog(__VA_ARGS__)
 
+#else // 发布
+
+#define NSLog(...)
+#endif
 
 #define YWKeyWindow [UIApplication sharedApplication].keyWindow
 

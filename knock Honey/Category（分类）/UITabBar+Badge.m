@@ -54,11 +54,11 @@
     CGFloat y = ceilf(0.1 * tabFrame.size.height);
     
     YYLabel *badgeLabel = [YYLabel new];
-    badgeLabel.frame = CGRectMake(x, y, 15, 15);
+    badgeLabel.frame = CGRectMake(x, y, 17, 17);
     badgeLabel.backgroundColor = kDefaultColor;
     badgeLabel.tag = 999+index;
     badgeLabel.textColor = [UIColor whiteColor];
-    badgeLabel.font = SYSTEM_FONT(9);
+    badgeLabel.font = SYSTEM_FONT(10);
     badgeLabel.textAlignment = NSTextAlignmentCenter;
     badgeLabel.layer.cornerRadius = badgeLabel.height/2.0;
     [self addSubview:badgeLabel];

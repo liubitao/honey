@@ -36,6 +36,9 @@
  */
 @property (nonatomic, copy) NSString *canyurenshu;
 
+@property (nonatomic,copy) NSString *price;
+
+
 + (instancetype)kh_objectWithKeyValues:(NSDictionary*)dict;
 
 + (NSMutableArray*)kh_objectWithKeyValuesArray:(NSArray *)array;

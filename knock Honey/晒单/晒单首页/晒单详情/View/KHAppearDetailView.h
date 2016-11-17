@@ -74,6 +74,7 @@ typedef void(^DetailClickBlcok)();
 @property (nonatomic,strong) UILabel *contentLabel;
 
 
+
 @property (nonatomic, strong) NSArray<UIView *> *picViews;
 
 @property (nonatomic, strong) ProductInfoView *infoView;

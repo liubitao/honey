@@ -167,27 +167,31 @@
     for (int i = 0; i<_model.img.count; i++) {
         [self addImageView:self.height url:_model.img[i]];
     }
+    if (_containerView.height <= (KscreenHeight - kNavigationBarHeight - 10)) {
+        self.height = KscreenHeight - kNavigationBarHeight;
+        _containerView.height = KscreenHeight - kNavigationBarHeight - 10;
+    }
+   
 }
 
 
 - (void)addImageView:(CGFloat)top url:(NSString *)urlStr{
-
-    // ，获取下载图片，获取尺寸
-    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlStr]];
-    UIImage *image = [UIImage imageWithData:data];
-    if (!image) {
-        return;
-    }
-    CGSize size = image.size;
-    // 回到主线程执行
-    UIImageView *imageView = [UIImageView new];
-    imageView.origin = CGPointMake(kAppearDetailLeftPadding, top);
-    imageView.size = CGSizeMake(self.width- kAppearDetailLeftPadding*2 , self.width*size.height/size.width);
-    [self addSubview:imageView];
-    [imageView sd_setImageWithURL:[NSURL URLWithString:urlStr]];
-    imageView.contentMode = UIViewContentModeScaleAspectFit;
-    self.height = imageView.bottom;
-    _containerView.height = self.height;
+        // ，获取下载图片，获取尺寸
+        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlStr]];
+        UIImage *image = [UIImage imageWithData:data];
+        if (!image) {
+            return;
+        }
+        CGSize size = image.size;
+        // 回到主线程执行
+        UIImageView *imageView = [UIImageView new];
+        imageView.origin = CGPointMake(kAppearDetailLeftPadding, top);
+        imageView.size = CGSizeMake(self.width- kAppearDetailLeftPadding*2 , self.width*size.height/size.width);
+        [self addSubview:imageView];
+        [imageView sd_setImageWithURL:[NSURL URLWithString:urlStr]];
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
+        self.height = imageView.bottom;
+        _containerView.height = self.height;
 }
 
 - (void)clickStar:(UIButton *)sender{

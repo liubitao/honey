@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KHRegiterSecondController">
             <connections>
+                <outlet property="daojishi" destination="CyH-2M-b6f" id="TDm-fk-zfy"/>
                 <outlet property="phoneCode" destination="hVF-9N-Iw7" id="x1y-MO-y4R"/>
                 <outlet property="remindLabel" destination="8xc-Mx-9Fx" id="jdR-sp-efg"/>
                 <outlet property="submitButton" destination="RJl-UV-Zv4" id="but-bX-V4X"/>
@@ -133,13 +134,14 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CyH-2M-b6f">
-                            <rect key="frame" x="315" y="2" width="40" height="40"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CyH-2M-b6f">
+                            <rect key="frame" x="275" y="2" width="80" height="40"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="40" id="Jfl-z4-Unk"/>
+                                <constraint firstAttribute="width" constant="80" id="Jfl-z4-Unk"/>
                                 <constraint firstAttribute="height" constant="40" id="q3y-Ma-nXp"/>
                             </constraints>
-                            <state key="normal" title="(60)">
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="发送验证码">
                                 <color key="titleColor" red="0.81568627450980391" green="0.13725490196078433" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
@@ -147,7 +149,7 @@
                             </connections>
                         </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hVF-9N-Iw7">
-                            <rect key="frame" x="100" y="0.0" width="165" height="45"/>
+                            <rect key="frame" x="100" y="0.0" width="155" height="45"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="45" id="9H3-87-PDD"/>
                             </constraints>
@@ -159,7 +161,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="2Fd-3V-eDD"/>
                         <constraint firstItem="hVF-9N-Iw7" firstAttribute="top" secondItem="VKX-ex-rA4" secondAttribute="top" id="BvS-PO-C9U"/>
-                        <constraint firstItem="CyH-2M-b6f" firstAttribute="leading" secondItem="hVF-9N-Iw7" secondAttribute="trailing" constant="50" id="EbJ-eX-gaB"/>
+                        <constraint firstItem="CyH-2M-b6f" firstAttribute="leading" secondItem="hVF-9N-Iw7" secondAttribute="trailing" constant="20" id="EbJ-eX-gaB"/>
                         <constraint firstItem="kRJ-YN-LPc" firstAttribute="top" secondItem="VKX-ex-rA4" secondAttribute="top" id="VMz-9Q-mot"/>
                         <constraint firstItem="kRJ-YN-LPc" firstAttribute="leading" secondItem="VKX-ex-rA4" secondAttribute="leading" constant="10" id="WtV-7z-jGD"/>
                         <constraint firstAttribute="trailing" secondItem="CyH-2M-b6f" secondAttribute="trailing" constant="20" id="hvK-Wj-Pl6"/>

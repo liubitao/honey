@@ -89,6 +89,9 @@ const CGFloat kNumberTextFieldWidth = 60.0;
     _totalCount = totalCount;
     _minusButton.enabled = (_selectedCount <= 1) ? NO : YES;
     _plusButton.enabled = (_selectedCount >= _totalCount) ? NO : YES;
+    if (_selectedCount >_totalCount) {
+        _selectedCount = _totalCount;
+    }
     _numberFD.text = [NSString stringWithFormat:@"%zi",_selectedCount];
 }
 

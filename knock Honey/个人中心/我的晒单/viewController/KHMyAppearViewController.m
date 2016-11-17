@@ -70,6 +70,7 @@
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"userid"] = [YWUserTool account].userid;
     parameter[@"p"] = @1;
+    parameter[@"type"] = @1;
     [YWHttptool GET:PortComment_list parameters:parameter success:^(id responseObject){
         if ([responseObject[@"isError"] integerValue]) return ;
         _pageCount = 1;
@@ -84,6 +85,7 @@
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"userid"] = [YWUserTool account].userid;
     parameter[@"p"] = @(++_pageCount);
+    parameter[@"type"]= @1;
     [YWHttptool GET:PortComment_list parameters:parameter success:^(id responseObject){
         if ([responseObject[@"isError"] integerValue]) return ;
         [self.dataArray addObjectsFromArray:[KHAppearModel kh_objectWithKeyValuesArray:responseObject[@"result"]]];
@@ -112,7 +114,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
     NSMutableDictionary *parameter = [Utils parameter];
     KHAppearModel *apperModel = self.dataArray[indexPath.row];
     parameter[@"comment_id"] = apperModel.ID;
@@ -122,7 +123,8 @@
         KHAppearDetailModel *model = [KHAppearDetailModel kh_objectWithKeyValues:responseObject[@"result"]];
         KHAppearDetailController *detailVC = [[KHAppearDetailController alloc]init];
         detailVC.AppearModel = model;
-        [self pushController:detailVC];
+        [self hideBottomBarPush:detailVC];
+        [MBProgressHUD showMessage:@"加载中..."];
     } failure:^(NSError *error){
     }];
     

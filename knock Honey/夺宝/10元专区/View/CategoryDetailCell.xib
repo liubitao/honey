@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
@@ -135,7 +134,7 @@
                 <outlet property="timeCount" destination="pPh-XE-hQK" id="4nJ-0j-skZ"/>
                 <outlet property="totalLabel" destination="dcO-hU-9DD" id="jzq-4b-6ut"/>
             </connections>
-            <point key="canvasLocation" x="89.5" y="93.5"/>
+            <point key="canvasLocation" x="207.5" y="151.5"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -67,6 +67,9 @@ const CGFloat kFooterButtonHeight = 40.0;
                     [button setImage:IMAGE_NAMED(@"tabbarcart") forState:UIControlStateNormal];
                     [button addTarget:weakSelf action:@selector(winTreasure:) forControlEvents:UIControlEventTouchUpInside];
                     [weakSelf addSubview:button];
+                    [button setBadgeBGColor:kDefaultColor];
+                    [button setBadgeValue:[NSString stringWithFormat:@"%zi",[AppDelegate getAppDelegate].value]];
+                    [button setBadgeTextColor:[UIColor whiteColor]];
                     return ;
                 }
                 UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];

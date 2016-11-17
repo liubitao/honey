@@ -36,7 +36,7 @@ const CGFloat kScrollViewHeight = 140.0;
 
 - (NSArray *)menuTitles {
     if (!_menuTitles) {
-        _menuTitles = @[@"分类",@"10元专区",@"晒单",@"常见问题"];
+        _menuTitles = @[@"分类",@"10元专区",@"签到",@"常见问题"];
     }
     return _menuTitles;
 }

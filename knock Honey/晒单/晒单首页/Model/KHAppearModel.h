@@ -66,6 +66,9 @@
  */
 @property (nonatomic,copy) NSString *content;
 
+@property (nonatomic,copy) NSString *issupport;
+
+
 
 + (instancetype)kh_objectWithKeyValues:(NSDictionary*)dict;
 

@@ -13,7 +13,7 @@
 + (instancetype)kh_objectWithKeyValues:(NSDictionary*)dict{
     [self mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
         return @{
-                 @"gid":@"id"
+                 @"goodsid":@"id"
                  };
     }];
     return [self mj_objectWithKeyValues:dict];

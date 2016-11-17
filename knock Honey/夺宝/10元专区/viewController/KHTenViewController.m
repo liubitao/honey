@@ -43,7 +43,6 @@
 }
 
 - (void)createNavi{
-    self.title = @"十元专区";
     [self setRightImageNamed:@"tenCart" action:@selector(gotoCart)];
     [self setItemBadge:[AppDelegate getAppDelegate].value];
 }
@@ -79,10 +78,10 @@
 - (void)getDatasource{
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"p"] = @"1";
-    _currentPage = 1;
-    parameter[@"areaid"] = @"1";
-    [YWHttptool GET:PortGoodsarea parameters:parameter success:^(id responseObject) {
+    parameter[@"areaid"] = _area;
+    [YWHttptool GET:_port parameters:parameter success:^(id responseObject) {
         NSLog(@"%@",responseObject);
+        _currentPage = 1;
         _dataArray = [KHTenModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
         [_tableView reloadData];
     } failure:^(NSError *error) {
@@ -93,8 +92,8 @@
 - (void)getMoreData{
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"p"] = [NSNumber numberWithInteger:++_currentPage];
-    parameter[@"areaid"] = @"1";
-    [YWHttptool GET:PortGoodsarea parameters:parameter success:^(id responseObject) {
+    parameter[@"areaid"] = _area;
+    [YWHttptool GET:_port parameters:parameter success:^(id responseObject) {
         NSLog(@"%@",responseObject);
         if ([responseObject[@"isError"] integerValue])return ;
         NSArray *array = [KHTenModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
@@ -167,6 +166,9 @@
         NSLog(@"%@",responseObject);
         if ([responseObject[@"isError"] integerValue]) return ;
         [AppDelegate getAppDelegate].value = [responseObject[@"result"][@"count_cart"] integerValue];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshCart" object:nil userInfo:nil];
+        [self setItemBadge:[AppDelegate getAppDelegate].value];
+        [self setBadgeValue:[AppDelegate getAppDelegate].value atIndex:3];
     } failure:^(NSError *error) {
     }];
     CGRect parentRectA = [cell.contentView convertRect:cell.productImgView.frame toView:self.view];
@@ -182,9 +184,7 @@
 }
 #pragma mark - TSAnimationDelegate;//动画完成
 - (void)animationFinished {
-     [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshCart" object:nil userInfo:nil];
-    [self setItemBadge:[AppDelegate getAppDelegate].value];
-    [self setBadgeValue:[AppDelegate getAppDelegate].value atIndex:3];
+    
 }
 
 - (void)didReceiveMemoryWarning {

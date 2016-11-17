@@ -160,18 +160,18 @@
 
 //密码
 + (BOOL)validatePassword:(NSString *)passWord {
-    NSString *passWordRegex = @"^[a-zA-Z0-9]{6,16}+$";
+    NSString *passWordRegex = @"^[a-zA-Z0-9]{6,20}+$";
     NSPredicate *passWordPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",passWordRegex];
     return [passWordPredicate evaluateWithObject:passWord];
 }
 //验证码
 + (BOOL)validateVerifyCode:(NSString *)verifyCode {
     BOOL flag;
-    if (verifyCode.length != 6) {
+    if (verifyCode.length != 4) {
         flag = NO;
         return flag;
     }
-    NSString *regex2 = @"^(\\d{6})";
+    NSString *regex2 = @"^(\\d{4})";
     NSPredicate *verifyCodePredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex2];
     return [verifyCodePredicate evaluateWithObject:verifyCode];
 }

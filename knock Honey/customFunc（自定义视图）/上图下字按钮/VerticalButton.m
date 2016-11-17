@@ -30,7 +30,7 @@
     //调整文字(titleLable)的位置和尺寸
     CGRect newFrame = self.titleLabel.frame;
     newFrame.origin.x = 0;
-    newFrame.origin.y = self.imageView.height;
+    newFrame.origin.y = self.imageView.height+5;
     
     newFrame.size.width = self.width;
     newFrame.size.height = self.height - self.imageView.height;

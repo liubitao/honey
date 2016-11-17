@@ -9,6 +9,8 @@
 #import "KHPayViewController.h"
 #import <MJExtension.h>
 #import "KHPayResultViewController.h"
+#import "KHPauGoodsModel.h"
+
 
 @interface KHPayViewController ()
 @property (weak, nonatomic) IBOutlet UILabel  *payNumber;
@@ -149,21 +151,25 @@
     dict[@"couponid"] = self.payModel.couponid;
     dict[@"goods_price"] = @(self.payModel.order_amount.integerValue +self.payModel.red_price.integerValue);
     dict[@"order_amount"] = self.payModel.order_amount;
-    
-    NSMutableArray *array = [NSMutableArray array];
-    for (KHPauGoodsModel *model in self.payModel.goods) {
-        [array addObject:model.mj_keyValues];
-    }
-    NSData *jsonData2 = [NSJSONSerialization dataWithJSONObject:array options:NSJSONWritingPrettyPrinted error:nil];
-    NSString *jsonString2 = [[NSString alloc] initWithData:jsonData2 encoding:NSUTF8StringEncoding];
-    parameter[@"goods"] = jsonString2;
-    
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
     NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     parameter[@"order"] = jsonString;
+    
+    NSMutableArray *array = [NSMutableArray array];
+
+    for (KHPauGoodsModel *Paumodel in self.payModel.goods) {
+        NSMutableDictionary *PuauDict = Paumodel.mj_keyValues;
+        PuauDict[@"goodsid"] = PuauDict[@"id"];
+        [array addObject:PuauDict];
+    }
+    NSData *jsonData2 = [NSJSONSerialization dataWithJSONObject:array options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *jsonString2 = [[NSString alloc] initWithData:jsonData2 encoding:NSUTF8StringEncoding];
+    
+    parameter[@"goods"] = jsonString2;
+    
+  
     [MBProgressHUD showMessage:@"支付中..." toView:self.view];
     [YWHttptool GET:PortOrder_pay parameters:parameter success:^(id responseObject) {
-        NSLog(@"支付:%@",responseObject);
         [MBProgressHUD hideHUDForView:self.view];
         if ([responseObject[@"isError"] integerValue]) return ;
         NSString *str = responseObject[@"result"][@"money"];

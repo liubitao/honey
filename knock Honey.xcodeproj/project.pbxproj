@@ -31,6 +31,18 @@
 		0C3693411DAB6EE600BB3EE0 /* KHKnowModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3693401DAB6EE600BB3EE0 /* KHKnowModel.m */; };
 		0C3693451DAB8F8000BB3EE0 /* KHPulishedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3693431DAB8F8000BB3EE0 /* KHPulishedTableViewCell.m */; };
 		0C3693461DAB8F8000BB3EE0 /* KHPulishedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C3693441DAB8F8000BB3EE0 /* KHPulishedTableViewCell.xib */; };
+		0C3A466D1DD70B850082A239 /* KHCoupon.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3A465D1DD70B850082A239 /* KHCoupon.m */; };
+		0C3A466E1DD70B850082A239 /* KHFreeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3A465F1DD70B850082A239 /* KHFreeModel.m */; };
+		0C3A466F1DD70B850082A239 /* KHFreeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3A46621DD70B850082A239 /* KHFreeHeaderView.m */; };
+		0C3A46701DD70B850082A239 /* KHFreeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3A46641DD70B850082A239 /* KHFreeTableViewCell.m */; };
+		0C3A46711DD70B850082A239 /* KHFreeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C3A46651DD70B850082A239 /* KHFreeTableViewCell.xib */; };
+		0C3A46721DD70B850082A239 /* KHFreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3A46681DD70B850082A239 /* KHFreeViewController.m */; };
+		0C3A46751DD70BCB0082A239 /* KHjJinfenlistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3A46741DD70BCB0082A239 /* KHjJinfenlistViewController.m */; };
+		0C3A46781DD70C2B0082A239 /* KHGetJinfenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3A46771DD70C2B0082A239 /* KHGetJinfenViewController.m */; };
+		0C3A467B1DD70C510082A239 /* KHUseJinfenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3A467A1DD70C510082A239 /* KHUseJinfenViewController.m */; };
+		0C3A467F1DD70DA40082A239 /* KHjifenTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3A467D1DD70DA40082A239 /* KHjifenTableViewCell.m */; };
+		0C3A46801DD70DA40082A239 /* KHjifenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C3A467E1DD70DA40082A239 /* KHjifenTableViewCell.xib */; };
+		0C3A46831DD711510082A239 /* KHjifenModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3A46821DD711510082A239 /* KHjifenModel.m */; };
 		0C3E9C1E1DD2BB9C00F827AC /* KHPayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3E9C1D1DD2BB9C00F827AC /* KHPayModel.m */; };
 		0C3E9C241DD2FD5100F827AC /* KHBounsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3E9C231DD2FD5100F827AC /* KHBounsViewController.m */; };
 		0C3E9C271DD2FE1200F827AC /* KHUseredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3E9C261DD2FE1200F827AC /* KHUseredViewController.m */; };
@@ -40,6 +52,13 @@
 		0C3E9C321DD3011B00F827AC /* BonusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3E9C311DD3011B00F827AC /* BonusModel.m */; };
 		0C3E9C351DD3233A00F827AC /* KHWinCodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3E9C341DD3233A00F827AC /* KHWinCodeModel.m */; };
 		0C3E9C381DD34E8400F827AC /* KHPauGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3E9C371DD34E8400F827AC /* KHPauGoodsModel.m */; };
+		0C4481FE1DDAE2F00038697C /* YWCover.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4481FB1DDAE2F00038697C /* YWCover.m */; };
+		0C4481FF1DDAE2F00038697C /* YWPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4481FD1DDAE2F00038697C /* YWPopView.m */; };
+		0C4482071DDAE5F60038697C /* KHCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4482051DDAE5F60038697C /* KHCodeViewController.m */; };
+		0C4482081DDAE5F60038697C /* KHCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C4482061DDAE5F60038697C /* KHCodeViewController.xib */; };
+		0C44820C1DDAE9C60038697C /* DDCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C44820B1DDAE9C60038697C /* DDCollectionViewFlowLayout.m */; };
+		0C44820F1DDAEB410038697C /* KHCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C44820E1DDAEB410038697C /* KHCodeCell.m */; };
+		0C4482161DDB31580038697C /* KHGoodsAppearController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4482151DDB31580038697C /* KHGoodsAppearController.m */; };
 		0C44DEAE1DD4401A0085E5C3 /* KHPayResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C44DEAC1DD4401A0085E5C3 /* KHPayResultViewController.m */; };
 		0C44DEB51DD4423D0085E5C3 /* PayResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C44DEB11DD4423D0085E5C3 /* PayResultCell.m */; };
 		0C44DEB61DD4423D0085E5C3 /* PayResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C44DEB21DD4423D0085E5C3 /* PayResultCell.xib */; };
@@ -48,6 +67,10 @@
 		0C44DEBD1DD448920085E5C3 /* KHresultGoods.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C44DEBC1DD448920085E5C3 /* KHresultGoods.m */; };
 		0C44DEC01DD46AF50085E5C3 /* KHAppearDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C44DEBF1DD46AF50085E5C3 /* KHAppearDetailModel.m */; };
 		0C44DEC61DD495080085E5C3 /* KHMyAppearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C44DEC51DD495080085E5C3 /* KHMyAppearViewController.m */; };
+		0C461E941DDC564E00853605 /* KHpastModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C461E931DDC564E00853605 /* KHpastModel.m */; };
+		0C461E971DDC57DE00853605 /* KHPastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C461E961DDC57DE00853605 /* KHPastViewController.m */; };
+		0C461E9B1DDC7A1000853605 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0C461E991DDC7A1000853605 /* AlipaySDK.bundle */; };
+		0C461E9C1DDC7A1000853605 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C461E9A1DDC7A1000853605 /* AlipaySDK.framework */; };
 		0C50E7781DD5AC420087A250 /* KHzhongjiangViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C50E7771DD5AC420087A250 /* KHzhongjiangViewController.m */; };
 		0C50E7841DD5ACCA0087A250 /* KHMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C50E77F1DD5ACCA0087A250 /* KHMessageModel.m */; };
 		0C50E7851DD5ACCA0087A250 /* KHMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C50E7831DD5ACCA0087A250 /* KHMessageViewController.m */; };
@@ -76,10 +99,6 @@
 		0C5E05F61DAE36FE00B2133F /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E05EF1DAE36FE00B2133F /* UIView+SDExtension.m */; };
 		0C5E05F91DAE3A7E00B2133F /* KHDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E05F81DAE3A7E00B2133F /* KHDetailModel.m */; };
 		0C5E05FC1DAE3B7C00B2133F /* KHProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E05FB1DAE3B7C00B2133F /* KHProductModel.m */; };
-		0C62AD271DC876FF0091119D /* KHTopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C62AD261DC876FF0091119D /* KHTopupViewController.m */; };
-		0C62AD2A1DC87B500091119D /* KHTopupHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C62AD291DC87B500091119D /* KHTopupHeader.m */; };
-		0C62AD2E1DC87BD60091119D /* KHTopupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C62AD2C1DC87BD60091119D /* KHTopupTableViewCell.m */; };
-		0C62AD2F1DC87BD60091119D /* KHTopupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C62AD2D1DC87BD60091119D /* KHTopupTableViewCell.xib */; };
 		0C645ECB1DC82809000E9B98 /* KHAppearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD77C8F1DBF44A600F72AA5 /* KHAppearViewController.m */; };
 		0C645ECC1DC8288C000E9B98 /* KHKnowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C36932E1DAB5AE400BB3EE0 /* KHKnowViewController.m */; };
 		0C645ECE1DC8294A000E9B98 /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C645ECD1DC8294A000E9B98 /* libAFNetworking.a */; };
@@ -99,6 +118,20 @@
 		0C6C68B61DCB2F4B00B06535 /* KHAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6C68B51DCB2F4B00B06535 /* KHAddressModel.m */; };
 		0C6F59C21DB85D2800105C8C /* KHPublishModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6F59C11DB85D2800105C8C /* KHPublishModel.m */; };
 		0C6F59DF1DB89D6D00105C8C /* UITableView+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6F59DE1DB89D6D00105C8C /* UITableView+Custom.m */; };
+		0C790B971DDC045A00C381CF /* KHSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C790B951DDC045A00C381CF /* KHSearchTableViewCell.m */; };
+		0C790B981DDC045A00C381CF /* KHSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C790B961DDC045A00C381CF /* KHSearchTableViewCell.xib */; };
+		0C790B9B1DDC047100C381CF /* KHSearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C790B9A1DDC047100C381CF /* KHSearchModel.m */; };
+		0C790B9E1DDC31B000C381CF /* KHSearItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C790B9D1DDC31B000C381CF /* KHSearItemButton.m */; };
+		0C790BA51DDC3E9E00C381CF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C790BA41DDC3E9E00C381CF /* QuartzCore.framework */; };
+		0C790BA71DDC3EAA00C381CF /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C790BA61DDC3EAA00C381CF /* CoreText.framework */; };
+		0C790BA91DDC3EB600C381CF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C790BA81DDC3EB600C381CF /* CoreGraphics.framework */; };
+		0C790BAB1DDC3EBF00C381CF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C790BAA1DDC3EBF00C381CF /* UIKit.framework */; };
+		0C790BAD1DDC3EC700C381CF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C790BAC1DDC3EC700C381CF /* Foundation.framework */; };
+		0C790BAF1DDC3ECF00C381CF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C790BAE1DDC3ECF00C381CF /* CFNetwork.framework */; };
+		0C790BB11DDC3ED800C381CF /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C790BB01DDC3ED800C381CF /* CoreMotion.framework */; };
+		0C790BB81DDC489A00C381CF /* KHSearchResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C790BB71DDC489A00C381CF /* KHSearchResultController.m */; };
+		0C790BC01DDC51E000C381CF /* KHPstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C790BBE1DDC51E000C381CF /* KHPstTableViewCell.m */; };
+		0C790BC11DDC51E000C381CF /* KHPstTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C790BBF1DDC51E000C381CF /* KHPstTableViewCell.xib */; };
 		0C7F832E1DCC2BBE003EA29C /* GSPopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7F832D1DCC2BBE003EA29C /* GSPopoverViewController.m */; };
 		0C7F833B1DCC4707003EA29C /* KHEditAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7F83391DCC4707003EA29C /* KHEditAddressViewController.m */; };
 		0C7F833C1DCC4707003EA29C /* KHEditAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C7F833A1DCC4707003EA29C /* KHEditAddressViewController.xib */; };
@@ -110,6 +143,22 @@
 		0C7F83511DCC647C003EA29C /* LocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7F83491DCC647C003EA29C /* LocationModel.m */; };
 		0C7F83521DCC647C003EA29C /* LocationPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7F834B1DCC647C003EA29C /* LocationPickerView.m */; };
 		0C7F83531DCC647C003EA29C /* StreetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7F834D1DCC647C003EA29C /* StreetModel.m */; };
+		0C803C8F1DD99CC2008CC841 /* KHMeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C803C8E1DD99CC2008CC841 /* KHMeListViewController.m */; };
+		0C803C931DD99D17008CC841 /* KHAllTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C803C911DD99D17008CC841 /* KHAllTableViewCell.m */; };
+		0C803C941DD99D17008CC841 /* KHAllTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C803C921DD99D17008CC841 /* KHAllTableViewCell.xib */; };
+		0C803C981DD99D4C008CC841 /* KHSnatchingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C803C961DD99D4C008CC841 /* KHSnatchingTableViewCell.m */; };
+		0C803C991DD99D4C008CC841 /* KHSnatchingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C803C971DD99D4C008CC841 /* KHSnatchingTableViewCell.xib */; };
+		0C803C9C1DD9ABB5008CC841 /* KHSnatchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C803C9B1DD9ABB5008CC841 /* KHSnatchModel.m */; };
+		0C803C9F1DD9AF37008CC841 /* KHSnatchWinModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C803C9E1DD9AF37008CC841 /* KHSnatchWinModel.m */; };
+		0C803CA51DD9E6FF008CC841 /* KHQiandaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C803CA31DD9E6FF008CC841 /* KHQiandaoViewController.m */; };
+		0C803CAD1DD9EA5C008CC841 /* YHWebViewProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C803CA91DD9EA5C008CC841 /* YHWebViewProgress.m */; };
+		0C803CAE1DD9EA5C008CC841 /* YHWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C803CAB1DD9EA5C008CC841 /* YHWebViewProgressView.m */; };
+		0C803CC11DD9F199008CC841 /* KHTopupHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C803CB31DD9F199008CC841 /* KHTopupHeader.m */; };
+		0C803CC21DD9F199008CC841 /* KHTopupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C803CB51DD9F199008CC841 /* KHTopupTableViewCell.m */; };
+		0C803CC31DD9F199008CC841 /* KHTopupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C803CB61DD9F199008CC841 /* KHTopupTableViewCell.xib */; };
+		0C803CC41DD9F199008CC841 /* KHTopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C803CB91DD9F199008CC841 /* KHTopupViewController.m */; };
+		0C803CC51DD9F199008CC841 /* TopupResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C803CBD1DD9F199008CC841 /* TopupResultViewController.m */; };
+		0C803CC61DD9F199008CC841 /* TopupResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C803CBE1DD9F199008CC841 /* TopupResultViewController.xib */; };
 		0C9B05551DC71684008D7BFA /* UITabBar+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9B05541DC71684008D7BFA /* UITabBar+Badge.m */; };
 		0C9B055A1DC71F37008D7BFA /* UIBarButtonItem+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9B05571DC71F37008D7BFA /* UIBarButtonItem+Badge.m */; };
 		0C9B055B1DC71F37008D7BFA /* UIButton+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9B05591DC71F37008D7BFA /* UIButton+Badge.m */; };
@@ -186,10 +235,6 @@
 		0CBD1A761DACD466003E8150 /* VerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CBD1A751DACD466003E8150 /* VerticalButton.m */; };
 		0CBD1A7E1DACEF97003E8150 /* HomeFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CBD1A7D1DACEF97003E8150 /* HomeFooter.m */; };
 		0CC47ED91DD5C3CF00F27914 /* KHHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC47ED81DD5C3CF00F27914 /* KHHomeViewController.m */; };
-		0CC47EE01DD5CBF000F27914 /* KHFreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC47EDF1DD5CBF000F27914 /* KHFreeViewController.m */; };
-		0CC47EE31DD5CC0800F27914 /* KHFreeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC47EE21DD5CC0800F27914 /* KHFreeModel.m */; };
-		0CC47EE71DD5CC2100F27914 /* KHFreeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC47EE51DD5CC2100F27914 /* KHFreeTableViewCell.m */; };
-		0CC47EE81DD5CC2100F27914 /* KHFreeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CC47EE61DD5CC2100F27914 /* KHFreeTableViewCell.xib */; };
 		0CD77C941DBF44D300F72AA5 /* KHAppearTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD77C921DBF44D300F72AA5 /* KHAppearTableViewCell.m */; };
 		0CD77C951DBF44D300F72AA5 /* KHAppearTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD77C931DBF44D300F72AA5 /* KHAppearTableViewCell.xib */; };
 		0CE379661DC0B3BF00F42A4F /* BtButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CE379651DC0B3BE00F42A4F /* BtButton.m */; };
@@ -264,6 +309,28 @@
 		0C3693421DAB8F8000BB3EE0 /* KHPulishedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHPulishedTableViewCell.h; sourceTree = "<group>"; };
 		0C3693431DAB8F8000BB3EE0 /* KHPulishedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPulishedTableViewCell.m; sourceTree = "<group>"; };
 		0C3693441DAB8F8000BB3EE0 /* KHPulishedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHPulishedTableViewCell.xib; sourceTree = "<group>"; };
+		0C3A465C1DD70B850082A239 /* KHCoupon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHCoupon.h; sourceTree = "<group>"; };
+		0C3A465D1DD70B850082A239 /* KHCoupon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHCoupon.m; sourceTree = "<group>"; };
+		0C3A465E1DD70B850082A239 /* KHFreeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHFreeModel.h; sourceTree = "<group>"; };
+		0C3A465F1DD70B850082A239 /* KHFreeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHFreeModel.m; sourceTree = "<group>"; };
+		0C3A46611DD70B850082A239 /* KHFreeHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHFreeHeaderView.h; sourceTree = "<group>"; };
+		0C3A46621DD70B850082A239 /* KHFreeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHFreeHeaderView.m; sourceTree = "<group>"; };
+		0C3A46631DD70B850082A239 /* KHFreeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHFreeTableViewCell.h; sourceTree = "<group>"; };
+		0C3A46641DD70B850082A239 /* KHFreeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHFreeTableViewCell.m; sourceTree = "<group>"; };
+		0C3A46651DD70B850082A239 /* KHFreeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHFreeTableViewCell.xib; sourceTree = "<group>"; };
+		0C3A46671DD70B850082A239 /* KHFreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHFreeViewController.h; sourceTree = "<group>"; };
+		0C3A46681DD70B850082A239 /* KHFreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHFreeViewController.m; sourceTree = "<group>"; };
+		0C3A46731DD70BCB0082A239 /* KHjJinfenlistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHjJinfenlistViewController.h; sourceTree = "<group>"; };
+		0C3A46741DD70BCB0082A239 /* KHjJinfenlistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHjJinfenlistViewController.m; sourceTree = "<group>"; };
+		0C3A46761DD70C2B0082A239 /* KHGetJinfenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHGetJinfenViewController.h; sourceTree = "<group>"; };
+		0C3A46771DD70C2B0082A239 /* KHGetJinfenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHGetJinfenViewController.m; sourceTree = "<group>"; };
+		0C3A46791DD70C510082A239 /* KHUseJinfenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHUseJinfenViewController.h; sourceTree = "<group>"; };
+		0C3A467A1DD70C510082A239 /* KHUseJinfenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHUseJinfenViewController.m; sourceTree = "<group>"; };
+		0C3A467C1DD70DA40082A239 /* KHjifenTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHjifenTableViewCell.h; sourceTree = "<group>"; };
+		0C3A467D1DD70DA40082A239 /* KHjifenTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHjifenTableViewCell.m; sourceTree = "<group>"; };
+		0C3A467E1DD70DA40082A239 /* KHjifenTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHjifenTableViewCell.xib; sourceTree = "<group>"; };
+		0C3A46811DD711510082A239 /* KHjifenModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHjifenModel.h; sourceTree = "<group>"; };
+		0C3A46821DD711510082A239 /* KHjifenModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHjifenModel.m; sourceTree = "<group>"; };
 		0C3E9C1C1DD2BB9C00F827AC /* KHPayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHPayModel.h; sourceTree = "<group>"; };
 		0C3E9C1D1DD2BB9C00F827AC /* KHPayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPayModel.m; sourceTree = "<group>"; };
 		0C3E9C221DD2FD5100F827AC /* KHBounsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHBounsViewController.h; sourceTree = "<group>"; };
@@ -281,6 +348,19 @@
 		0C3E9C341DD3233A00F827AC /* KHWinCodeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHWinCodeModel.m; sourceTree = "<group>"; };
 		0C3E9C361DD34E8400F827AC /* KHPauGoodsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHPauGoodsModel.h; sourceTree = "<group>"; };
 		0C3E9C371DD34E8400F827AC /* KHPauGoodsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPauGoodsModel.m; sourceTree = "<group>"; };
+		0C4481FA1DDAE2F00038697C /* YWCover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YWCover.h; sourceTree = "<group>"; };
+		0C4481FB1DDAE2F00038697C /* YWCover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YWCover.m; sourceTree = "<group>"; };
+		0C4481FC1DDAE2F00038697C /* YWPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YWPopView.h; sourceTree = "<group>"; };
+		0C4481FD1DDAE2F00038697C /* YWPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YWPopView.m; sourceTree = "<group>"; };
+		0C4482041DDAE5F60038697C /* KHCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHCodeViewController.h; sourceTree = "<group>"; };
+		0C4482051DDAE5F60038697C /* KHCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHCodeViewController.m; sourceTree = "<group>"; };
+		0C4482061DDAE5F60038697C /* KHCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHCodeViewController.xib; sourceTree = "<group>"; };
+		0C44820A1DDAE9C60038697C /* DDCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		0C44820B1DDAE9C60038697C /* DDCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		0C44820D1DDAEB410038697C /* KHCodeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHCodeCell.h; sourceTree = "<group>"; };
+		0C44820E1DDAEB410038697C /* KHCodeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHCodeCell.m; sourceTree = "<group>"; };
+		0C4482141DDB31580038697C /* KHGoodsAppearController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHGoodsAppearController.h; sourceTree = "<group>"; };
+		0C4482151DDB31580038697C /* KHGoodsAppearController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHGoodsAppearController.m; sourceTree = "<group>"; };
 		0C44DEAB1DD4401A0085E5C3 /* KHPayResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHPayResultViewController.h; sourceTree = "<group>"; };
 		0C44DEAC1DD4401A0085E5C3 /* KHPayResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPayResultViewController.m; sourceTree = "<group>"; };
 		0C44DEB01DD4423D0085E5C3 /* PayResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayResultCell.h; sourceTree = "<group>"; };
@@ -296,6 +376,12 @@
 		0C44DEBF1DD46AF50085E5C3 /* KHAppearDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHAppearDetailModel.m; sourceTree = "<group>"; };
 		0C44DEC41DD495080085E5C3 /* KHMyAppearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHMyAppearViewController.h; sourceTree = "<group>"; };
 		0C44DEC51DD495080085E5C3 /* KHMyAppearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHMyAppearViewController.m; sourceTree = "<group>"; };
+		0C461E921DDC564E00853605 /* KHpastModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHpastModel.h; sourceTree = "<group>"; };
+		0C461E931DDC564E00853605 /* KHpastModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHpastModel.m; sourceTree = "<group>"; };
+		0C461E951DDC57DE00853605 /* KHPastViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHPastViewController.h; sourceTree = "<group>"; };
+		0C461E961DDC57DE00853605 /* KHPastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPastViewController.m; sourceTree = "<group>"; };
+		0C461E991DDC7A1000853605 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
+		0C461E9A1DDC7A1000853605 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		0C50E7761DD5AC420087A250 /* KHzhongjiangViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHzhongjiangViewController.h; sourceTree = "<group>"; };
 		0C50E7771DD5AC420087A250 /* KHzhongjiangViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHzhongjiangViewController.m; sourceTree = "<group>"; };
 		0C50E77E1DD5ACCA0087A250 /* KHMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KHMessageModel.h; path = "../../消息/model/KHMessageModel.h"; sourceTree = "<group>"; };
@@ -346,13 +432,6 @@
 		0C5E05F81DAE3A7E00B2133F /* KHDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHDetailModel.m; sourceTree = "<group>"; };
 		0C5E05FA1DAE3B7C00B2133F /* KHProductModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHProductModel.h; sourceTree = "<group>"; };
 		0C5E05FB1DAE3B7C00B2133F /* KHProductModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHProductModel.m; sourceTree = "<group>"; };
-		0C62AD251DC876FF0091119D /* KHTopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHTopupViewController.h; sourceTree = "<group>"; };
-		0C62AD261DC876FF0091119D /* KHTopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHTopupViewController.m; sourceTree = "<group>"; };
-		0C62AD281DC87B500091119D /* KHTopupHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHTopupHeader.h; sourceTree = "<group>"; };
-		0C62AD291DC87B500091119D /* KHTopupHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHTopupHeader.m; sourceTree = "<group>"; };
-		0C62AD2B1DC87BD60091119D /* KHTopupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHTopupTableViewCell.h; sourceTree = "<group>"; };
-		0C62AD2C1DC87BD60091119D /* KHTopupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHTopupTableViewCell.m; sourceTree = "<group>"; };
-		0C62AD2D1DC87BD60091119D /* KHTopupTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHTopupTableViewCell.xib; sourceTree = "<group>"; };
 		0C645ECD1DC8294A000E9B98 /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "Pods/../build/Debug-iphoneos/libAFNetworking.a"; sourceTree = "<group>"; };
 		0C645ECF1DC8294F000E9B98 /* libYYKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libYYKit.a; path = "Pods/../build/Debug-iphoneos/libYYKit.a"; sourceTree = "<group>"; };
 		0C645ED11DC82953000E9B98 /* libMJRefresh.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMJRefresh.a; path = "Pods/../build/Debug-iphoneos/libMJRefresh.a"; sourceTree = "<group>"; };
@@ -379,6 +458,25 @@
 		0C6F59C11DB85D2800105C8C /* KHPublishModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPublishModel.m; sourceTree = "<group>"; };
 		0C6F59DD1DB89D6D00105C8C /* UITableView+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Custom.h"; sourceTree = "<group>"; };
 		0C6F59DE1DB89D6D00105C8C /* UITableView+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+Custom.m"; sourceTree = "<group>"; };
+		0C790B941DDC045A00C381CF /* KHSearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHSearchTableViewCell.h; sourceTree = "<group>"; };
+		0C790B951DDC045A00C381CF /* KHSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHSearchTableViewCell.m; sourceTree = "<group>"; };
+		0C790B961DDC045A00C381CF /* KHSearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHSearchTableViewCell.xib; sourceTree = "<group>"; };
+		0C790B991DDC047100C381CF /* KHSearchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHSearchModel.h; sourceTree = "<group>"; };
+		0C790B9A1DDC047100C381CF /* KHSearchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHSearchModel.m; sourceTree = "<group>"; };
+		0C790B9C1DDC31B000C381CF /* KHSearItemButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHSearItemButton.h; sourceTree = "<group>"; };
+		0C790B9D1DDC31B000C381CF /* KHSearItemButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHSearItemButton.m; sourceTree = "<group>"; };
+		0C790BA41DDC3E9E00C381CF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0C790BA61DDC3EAA00C381CF /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		0C790BA81DDC3EB600C381CF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0C790BAA1DDC3EBF00C381CF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		0C790BAC1DDC3EC700C381CF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0C790BAE1DDC3ECF00C381CF /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		0C790BB01DDC3ED800C381CF /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		0C790BB61DDC489A00C381CF /* KHSearchResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHSearchResultController.h; sourceTree = "<group>"; };
+		0C790BB71DDC489A00C381CF /* KHSearchResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHSearchResultController.m; sourceTree = "<group>"; };
+		0C790BBD1DDC51E000C381CF /* KHPstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHPstTableViewCell.h; sourceTree = "<group>"; };
+		0C790BBE1DDC51E000C381CF /* KHPstTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPstTableViewCell.m; sourceTree = "<group>"; };
+		0C790BBF1DDC51E000C381CF /* KHPstTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHPstTableViewCell.xib; sourceTree = "<group>"; };
 		0C7F832C1DCC2BBE003EA29C /* GSPopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSPopoverViewController.h; sourceTree = "<group>"; };
 		0C7F832D1DCC2BBE003EA29C /* GSPopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSPopoverViewController.m; sourceTree = "<group>"; };
 		0C7F83381DCC4707003EA29C /* KHEditAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHEditAddressViewController.h; sourceTree = "<group>"; };
@@ -398,6 +496,35 @@
 		0C7F834B1DCC647C003EA29C /* LocationPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationPickerView.m; sourceTree = "<group>"; };
 		0C7F834C1DCC647C003EA29C /* StreetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreetModel.h; sourceTree = "<group>"; };
 		0C7F834D1DCC647C003EA29C /* StreetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreetModel.m; sourceTree = "<group>"; };
+		0C803C8D1DD99CC2008CC841 /* KHMeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHMeListViewController.h; sourceTree = "<group>"; };
+		0C803C8E1DD99CC2008CC841 /* KHMeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHMeListViewController.m; sourceTree = "<group>"; };
+		0C803C901DD99D17008CC841 /* KHAllTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHAllTableViewCell.h; sourceTree = "<group>"; };
+		0C803C911DD99D17008CC841 /* KHAllTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHAllTableViewCell.m; sourceTree = "<group>"; };
+		0C803C921DD99D17008CC841 /* KHAllTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHAllTableViewCell.xib; sourceTree = "<group>"; };
+		0C803C951DD99D4C008CC841 /* KHSnatchingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHSnatchingTableViewCell.h; sourceTree = "<group>"; };
+		0C803C961DD99D4C008CC841 /* KHSnatchingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHSnatchingTableViewCell.m; sourceTree = "<group>"; };
+		0C803C971DD99D4C008CC841 /* KHSnatchingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHSnatchingTableViewCell.xib; sourceTree = "<group>"; };
+		0C803C9A1DD9ABB5008CC841 /* KHSnatchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHSnatchModel.h; sourceTree = "<group>"; };
+		0C803C9B1DD9ABB5008CC841 /* KHSnatchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHSnatchModel.m; sourceTree = "<group>"; };
+		0C803C9D1DD9AF37008CC841 /* KHSnatchWinModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHSnatchWinModel.h; sourceTree = "<group>"; };
+		0C803C9E1DD9AF37008CC841 /* KHSnatchWinModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHSnatchWinModel.m; sourceTree = "<group>"; };
+		0C803CA21DD9E6FF008CC841 /* KHQiandaoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHQiandaoViewController.h; sourceTree = "<group>"; };
+		0C803CA31DD9E6FF008CC841 /* KHQiandaoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHQiandaoViewController.m; sourceTree = "<group>"; };
+		0C803CA81DD9EA5C008CC841 /* YHWebViewProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHWebViewProgress.h; sourceTree = "<group>"; };
+		0C803CA91DD9EA5C008CC841 /* YHWebViewProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHWebViewProgress.m; sourceTree = "<group>"; };
+		0C803CAA1DD9EA5C008CC841 /* YHWebViewProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHWebViewProgressView.h; sourceTree = "<group>"; };
+		0C803CAB1DD9EA5C008CC841 /* YHWebViewProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHWebViewProgressView.m; sourceTree = "<group>"; };
+		0C803CAC1DD9EA5C008CC841 /* YHWebViewProgressViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHWebViewProgressViewProtocol.h; sourceTree = "<group>"; };
+		0C803CB21DD9F199008CC841 /* KHTopupHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHTopupHeader.h; sourceTree = "<group>"; };
+		0C803CB31DD9F199008CC841 /* KHTopupHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHTopupHeader.m; sourceTree = "<group>"; };
+		0C803CB41DD9F199008CC841 /* KHTopupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHTopupTableViewCell.h; sourceTree = "<group>"; };
+		0C803CB51DD9F199008CC841 /* KHTopupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHTopupTableViewCell.m; sourceTree = "<group>"; };
+		0C803CB61DD9F199008CC841 /* KHTopupTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHTopupTableViewCell.xib; sourceTree = "<group>"; };
+		0C803CB81DD9F199008CC841 /* KHTopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHTopupViewController.h; sourceTree = "<group>"; };
+		0C803CB91DD9F199008CC841 /* KHTopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHTopupViewController.m; sourceTree = "<group>"; };
+		0C803CBC1DD9F199008CC841 /* TopupResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopupResultViewController.h; sourceTree = "<group>"; };
+		0C803CBD1DD9F199008CC841 /* TopupResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopupResultViewController.m; sourceTree = "<group>"; };
+		0C803CBE1DD9F199008CC841 /* TopupResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopupResultViewController.xib; sourceTree = "<group>"; };
 		0C9B05531DC71684008D7BFA /* UITabBar+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBar+Badge.h"; sourceTree = "<group>"; };
 		0C9B05541DC71684008D7BFA /* UITabBar+Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+Badge.m"; sourceTree = "<group>"; };
 		0C9B05561DC71F37008D7BFA /* UIBarButtonItem+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Badge.h"; sourceTree = "<group>"; };
@@ -544,13 +671,6 @@
 		0CBD1A7C1DACEF97003E8150 /* HomeFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeFooter.h; sourceTree = "<group>"; };
 		0CBD1A7D1DACEF97003E8150 /* HomeFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeFooter.m; sourceTree = "<group>"; };
 		0CC47ED81DD5C3CF00F27914 /* KHHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHHomeViewController.m; sourceTree = "<group>"; };
-		0CC47EDE1DD5CBF000F27914 /* KHFreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHFreeViewController.h; sourceTree = "<group>"; };
-		0CC47EDF1DD5CBF000F27914 /* KHFreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHFreeViewController.m; sourceTree = "<group>"; };
-		0CC47EE11DD5CC0800F27914 /* KHFreeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHFreeModel.h; sourceTree = "<group>"; };
-		0CC47EE21DD5CC0800F27914 /* KHFreeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHFreeModel.m; sourceTree = "<group>"; };
-		0CC47EE41DD5CC2100F27914 /* KHFreeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHFreeTableViewCell.h; sourceTree = "<group>"; };
-		0CC47EE51DD5CC2100F27914 /* KHFreeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHFreeTableViewCell.m; sourceTree = "<group>"; };
-		0CC47EE61DD5CC2100F27914 /* KHFreeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHFreeTableViewCell.xib; sourceTree = "<group>"; };
 		0CD77C8E1DBF44A600F72AA5 /* KHAppearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHAppearViewController.h; sourceTree = "<group>"; };
 		0CD77C8F1DBF44A600F72AA5 /* KHAppearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHAppearViewController.m; sourceTree = "<group>"; };
 		0CD77C911DBF44D300F72AA5 /* KHAppearTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHAppearTableViewCell.h; sourceTree = "<group>"; };
@@ -573,16 +693,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C9E903C1DD1A69400975AEB /* libc++.tbd in Frameworks */,
-				0C9E903A1DD1A67900975AEB /* libz.tbd in Frameworks */,
-				0C9E90321DD1A61F00975AEB /* libsqlite3.tbd in Frameworks */,
-				0C9E90381DD1A65B00975AEB /* ImageIO.framework in Frameworks */,
+				0C790BB11DDC3ED800C381CF /* CoreMotion.framework in Frameworks */,
+				0C790BAF1DDC3ECF00C381CF /* CFNetwork.framework in Frameworks */,
+				0C790BAD1DDC3EC700C381CF /* Foundation.framework in Frameworks */,
+				0C790BAB1DDC3EBF00C381CF /* UIKit.framework in Frameworks */,
+				0C790BA91DDC3EB600C381CF /* CoreGraphics.framework in Frameworks */,
+				0C790BA71DDC3EAA00C381CF /* CoreText.framework in Frameworks */,
+				0C790BA51DDC3E9E00C381CF /* QuartzCore.framework in Frameworks */,
 				0C9E90361DD1A65200975AEB /* CoreTelephony.framework in Frameworks */,
 				0C9E90341DD1A64800975AEB /* SystemConfiguration.framework in Frameworks */,
+				0C9E903A1DD1A67900975AEB /* libz.tbd in Frameworks */,
+				0C9E903C1DD1A69400975AEB /* libc++.tbd in Frameworks */,
+				0C9E90321DD1A61F00975AEB /* libsqlite3.tbd in Frameworks */,
+				0C9E90381DD1A65B00975AEB /* ImageIO.framework in Frameworks */,
 				0C645ED21DC82953000E9B98 /* libMJRefresh.a in Frameworks */,
 				0C645ED01DC8294F000E9B98 /* libYYKit.a in Frameworks */,
 				0C645ECE1DC8294A000E9B98 /* libAFNetworking.a in Frameworks */,
 				1940049D3EBD15A1FE12CC6B /* libPods.a in Frameworks */,
+				0C461E9C1DDC7A1000853605 /* AlipaySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,6 +734,13 @@
 		0606D3066CB5E18E899A3B54 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0C790BB01DDC3ED800C381CF /* CoreMotion.framework */,
+				0C790BAE1DDC3ECF00C381CF /* CFNetwork.framework */,
+				0C790BAC1DDC3EC700C381CF /* Foundation.framework */,
+				0C790BAA1DDC3EBF00C381CF /* UIKit.framework */,
+				0C790BA81DDC3EB600C381CF /* CoreGraphics.framework */,
+				0C790BA61DDC3EAA00C381CF /* CoreText.framework */,
+				0C790BA41DDC3E9E00C381CF /* QuartzCore.framework */,
 				0C9E903B1DD1A69400975AEB /* libc++.tbd */,
 				0C9E90391DD1A67900975AEB /* libz.tbd */,
 				0C9E90371DD1A65B00975AEB /* ImageIO.framework */,
@@ -789,6 +924,8 @@
 		0C3693361DAB5F2200BB3EE0 /* customFunc（自定义视图） */ = {
 			isa = PBXGroup;
 			children = (
+				0C4482091DDAE9C60038697C /* DDCollectionViewFlowLayout */,
+				0C4481F91DDAE2F00038697C /* 弹出视图 */,
 				0CEDEE361DC199C60063C690 /* 图片验证码 */,
 				0C2705B01DAF7CA500CE2F15 /* CountLabel */,
 				0C5E05D11DADFAC700B2133F /* 左文右图 */,
@@ -827,6 +964,90 @@
 			path = "publishedCell(已经发布的)";
 			sourceTree = "<group>";
 		};
+		0C3A465A1DD70B850082A239 /* 免费抢币首页 */ = {
+			isa = PBXGroup;
+			children = (
+				0C3A46661DD70B850082A239 /* viewController */,
+				0C3A465B1DD70B850082A239 /* model */,
+				0C3A46601DD70B850082A239 /* view */,
+			);
+			path = "免费抢币首页";
+			sourceTree = "<group>";
+		};
+		0C3A465B1DD70B850082A239 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				0C3A465C1DD70B850082A239 /* KHCoupon.h */,
+				0C3A465D1DD70B850082A239 /* KHCoupon.m */,
+				0C3A465E1DD70B850082A239 /* KHFreeModel.h */,
+				0C3A465F1DD70B850082A239 /* KHFreeModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		0C3A46601DD70B850082A239 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				0C3A46611DD70B850082A239 /* KHFreeHeaderView.h */,
+				0C3A46621DD70B850082A239 /* KHFreeHeaderView.m */,
+				0C3A46631DD70B850082A239 /* KHFreeTableViewCell.h */,
+				0C3A46641DD70B850082A239 /* KHFreeTableViewCell.m */,
+				0C3A46651DD70B850082A239 /* KHFreeTableViewCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		0C3A46661DD70B850082A239 /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C3A46671DD70B850082A239 /* KHFreeViewController.h */,
+				0C3A46681DD70B850082A239 /* KHFreeViewController.m */,
+			);
+			path = viewController;
+			sourceTree = "<group>";
+		};
+		0C3A46691DD70B850082A239 /* 积分明细 */ = {
+			isa = PBXGroup;
+			children = (
+				0C3A466C1DD70B850082A239 /* viewController */,
+				0C3A466A1DD70B850082A239 /* model */,
+				0C3A466B1DD70B850082A239 /* view */,
+			);
+			path = "积分明细";
+			sourceTree = "<group>";
+		};
+		0C3A466A1DD70B850082A239 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				0C3A46811DD711510082A239 /* KHjifenModel.h */,
+				0C3A46821DD711510082A239 /* KHjifenModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		0C3A466B1DD70B850082A239 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				0C3A467C1DD70DA40082A239 /* KHjifenTableViewCell.h */,
+				0C3A467D1DD70DA40082A239 /* KHjifenTableViewCell.m */,
+				0C3A467E1DD70DA40082A239 /* KHjifenTableViewCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		0C3A466C1DD70B850082A239 /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C3A46731DD70BCB0082A239 /* KHjJinfenlistViewController.h */,
+				0C3A46741DD70BCB0082A239 /* KHjJinfenlistViewController.m */,
+				0C3A46761DD70C2B0082A239 /* KHGetJinfenViewController.h */,
+				0C3A46771DD70C2B0082A239 /* KHGetJinfenViewController.m */,
+				0C3A46791DD70C510082A239 /* KHUseJinfenViewController.h */,
+				0C3A467A1DD70C510082A239 /* KHUseJinfenViewController.m */,
+			);
+			path = viewController;
+			sourceTree = "<group>";
+		};
 		0C3E9C1F1DD2FB3700F827AC /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -855,6 +1076,95 @@
 				0C3E9C261DD2FE1200F827AC /* KHUseredViewController.m */,
 				0C3E9C281DD2FE2400F827AC /* KHUserAbleViewController.h */,
 				0C3E9C291DD2FE2400F827AC /* KHUserAbleViewController.m */,
+			);
+			path = viewController;
+			sourceTree = "<group>";
+		};
+		0C4481F91DDAE2F00038697C /* 弹出视图 */ = {
+			isa = PBXGroup;
+			children = (
+				0C4481FA1DDAE2F00038697C /* YWCover.h */,
+				0C4481FB1DDAE2F00038697C /* YWCover.m */,
+				0C4481FC1DDAE2F00038697C /* YWPopView.h */,
+				0C4481FD1DDAE2F00038697C /* YWPopView.m */,
+			);
+			path = "弹出视图";
+			sourceTree = "<group>";
+		};
+		0C4482001DDAE5CA0038697C /* 夺宝代码详情 */ = {
+			isa = PBXGroup;
+			children = (
+				0C4482031DDAE5CA0038697C /* viewController */,
+				0C4482011DDAE5CA0038697C /* model */,
+				0C4482021DDAE5CA0038697C /* view */,
+			);
+			path = "夺宝代码详情";
+			sourceTree = "<group>";
+		};
+		0C4482011DDAE5CA0038697C /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		0C4482021DDAE5CA0038697C /* view */ = {
+			isa = PBXGroup;
+			children = (
+				0C44820D1DDAEB410038697C /* KHCodeCell.h */,
+				0C44820E1DDAEB410038697C /* KHCodeCell.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		0C4482031DDAE5CA0038697C /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C4482041DDAE5F60038697C /* KHCodeViewController.h */,
+				0C4482051DDAE5F60038697C /* KHCodeViewController.m */,
+				0C4482061DDAE5F60038697C /* KHCodeViewController.xib */,
+			);
+			path = viewController;
+			sourceTree = "<group>";
+		};
+		0C4482091DDAE9C60038697C /* DDCollectionViewFlowLayout */ = {
+			isa = PBXGroup;
+			children = (
+				0C44820A1DDAE9C60038697C /* DDCollectionViewFlowLayout.h */,
+				0C44820B1DDAE9C60038697C /* DDCollectionViewFlowLayout.m */,
+			);
+			path = DDCollectionViewFlowLayout;
+			sourceTree = "<group>";
+		};
+		0C4482101DDB31400038697C /* 商品的晒单 */ = {
+			isa = PBXGroup;
+			children = (
+				0C4482131DDB31400038697C /* viewController */,
+				0C4482111DDB31400038697C /* model */,
+				0C4482121DDB31400038697C /* view */,
+			);
+			path = "商品的晒单";
+			sourceTree = "<group>";
+		};
+		0C4482111DDB31400038697C /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		0C4482121DDB31400038697C /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		0C4482131DDB31400038697C /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C4482141DDB31580038697C /* KHGoodsAppearController.h */,
+				0C4482151DDB31580038697C /* KHGoodsAppearController.m */,
 			);
 			path = viewController;
 			sourceTree = "<group>";
@@ -922,6 +1232,15 @@
 				0C44DEC51DD495080085E5C3 /* KHMyAppearViewController.m */,
 			);
 			path = viewController;
+			sourceTree = "<group>";
+		};
+		0C461E981DDC7A1000853605 /* Alipay */ = {
+			isa = PBXGroup;
+			children = (
+				0C461E991DDC7A1000853605 /* AlipaySDK.bundle */,
+				0C461E9A1DDC7A1000853605 /* AlipaySDK.framework */,
+			);
+			path = Alipay;
 			sourceTree = "<group>";
 		};
 		0C50E7521DD59FFD0087A250 /* 消息 */ = {
@@ -1179,39 +1498,10 @@
 		0C62AD211DC876D10091119D /* 充值 */ = {
 			isa = PBXGroup;
 			children = (
-				0C62AD241DC876D10091119D /* Viewcontroller */,
-				0C62AD221DC876D10091119D /* model */,
-				0C62AD231DC876D10091119D /* view */,
+				0C803CAF1DD9F199008CC841 /* 充值页面 */,
+				0C803CBA1DD9F199008CC841 /* TopupResult */,
 			);
 			path = "充值";
-			sourceTree = "<group>";
-		};
-		0C62AD221DC876D10091119D /* model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		0C62AD231DC876D10091119D /* view */ = {
-			isa = PBXGroup;
-			children = (
-				0C62AD281DC87B500091119D /* KHTopupHeader.h */,
-				0C62AD291DC87B500091119D /* KHTopupHeader.m */,
-				0C62AD2B1DC87BD60091119D /* KHTopupTableViewCell.h */,
-				0C62AD2C1DC87BD60091119D /* KHTopupTableViewCell.m */,
-				0C62AD2D1DC87BD60091119D /* KHTopupTableViewCell.xib */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
-		0C62AD241DC876D10091119D /* Viewcontroller */ = {
-			isa = PBXGroup;
-			children = (
-				0C62AD251DC876FF0091119D /* KHTopupViewController.h */,
-				0C62AD261DC876FF0091119D /* KHTopupViewController.m */,
-			);
-			path = Viewcontroller;
 			sourceTree = "<group>";
 		};
 		0C6C688B1DCB0C5F00B06535 /* 个人信息 */ = {
@@ -1329,6 +1619,77 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		0C790BB21DDC487900C381CF /* 搜索结果 */ = {
+			isa = PBXGroup;
+			children = (
+				0C790BB51DDC487900C381CF /* viewController */,
+				0C790BB31DDC487900C381CF /* model */,
+				0C790BB41DDC487900C381CF /* view */,
+			);
+			path = "搜索结果";
+			sourceTree = "<group>";
+		};
+		0C790BB31DDC487900C381CF /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		0C790BB41DDC487900C381CF /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		0C790BB51DDC487900C381CF /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C790BB61DDC489A00C381CF /* KHSearchResultController.h */,
+				0C790BB71DDC489A00C381CF /* KHSearchResultController.m */,
+			);
+			path = viewController;
+			sourceTree = "<group>";
+		};
+		0C790BB91DDC514900C381CF /* 往期揭晓 */ = {
+			isa = PBXGroup;
+			children = (
+				0C790BBC1DDC514900C381CF /* viewController */,
+				0C790BBA1DDC514900C381CF /* model */,
+				0C790BBB1DDC514900C381CF /* view */,
+			);
+			path = "往期揭晓";
+			sourceTree = "<group>";
+		};
+		0C790BBA1DDC514900C381CF /* model */ = {
+			isa = PBXGroup;
+			children = (
+				0C461E921DDC564E00853605 /* KHpastModel.h */,
+				0C461E931DDC564E00853605 /* KHpastModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		0C790BBB1DDC514900C381CF /* view */ = {
+			isa = PBXGroup;
+			children = (
+				0C790BBD1DDC51E000C381CF /* KHPstTableViewCell.h */,
+				0C790BBE1DDC51E000C381CF /* KHPstTableViewCell.m */,
+				0C790BBF1DDC51E000C381CF /* KHPstTableViewCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		0C790BBC1DDC514900C381CF /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C461E951DDC57DE00853605 /* KHPastViewController.h */,
+				0C461E961DDC57DE00853605 /* KHPastViewController.m */,
+			);
+			path = viewController;
+			sourceTree = "<group>";
+		};
 		0C7F832B1DCC2BBE003EA29C /* GSPopoverViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1403,6 +1764,108 @@
 				0C7F834D1DCC647C003EA29C /* StreetModel.m */,
 			);
 			path = LocationPickerView;
+			sourceTree = "<group>";
+		};
+		0C803CA01DD9E6E9008CC841 /* 签到 */ = {
+			isa = PBXGroup;
+			children = (
+				0C803CA11DD9E6E9008CC841 /* viewController */,
+			);
+			name = "签到";
+			path = "免费抢币首页/签到";
+			sourceTree = "<group>";
+		};
+		0C803CA11DD9E6E9008CC841 /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C803CA21DD9E6FF008CC841 /* KHQiandaoViewController.h */,
+				0C803CA31DD9E6FF008CC841 /* KHQiandaoViewController.m */,
+			);
+			path = viewController;
+			sourceTree = "<group>";
+		};
+		0C803CA71DD9EA5C008CC841 /* WebProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				0C803CA81DD9EA5C008CC841 /* YHWebViewProgress.h */,
+				0C803CA91DD9EA5C008CC841 /* YHWebViewProgress.m */,
+				0C803CAA1DD9EA5C008CC841 /* YHWebViewProgressView.h */,
+				0C803CAB1DD9EA5C008CC841 /* YHWebViewProgressView.m */,
+				0C803CAC1DD9EA5C008CC841 /* YHWebViewProgressViewProtocol.h */,
+			);
+			path = WebProgressView;
+			sourceTree = "<group>";
+		};
+		0C803CAF1DD9F199008CC841 /* 充值页面 */ = {
+			isa = PBXGroup;
+			children = (
+				0C803CB71DD9F199008CC841 /* Viewcontroller */,
+				0C803CB01DD9F199008CC841 /* model */,
+				0C803CB11DD9F199008CC841 /* view */,
+			);
+			path = "充值页面";
+			sourceTree = "<group>";
+		};
+		0C803CB01DD9F199008CC841 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		0C803CB11DD9F199008CC841 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				0C803CB21DD9F199008CC841 /* KHTopupHeader.h */,
+				0C803CB31DD9F199008CC841 /* KHTopupHeader.m */,
+				0C803CB41DD9F199008CC841 /* KHTopupTableViewCell.h */,
+				0C803CB51DD9F199008CC841 /* KHTopupTableViewCell.m */,
+				0C803CB61DD9F199008CC841 /* KHTopupTableViewCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		0C803CB71DD9F199008CC841 /* Viewcontroller */ = {
+			isa = PBXGroup;
+			children = (
+				0C803CB81DD9F199008CC841 /* KHTopupViewController.h */,
+				0C803CB91DD9F199008CC841 /* KHTopupViewController.m */,
+			);
+			path = Viewcontroller;
+			sourceTree = "<group>";
+		};
+		0C803CBA1DD9F199008CC841 /* TopupResult */ = {
+			isa = PBXGroup;
+			children = (
+				0C803CBB1DD9F199008CC841 /* Controller */,
+				0C803CBF1DD9F199008CC841 /* Model */,
+				0C803CC01DD9F199008CC841 /* View */,
+			);
+			path = TopupResult;
+			sourceTree = "<group>";
+		};
+		0C803CBB1DD9F199008CC841 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0C803CBC1DD9F199008CC841 /* TopupResultViewController.h */,
+				0C803CBD1DD9F199008CC841 /* TopupResultViewController.m */,
+				0C803CBE1DD9F199008CC841 /* TopupResultViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0C803CBF1DD9F199008CC841 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0C803CC01DD9F199008CC841 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		0C9B055C1DC72B0E008D7BFA /* YZDisplayViewController */ = {
@@ -1512,6 +1975,10 @@
 		0C9B05801DC72DC7008D7BFA /* model */ = {
 			isa = PBXGroup;
 			children = (
+				0C803C9A1DD9ABB5008CC841 /* KHSnatchModel.h */,
+				0C803C9B1DD9ABB5008CC841 /* KHSnatchModel.m */,
+				0C803C9D1DD9AF37008CC841 /* KHSnatchWinModel.h */,
+				0C803C9E1DD9AF37008CC841 /* KHSnatchWinModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1519,6 +1986,12 @@
 		0C9B05811DC72DC7008D7BFA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0C803C901DD99D17008CC841 /* KHAllTableViewCell.h */,
+				0C803C911DD99D17008CC841 /* KHAllTableViewCell.m */,
+				0C803C921DD99D17008CC841 /* KHAllTableViewCell.xib */,
+				0C803C951DD99D4C008CC841 /* KHSnatchingTableViewCell.h */,
+				0C803C961DD99D4C008CC841 /* KHSnatchingTableViewCell.m */,
+				0C803C971DD99D4C008CC841 /* KHSnatchingTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1528,6 +2001,8 @@
 			children = (
 				0C9B05831DC72EBA008D7BFA /* KHSnatchListController.h */,
 				0C9B05841DC72EBA008D7BFA /* KHSnatchListController.m */,
+				0C803C8D1DD99CC2008CC841 /* KHMeListViewController.h */,
+				0C803C8E1DD99CC2008CC841 /* KHMeListViewController.m */,
 			);
 			path = Viewcontroller;
 			sourceTree = "<group>";
@@ -1680,6 +2155,7 @@
 		0CB128B11DAA0467005A0A4D = {
 			isa = PBXGroup;
 			children = (
+				0C461E981DDC7A1000853605 /* Alipay */,
 				0CB128BC1DAA0467005A0A4D /* knock Honey */,
 				0CB128D61DAA0467005A0A4D /* knock HoneyTests */,
 				0CB128E11DAA0467005A0A4D /* knock HoneyUITests */,
@@ -1756,6 +2232,7 @@
 				0C2705901DAF26B500CE2F15 /* 10元专区 */,
 				0CB128F11DAA1EF3005A0A4D /* 全民夺宝 */,
 				0CBD19D91DAC8D9A003E8150 /* 搜索页面 */,
+				0C790BB21DDC487900C381CF /* 搜索结果 */,
 			);
 			path = "夺宝";
 			sourceTree = "<group>";
@@ -1810,6 +2287,9 @@
 		0CB128F51DAA1EF3005A0A4D /* 最新揭晓 */ = {
 			isa = PBXGroup;
 			children = (
+				0C790BB91DDC514900C381CF /* 往期揭晓 */,
+				0C4482101DDB31400038697C /* 商品的晒单 */,
+				0C4482001DDAE5CA0038697C /* 夺宝代码详情 */,
 				0C3693291DAB5AE400BB3EE0 /* know（揭晓） */,
 				0C5E05D91DAE32C000B2133F /* 宝贝详情 */,
 			);
@@ -1868,6 +2348,7 @@
 		0CB129351DAA28ED005A0A4D /* lib（三方库） */ = {
 			isa = PBXGroup;
 			children = (
+				0C803CA71DD9EA5C008CC841 /* WebProgressView */,
 				0C7F832B1DCC2BBE003EA29C /* GSPopoverViewController */,
 				0C9B055C1DC72B0E008D7BFA /* YZDisplayViewController */,
 				0C5E05E01DAE36FE00B2133F /* SDCycleScrollView */,
@@ -1981,6 +2462,8 @@
 		0CBD19DA1DAC8D9A003E8150 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				0C790B991DDC047100C381CF /* KHSearchModel.h */,
+				0C790B9A1DDC047100C381CF /* KHSearchModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1988,6 +2471,11 @@
 		0CBD19DB1DAC8D9A003E8150 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				0C790B941DDC045A00C381CF /* KHSearchTableViewCell.h */,
+				0C790B951DDC045A00C381CF /* KHSearchTableViewCell.m */,
+				0C790B961DDC045A00C381CF /* KHSearchTableViewCell.xib */,
+				0C790B9C1DDC31B000C381CF /* KHSearItemButton.h */,
+				0C790B9D1DDC31B000C381CF /* KHSearItemButton.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2165,39 +2653,11 @@
 		0CC47EDA1DD5CB6E00F27914 /* 免费抢币 */ = {
 			isa = PBXGroup;
 			children = (
-				0CC47EDD1DD5CB6E00F27914 /* viewController */,
-				0CC47EDB1DD5CB6E00F27914 /* model */,
-				0CC47EDC1DD5CB6E00F27914 /* view */,
+				0C803CA01DD9E6E9008CC841 /* 签到 */,
+				0C3A465A1DD70B850082A239 /* 免费抢币首页 */,
+				0C3A46691DD70B850082A239 /* 积分明细 */,
 			);
 			path = "免费抢币";
-			sourceTree = "<group>";
-		};
-		0CC47EDB1DD5CB6E00F27914 /* model */ = {
-			isa = PBXGroup;
-			children = (
-				0CC47EE11DD5CC0800F27914 /* KHFreeModel.h */,
-				0CC47EE21DD5CC0800F27914 /* KHFreeModel.m */,
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		0CC47EDC1DD5CB6E00F27914 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				0CC47EE41DD5CC2100F27914 /* KHFreeTableViewCell.h */,
-				0CC47EE51DD5CC2100F27914 /* KHFreeTableViewCell.m */,
-				0CC47EE61DD5CC2100F27914 /* KHFreeTableViewCell.xib */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
-		0CC47EDD1DD5CB6E00F27914 /* viewController */ = {
-			isa = PBXGroup;
-			children = (
-				0CC47EDE1DD5CBF000F27914 /* KHFreeViewController.h */,
-				0CC47EDF1DD5CBF000F27914 /* KHFreeViewController.m */,
-			);
-			path = viewController;
 			sourceTree = "<group>";
 		};
 		0CD77C8A1DBF44A600F72AA5 /* 晒单首页 */ = {
@@ -2398,35 +2858,43 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C3A46711DD70B850082A239 /* KHFreeTableViewCell.xib in Resources */,
 				0C6C68A01DCB0C5F00B06535 /* NicknameViewController.xib in Resources */,
+				0C803C991DD99D4C008CC841 /* KHSnatchingTableViewCell.xib in Resources */,
+				0C461E9B1DDC7A1000853605 /* AlipaySDK.bundle in Resources */,
 				0C5782DB1DC1DD5000DB0B9A /* KHRegiterThirdViewController.xib in Resources */,
 				0C5E05CB1DADCF7700B2133F /* KHDowmViewCell.xib in Resources */,
+				0C803CC31DD9F199008CC841 /* KHTopupTableViewCell.xib in Resources */,
 				0C2705AD1DAF66EB00CE2F15 /* TreasureDetailCell.xib in Resources */,
 				0C50E78A1DD5B6CF0087A250 /* KHMessageTableViewCell.xib in Resources */,
+				0C803C941DD99D17008CC841 /* KHAllTableViewCell.xib in Resources */,
 				0C5782D11DC1B8AB00DB0B9A /* KHRegiterViewController.xib in Resources */,
 				0C5782D61DC1D60100DB0B9A /* KHRegiterSecondController.xib in Resources */,
 				0CBD1A1E1DACB650003E8150 /* IQKeyboardManager.bundle in Resources */,
+				0C790B981DDC045A00C381CF /* KHSearchTableViewCell.xib in Resources */,
 				0C9E8FF11DD16E9700975AEB /* KHPayViewController.xib in Resources */,
 				0C7F833C1DCC4707003EA29C /* KHEditAddressViewController.xib in Resources */,
+				0C3A46801DD70DA40082A239 /* KHjifenTableViewCell.xib in Resources */,
 				0C6C68AE1DCB205900B06535 /* KHAddressTableViewCell.xib in Resources */,
+				0C803CC61DD9F199008CC841 /* TopupResultViewController.xib in Resources */,
 				0C7F83501DCC647C003EA29C /* LocalProvince.plist in Resources */,
 				0C3E9C2F1DD2FFFE00F827AC /* BonusCell.xib in Resources */,
 				0C3693461DAB8F8000BB3EE0 /* KHPulishedTableViewCell.xib in Resources */,
 				0C44DEB61DD4423D0085E5C3 /* PayResultCell.xib in Resources */,
 				0CD77C951DBF44D300F72AA5 /* KHAppearTableViewCell.xib in Resources */,
-				0C62AD2F1DC87BD60091119D /* KHTopupTableViewCell.xib in Resources */,
 				0C6C68A91DCB107200B06535 /* KHPhoneViewController.xib in Resources */,
 				0CB128CD1DAA0467005A0A4D /* LaunchScreen.storyboard in Resources */,
 				0CA598B91DD057D8000F007B /* KHWinTableViewCell.xib in Resources */,
 				0CBD1A5D1DACC130003E8150 /* WinTreasureCell.xib in Resources */,
+				0C4482081DDAE5F60038697C /* KHCodeViewController.xib in Resources */,
 				0C27059E1DAF287A00CE2F15 /* CategoryDetailCell.xib in Resources */,
+				0C790BC11DDC51E000C381CF /* KHPstTableViewCell.xib in Resources */,
 				0C7F83411DCC4F84003EA29C /* KHEditPhoneViewController.xib in Resources */,
 				0C6C68B31DCB273F00B06535 /* KHPhoneTableViewCell.xib in Resources */,
 				0C6C689D1DCB0C5F00B06535 /* KHInformationCell.xib in Resources */,
 				0C9B057D1DC72D92008D7BFA /* KHPersonCell.xib in Resources */,
 				0C5E05D01DADDD3900B2133F /* KHheard2View.xib in Resources */,
 				0C36933E1DAB66C800BB3EE0 /* KHKnowTableViewCell.xib in Resources */,
-				0CC47EE81DD5CC2100F27914 /* KHFreeTableViewCell.xib in Resources */,
 				0CB128CA1DAA0467005A0A4D /* Assets.xcassets in Resources */,
 				0CEDEE3E1DC199F90063C690 /* KHLoginViewController.xib in Resources */,
 			);
@@ -2501,16 +2969,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C3A467F1DD70DA40082A239 /* KHjifenTableViewCell.m in Sources */,
+				0C803C8F1DD99CC2008CC841 /* KHMeListViewController.m in Sources */,
 				0C645ECC1DC8288C000E9B98 /* KHKnowViewController.m in Sources */,
 				0C7F83521DCC647C003EA29C /* LocationPickerView.m in Sources */,
 				0C645ECB1DC82809000E9B98 /* KHAppearViewController.m in Sources */,
 				0C2705AF1DAF66EB00CE2F15 /* TreaureHeaderMenu.m in Sources */,
 				0C9B057F1DC72D92008D7BFA /* KHPersonViewController.m in Sources */,
 				0C2705B31DAF7CA500CE2F15 /* TSCountLabel.m in Sources */,
+				0C461E941DDC564E00853605 /* KHpastModel.m in Sources */,
+				0C790BC01DDC51E000C381CF /* KHPstTableViewCell.m in Sources */,
 				0CBD1A191DACB650003E8150 /* IQBarButtonItem.m in Sources */,
 				0C50E7781DD5AC420087A250 /* KHzhongjiangViewController.m in Sources */,
-				0C62AD2E1DC87BD60091119D /* KHTopupTableViewCell.m in Sources */,
-				0C62AD2A1DC87B500091119D /* KHTopupHeader.m in Sources */,
 				0CBD1A5C1DACC130003E8150 /* WinTreasureCell.m in Sources */,
 				0C50E7851DD5ACCA0087A250 /* KHMessageViewController.m in Sources */,
 				0CBD1A7E1DACEF97003E8150 /* HomeFooter.m in Sources */,
@@ -2523,6 +2993,7 @@
 				0C5E05F51DAE36FE00B2133F /* SDCycleScrollView.m in Sources */,
 				0C9B057C1DC72D92008D7BFA /* KHPersonCell.m in Sources */,
 				0C9E8FEB1DD16DAD00975AEB /* ListCountView.m in Sources */,
+				0C790B9E1DDC31B000C381CF /* KHSearItemButton.m in Sources */,
 				0CBD1A111DACB650003E8150 /* IQUIScrollView+Additions.m in Sources */,
 				0CBD19DF1DAC8DD0003E8150 /* KHSearchViewController.m in Sources */,
 				0C3693281DAB2DD700BB3EE0 /* KHBaseViewController.m in Sources */,
@@ -2534,18 +3005,24 @@
 				0CBD1A1C1DACB650003E8150 /* IQToolbar.m in Sources */,
 				0CB129481DAA2977005A0A4D /* YWUserTool.m in Sources */,
 				0C44DEB71DD4423D0085E5C3 /* PayResultHeader.m in Sources */,
+				0C803CA51DD9E6FF008CC841 /* KHQiandaoViewController.m in Sources */,
+				0C803CAE1DD9EA5C008CC841 /* YHWebViewProgressView.m in Sources */,
 				0CB129491DAA2977005A0A4D /* YWHttptool.m in Sources */,
 				0C7F834E1DCC647C003EA29C /* CityModel.m in Sources */,
+				0C44820F1DDAEB410038697C /* KHCodeCell.m in Sources */,
+				0C4482161DDB31580038697C /* KHGoodsAppearController.m in Sources */,
 				0C009FDA1DC09574002F4470 /* KHAppearDetailView.m in Sources */,
+				0C803CC51DD9F199008CC841 /* TopupResultViewController.m in Sources */,
 				0C5E05CF1DADDD3900B2133F /* KHheard2View.m in Sources */,
+				0C3A46781DD70C2B0082A239 /* KHGetJinfenViewController.m in Sources */,
 				0C27059D1DAF287A00CE2F15 /* CategoryDetailCell.m in Sources */,
 				0CBD1A661DACC415003E8150 /* WinTreasureMenuHeader.m in Sources */,
+				0C803CC11DD9F199008CC841 /* KHTopupHeader.m in Sources */,
 				0C5E05FC1DAE3B7C00B2133F /* KHProductModel.m in Sources */,
 				0C6C68A81DCB107200B06535 /* KHPhoneViewController.m in Sources */,
 				0C7F834F1DCC647C003EA29C /* DistrictModel.m in Sources */,
 				0CB129371DAA28ED005A0A4D /* MBProgressHUD+MJ.m in Sources */,
 				0C009FD71DC08F74002F4470 /* KHAppearDetailController.m in Sources */,
-				0CC47EE71DD5CC2100F27914 /* KHFreeTableViewCell.m in Sources */,
 				0C6C689E1DCB0C5F00B06535 /* KHInformationController.m in Sources */,
 				0CBD1A1A1DACB650003E8150 /* IQPreviousNextView.m in Sources */,
 				0C5E05F01DAE36FE00B2133F /* TAAbstractDotView.m in Sources */,
@@ -2554,12 +3031,16 @@
 				0C2705991DAF27A600CE2F15 /* KHTenModel.m in Sources */,
 				0C6F59DF1DB89D6D00105C8C /* UITableView+Custom.m in Sources */,
 				0C7F83401DCC4F84003EA29C /* KHEditPhoneViewController.m in Sources */,
+				0C3A46721DD70B850082A239 /* KHFreeViewController.m in Sources */,
 				0C9B05551DC71684008D7BFA /* UITabBar+Badge.m in Sources */,
 				0C44DEBA1DD444D50085E5C3 /* KHPayResultModel.m in Sources */,
 				0C9B055B1DC71F37008D7BFA /* UIButton+Badge.m in Sources */,
 				0C5609991DC9EDF600B7BEBC /* UIView+Frame.m in Sources */,
+				0C790BB81DDC489A00C381CF /* KHSearchResultController.m in Sources */,
+				0C790B971DDC045A00C381CF /* KHSearchTableViewCell.m in Sources */,
 				0C44DEBD1DD448920085E5C3 /* KHresultGoods.m in Sources */,
 				0C5E05CA1DADCF7700B2133F /* KHDowmViewCell.m in Sources */,
+				0C803C931DD99D17008CC841 /* KHAllTableViewCell.m in Sources */,
 				0C9E8FE81DD16DAD00975AEB /* ShoppingListCell.m in Sources */,
 				0C5E05D41DADFAEC00B2133F /* KHChangButton.m in Sources */,
 				0C9B05681DC72B0E008D7BFA /* YZDisplayViewController.m in Sources */,
@@ -2573,6 +3054,7 @@
 				0C6C689F1DCB0C5F00B06535 /* NicknameViewController.m in Sources */,
 				0CBD1A601DACC368003E8150 /* KHHOmeViewLayout.m in Sources */,
 				0C5E05F41DAE36FE00B2133F /* SDCollectionViewCell.m in Sources */,
+				0C803CC21DD9F199008CC841 /* KHTopupTableViewCell.m in Sources */,
 				0C7F832E1DCC2BBE003EA29C /* GSPopoverViewController.m in Sources */,
 				0CBD1A151DACB650003E8150 /* IQUIWindow+Hierarchy.m in Sources */,
 				0CBD1A101DACB650003E8150 /* IQNSArray+Sort.m in Sources */,
@@ -2584,27 +3066,33 @@
 				0CBD19E31DAC8E36003E8150 /* SearchBar.m in Sources */,
 				0C9E8FEA1DD16DAD00975AEB /* EditingCell.m in Sources */,
 				0C7F83531DCC647C003EA29C /* StreetModel.m in Sources */,
+				0C4482071DDAE5F60038697C /* KHCodeViewController.m in Sources */,
 				0CB1293A1DAA28ED005A0A4D /* UIImage+YWimage.m in Sources */,
 				0C9B05851DC72EBA008D7BFA /* KHSnatchListController.m in Sources */,
 				0C9B05671DC72B0E008D7BFA /* YZDisplayTitleLabel.m in Sources */,
+				0C3A466F1DD70B850082A239 /* KHFreeHeaderView.m in Sources */,
+				0C803C9F1DD9AF37008CC841 /* KHSnatchWinModel.m in Sources */,
 				0CBD1A171DACB650003E8150 /* IQKeyboardReturnKeyHandler.m in Sources */,
+				0C803CAD1DD9EA5C008CC841 /* YHWebViewProgress.m in Sources */,
 				0C6C68B21DCB273F00B06535 /* KHPhoneTableViewCell.m in Sources */,
 				0C6C68AD1DCB205900B06535 /* KHAddressTableViewCell.m in Sources */,
 				0C5782DA1DC1DD5000DB0B9A /* KHRegiterThirdViewController.m in Sources */,
 				0C5609A21DC9EF9E00B7BEBC /* KHAddressViewController.m in Sources */,
 				0CBD1A131DACB650003E8150 /* IQUIView+Hierarchy.m in Sources */,
+				0C790B9B1DDC047100C381CF /* KHSearchModel.m in Sources */,
 				0CBD1A141DACB650003E8150 /* IQUIViewController+Additions.m in Sources */,
 				0C5E05DF1DAE32F800B2133F /* KHDetailViewController.m in Sources */,
-				0CC47EE01DD5CBF000F27914 /* KHFreeViewController.m in Sources */,
 				0C01B5BE1DB6007600D41F43 /* KHIMage.m in Sources */,
 				0CA598B81DD057D8000F007B /* KHWinTableViewCell.m in Sources */,
 				0CBD1A651DACC415003E8150 /* WinTreasureHeader.m in Sources */,
 				0CBD1A181DACB650003E8150 /* IQTextView.m in Sources */,
+				0C4481FF1DDAE2F00038697C /* YWPopView.m in Sources */,
 				0CBD1A161DACB650003E8150 /* IQKeyboardManager.m in Sources */,
 				0CB129391DAA28ED005A0A4D /* UIColor+YWcolor.m in Sources */,
 				0C9B057E1DC72D92008D7BFA /* KHPersonHeader.m in Sources */,
 				0CBD1A121DACB650003E8150 /* IQUITextFieldView+Additions.m in Sources */,
 				0CB1293D1DAA28ED005A0A4D /* UIView+YWViewController.m in Sources */,
+				0C461E971DDC57DE00853605 /* KHPastViewController.m in Sources */,
 				0C009FD01DC07E5B002F4470 /* NSString+TSTime.m in Sources */,
 				0CBD19D81DAC8A5D003E8150 /* KHHomeModel.m in Sources */,
 				0C9E8FE61DD16DAD00975AEB /* KHcartModel.m in Sources */,
@@ -2618,12 +3106,17 @@
 				0C44DEC61DD495080085E5C3 /* KHMyAppearViewController.m in Sources */,
 				0CB1293C1DAA28ED005A0A4D /* UIView+Frame.m in Sources */,
 				0CBD1A1D1DACB650003E8150 /* IQUIView+IQKeyboardToolbar.m in Sources */,
+				0C3A46701DD70B850082A239 /* KHFreeTableViewCell.m in Sources */,
 				0CB1294F1DAA2C15005A0A4D /* YWUser.m in Sources */,
 				0CD77C941DBF44D300F72AA5 /* KHAppearTableViewCell.m in Sources */,
 				0C9E8FEC1DD16DAD00975AEB /* KHCartViewController.m in Sources */,
 				0C3E9C321DD3011B00F827AC /* BonusModel.m in Sources */,
+				0C3A46751DD70BCB0082A239 /* KHjJinfenlistViewController.m in Sources */,
+				0C3A466D1DD70B850082A239 /* KHCoupon.m in Sources */,
 				0CB1293B1DAA28ED005A0A4D /* UINavigationBar+BTsome.m in Sources */,
 				0CB128F91DAA1F2E005A0A4D /* AppDelegate.m in Sources */,
+				0C803C981DD99D4C008CC841 /* KHSnatchingTableViewCell.m in Sources */,
+				0C3A467B1DD70C510082A239 /* KHUseJinfenViewController.m in Sources */,
 				0C3E9C2A1DD2FE2400F827AC /* KHUserAbleViewController.m in Sources */,
 				0C9E8FE51DD16DAD00975AEB /* KHCartGoodsModel.m in Sources */,
 				0C9B05691DC72B0E008D7BFA /* YZFlowLayout.m in Sources */,
@@ -2634,7 +3127,7 @@
 				0C5782D51DC1D60100DB0B9A /* KHRegiterSecondController.m in Sources */,
 				0C3E9C381DD34E8400F827AC /* KHPauGoodsModel.m in Sources */,
 				0C3693251DAB281000BB3EE0 /* KHNavigationViewController.m in Sources */,
-				0C62AD271DC876FF0091119D /* KHTopupViewController.m in Sources */,
+				0C4481FE1DDAE2F00038697C /* YWCover.m in Sources */,
 				0C2705A21DAF666C00CE2F15 /* TreasureDetailFooter.m in Sources */,
 				0CA598B41DD05242000F007B /* KHWinViewController.m in Sources */,
 				0CB128BF1DAA0467005A0A4D /* main.m in Sources */,
@@ -2643,8 +3136,12 @@
 				0C3E9C2E1DD2FFFE00F827AC /* BonusCell.m in Sources */,
 				0CEDEE391DC199C60063C690 /* PooCodeView.m in Sources */,
 				0C50E7841DD5ACCA0087A250 /* KHMessageModel.m in Sources */,
+				0C803CC41DD9F199008CC841 /* KHTopupViewController.m in Sources */,
 				0C3E9C241DD2FD5100F827AC /* KHBounsViewController.m in Sources */,
-				0CC47EE31DD5CC0800F27914 /* KHFreeModel.m in Sources */,
+				0C3A46831DD711510082A239 /* KHjifenModel.m in Sources */,
+				0C803C9C1DD9ABB5008CC841 /* KHSnatchModel.m in Sources */,
+				0C44820C1DDAE9C60038697C /* DDCollectionViewFlowLayout.m in Sources */,
+				0C3A466E1DD70B850082A239 /* KHFreeModel.m in Sources */,
 				0C2705AE1DAF66EB00CE2F15 /* TreasureDetailHeader.m in Sources */,
 				0C36933D1DAB66C800BB3EE0 /* KHKnowTableViewCell.m in Sources */,
 				0C5E05F61DAE36FE00B2133F /* UIView+SDExtension.m in Sources */,
@@ -2784,7 +3281,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Alipay",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "knock Honey/knock Honey.pch";
 				HEADER_SEARCH_PATHS = (
@@ -2817,7 +3317,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Alipay",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "knock Honey/knock Honey.pch";
 				HEADER_SEARCH_PATHS = (

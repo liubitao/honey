@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="KHSearchTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="69"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YCe-al-Ip3">
+                        <rect key="frame" x="187" y="10" width="1" height="49"/>
+                        <color key="backgroundColor" red="0.94494646787643433" green="0.94486230611801147" blue="0.96130841970443726" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="1" id="U2Q-vL-a5x"/>
+                        </constraints>
+                    </view>
+                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2CJ-jo-aHd" customClass="KHSearItemButton">
+                        <rect key="frame" x="198" y="0.0" width="162" height="69"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <state key="normal">
+                            <color key="titleColor" red="0.5725490196078431" green="0.5725490196078431" blue="0.5725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="clickBtton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4NW-aA-PdX"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" tag="1" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wzk-k8-bsy" customClass="KHSearItemButton">
+                        <rect key="frame" x="15" y="0.0" width="162" height="69"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <state key="normal">
+                            <color key="titleColor" red="0.5725490196078431" green="0.5725490196078431" blue="0.5725490196078431" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="clickBtton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="lBH-W8-gaZ"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="YCe-al-Ip3" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="5Ll-lh-84m"/>
+                    <constraint firstAttribute="trailing" secondItem="2CJ-jo-aHd" secondAttribute="trailing" constant="15" id="9rB-F2-Del"/>
+                    <constraint firstAttribute="bottom" secondItem="YCe-al-Ip3" secondAttribute="bottom" constant="10" id="SAm-K3-HX9"/>
+                    <constraint firstItem="YCe-al-Ip3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="TVd-qx-vRl"/>
+                    <constraint firstAttribute="bottom" secondItem="2CJ-jo-aHd" secondAttribute="bottom" id="Um4-L9-CvK"/>
+                    <constraint firstItem="2CJ-jo-aHd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="dZA-hl-4xL"/>
+                    <constraint firstItem="YCe-al-Ip3" firstAttribute="leading" secondItem="Wzk-k8-bsy" secondAttribute="trailing" constant="10" id="mfw-vK-rvz"/>
+                    <constraint firstItem="2CJ-jo-aHd" firstAttribute="leading" secondItem="YCe-al-Ip3" secondAttribute="trailing" constant="10" id="pb6-sj-Yiw"/>
+                    <constraint firstItem="Wzk-k8-bsy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="rv5-Ce-gLE"/>
+                    <constraint firstItem="Wzk-k8-bsy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="viu-oT-6HP"/>
+                    <constraint firstAttribute="bottom" secondItem="Wzk-k8-bsy" secondAttribute="bottom" id="z0f-1h-687"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="button1" destination="Wzk-k8-bsy" id="NKX-hV-eTt"/>
+                <outlet property="button2" destination="2CJ-jo-aHd" id="3bM-G0-Rva"/>
+            </connections>
+            <point key="canvasLocation" x="56.5" y="445"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -10,4 +10,6 @@
 
 @interface KHRegiterSecondController : KHBaseViewController
 
+@property (nonatomic,copy) NSString *phone;
+
 @end

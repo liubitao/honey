@@ -48,7 +48,7 @@
 - (UITableView *)tableView {
     if (!_tableView) {
         _tableView = [[UITableView alloc]initWithFrame:({
-            CGRect rect = {0,kNavigationBarHeight,kScreenWidth,_isPushed?kScreenHeight-[BillView getHeight] - kNavigationBarHeight:kScreenHeight-kNavigationBarHeight-[BillView getHeight]-kTabBarHeight};
+            CGRect rect = {0,0,kScreenWidth,_isPushed?kScreenHeight-[BillView getHeight]:kScreenHeight-[BillView getHeight]-kTabBarHeight};
             rect;
         }) style:UITableViewStylePlain];
         _tableView.dataSource = self;
@@ -77,7 +77,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.automaticallyAdjustsScrollViewInsets = NO;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(notificationCenterEvent)
                                                  name:@"refreshCart"
@@ -154,7 +153,7 @@
 
 - (void)setupBillview {
     if (self.dataArray.count==0) {
-        _tableView.frame = CGRectMake(0,kNavigationBarHeight,kScreenWidth,_isPushed?kScreenHeight- kNavigationBarHeight:kScreenHeight-kTabBarHeight-kNavigationBarHeight);
+        _tableView.frame = CGRectMake(0,0,kScreenWidth,_isPushed?kScreenHeight:kScreenHeight-kTabBarHeight);
         self.leftBtn.hidden = YES;
         [self.billView removeFromSuperview];
         [AppDelegate getAppDelegate].value = 0;
@@ -184,9 +183,8 @@
     parameter[@"cart"] = jsonString;
     [YWHttptool Post:PortOrder_submit parameters:parameter success:^(id responseObject){
         [MBProgressHUD hideHUDForView:weakSelf.tableView];
-        NSLog(@"%@",responseObject);
         if ([responseObject[@"isError"] integerValue]) return ;
-        KHPayModel *model = [KHPayModel mj_objectWithKeyValues:responseObject[@"result"]];
+        KHPayModel *model = [KHPayModel kh_objectWithKeyValues:responseObject[@"result"]];
         KHPayViewController *payVC = [[KHPayViewController alloc]init];
         payVC.payModel = model;
         [weakSelf pushController:payVC];
@@ -239,7 +237,7 @@
                             [weakSelf editList];
                             if (weakSelf.deleteArray.count == dataCount) {
                                 weakSelf.leftBtn.hidden = YES;
-                                weakSelf.tableView.frame = CGRectMake(0,kNavigationBarHeight,kScreenWidth,weakSelf.isPushed?kScreenHeight-kNavigationBarHeight:kScreenHeight-kTabBarHeight-kNavigationBarHeight);
+                                weakSelf.tableView.frame = CGRectMake(0,0,kScreenWidth,weakSelf.isPushed?kScreenHeight:kScreenHeight-kTabBarHeight);
                                 [weakSelf.billView removeFromSuperview];
                             }
                             [AppDelegate getAppDelegate].value = [AppDelegate getAppDelegate].value -weakSelf.deleteArray.count;
@@ -335,6 +333,9 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     ShoppingListLayout *layout = _dataArray[indexPath.row];
     return layout.height;
+}
+- (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.1;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

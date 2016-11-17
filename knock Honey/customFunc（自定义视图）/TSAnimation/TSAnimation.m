@@ -42,7 +42,7 @@ static TSAnimation *sharedInstance = nil;
     [self groupAnimation:path
                 endScale:endScale
               isRotation:isRotation
-       animationDuration:0.9f];
+       animationDuration:0.5f];
 }
 
 - (void)groupAnimation:(UIBezierPath *)path

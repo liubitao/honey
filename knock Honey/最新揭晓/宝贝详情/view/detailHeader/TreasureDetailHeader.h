@@ -100,7 +100,9 @@ typedef void(^TreasureCountDetailButtonBlock)(void);
  */
 @property (nonatomic, strong) UIImageView *backImgView;
 
-@property (nonatomic, strong) TreasureCountDetailButtonBlock block;
+@property (nonatomic, copy) TreasureCountDetailButtonBlock block;
+
+@property (nonatomic,copy) TreasureCountDetailButtonBlock codeBlock;
 
 - (instancetype)initWithFrame:(CGRect)frame
                          type:(TreasureDetailHeaderType)type
@@ -137,13 +139,14 @@ typedef void(^TreasureCountDetailButtonBlock)(void);
 @property (nonatomic, assign) TreasureDetailHeaderType type;
 
 /**
- *  点击
+ *  点击三种类型的view
  */
 @property (nonatomic, copy) TreasureDetailHeaderClickMenuButtonBlock clickMenuBlock;
 
 /**计算详情
  */
 @property (nonatomic, copy) TreasureDetailHeaderCountDetailButtonBlock countDetailBlock;
+
 
 @property (nonatomic, strong) TreasureProgressView *treasureProgressView;
 
@@ -152,7 +155,10 @@ typedef void(^TreasureCountDetailButtonBlock)(void);
 //声明blcok
 @property (nonatomic,copy) TreasureCountDetailButtonBlock declareBlcok;
 
+//头部高度变化
 @property (nonatomic,copy) TreasureCountDetailButtonBlock headerHeight;
+
+@property (nonatomic,copy) TreasureCountDetailButtonBlock codeBlock;
 
 @property (nonatomic, strong) YYLabel *productNameLabel;
 //声明

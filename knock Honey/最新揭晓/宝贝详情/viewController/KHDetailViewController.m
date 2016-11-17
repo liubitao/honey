@@ -11,14 +11,21 @@
 #import "TreasureDetailCell.h"
 #import "TreasureDetailFooter.h"
 #import "TreasureDetailHeader.h"
+#import "KHQiandaoViewController.h"
+#import "KHCodeViewController.h"
+#import "YWCover.h"
+#import "YWPopView.h"
+#import "KHGoodsAppearController.h"
+#import "KHPastViewController.h"
 
-@interface KHDetailViewController ()<UITableViewDataSource,UITableViewDelegate,TreasureDetailFooterDelegate>{
+@interface KHDetailViewController ()<UITableViewDataSource,UITableViewDelegate,TreasureDetailFooterDelegate,YWCoverDelegate>{
     NSInteger _currentPage;
 }
 
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) TreasureDetailFooter *footer;
 @property (nonatomic,strong) NSMutableArray *dataArray;
+@property (nonatomic,strong) KHCodeViewController *codeVC;
 
 @end
 
@@ -54,7 +61,33 @@
         rect;
     }) type:_showType countTime:_count Model:_model];
      _tableView.tableHeaderView = header;
+    
+    
     __weak typeof(self) weakSelf = self;
+    
+    header.codeBlock = ^{
+//        KHCodeViewController *vc = self.codeVC;
+//        NSArray *array = [model.codes componentsSeparatedByString:@","];
+//        vc.dataArray = array.mutableCopy;
+//        if (model.lottery){
+//            vc.winCode = model.lottery.wincode;
+//        }
+//        [vc.ColloctionView reloadData];
+//        //弹出蒙版
+//        YWCover  *cover = [YWCover show];
+//        cover.delegate = self;
+//        [cover setDimBackground:YES];
+//        
+//        // 弹出pop菜单
+//        YWPopView *menu = [YWPopView showInRect:CGRectZero];
+//        menu.center = self.view.center;
+//        menu.transform = CGAffineTransformMakeScale(0, 0);
+//        [UIView animateWithDuration:0.5
+//                         animations:^{
+//                             menu.transform = CGAffineTransformIdentity;
+//                         }];
+//        menu.contentView = vc.view;
+    };
     //详情中的选项
     header.clickMenuBlock = ^(id object){
         switch ([object integerValue]) {
@@ -63,11 +96,15 @@
             }
                 break;
             case 1: {//晒单分享
-                NSLog(@"晒单分享");
+                KHGoodsAppearController *goodsVC = [[KHGoodsAppearController alloc]init];
+                goodsVC.goodsid = _goodsid;
+                [weakSelf hideBottomBarPush:goodsVC];
             }
                 break;
             case 2: {//往期揭晓
-                NSLog(@"往期揭晓");
+                KHPastViewController *pastVC = [[KHPastViewController alloc]init];
+                pastVC.goodsid = _goodsid;
+                [weakSelf hideBottomBarPush:pastVC];
             }
                 break;
             default:
@@ -82,7 +119,11 @@
     };
     
     header.countDetailBlock = ^(){//计算详情
-        NSLog(@"计算详情");
+        KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
+        NSString *str = [NSString stringWithFormat:@"%@?goodsid=%@&userid=%@",PortFormula,_goodsid,_model.winner.qishu];
+        VC.urlStr = str;
+        VC.title = @"计算详情";
+        [weakSelf hideBottomBarPush:VC];
     };
     
     header.declareBlcok = ^(){//点击声明
@@ -170,13 +211,42 @@
 - (void)clickMenuButtonWithIndex:(NSInteger)index{
     switch (index) {
         case 1:
-            NSLog(@"点击了购物车图标");
+            [self.tabBarController setSelectedIndex:3];
+            [self.navigationController popToRootViewControllerAnimated:YES];
             break;
-        case 2:
-            NSLog(@"点击了加入购物车");
+        case 2:{
+            NSMutableDictionary *parameter = [Utils parameter];
+            parameter[@"userid"] = [YWUserTool account].userid;
+            parameter[@"goodsid"] = _goodsid;
+            [YWHttptool GET:PortAddCart parameters:parameter success:^(id responseObject) {
+                if ([responseObject[@"isError"] integerValue]) return ;
+                
+                UIButton *firstbtn = [_footer viewWithTag:1];
+                [firstbtn setBadgeValue:responseObject[@"result"][@"count_cart"]];
+
+                [AppDelegate getAppDelegate].value = [responseObject[@"result"][@"count_cart"] integerValue];
+                [self setBadgeValue:[AppDelegate getAppDelegate].value atIndex:3];
+                //刷新购物车
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshCart" object:nil userInfo:nil];
+            } failure:^(NSError *error) {
+            }];
+        }
             break;
-        case 3:
-            NSLog(@"点击了立即购物");
+        case 3:{
+            NSMutableDictionary *parameter = [Utils parameter];
+            parameter[@"userid"] = [YWUserTool account].userid;
+            parameter[@"goodsid"] = _goodsid;
+            [YWHttptool GET:PortAddCart parameters:parameter success:^(id responseObject) {
+                NSLog(@"%@",responseObject);
+                if ([responseObject[@"isError"] integerValue]) return ;
+                
+                [AppDelegate getAppDelegate].value = [responseObject[@"result"][@"count_cart"] integerValue];
+                [self setBadgeValue:[AppDelegate getAppDelegate].value atIndex:3];
+                //刷新购物车
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshCart" object:nil userInfo:nil];
+            } failure:^(NSError *error) {
+            }];
+        }
             break;
         default:
             break;
@@ -185,7 +255,22 @@
 
 //倒计时，进入新的一期
 - (void)checkNewTreasre{
-    NSLog(@"进入新一期");
+    [MBProgressHUD showMessage:@"加载中..."];
+    NSMutableDictionary *parameter = [Utils parameter];
+    parameter[@"goodsid"] = _goodsid;
+    parameter[@"qishu"] = _model.qishu;
+    [YWHttptool GET:PortGoodsdetails parameters:parameter success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
+        if ([responseObject[@"isError"] integerValue])return;
+        KHDetailViewController *DetailVC = [[KHDetailViewController alloc]init];
+        DetailVC.model = [KHProductModel kh_objectWithKeyValues:responseObject[@"result"]];
+        DetailVC.goodsid = _goodsid;
+        DetailVC.showType = TreasureDetailHeaderTypeNotParticipate;
+        [self hideBottomBarPush:DetailVC];
+    } failure:^(NSError *error) {
+        [MBProgressHUD hideHUD];
+        [MBProgressHUD showError:@"网络连接有误"];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
