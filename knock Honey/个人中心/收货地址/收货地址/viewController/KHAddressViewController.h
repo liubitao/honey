@@ -8,6 +8,14 @@
 
 #import "KHBaseViewController.h"
 
+
+
 @interface KHAddressViewController : KHBaseViewController
+
+@property (nonatomic,assign) BOOL chooseAdd;
+
+@property (nonatomic,assign) NSInteger goodstype;
+
+@property (nonatomic,copy) NSString *lotteryid;
 
 @end

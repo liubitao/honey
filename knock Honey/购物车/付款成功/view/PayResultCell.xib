@@ -26,16 +26,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" text="产品名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5JP-s9-GHe">
-                        <rect key="frame" x="15" y="15" width="226" height="18"/>
+                        <rect key="frame" x="15" y="15" width="235" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1人次" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNC-N5-uhZ">
-                        <rect key="frame" x="255" y="15" width="50" height="17"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="50" id="wmr-g6-QaQ"/>
-                        </constraints>
+                        <rect key="frame" x="270" y="15" width="35" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.82849603891372681" green="0.20580258965492249" blue="0.31174772977828979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -44,8 +41,8 @@
                 <constraints>
                     <constraint firstItem="5JP-s9-GHe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="95k-Qc-Jom"/>
                     <constraint firstItem="5JP-s9-GHe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="H1f-yt-Tf2"/>
-                    <constraint firstItem="uNC-N5-uhZ" firstAttribute="leading" secondItem="5JP-s9-GHe" secondAttribute="trailing" constant="14" id="Kn9-ee-eD5"/>
                     <constraint firstAttribute="bottom" secondItem="zHY-8Q-xEM" secondAttribute="bottom" constant="12" id="Ncg-m8-24B"/>
+                    <constraint firstItem="uNC-N5-uhZ" firstAttribute="leading" secondItem="5JP-s9-GHe" secondAttribute="trailing" constant="20" id="Okm-ka-utr"/>
                     <constraint firstItem="cWg-Af-llI" firstAttribute="top" secondItem="5JP-s9-GHe" secondAttribute="bottom" constant="8" id="QHA-dA-wNf"/>
                     <constraint firstItem="cWg-Af-llI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Vmu-an-yCu"/>
                     <constraint firstItem="zHY-8Q-xEM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="gRI-Gy-hW3"/>

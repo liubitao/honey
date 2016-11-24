@@ -50,6 +50,8 @@
  */
 + (BOOL)validateNickname:(NSString *)nickname;
 
+//获取图片的格式
++ (NSString *)typeForImageData:(NSData *)data;
 
 +(void)POST:(NSString *)urlstr paramter:(NSDictionary *)parameter completionHandler:(void(^)(id responseObject))success failure:(void(^)(NSError *error))failure;
 

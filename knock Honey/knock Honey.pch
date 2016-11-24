@@ -22,7 +22,7 @@
 #import <MJRefresh.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SDWebImage/UIButton+WebCache.h>
-
+#import "GPAutoFooter.h"
 #import "UINavigationController+FDFullscreenPopGesture.h"
 #import <YYKit.h>
 #import <Masonry.h>

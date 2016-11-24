@@ -22,13 +22,23 @@
 @property (nonatomic,copy) NSString *money;
 
 /**
- *  应付金额
+ *  应付金额 （减去红包之后）
  */
 @property (nonatomic,copy) NSString *order_amount;
+
+/**
+ *  不减去红包的价格
+ */
+@property (nonatomic,copy) NSString *goods_price;
+
 /**
  *  订单id
  */
 @property (nonatomic,copy) NSString *orderid;
+/**
+ *  订单编号
+ */
+@property (nonatomic,copy) NSString *ordersn;
 /**
  *  红包抵扣价格
  */

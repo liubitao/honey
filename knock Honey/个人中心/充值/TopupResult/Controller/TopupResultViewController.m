@@ -32,7 +32,6 @@
 }
 
 - (IBAction)back {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"kTopupNotification" object:_coinAmount];;
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

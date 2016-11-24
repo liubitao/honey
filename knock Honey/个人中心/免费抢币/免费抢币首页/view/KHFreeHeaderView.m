@@ -131,6 +131,7 @@
         _addLabel.text = @"+20积分";
     }
     
+    [_qiandaoButton setTitle:@"已签到" forState:UIControlStateNormal];
     
 }
 

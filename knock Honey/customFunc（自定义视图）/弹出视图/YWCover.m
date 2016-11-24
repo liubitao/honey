@@ -40,14 +40,7 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     // 移除蒙板
-    [UIView animateWithDuration:0.5
-                     animations:^{
-                         self.transform = CGAffineTransformMakeScale(0.01, 0.01);
-                     } completion:^(BOOL finished) {
-                         if (finished) {
-                             [self removeFromSuperview];
-                         }
-                     }];
+   [self removeFromSuperview];
     // 通知代理移除菜单
     if ([_delegate respondsToSelector:@selector(coverDidClickCover:)]) {
         

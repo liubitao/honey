@@ -18,6 +18,8 @@
 #import "KHMessageViewController.h"
 #import "KHFreeViewController.h"
 #import "KHSnatchListController.h"
+#import "KHSettingViewController.h"
+
 
 @interface KHPersonViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *tableView;
@@ -105,10 +107,8 @@
     _tableView.tableHeaderView = _header;
     __weak typeof(self) weakSelf = self;
     _header.settingBlock = ^{
-        NSLog(@"设置");
-        [YWUserTool quit];
-        [weakSelf.navigationController.tabBarController.tabBar hideBadgeValueAtIndex:3];
-        [weakSelf.tabBarController setSelectedIndex:0];
+        KHSettingViewController *settingVC = [[KHSettingViewController alloc]init];
+        [weakSelf pushController:settingVC];
     };
     
     _header.headImgBlock = ^{

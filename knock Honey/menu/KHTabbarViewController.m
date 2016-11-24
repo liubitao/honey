@@ -39,15 +39,15 @@
     knowNavi.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"最新揭晓" image:[UIImage imageNamed:@"tabbarknow"] selectedImage:[UIImage imageWithOriginalName:@"tabbarknowsel"]];
     [knowNavi.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName :kDefaultColor} forState:UIControlStateSelected];
     
-    KHCartViewController *cartVC = [[KHCartViewController alloc]init];
-    KHNavigationViewController *cartNavi = [[KHNavigationViewController alloc]initWithRootViewController:cartVC];
-    cartNavi.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"晒单" image:[UIImage imageNamed:@"tabbarcart"] selectedImage:[UIImage imageWithOriginalName:@"tabbarcartsel"]];
-    [cartNavi.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName :kDefaultColor} forState:UIControlStateSelected];
-    
     KHAppearViewController *appearVC = [[KHAppearViewController alloc]init];
     KHNavigationViewController *appearNavi = [[KHNavigationViewController alloc]initWithRootViewController:appearVC];
-    appearNavi.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"购物车" image:[UIImage imageNamed:@"tabbarappear"] selectedImage:[UIImage imageWithOriginalName:@"tabbarappearsel"]];
+    appearNavi.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"晒单" image:[UIImage imageNamed:@"tabbarappear"] selectedImage:[UIImage imageWithOriginalName:@"tabbarappearsel"]];
     [appearNavi.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName :kDefaultColor} forState:UIControlStateSelected];
+    
+    KHCartViewController *cartVC = [[KHCartViewController alloc]init];
+    KHNavigationViewController *cartNavi = [[KHNavigationViewController alloc]initWithRootViewController:cartVC];
+    cartNavi.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"购物车" image:[UIImage imageNamed:@"tabbarcart"] selectedImage:[UIImage imageWithOriginalName:@"tabbarcartsel"]];
+    [cartNavi.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName :kDefaultColor} forState:UIControlStateSelected];
     
     KHPersonViewController *personVC = [[KHPersonViewController alloc]init];
     KHNavigationViewController *personNavi = [[KHNavigationViewController alloc]initWithRootViewController:personVC];
@@ -56,6 +56,25 @@
     
     self.viewControllers = @[homeNavi,knowNavi,appearNavi,cartNavi,personNavi];
     
+}
+
+- (void)pushOtherIndex:(NSInteger)index viewController:(UIViewController *)VC{
+    UINavigationController *oldNavigationController = [self.viewControllers objectAtIndex:self.selectedIndex];
+    
+    for (NSInteger i = [oldNavigationController.viewControllers count] - 1; i >= 0; i--) {
+        
+        UIViewController *viewController = [oldNavigationController.viewControllers objectAtIndex:i];
+        
+        [oldNavigationController popToViewController:viewController animated:NO];
+        
+    }
+    if (0 != self.selectedIndex){
+        self.selectedIndex = index;
+    }
+    UINavigationController *newNavigationController = [self.viewControllers objectAtIndex:index];
+    self.hidesBottomBarWhenPushed = YES;
+    [newNavigationController pushViewController:VC animated:YES];
+    self.hidesBottomBarWhenPushed = NO;
 }
 
 #pragma mark - UITabBarControllerDelegate

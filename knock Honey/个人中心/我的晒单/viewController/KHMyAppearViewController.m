@@ -118,6 +118,7 @@
     KHAppearModel *apperModel = self.dataArray[indexPath.row];
     parameter[@"comment_id"] = apperModel.ID;
     parameter[@"userid"] = [YWUserTool account].userid;
+    parameter[@"type"] = @"1";
     [YWHttptool GET:PortComment_detail parameters:parameter success:^(id responseObject){
         if ([responseObject[@"isError"] integerValue]) return ;
         KHAppearDetailModel *model = [KHAppearDetailModel kh_objectWithKeyValues:responseObject[@"result"]];

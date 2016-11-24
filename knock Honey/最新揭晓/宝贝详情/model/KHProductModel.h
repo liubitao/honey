@@ -25,14 +25,27 @@
  *  开奖时间
  */
 @property (nonatomic,copy) NSString *newtime;
+
 /**
- *  夺宝价格
+ *  单价
  */
-@property (nonatomic,copy) NSString *yunjiage;
+@property (nonatomic,copy) NSString *price;
+
 /**
  *  商品标题
  */
 @property (nonatomic,copy) NSString *title;
+
+/**
+ *  自己购买的代码
+ */
+@property (nonatomic,copy) NSString *codes;
+
+/**
+ *  评论次数
+ */
+@property (nonatomic,copy) NSString *comment_count;
+
 /**
  *  期数
  */

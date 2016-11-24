@@ -7,7 +7,9 @@
 //
 
 #import "KHBaseViewController.h"
+typedef void(^PhoneModifyBlock)(NSString *phone);
 
 @interface KHPhoneViewController : KHBaseViewController
 
+@property (copy, nonatomic) PhoneModifyBlock phoneBlock;
 @end

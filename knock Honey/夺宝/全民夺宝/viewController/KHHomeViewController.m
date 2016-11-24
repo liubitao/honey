@@ -26,7 +26,6 @@
 #import "KHQiandaoViewController.h"
 
 
-
 @interface KHHomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,WinTreasureCellDelegate,TSAnimationDelegate,KHDowmViewCellDelegate>
 {
     NSMutableArray *_images;
@@ -117,7 +116,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     
     KHHOmeViewLayout *layout = [[KHHOmeViewLayout alloc]init];
     
-    _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, KscreenHeight+kTabBarHeight) collectionViewLayout:layout];
+    _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, KscreenHeight) collectionViewLayout:layout];
     _collectionView.contentInset = UIEdgeInsetsMake([WinTreasureHeader height], 0, 0, 0);
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
@@ -139,7 +138,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
         [weakSelf.collectionView.mj_header endRefreshing];
     }];
     //上拉刷新
-    _collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+    _collectionView.mj_footer = [GPAutoFooter footerWithRefreshingBlock:^{
         [weakSelf getMoreDate];
         [weakSelf.collectionView.mj_footer endRefreshing];
     }];
@@ -198,7 +197,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
         [YWHttptool GET:PortGoodslist parameters:parameter success:^(id responseObject) {
             NSLog(@"%@",responseObject);
             if ([responseObject[@"isError"] integerValue]){
-                [MBProgressHUD showError:@"没有更多的商品了！"];
+                    [self.collectionView.mj_footer endRefreshingWithNoMoreData];
                 return ;
             }
             NSMutableArray *data = [KHHomeModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
@@ -225,19 +224,24 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
             case 1: {//十元专区
                 KHTenViewController *tenVC = [[KHTenViewController alloc]init];
                 tenVC.area = @"12";
-                tenVC.port = PortGoods_area;
+                tenVC.port = PortGoods_cate;
                 tenVC.title = @"十元专区";
                 [weakSelf pushController:tenVC];
             }
                 break;
             case 2: {//签到
                 KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
+                NSString *str = [NSString stringWithFormat:@"%@?userid=%@",PortSign_index,[YWUserTool account].userid];
+                VC.urlStr = str;
                 VC.title = @"签到";
                 [self pushController:VC];
             }
                 break;
-            case 3: {
-                
+            case 3: {//常见问题
+                KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
+                VC.urlStr = PortCommon_problem;
+                VC.title = @"常见问题";
+                [self pushController:VC];
             }
                 break;
             default:
@@ -340,6 +344,9 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
         parameter[@"qishu"] = knowModel.qishu;
         goodsid = knowModel.ID;
     }
+    if ([YWUserTool account]) {
+        parameter[@"userid"] = [YWUserTool account].userid;
+    }
     [YWHttptool GET:PortGoodsdetails parameters:parameter success:^(id responseObject) {
         [MBProgressHUD hideHUD];
         if ([responseObject[@"isError"] integerValue])return;
@@ -412,11 +419,8 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
          [self setBadgeValue:[AppDelegate getAppDelegate].value atIndex:3];
         //刷新购物车
         [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshCart" object:nil userInfo:nil];
-        [MBProgressHUD showSuccess:@"已添加"];
-    } failure:^(NSError *error) {
-        [MBProgressHUD showError:@"添加失败"];
+    } failure:^(NSError *error){
     }];
-    
     
     CGRect parentRectA = [cell.contentView convertRect:cell.productImgView.frame toView:self.tabBarController.view];
     CGRect parentRectB = [self.view convertRect:listRect toView:self.tabBarController.view];

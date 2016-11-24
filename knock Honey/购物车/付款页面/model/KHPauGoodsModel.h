@@ -16,6 +16,7 @@
 
 @property (nonatomic,copy) NSString *title;
 
+
 + (instancetype)kh_objectWithKeyValues:(NSDictionary*)dict;
 
 + (NSMutableArray*)kh_objectWithKeyValuesArray:(NSArray *)array;

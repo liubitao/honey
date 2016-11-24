@@ -132,13 +132,65 @@
     return YES;
 }
 
+//修改验证码
 - (IBAction)valiCodeClick:(id)sender {
     [_pooCode changeCode];
+    
 }
 - (IBAction)phoneClick:(id)sender {
     [Utils timeDecrease:sender];
+    NSMutableDictionary *parameters = [Utils parameter];
+    NSMutableString *string = [NSMutableString stringWithString:_phoneText.text];
+    [string deleteCharactersInRange:NSMakeRange(3, 1)];
+    [string deleteCharactersInRange:NSMakeRange(7, 1)];
+    parameters[@"mobile"] = string;
+    [YWHttptool GET:PortDuanxin_send parameters:parameters success:^(id responseObject) {
+        if ([responseObject[@"result"][@"status"] integerValue] == 2) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"注册失败" message:@"号码已经被被绑定"  preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"重新输入" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            }];
+            [alert addAction:action];
+            [self presentViewController:alert animated:YES completion:nil];
+            return;
+        }
+        [MBProgressHUD showSuccess:@"已发送"];
+    } failure:^(NSError *error) {
+    }];
+
 }
 - (IBAction)savePhone:(id)sender {
+    if (![_valiCode.text compare:_pooCode.changeString
+                             options:NSCaseInsensitiveSearch | NSNumericSearch] == NSOrderedSame) {
+        [MBProgressHUD showError:@"图形验证码错误"];
+        return;
+    }
+    if ([Utils isNull:_phoneText.text] || [Utils isNull:_phoneValiCode.text]) {
+        [MBProgressHUD showError:@"账号或密码不能为空"];
+        return;
+    }
+    
+    NSMutableDictionary *parmeter = [Utils parameter];
+    parmeter[@"code"] = _phoneValiCode.text;
+    NSMutableString *string = [NSMutableString stringWithString:_phoneText.text];
+    [string deleteCharactersInRange:NSMakeRange(3, 1)];
+    [string deleteCharactersInRange:NSMakeRange(7, 1)];
+    parmeter[@"mobile"] = string;
+    parmeter[@"userid"] = [YWUserTool account].userid;
+    [YWHttptool GET:PortBinding_mobile parameters:parmeter success:^(id responseObject) {
+        if ([responseObject[@"result"][@"status"] integerValue] == 1) {
+            [self.navigationController popViewControllerAnimated:YES];
+            YWUser *user = [YWUserTool account];
+            user.mobile = string;
+            [YWUserTool saveAccount:user];
+            if (_phoneBlock) {
+                _phoneBlock(string);
+            }
+            [MBProgressHUD showSuccess:@"修改成功"];
+        }
+        [MBProgressHUD showError:@"短信验证码输入错误"];
+    } failure:^(NSError *error) {
+        [MBProgressHUD showError:@"修改失败"];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -14,6 +14,7 @@
 + (instancetype)kh_objectWithKeyValues:(NSDictionary*)dict{
     KHPayResultModel *model = [KHPayResultModel mj_objectWithKeyValues:dict];
     model.goods = [KHresultGoods mj_objectArrayWithKeyValuesArray:dict[@"goods"]];
+    model.fails = [KHresultGoods mj_objectArrayWithKeyValuesArray:dict[@"fail"]];
     return model;
 }
 @end

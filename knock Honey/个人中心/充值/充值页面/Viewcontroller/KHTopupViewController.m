@@ -11,16 +11,19 @@
 #import "KHTopupTableViewCell.h"
 #import "TopupResultViewController.h"
 #import <AlipaySDK/AlipaySDK.h>
+#import "WXApi.h"
 
 @interface KHTopupViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSIndexPath *_selectedIndexPath;
+    NSString *ordersn;
 }
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *datasoure;
 @property (nonatomic,strong) KHTopupHeader *header;
 
 @end
+
 
 @implementation KHTopupViewController
 
@@ -51,6 +54,72 @@
     [self setupHeader];
     [self setupBottom];
 }
+
+- (void)viewWillAppear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getOrderPayResult:) name:@"ORDER_PAY_NOTIFICATION" object:nil];//监听一个通知
+    [super viewWillAppear:animated];  
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
+
+//支付成功后
+- (void)getOrderPayResult:(NSNotification *)notification{
+    if ([notification.object isEqualToString:@"zhifubao"]) {//支付宝回调
+        if ([notification.userInfo[@"alipay_trade_app_pay_response"][@"msg"] isEqualToString:@"Success"]) {
+            NSMutableDictionary *dict = [Utils parameter];
+            dict[@"userid"] = [YWUserTool account].userid;
+            dict[@"ordersn"] = ordersn;
+            dict[@"pay_code"] = notification.userInfo[@"alipay_trade_app_pay_response"][@"trade_no"];
+            dict[@"pay_mode"] = @"3";
+            [YWHttptool GET:Portuser_recharge parameters:dict success:^(id responseObject) {
+                NSLog(@"%@",responseObject);
+                if ([responseObject[@"result"][@"status"] integerValue] == 1) {
+                    TopupResultViewController *vc = [[TopupResultViewController alloc]init];
+                    NSLog(@"%@ coin",_header.coinAmount);
+                    vc.coinAmount = _header.coinAmount;
+                    [self hideBottomBarPush:vc];
+                    NSString *str = responseObject[@"result"][@"money"];
+                    YWUser *user =  [YWUserTool account];
+                    user.money = str;
+                    [YWUserTool saveAccount:user];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"kTopupNotification" object:str];
+                }
+            } failure:nil];
+
+        }else{
+              [UIAlertController showAlertViewWithTitle:@"提示" Message:@"支付失败" BtnTitles:@[@"知道了"] ClickBtn:nil];
+        }
+    }
+
+    else if ([notification.object isEqualToString:@"success"]){//微信支付回调
+        NSMutableDictionary *dict = [Utils parameter];
+        dict[@"userid"] = [YWUserTool account].userid;
+        dict[@"ordersn"] = ordersn;
+        dict[@"pay_mode"] = @"2";
+        dict[@"pay_code"] = ordersn;
+        [YWHttptool GET:Portuser_recharge parameters:dict success:^(id responseObject) {
+            NSLog(@"%@",responseObject);
+            if ([responseObject[@"result"][@"status"] integerValue] == 1) {
+                TopupResultViewController *vc = [[TopupResultViewController alloc]init];
+                NSLog(@"%@ coin",_header.coinAmount);
+                vc.coinAmount = _header.coinAmount;
+                [self hideBottomBarPush:vc];
+                NSString *str = responseObject[@"result"][@"money"];
+                YWUser *user =  [YWUserTool account];
+                user.money = str;
+                [YWUserTool saveAccount:user];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"kTopupNotification" object:str];
+            }
+        } failure:^(NSError *error) {
+            
+        }];
+    }
+    else{
+        [UIAlertController showAlertViewWithTitle:@"提示" Message:@"支付失败" BtnTitles:@[@"知道了"] ClickBtn:nil];
+    }
+}
 - (void)setupHeader{
     _header = [[KHTopupHeader alloc]initWithFrame:({
         CGRect rect = {0,0,KscreenWidth,1};
@@ -80,39 +149,64 @@
         [MBProgressHUD showError:@"请选择充值金额"];
         return;
     }
-    
-    NSMutableDictionary *params = [Utils parameter];
-    params[@"order_amount"] = _header.coinAmount;
-    params[@"userid"] = [YWUserTool account].userid;
-    params[@"ordersn"] = @0;
-    [MBProgressHUD showMessage:@"支付中..."];
-    [YWHttptool GET:PortAlipaysign parameters:params success:^(id responseObject) {
-        [MBProgressHUD hideHUD];
-        NSLog(@"%@",responseObject);
-        NSString *string = responseObject[@"result"];
+
+    if (_selectedIndexPath.row == 0) {//微信支付
+        if([WXApi isWXAppInstalled]) // 判断用户是否安装微信
+            {
+                NSMutableDictionary *params = [Utils parameter];
+                params[@"order_amount"] = _header.coinAmount;
+                params[@"ordersn"] = @0;
+                [MBProgressHUD showMessage:@"支付中..."];
+                [YWHttptool GET:PortWxpaysign parameters:params success:^(id responseObject){
+                    [MBProgressHUD hideHUD];
+                    NSLog(@"%@",responseObject);
+                    NSDictionary *dataDict = responseObject[@"result"];
+                    
+                    //订单单号
+                    ordersn = dataDict[@"ordersn"];
+                    //调起微信支付
+                    PayReq* wxreq             = [[PayReq alloc] init];
+                    wxreq.openID              = dataDict[@"appid"];
+                    wxreq.partnerId          = dataDict[@"partnerid"];
+                    wxreq.prepayId            = dataDict[@"prepayid"];
+                    wxreq.package             = dataDict[@"package"];
+                    wxreq.nonceStr            = dataDict[@"noncestr"];
+                    wxreq.timeStamp           = [dataDict[@"timestamp"] intValue];
+                    wxreq.sign                = dataDict[@"sign"];
+                    [WXApi sendReq:wxreq];//微信充值成功后
+            } failure:^(NSError *error){
+            [MBProgressHUD hideHUD];
+            [MBProgressHUD showError:@"支付失败"];
+            }];}else{
+                [UIAlertController showAlertViewWithTitle:@"提示" Message:@"您未安装微信!" BtnTitles:@[@"确定"] ClickBtn:nil];
+            }
         
-        //将签名成功字符串格式化为订单字符串,请严格按照该格式
-        NSString *orderString = nil;
-        if (string != nil) {
-//            orderString = [NSString stringWithFormat:@"%@&sign=\\"%@\\"&sign_type=\\"%@\\"",
-//                           orderSpec, string, @"RSA"];
-            
+        
+    }else{//支付宝支付
+        NSMutableDictionary *params = [Utils parameter];
+        params[@"order_amount"] = _header.coinAmount;
+        params[@"ordersn"] = @0;
+        [MBProgressHUD showMessage:@"支付中..."];
+        [YWHttptool GET:PortAlipaysign parameters:params success:^(id responseObject) {
+            NSLog(@"%@",responseObject);
+            [MBProgressHUD hideHUD];
+            NSString *string = responseObject[@"result"][@"paysign"];
+            NSString *ordersns = responseObject[@"result"][@"ordersn"];
             //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
             NSString *appScheme = @"KnockHoneyBT";
+            ordersn = ordersns;
             [[AlipaySDK defaultService] payOrder:string fromScheme:appScheme callback:^(NSDictionary *resultDic) {
-                NSLog(@"reslut = %@",resultDic);
-            }];
-        }
-    } failure:^(NSError *error) {
-        [MBProgressHUD hideHUD];
-        [MBProgressHUD showError:@"支付失败"];
-    }];
-    
-//    TopupResultViewController *vc = [[TopupResultViewController alloc]init];
-//    NSLog(@"%@ coin",_header.coinAmount);
-//    vc.coinAmount = _header.coinAmount;
-//    [self hideBottomBarPush:vc];
+                NSLog(@"reslut = %@",resultDic);  NSData *data = [resultDic[@"result"] dataUsingEncoding:NSUTF8StringEncoding];
+                NSDictionary *weatherDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+                NSNotification *notification = [NSNotification notificationWithName:@"ORDER_PAY_NOTIFICATION" object:@"zhifubao" userInfo:weatherDic];
+                [[NSNotificationCenter defaultCenter] postNotification:notification];            }];
+        } failure:^(NSError *error){
+            [MBProgressHUD hideHUD];
+            [MBProgressHUD showError:@"支付失败"];
+        }];
+    }
 }
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;

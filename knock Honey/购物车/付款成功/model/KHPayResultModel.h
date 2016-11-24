@@ -9,9 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface KHPayResultModel : NSObject
-@property (nonatomic,copy) NSString *count;
+@property (nonatomic,strong)  NSMutableArray *fails;
+@property (nonatomic,copy) NSString *failmoney;
 @property (nonatomic,strong) NSMutableArray *goods;
+@property (nonatomic,copy) NSString *money;
 @property (nonatomic,copy) NSString *status;
+@property (nonatomic,copy) NSString *usermoney;
 
 + (instancetype)kh_objectWithKeyValues:(NSDictionary*)dict;
 @end

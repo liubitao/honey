@@ -15,6 +15,15 @@ typedef NS_ENUM(NSUInteger, KHPayTotalType) {
     KHPayTypeNoPay, //没余额
 };
 
+typedef NS_ENUM(NSUInteger, KHPayHybridType) {
+    KHPayTypeYuePay = 0, //只是余额
+    KHPayTypeWeixinPay, //只是微信
+    KHPayTypeAliPay, //只是支付宝
+    KHPayTypeYueWeixinPay, //余额和微信
+    KHPayTypeYueAliPay, //余额和支付宝
+};
+
+
 
 @interface KHPayViewController : KHBaseViewController
 
@@ -22,6 +31,9 @@ typedef NS_ENUM(NSUInteger, KHPayTotalType) {
 @property (nonatomic,strong) KHPayModel *payModel;
 
 @property (nonatomic,assign) KHPayTotalType payType;
+
+@property (nonatomic,assign) KHPayHybridType hybridType;
+
 
 
 @end

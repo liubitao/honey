@@ -73,10 +73,13 @@
     if (indexPath.row == 1) {
         cell.detailTextLabel.text = user.username;
     }
-//    if (indexPath.row == 2) {
-//        cell.detailTextLabel.text = user.
-//    }
-    
+    if (indexPath.row == 2) {
+        if ([user.mobile isEqualToString:@"0"]) {
+            cell.detailTextLabel.text = @"请绑定电话号码";
+        }else{
+            cell.detailTextLabel.text = user.mobile;
+        }
+    }
     if (indexPath.row==3) {
         cell.detailTextLabel.text = user.userid;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -130,6 +133,10 @@
     }
     if (indexPath.row == 2) {
         KHPhoneViewController *phoneVC = [[KHPhoneViewController alloc]init];
+        phoneVC.phoneBlock = ^(NSString *phone) {
+            ProfileDetailCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+            cell.detailTextLabel.text = phone;
+        };
         [self hideBottomBarPush:phoneVC];
     }
     if (indexPath.row == 4) {
@@ -141,13 +148,32 @@
 
 //上传头像
 -(void)updatePotrait{
-    
+    NSMutableDictionary *parameter = [Utils parameter];
+    NSData *data =  UIImageJPEGRepresentation(_image, 0.7);
+    NSString *str1 =  [data base64EncodedStringWithOptions:0];
+    parameter[@"pic"] = str1;
+    parameter[@"userid"] = [YWUserTool account].userid;
+    parameter[@"type"] = [Utils typeForImageData:data];
+   [YWHttptool Post:PortChange_pic parameters:parameter success:^(id responseObject) {
+       if ([responseObject[@"result"][@"status"] integerValue] == 1) {
+           YWUser *user = [YWUserTool account];
+           user.img = responseObject[@"result"][@"img"];
+           [YWUserTool saveAccount:user];
+           NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+           KHInformationCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+           cell.headImage.image = _image;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"freshenPerson" object:nil];
+           [MBProgressHUD showSuccess:@"修改成功"];
+       }
+   } failure:^(NSError *error) {
+       [MBProgressHUD showError:@"修改失败"];
+   }];
 }
 
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     _image = info[UIImagePickerControllerEditedImage];
-    [picker dismissViewControllerAnimated:YES completion:^{
+    [picker dismissViewControllerAnimated:NO completion:^{
         [self updatePotrait];
     }];
     

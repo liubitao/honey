@@ -77,10 +77,10 @@
         _productLabel.size = CGSizeMake(kScreenWidth-buttonPadding*2, 18);
         _productLabel.font = SYSTEM_FONT(16);
         _productLabel.textColor = UIColorHex(666666);
-        NSInteger renci = _model.count.integerValue;
+        NSInteger renci = _model.goods.count;
         NSInteger count = 0;
         for (KHresultGoods *good in _model.goods) {
-            count+=good.buynum.integerValue;
+            count+= good.buynum.integerValue;
         }
         _productLabel.text = [NSString stringWithFormat:@"成功参与%zi件商品,共%zi人次",renci,count];
         [self addSubview:_productLabel];

@@ -33,7 +33,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SLd-kK-3QX">
-                        <rect key="frame" x="105" y="119" width="260" height="100"/>
+                        <rect key="frame" x="105" y="124" width="260" height="100"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4SX-cN-xjU">
                                 <rect key="frame" x="10" y="29" width="240" height="17"/>
@@ -78,7 +78,7 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s07-Aa-dps">
-                        <rect key="frame" x="298" y="89" width="62" height="20"/>
+                        <rect key="frame" x="298" y="94" width="62" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="62" id="DDU-8O-tHA"/>
                             <constraint firstAttribute="height" constant="20" id="iBN-Je-ADR"/>
@@ -113,7 +113,7 @@
                     <constraint firstItem="h5t-tb-j2w" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="36" id="Jea-9y-aes"/>
                     <constraint firstItem="s07-Aa-dps" firstAttribute="leading" secondItem="vsV-WY-XNV" secondAttribute="trailing" constant="10" id="KNL-fa-24V"/>
                     <constraint firstItem="N2v-yY-Ddg" firstAttribute="top" secondItem="Xan-n9-rAg" secondAttribute="bottom" constant="10" id="Lbe-1A-gN3"/>
-                    <constraint firstAttribute="bottom" secondItem="SLd-kK-3QX" secondAttribute="bottom" constant="15" id="OUm-DW-RA6"/>
+                    <constraint firstAttribute="bottom" secondItem="SLd-kK-3QX" secondAttribute="bottom" constant="10" id="OUm-DW-RA6"/>
                     <constraint firstAttribute="trailing" secondItem="UQv-sv-n6g" secondAttribute="trailing" constant="10" id="WWU-aM-jbn"/>
                     <constraint firstItem="SLd-kK-3QX" firstAttribute="top" secondItem="s07-Aa-dps" secondAttribute="bottom" constant="10" id="XOs-JM-KMH"/>
                     <constraint firstItem="Xan-n9-rAg" firstAttribute="leading" secondItem="h5t-tb-j2w" secondAttribute="trailing" constant="8" id="XcP-Tl-ayO"/>

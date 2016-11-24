@@ -13,35 +13,37 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    _partInBtn.layer.cornerRadius = 5;
+    _partInBtn.layer.borderWidth = 1;
+    _partInBtn.layer.borderColor = kDefaultColor.CGColor;
+    _partInBtn.layer.masksToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 }
 - (IBAction)clickBtton:(UIButton *)sender {
-    if ([self.delegate respondsToSelector:@selector(click:)]) {
-        if (sender.tag == 1) {
-            [self.delegate click:_model1];
-        }else{
-            [self.delegate click:_model2];
-        }
+    if (_delegate && [_delegate respondsToSelector:@selector(clickAddListButtonAtCell:)]) {
+        [_delegate clickAddListButtonAtCell:self];
     }
 }
-
-- (void)setModel1:(KHSearchModel *)model1{
-    _model1 = model1;
+- (void)setModel:(KHTenModel*)model{
+    _model = model;
     
-    [_button1 sd_setImageWithURL:[NSURL URLWithString:model1.img] forState:UIControlStateNormal];
-    [_button1 setTitle:model1.name forState:UIControlStateNormal];
-}
-
-- (void)setModel2:(KHSearchModel *)model2{
-    _model2 = model2;
+    [_productPic sd_setImageWithURL:[NSURL URLWithString:model.thumb]];
+    _productName.text = model.title;
     
-    [_button2 sd_setImageWithURL:[NSURL URLWithString:model2.img] forState:UIControlStateNormal];
-    [_button2 setTitle:model2.name forState:UIControlStateNormal];
-}
+    _progressView.progress = _model.jindu.integerValue;
+    
 
+    
+    _zongrenshu.attributedText = [Utils stringWith:[NSString stringWithFormat:@"总需%@",model.zongrenshu] font1:SYSTEM_FONT(12) color1:[UIColor blackColor] font2:SYSTEM_FONT(12) color2:UIColorHex(#7CC4EC) range:NSMakeRange(2, model.zongrenshu.length)];
+    
+    NSInteger right = [_model.zongrenshu intValue]- [_model.canyurenshu intValue];
+    NSString *str = [NSString stringWithFormat:@"%zi",right];
+    _shengyurenshu.attributedText = [Utils stringWith:[NSString stringWithFormat:@"剩余%@",str] font1:SYSTEM_FONT(12) color1:[UIColor blackColor] font2:SYSTEM_FONT(12) color2:kDefaultColor range:NSMakeRange(2, str.length)];
+}
 
 
 @end

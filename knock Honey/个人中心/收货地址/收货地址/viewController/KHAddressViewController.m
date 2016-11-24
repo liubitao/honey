@@ -17,6 +17,7 @@
 @interface KHAddressViewController ()<UITableViewDataSource,UITableViewDelegate,DZNEmptyDataSetDelegate,DZNEmptyDataSetSource,KHAddressDelegate,KHPhoneDelegate>{
     NSInteger addressCount;
     NSInteger phoneCount;
+    NSInteger selectRow;
 }
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *dataSoure;
@@ -37,7 +38,7 @@ static NSString * rightCell = @"rightCell";
 
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kNavigationBarHeight, kScreenWidth, KscreenHeight - kNavigationBarHeight) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kNavigationBarHeight, kScreenWidth, _chooseAdd ? KscreenHeight - kNavigationBarHeight- 45: KscreenHeight - kNavigationBarHeight) style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.tag = 1;
@@ -67,6 +68,15 @@ static NSString * rightCell = @"rightCell";
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.view addSubview:self.tableView];
+    if (_chooseAdd) {
+        UIButton *clickBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, KscreenHeight-45, kScreenWidth, 45)];
+        clickBtn.backgroundColor = kDefaultColor;
+        [clickBtn setTitle:@"确定" forState:UIControlStateNormal];
+        clickBtn.titleLabel.font = SYSTEM_FONT(19);
+        [clickBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [clickBtn addTarget:self action:@selector(confirm) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:clickBtn];
+    }
     self.title = @"地址管理";
     [self setRightImageNamed:@"add" action:@selector(addAddress:forEvent:)];
     [self setBackItem];
@@ -80,6 +90,25 @@ static NSString * rightCell = @"rightCell";
     
     [self.tableView registerNib:NIB_NAMED(@"KHAddressTableViewCell") forCellReuseIdentifier:addressCell];
     [self.tableView registerNib:NIB_NAMED(@"KHPhoneTableViewCell") forCellReuseIdentifier:phoneCell];
+}
+
+- (void)confirm{
+    NSMutableDictionary *parameter = [Utils parameter];
+    parameter[@"lotteryid"] = _lotteryid;
+    KHAddressModel *model = self.dataSoure[selectRow];
+    if (model.type.integerValue != _goodstype) {
+        [UIAlertController showAlertViewWithTitle:@"提示" Message:_goodstype == 1 ?@"请选择实物地址":@"请选择虚拟地址" BtnTitles:@[@"知道了"] ClickBtn:nil];
+        return;
+    }
+    parameter[@"addressid"] = model.ID;
+    [YWHttptool GET:PortAddress_confirm parameters:parameter success:^(id responseObject) {
+        NSLog(@"%@",responseObject);
+        [self.navigationController popViewControllerAnimated:YES];
+        [MBProgressHUD showSuccess:@"地址确认成功，等待发货"];
+    } failure:^(NSError *error){
+        [MBProgressHUD showError:@"地址确认失败"];
+    }];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -143,7 +172,7 @@ static NSString * rightCell = @"rightCell";
       
             [cell setModel:model];
             cell.delegate = self;
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }else{
             KHPhoneTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:phoneCell forIndexPath:indexPath];
@@ -215,6 +244,15 @@ static NSString * rightCell = @"rightCell";
             KHEditPhoneViewController *editPhoneVC = [[KHEditPhoneViewController alloc]init];
             editPhoneVC.editType = KHPhoneAdd;
             [self hideBottomBarPush:editPhoneVC];
+        }
+    }else{
+        if (_chooseAdd) {
+            UITableViewCell *lastCell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:selectRow]];
+            lastCell.accessoryType = UITableViewCellAccessoryNone;
+            
+            UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            selectRow = indexPath.section;
         }
     }
 }

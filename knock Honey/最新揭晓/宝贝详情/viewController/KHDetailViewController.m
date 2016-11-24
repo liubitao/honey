@@ -30,7 +30,12 @@
 @end
 
 @implementation KHDetailViewController
-
+- (KHCodeViewController *)codeVC{
+    if (!_codeVC) {
+        _codeVC = [[KHCodeViewController alloc]init];
+    }
+    return _codeVC;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self createNavi];
@@ -65,43 +70,39 @@
     
     __weak typeof(self) weakSelf = self;
     
-    header.codeBlock = ^{
-//        KHCodeViewController *vc = self.codeVC;
-//        NSArray *array = [model.codes componentsSeparatedByString:@","];
-//        vc.dataArray = array.mutableCopy;
-//        if (model.lottery){
-//            vc.winCode = model.lottery.wincode;
-//        }
-//        [vc.ColloctionView reloadData];
-//        //弹出蒙版
-//        YWCover  *cover = [YWCover show];
-//        cover.delegate = self;
-//        [cover setDimBackground:YES];
-//        
-//        // 弹出pop菜单
-//        YWPopView *menu = [YWPopView showInRect:CGRectZero];
-//        menu.center = self.view.center;
-//        menu.transform = CGAffineTransformMakeScale(0, 0);
-//        [UIView animateWithDuration:0.5
-//                         animations:^{
-//                             menu.transform = CGAffineTransformIdentity;
-//                         }];
-//        menu.contentView = vc.view;
+    header.codeBlock = ^{//点击获奖人的参与次数
+        KHCodeViewController *vc = self.codeVC;
+        NSArray *array = [weakSelf.model.winner.codes componentsSeparatedByString:@","];
+        vc.dataArray = array.mutableCopy;
+        if (weakSelf.model.winner){
+            vc.winCode = weakSelf.model.winner.wincode;
+        }
+        [vc.ColloctionView reloadData];
+        //弹出蒙版
+        YWCover  *cover = [YWCover show];
+        cover.delegate = self;
+        [cover setDimBackground:YES];
+        
+        // 弹出pop菜单
+        YWPopView *menu = [YWPopView showInRect:CGRectZero];
+        menu.center = self.view.center;
+        menu.transform = CGAffineTransformMakeScale(0, 0);
+        [UIView animateWithDuration:0.5
+                         animations:^{
+                             menu.transform = CGAffineTransformIdentity;
+                         }];
+        menu.contentView = vc.view;
     };
     //详情中的选项
     header.clickMenuBlock = ^(id object){
         switch ([object integerValue]) {
-            case 0: {//图文详情
-                NSLog(@"图文详情");
-            }
-                break;
-            case 1: {//晒单分享
+            case 0: {//晒单分享
                 KHGoodsAppearController *goodsVC = [[KHGoodsAppearController alloc]init];
                 goodsVC.goodsid = _goodsid;
                 [weakSelf hideBottomBarPush:goodsVC];
             }
                 break;
-            case 2: {//往期揭晓
+            case 1: {//往期揭晓
                 KHPastViewController *pastVC = [[KHPastViewController alloc]init];
                 pastVC.goodsid = _goodsid;
                 [weakSelf hideBottomBarPush:pastVC];
@@ -114,13 +115,35 @@
     };
     __weak typeof(header) weakHeader = header;
     header.headerHeight = ^(){//头高
-        weakHeader.height = 695-200+kScreenWidth/375*200-30+weakHeader.productNameLabel.height;
+        weakHeader.height = 655-200+kScreenWidth/375*200-30+weakHeader.productNameLabel.height;
         weakSelf.tableView.tableHeaderView = weakHeader;
+    };
+    
+    header.lookBlock = ^{
+        KHCodeViewController *vc = self.codeVC;
+        NSArray *array = [weakSelf.model.codes componentsSeparatedByString:@","];
+        vc.dataArray = array.mutableCopy;
+        [vc.ColloctionView reloadData];
+        //弹出蒙版
+        YWCover  *cover = [YWCover show];
+        cover.delegate = self;
+        [cover setDimBackground:YES];
+        
+        // 弹出pop菜单
+        YWPopView *menu = [YWPopView showInRect:CGRectZero];
+        menu.center = self.view.center;
+        menu.transform = CGAffineTransformMakeScale(0, 0);
+        [UIView animateWithDuration:0.5
+                         animations:^{
+                             menu.transform = CGAffineTransformIdentity;
+                         }];
+        menu.contentView = vc.view;
     };
     
     header.countDetailBlock = ^(){//计算详情
         KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
-        NSString *str = [NSString stringWithFormat:@"%@?goodsid=%@&userid=%@",PortFormula,_goodsid,_model.winner.qishu];
+        NSString *str = [NSString stringWithFormat:@"%@?goodsid=%@&qishu=%@",PortFormula,_goodsid,_model.winner.qishu];
+        
         VC.urlStr = str;
         VC.title = @"计算详情";
         [weakSelf hideBottomBarPush:VC];
@@ -137,13 +160,21 @@
         [weakSelf.tableView.mj_header endRefreshing];
     }];
     //上拉刷新
-    _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+    _tableView.mj_footer = [GPAutoFooter footerWithRefreshingBlock:^{
         [weakSelf getMoreData];
         [weakSelf.tableView .mj_footer endRefreshing];
     }];
     [_tableView.mj_header beginRefreshing];
     
 }
+
+//点击蒙版的时候调用
+- (void)coverDidClickCover:(YWCover *)cover{
+    // 隐藏pop菜单
+    [YWPopView hide];
+}
+
+
 //获取数据
 - (void)getData{
     NSMutableDictionary *parameter = [Utils parameter];
@@ -168,7 +199,10 @@
     parameter[@"qishu"] = _model.qishu;
     [YWHttptool GET:PortGoodsOrder parameters:parameter success:^(id responseObject) {
         NSLog(@"%@",responseObject);
-        if ([responseObject[@"isError"] integerValue])return ;
+        if ([responseObject[@"isError"] integerValue]){
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            return ;
+        };
         NSArray *array = [KHDetailModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
         [_dataArray addObjectsFromArray:array];
         [_tableView reloadData];
@@ -226,6 +260,7 @@
 
                 [AppDelegate getAppDelegate].value = [responseObject[@"result"][@"count_cart"] integerValue];
                 [self setBadgeValue:[AppDelegate getAppDelegate].value atIndex:3];
+                
                 //刷新购物车
                 [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshCart" object:nil userInfo:nil];
             } failure:^(NSError *error) {
@@ -242,6 +277,8 @@
                 
                 [AppDelegate getAppDelegate].value = [responseObject[@"result"][@"count_cart"] integerValue];
                 [self setBadgeValue:[AppDelegate getAppDelegate].value atIndex:3];
+                [self.tabBarController setSelectedIndex:3];
+                [self.navigationController popToRootViewControllerAnimated:YES];
                 //刷新购物车
                 [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshCart" object:nil userInfo:nil];
             } failure:^(NSError *error) {

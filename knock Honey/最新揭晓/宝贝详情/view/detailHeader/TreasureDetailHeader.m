@@ -166,8 +166,12 @@ const CGFloat kTreasureDetailHeaderPageControlHeight = 30.0; //pagecontroll heig
             _treasureProgressView.width,
             30};
         rect;
-    }) isParticipated:_type==TreasureDetailHeaderTypeParticipated?YES:NO];
-
+    }) model:_model];
+    _participateView.lookBlock = ^{
+        if (weakSelf.lookBlock) {
+            weakSelf.lookBlock();
+        }
+    };
     _participateView.backgroundColor = UIColorHex(0xF5F5F5);
     [self addSubview:_participateView];
     
@@ -202,7 +206,7 @@ const CGFloat kTreasureDetailHeaderPageControlHeight = 30.0; //pagecontroll heig
     
     
     //下面的选项
-    NSArray *dataArray = @[@"图文详情",@"晒单分享",@"往期揭晓"];
+    NSArray *dataArray = @[@"晒单分享",@"往期揭晓"];
     _headerMenu = [[TreaureHeaderMenu alloc]initWithFrame:({
         CGRect rect = {0,_declareBtn.bottom+5,kScreenWidth,1};
         rect;
@@ -260,17 +264,17 @@ const CGFloat kTreasureDetailHeaderPageControlHeight = 30.0; //pagecontroll heig
 @implementation ParticipateView
 
 - (instancetype)initWithFrame:(CGRect)frame
-               isParticipated:(BOOL)isParticipated {
+               model:(KHProductModel *)model {
     self = [super initWithFrame:frame];
     if (self) {
-        _isParticipated = isParticipated;
+        _model = model;
         [self _init];
     }
     return self;
 }
 
 - (void)_init {
-    if (!_isParticipated) {
+    if ([self.model.codes isEqualToString:@"0"]) {
         _participateLabel = [YYLabel new];
         _participateLabel.backgroundColor = UIColorHex(0xF5F5F5);
         _participateLabel.origin = CGPointMake(0, 0);
@@ -282,22 +286,41 @@ const CGFloat kTreasureDetailHeaderPageControlHeight = 30.0; //pagecontroll heig
         [self addSubview:_participateLabel];
         return;
     }
+    
+    NSArray *array = [self.model.codes componentsSeparatedByString:@","];
+    
     _participateLabel = [YYLabel new];
     _participateLabel.origin = CGPointMake(5, 5);
-    _participateLabel.size = CGSizeMake(self.width-5*2, 15);
+    _participateLabel.size = CGSizeMake(self.width-100, 15);
     _participateLabel.textColor = UIColorHex(666666);
     _participateLabel.font = SYSTEM_FONT(12);
-    _participateLabel.text = @"您参与了:2人次";
+    _participateLabel.text = [NSString stringWithFormat:@"您参与了:%zi人次",array.count];
     [self addSubview:_participateLabel];
     
     _numberLabel = [YYLabel new];
     _numberLabel.origin = CGPointMake(5, _participateLabel.bottom+5);
-    _numberLabel.size = CGSizeMake(self.width-5*2, 15);
+    _numberLabel.size = CGSizeMake(self.width-100, 15);
     _numberLabel.textColor = UIColorHex(666666);
     _numberLabel.font = SYSTEM_FONT(12);
-    _numberLabel.text = @"夺宝号码:10004253 10003234";
+    _numberLabel.text = [NSString stringWithFormat:@"夺宝号码:%@",self.model.codes];
     [self addSubview:_numberLabel];
+    
+    UIButton *lookBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    lookBtn.origin = CGPointMake(_numberLabel.right + 10, 10);
+    lookBtn.size = CGSizeMake(70, 25);
+    lookBtn.backgroundColor = UIColorHex(#ACACAC);
+    lookBtn.titleLabel.font = SYSTEM_FONT(13);
+    [lookBtn setTitle:@"查看全部" forState:UIControlStateNormal];
+    [lookBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [lookBtn addTarget:self action:@selector(lookCodes) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:lookBtn];
+    
     self.height = _numberLabel.bottom+5;
+}
+- (void)lookCodes{
+    if (_lookBlock) {
+        _lookBlock();
+    }
 }
 
 @end

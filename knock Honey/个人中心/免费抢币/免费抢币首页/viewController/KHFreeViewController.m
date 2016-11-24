@@ -64,7 +64,6 @@ static NSString *FreeCell = @"FreeCell";
             [weakSelf hideBottomBarPush:VC];
         }
     };
-    
     [self getData];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"KHFreeTableViewCell" bundle:nil] forCellReuseIdentifier:FreeCell];

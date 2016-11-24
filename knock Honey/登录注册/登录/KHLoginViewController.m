@@ -277,6 +277,7 @@
                                         parameter[@"user"] = jsonString;
                                         
                                         [YWHttptool Post:PortThird_login parameters:parameter success:^(id responseObject) {
+                                            NSLog(@"%@",responseObject);
                                             if ([responseObject[@"isError"] integerValue]) return ;
                                             YWUser *user = [YWUser mj_objectWithKeyValues:responseObject[@"result"]];
                                             [YWUserTool saveAccount:user];

@@ -57,7 +57,7 @@ static NSString * published = @"published";
     [self.tableView.mj_header beginRefreshing];
     
     //上拉刷新
-    _tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+    _tableView.mj_footer = [GPAutoFooter footerWithRefreshingBlock:^{
         
         [weakSelf getMoreData];
         [weakSelf.tableView.mj_footer endRefreshing];
@@ -89,7 +89,10 @@ static NSString * published = @"published";
     parameter[@"p"] = [NSNumber numberWithInteger:++_currentPage];
     [YWHttptool GET:PortGoodszxjx parameters:parameter success:^(id responseObject) {
         NSLog(@"%@",responseObject);
-        if ([responseObject[@"isError"] integerValue])return ;
+        if ([responseObject[@"isError"] integerValue]){
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            return ;
+        };
         NSMutableArray *array = [KHKnowModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
         [_dataArray addObjectsFromArray:array];
         [self.tableView reloadEmptyDataSet];

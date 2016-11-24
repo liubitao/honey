@@ -24,9 +24,6 @@
             })];
             menu.tag = idx;
             menu.titleLabel.text = _data[idx];
-            if ([_data[idx] isEqualToString:@"图文详情"]) {
-                menu.detailLabel.text = @"建议在wifi下查看";
-            }
             menu.eventButton.tag = idx;
             [menu.eventButton setBackgroundImage:[UIImage imageWithColor:UIColorHex(f0f0f0)] forState:UIControlStateHighlighted];
             [menu.eventButton addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];

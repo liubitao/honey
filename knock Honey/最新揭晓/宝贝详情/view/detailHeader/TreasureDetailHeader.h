@@ -104,6 +104,7 @@ typedef void(^TreasureCountDetailButtonBlock)(void);
 
 @property (nonatomic,copy) TreasureCountDetailButtonBlock codeBlock;
 
+
 - (instancetype)initWithFrame:(CGRect)frame
                          type:(TreasureDetailHeaderType)type
                     countTime:(NSInteger)countTime Model:(KHProductModel*)model;
@@ -111,18 +112,22 @@ typedef void(^TreasureCountDetailButtonBlock)(void);
 
 @end
 
+typedef void(^TreasureLookButtonBlock)(void);
 /**是否已参与
  */
 @interface ParticipateView : UIView
 
+@property (nonatomic,copy) TreasureLookButtonBlock lookBlock;
 @property (nonatomic, strong) YYLabel *participateLabel;
+
+@property (nonatomic,strong) KHProductModel *model;
 
 @property (nonatomic, strong) YYLabel *numberLabel;
 
 @property (nonatomic, assign) BOOL isParticipated;
 
 - (instancetype)initWithFrame:(CGRect)frame
-               isParticipated:(BOOL)isParticipated;
+               model:(KHProductModel *)model;
 
 @end
 
@@ -154,6 +159,9 @@ typedef void(^TreasureCountDetailButtonBlock)(void);
 
 //声明blcok
 @property (nonatomic,copy) TreasureCountDetailButtonBlock declareBlcok;
+
+//查看自己的codes
+@property (nonatomic,copy) TreasureCountDetailButtonBlock lookBlock;
 
 //头部高度变化
 @property (nonatomic,copy) TreasureCountDetailButtonBlock headerHeight;

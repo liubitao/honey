@@ -11,8 +11,12 @@
 #import "KHcartModel.h"
 #import <UMSocialCore/UMSocialCore.h>
 #import <AlipaySDK/AlipaySDK.h>
+#import "WXApi.h"
+#import "KHZhifubaoModel.h"
+#import <MJExtension.h>
+#import "GPAdViewController.h"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<WXApiDelegate>
 
 @end
 
@@ -21,24 +25,23 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    KHTabbarViewController *tabbarVC = [[KHTabbarViewController alloc]init];
-    self.window.rootViewController = tabbarVC;
+    
+    self.window.rootViewController = [[GPAdViewController alloc]init];
     [self.window makeKeyAndVisible];
     
     [self configApper];
-    
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cartNumber) name:@"freshenPerson" object:nil];
 
-    //购物车中的商品数
-    [self cartNumber];
-    
     //友盟
     [self configUM];
+    
+    //微信支付
+    [WXApi registerApp:@"wx1bf9134fbd335945" withDescription:@"knockHoney"];
     return YES;
 }
 
 - (void)configApper{
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    
     NSDictionary *navbarTitleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
     [UINavigationBar appearance].titleTextAttributes = navbarTitleTextAttributes;
     [UINavigationBar appearance].tintColor = [UIColor whiteColor];
@@ -78,17 +81,45 @@
         //跳转支付宝钱包进行支付，处理支付结果
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
             NSLog(@"result = %@",resultDic);
+            NSData *data = [resultDic[@"result"] dataUsingEncoding:NSUTF8StringEncoding];
+            NSDictionary *weatherDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+            NSNotification *notification = [NSNotification notificationWithName:@"ORDER_PAY_NOTIFICATION" object:@"zhifubao" userInfo:weatherDic];
+            [[NSNotificationCenter defaultCenter] postNotification:notification];
         }];
-        
+        return YES;
     }else{
-        BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];
-        if (!result) {
-            
-        }
-        return result;
-    }
+        [WXApi handleOpenURL:url delegate:self];
+        return [[UMSocialManager defaultManager] handleOpenURL:url];
     
-    return YES;
+    }
+}
+/*发送一个sendReq后，收到微信的回应收到一个来自微信的处理结果。 
+ * 调用一次sendReq后会收到onResp。 
+ * 可能收到的处理结果有SendMessageToWXResp、SendAuthResp等。 
+ * @param resp具体的回应内容，是自动释放的 
+ */
+- (void)onResp:(BaseResp *)resp{
+    //支付返回结果，实际支付结果需要去微信服务器端查询
+    NSString *strMsg = [NSString stringWithFormat:@"支付结果"];
+    switch (resp.errCode) {
+        case WXSuccess:{
+            strMsg = @"支付结果：成功！";
+            NSLog(@"支付成功－PaySuccess，retcode = %d", resp.errCode);
+            NSNotification *notification = [NSNotification notificationWithName:@"ORDER_PAY_NOTIFICATION" object:@"success"];
+            
+            [[NSNotificationCenter defaultCenter] postNotification:notification];
+        }
+            break;
+        default:{
+            strMsg = [NSString stringWithFormat:@"支付结果：失败！retcode = %d, retstr = %@", resp.errCode,resp.errStr];
+            NSLog(@"错误，retcode = %d, retstr = %@", resp.errCode,resp.errStr);
+            NSNotification *notification = [NSNotification notificationWithName:@"ORDER_PAY_NOTIFICATION" object:@"fail"];
+            
+            [[NSNotificationCenter defaultCenter] postNotification:notification];
+        }
+           
+            break;
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -119,22 +150,6 @@
     return (AppDelegate *)[UIApplication sharedApplication].delegate;
 }
 
-//购物车中的商品数
-- (void)cartNumber{
-    if ([YWUserTool account]) {
-        NSMutableDictionary *parameter = [Utils parameter];
-        parameter[@"userid"] = [YWUserTool account].userid;
-        [YWHttptool GET:PortIndex parameters:parameter success:^(id responseObject) {
-            if ([responseObject[@"isError"] integerValue]) return ;
-            NSMutableArray *mutableArray = [KHcartModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
-            _value = mutableArray.count;
-            KHTabbarViewController *tabbarVC = (KHTabbarViewController *)self.window.rootViewController;
-            [tabbarVC.tabBar setBadgeValue:_value AtIndex:3];
-        } failure:^(NSError *error) {
-        }];
-    }else{
-            _value = 0;
-    }
-}
+
 
 @end

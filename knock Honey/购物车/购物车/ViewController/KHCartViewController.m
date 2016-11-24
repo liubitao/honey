@@ -56,7 +56,6 @@
         _tableView.emptyDataSetDelegate = self;
         _tableView.emptyDataSetSource = self;
         _tableView.backgroundColor = [UIColor whiteColor];
-        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.allowsMultipleSelection = YES;
         _tableView.allowsSelectionDuringEditing = YES;
         [_tableView setCustomSeparatorInset:UIEdgeInsetsZero];
@@ -135,7 +134,6 @@
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"userid"] = [YWUserTool account].userid;
     [YWHttptool GET:PortIndex parameters:parameter success:^(id responseObject) {
-        NSLog(@"%@",responseObject);
         if ([responseObject[@"isError"] integerValue]) return ;
         [_dataArray removeAllObjects];
         NSMutableArray *mutableArray = [KHcartModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
@@ -182,6 +180,7 @@
     NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     parameter[@"cart"] = jsonString;
     [YWHttptool Post:PortOrder_submit parameters:parameter success:^(id responseObject){
+        NSLog(@"%@",responseObject);
         [MBProgressHUD hideHUDForView:weakSelf.tableView];
         if ([responseObject[@"isError"] integerValue]) return ;
         KHPayModel *model = [KHPayModel kh_objectWithKeyValues:responseObject[@"result"]];
@@ -196,6 +195,9 @@
 
 - (void)excuteDeleteEvent {
     __weak typeof(self) weakSelf = self;
+    if (self.deleteArray.count == 0) {
+        [UIAlertController showAlertViewWithTitle:@"提示" Message:@"请选择需要删除的商品" BtnTitles:@[@"知道了"] ClickBtn:nil];
+    }
     __weak typeof(_billView) weaKbillView = _billView;
     _billView.deleteBlock = ^{
     [UIAlertController showAlertViewWithTitle:nil Message:@"确定要删除吗?" BtnTitles:@[@"取消",@"确定"] ClickBtn:^(NSInteger index) {

@@ -48,7 +48,7 @@
     [UIAlertController showAlertViewWithTitle:nil Message:@"确定删除" BtnTitles:@[@"取消",@"确定"] ClickBtn:^(NSInteger index) {
         if (index == 1) {
             NSMutableDictionary *parameter = [Utils parameter];
-            parameter[@"addressid"] = _model.ID;
+            parameter[@"id"] = _model.ID;
             [YWHttptool GET:PortDel_address parameters:parameter success:^(id responseObject) {
                 NSLog(@"%@",responseObject);
                 if ([responseObject[@"isError"] integerValue] == 1){

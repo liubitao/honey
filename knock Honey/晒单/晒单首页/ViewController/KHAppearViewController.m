@@ -61,7 +61,7 @@
     [self.tableView.mj_header beginRefreshing];
     
     //上拉刷新
-    self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+    self.tableView.mj_footer = [GPAutoFooter footerWithRefreshingBlock:^{
         [weakSelf getMoreData];
         [weakSelf.tableView.mj_footer endRefreshing];
     }];  
@@ -87,8 +87,13 @@
     parameter[@"p"] = @(++_pageCount);
     parameter[@"userid"] = [YWUserTool account].userid;
     [YWHttptool GET:PortComment_list parameters:parameter success:^(id responseObject){
-        if ([responseObject[@"isError"] integerValue]) return ;
-        [self.dataArray addObjectsFromArray:[KHAppearModel kh_objectWithKeyValuesArray:responseObject[@"result"]]];
+        if ([responseObject[@"isError"] integerValue]) {
+                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+                return;
+        }
+        NSArray *array = [KHAppearModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
+        [self.dataArray addObjectsFromArray:array];
+      
         [self.tableView reloadData];
     } failure:^(NSError *error){
     }];
@@ -118,7 +123,9 @@
     NSMutableDictionary *parameter = [Utils parameter];
     KHAppearModel *apperModel = self.dataArray[indexPath.row];
     parameter[@"comment_id"] = apperModel.ID;
-    parameter[@"userid"] = [YWUserTool account].userid;
+    if ([YWUserTool account]) {
+           parameter[@"userid"] = [YWUserTool account].userid;
+    }
     [YWHttptool GET:PortComment_detail parameters:parameter success:^(id responseObject){
         if ([responseObject[@"isError"] integerValue]) return ;
         KHAppearDetailModel *model = [KHAppearDetailModel kh_objectWithKeyValues:responseObject[@"result"]];

@@ -13,7 +13,7 @@
 #import "SearchBar.h"
 #import "TSAnimation.h"
 
-@interface KHSearchResultController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,CategoryDetailCellDelegate,DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>{
+@interface KHSearchResultController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,CategoryDetailCellDelegate,DZNEmptyDataSetDelegate,DZNEmptyDataSetSource,TSAnimationDelegate>{
     SearchBar *search;
 }
 @property (nonatomic,strong) UITableView *tableView;
@@ -25,6 +25,13 @@
 
 @implementation KHSearchResultController
 
+- (UIImageView *)productView {
+    if (!_productView) {
+        _productView = [[UIImageView alloc]initWithFrame:CGRectZero];
+        _productView.contentMode = UIViewContentModeScaleAspectFit;
+    }
+    return _productView;
+}
 - (NSMutableArray *)dataArray{
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];

@@ -80,11 +80,8 @@
      self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
-- (void)setUp
-{
-    
-   
-    
+- (void)setUp{
+
     if (_isShowTitleGradient && _titleColorGradientStyle == YZTitleColorGradientStyleRGB) {
         
         // 初始化颜色渐变

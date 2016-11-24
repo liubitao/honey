@@ -47,6 +47,12 @@
     [self setItemBadge:[AppDelegate getAppDelegate].value];
 }
 
+//进去购物车
+- (void)gotoCart{
+    [self.tabBarController setSelectedIndex:3];
+    [self.navigationController popViewControllerAnimated:NO];
+}
+
 - (void)createTableView{
     self.automaticallyAdjustsScrollViewInsets = NO;
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kNavigationBarHeight, KscreenWidth, kScreenHeight- kNavigationBarHeight) style:UITableViewStylePlain];
@@ -70,7 +76,7 @@
     [self.tableView.mj_header beginRefreshing];
     
     //上拉刷新
-    _tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+    _tableView.mj_footer = [GPAutoFooter footerWithRefreshingBlock:^{
         [weakSelf getMoreData];
         [weakSelf.tableView.mj_footer endRefreshing];
     }];
@@ -78,7 +84,7 @@
 - (void)getDatasource{
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"p"] = @"1";
-    parameter[@"areaid"] = _area;
+    parameter[@"cateid"] = _area;
     [YWHttptool GET:_port parameters:parameter success:^(id responseObject) {
         NSLog(@"%@",responseObject);
         _currentPage = 1;
@@ -92,21 +98,19 @@
 - (void)getMoreData{
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"p"] = [NSNumber numberWithInteger:++_currentPage];
-    parameter[@"areaid"] = _area;
+    parameter[@"cateid"] = _area;
     [YWHttptool GET:_port parameters:parameter success:^(id responseObject) {
         NSLog(@"%@",responseObject);
-        if ([responseObject[@"isError"] integerValue])return ;
+        if ([responseObject[@"isError"] integerValue]){
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            return ;
+        };
         NSArray *array = [KHTenModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
         [_dataArray addObjectsFromArray:array];
         [_tableView reloadData];
     } failure:^(NSError *error) {
         [MBProgressHUD showError:@"连接网络有误"];
     }];
-}
-//进去购物车
-- (void)gotoCart{
-    [self.tabBarController setSelectedIndex:3];
-    [self.navigationController popViewControllerAnimated:NO];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -144,7 +148,7 @@
         DetailVC.model = [KHProductModel kh_objectWithKeyValues:responseObject[@"result"]];
         DetailVC.goodsid = goodsid;
         DetailVC.showType = TreasureDetailHeaderTypeNotParticipate;
-        [self pushController:DetailVC];
+        [self hideBottomBarPush:DetailVC];
     } failure:^(NSError *error) {
         [MBProgressHUD hideHUD];
     }];

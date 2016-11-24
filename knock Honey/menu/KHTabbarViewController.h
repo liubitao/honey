@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface KHTabbarViewController : UITabBarController
-
+- (void)pushOtherIndex:(NSInteger)index viewController:(UIViewController *)VC;
 @end

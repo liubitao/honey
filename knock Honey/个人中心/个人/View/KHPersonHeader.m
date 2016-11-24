@@ -209,10 +209,9 @@ CGFloat topupButtonHeight = 25.0;
 - (void)setBalanceAmount:(NSString *)balanceAmount {
     _balanceAmount = balanceAmount;
     NSString *aString = [NSString stringWithFormat:@"抢币：%@",_balanceAmount];
-    NSMutableAttributedString *attString = [[NSMutableAttributedString alloc]initWithString:aString];
-    [attString addAttributes:@{NSForegroundColorAttributeName:UIColorHex(999999),NSFontAttributeName:SYSTEM_FONT(13)} range:NSMakeRange(0, 3)];
-    [attString addAttributes:@{NSForegroundColorAttributeName:kDefaultColor,NSFontAttributeName:SYSTEM_FONT(13)} range:NSMakeRange(3, _balanceAmount.length)];
+    NSMutableAttributedString *attString = [Utils stringWith:aString font1:SYSTEM_FONT(13) color1:UIColorHex(999999) font2:SYSTEM_FONT(13) color2:kDefaultColor range:NSMakeRange(3, _balanceAmount.length)];
     _balanceLabel.attributedText = attString;
+    
     _balanceLabel.size = [attString size];
     _topupButton.left = _balanceLabel.right + 8;
 }

@@ -27,16 +27,25 @@
         [MBProgressHUD showError:@"请输入正确的昵称"];
         return;
     }
-    [self submit];
-    if (_nicknameBlock) {
-        _nicknameBlock(_nameField.text);
-    }
-}
-
-- (void)submit{
-    [UIAlertController showAlertViewWithTitle:nil Message:@"保存成功" BtnTitles:@[@"确定"] ClickBtn:^(NSInteger index) {
-        [self.navigationController popViewControllerAnimated:YES];
+    NSMutableDictionary *parameter = [Utils parameter];
+    parameter[@"userid"] = [YWUserTool account].userid;
+    parameter[@"username"] = _nameField.text;
+    [YWHttptool GET:PortChange_username parameters:parameter success:^(id responseObject) {
+        if ([responseObject[@"result"][@"status"] integerValue] == 1) {
+            YWUser *user = [YWUserTool account];
+            user.username = _nameField.text;
+            [YWUserTool saveAccount:user];
+            [self.navigationController popViewControllerAnimated:YES];
+            if (_nicknameBlock) {
+                _nicknameBlock(_nameField.text);
+            }
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"freshenPerson" object:nil];
+            [MBProgressHUD showSuccess:@"修改成功"];
+        }
+    } failure:^(NSError *error) {
+        [MBProgressHUD showError:@"修改失败"];
     }];
+   
 }
 
 - (void)didReceiveMemoryWarning {

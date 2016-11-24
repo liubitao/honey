@@ -88,15 +88,18 @@ static NSString *CodeCell = @"CodeCell";
 
 - (IBAction)hideView:(id)sender {
     for (UIView *popMenu in YWKeyWindow.subviews) {
-        if ([popMenu isKindOfClass:[YWPopView class]]||[popMenu isKindOfClass:[YWCover class]]) {
+        if ([popMenu isKindOfClass:[YWPopView class]]) {
             [UIView animateWithDuration:0.5
                              animations:^{
                                  popMenu.transform = CGAffineTransformMakeScale(0.01, 0.01);
-                             } completion:^(BOOL finished) {
+                             }completion:^(BOOL finished) {
                                  if (finished) {
                                      [popMenu removeFromSuperview];
                                  }
                              }];
+        }
+        if ([popMenu isKindOfClass:[YWCover class]]) {
+            [popMenu removeFromSuperview];
         }
     }
     

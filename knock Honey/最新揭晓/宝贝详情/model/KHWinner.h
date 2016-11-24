@@ -49,5 +49,12 @@
  *  开奖时间
  */
 @property (nonatomic,copy) NSString *newtime;
+/**
+ *  购买的代码
+ */
+@property (nonatomic,copy) NSString *codes;
+
+@property (nonatomic,copy) NSString *countdown;
+
 
 @end

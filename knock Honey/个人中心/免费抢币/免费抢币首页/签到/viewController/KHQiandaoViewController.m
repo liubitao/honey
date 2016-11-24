@@ -11,6 +11,9 @@
 #import "YHWebViewProgress.h"
 
 @interface KHQiandaoViewController ()<UIWebViewDelegate>
+{
+    BOOL first;
+}
 @property (strong, nonatomic) YHWebViewProgress *progressProxy;
 @end
 
@@ -18,6 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    first = YES;
     UIWebView *webView = [[UIWebView alloc]initWithFrame:self.view.bounds];
     webView.delegate = self;
 
@@ -47,7 +51,25 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     NSLog(@"%@",request);
-    return YES;
+    if ([self.title isEqualToString:@"新手帮助"]||[self.title isEqualToString:@"新手指南"]) {
+        return YES;
+    }else if (first){
+        first = NO;
+        return YES;
+    }else{
+    NSString *str = [request.URL.absoluteString stringByRemovingPercentEncoding];
+        NSRange range1 = [str rangeOfString:@"="];
+        NSRange range2 = [str rangeOfString:@"&"];
+        NSRange range3 = [str rangeOfString:@"'"];
+        NSString *title = [str substringWithRange:NSMakeRange(range1.location+1, range2.location - range1.location-1)];
+        NSString *url = [str substringWithRange:NSMakeRange(range3.location+1, str.length - range3.location-1-1)];
+        KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
+        VC.urlStr = url;
+        VC.title = title;
+        [self hideBottomBarPush:VC];
+        NSLog(@"%@",str);
+        return NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

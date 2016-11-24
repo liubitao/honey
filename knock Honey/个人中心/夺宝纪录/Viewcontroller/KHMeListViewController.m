@@ -101,6 +101,10 @@ static NSString *edGoodsCell = @"edGoodsCell";
     parameter[@"type"] = _type;
     [YWHttptool GET:PortOrder_list parameters:parameter success:^(id responseObject) {
             NSLog(@"%@",responseObject);
+        if ([responseObject[@"isError"] integerValue] == 1) {
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            return ;
+        }
         [self.dataArray addObjectsFromArray:[KHSnatchModel kh_objectWithKeyValuesArray:responseObject[@"result"]]];
         [self.tableView reloadData];
     } failure:^(NSError *error){
@@ -199,6 +203,7 @@ static NSString *edGoodsCell = @"edGoodsCell";
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"userid"] = [YWUserTool account].userid;
     parameter[@"goodsid"] = model.goodsid;
+    parameter[@"qishu"] = model.qishu;
     [YWHttptool GET:PortAddCart parameters:parameter success:^(id responseObject) {
         NSLog(@"%@",responseObject);
         if ([responseObject[@"isError"] integerValue]) return ;

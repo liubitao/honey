@@ -59,10 +59,10 @@
 //10.查看购物车
 #define PortIndex       @"http://www.ywduobao.com/index.php/api/Cart/index"
 
-//11.会员充值=====
+//11.会员充值
 #define PortRecharge    @"http://www.ywduobao.com/index.php/api/User/recharge"
 
-//12.会员充值处理=====
+//12.会员充值处理
 #define PortRecharge_handle @"http://www.ywduobao.com/index.php/api/User/recharge_handle"
 
 //13.订单提交
@@ -104,10 +104,10 @@
 //25.晒单详情
 #define PortComment_detail  @"http://www.ywduobao.com/index.php/api/User/comment_detail"
 
-//26.计算详情=====
-#define PortFormula         @"http://www.ywduobao.com/index.php/api/Goods/formula"
+//26.计算详情
+#define PortFormula         @"http://www.ywduobao.com/index.php/mobile/prom/formula"
 
-//27.签到页面=====
+//27.签到页面
 #define PortSign_index      @"http://www.ywduobao.com/index.php/mobile/prom/sign_day"
 
 
@@ -162,6 +162,42 @@
 //45.往期揭晓
 #define PortPast_lottery        @"http://www.ywduobao.com/index.php/api/Goods/past_lottery"
 
-//46.支付宝
+//46.支付宝签名
 #define PortAlipaysign          @"http://www.ywduobao.com/alipay/alipaysign.php"
+
+//47.微信签名
+#define PortWxpaysign           @"http://www.ywduobao.com/wxpay/wxpaysign.php"
+
+//48.会员充值
+#define Portuser_recharge       @"http://www.ywduobao.com/index.php/Api/Cart/user_recharge"
+
+//49.开机广告
+#define PortFirst_banner        @"http://www.ywduobao.com/index.php/api/index/first_banner"
+
+//50.常见问题
+#define PortCommon_problem      @"http://www.ywduobao.com/index.php/mobile/prom/common_problem"
+
+//51.新手指南
+#define PortNovice_coure        @"http://www.ywduobao.com/index.php/mobile/prom/novice_course"
+
+//52.开奖规则
+#define PortLottery_rule        @"http://www.ywduobao.com/index.php/mobile/prom/lottery_rule"
+
+//53.修改会员头像
+#define PortChange_pic          @"http://www.ywduobao.com/index.php/Api/User/change_pic"
+
+//54.修改会员名
+#define PortChange_username     @"http://www.ywduobao.com/index.php/Api/User/change_username"
+
+//55.修改手机号码
+#define PortBinding_mobile      @"http://www.ywduobao.com/index.php/Api/User/binding_mobile"
+
+//56.商品类型
+#define PortGoods_cate          @"http://www.ywduobao.com/index.php/Api/Goods/goods_cate"
+
+//57.添加晒单
+#define PortAdd_comment         @"http://www.ywduobao.com/index.php/api/user/add_comment"
+
+//58.发货地址确认
+#define PortAddress_confirm     @"http://www.ywduobao.com/index.php/api/user/address_confirm"
 #endif /* port_h */

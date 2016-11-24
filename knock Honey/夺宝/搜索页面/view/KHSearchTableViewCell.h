@@ -7,27 +7,35 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "KHSearchModel.h"
-#import "KHSearItemButton.h"
+#import "KHTenModel.h"
+#import "TSProgressView.h"
 
-@protocol KHSearchCellDelegate <NSObject>
+@protocol KHSearchCellDelegate;
 
-- (void)click:(KHSearchModel *)model;
 
-@end
 
 @interface KHSearchTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIButton *button1;
 
-@property (weak, nonatomic) IBOutlet UIButton *button2;
+@property (weak, nonatomic) IBOutlet UILabel *productName;
+@property (weak, nonatomic) IBOutlet UIImageView *productPic;
+@property (weak, nonatomic) IBOutlet TSProgressView *progressView;
+@property (weak, nonatomic) IBOutlet UILabel *zongrenshu;
+@property (weak, nonatomic) IBOutlet UILabel *shengyurenshu;
+@property (weak, nonatomic) IBOutlet UIButton *partInBtn;
 
-@property (nonatomic,strong) KHSearchModel *model1;
-@property (nonatomic,strong) KHSearchModel *model2;
+@property (nonatomic,strong) KHTenModel *model;
+
+@property (nonatomic,strong) NSIndexPath *indexPath;
 
 @property (nonatomic,assign) id <KHSearchCellDelegate>delegate;
 
-- (void)setModel1:(KHSearchModel *)model1;
+- (void)setModel:(KHTenModel *)model;
+@end
 
-- (void)setModel2:(KHSearchModel *)model2;
+@protocol KHSearchCellDelegate <NSObject>
+
+- (void)clickAddListButtonAtCell:(KHSearchTableViewCell *)cell;
 
 @end
+
+

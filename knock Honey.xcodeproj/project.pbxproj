@@ -50,8 +50,9 @@
 		0C3E9C2E1DD2FFFE00F827AC /* BonusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3E9C2C1DD2FFFE00F827AC /* BonusCell.m */; };
 		0C3E9C2F1DD2FFFE00F827AC /* BonusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C3E9C2D1DD2FFFE00F827AC /* BonusCell.xib */; };
 		0C3E9C321DD3011B00F827AC /* BonusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3E9C311DD3011B00F827AC /* BonusModel.m */; };
-		0C3E9C351DD3233A00F827AC /* KHWinCodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3E9C341DD3233A00F827AC /* KHWinCodeModel.m */; };
 		0C3E9C381DD34E8400F827AC /* KHPauGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3E9C371DD34E8400F827AC /* KHPauGoodsModel.m */; };
+		0C42DBF91DDDAB9900444BC4 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C42DBF41DDDAB9900444BC4 /* libWeChatSDK.a */; };
+		0C42DBFA1DDDAB9900444BC4 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0C42DBF51DDDAB9900444BC4 /* README.txt */; };
 		0C4481FE1DDAE2F00038697C /* YWCover.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4481FB1DDAE2F00038697C /* YWCover.m */; };
 		0C4481FF1DDAE2F00038697C /* YWPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4481FD1DDAE2F00038697C /* YWPopView.m */; };
 		0C4482071DDAE5F60038697C /* KHCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4482051DDAE5F60038697C /* KHCodeViewController.m */; };
@@ -118,10 +119,10 @@
 		0C6C68B61DCB2F4B00B06535 /* KHAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6C68B51DCB2F4B00B06535 /* KHAddressModel.m */; };
 		0C6F59C21DB85D2800105C8C /* KHPublishModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6F59C11DB85D2800105C8C /* KHPublishModel.m */; };
 		0C6F59DF1DB89D6D00105C8C /* UITableView+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6F59DE1DB89D6D00105C8C /* UITableView+Custom.m */; };
+		0C77FAD91DE52B4600B86782 /* GPAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C77FAD81DE52B4600B86782 /* GPAutoFooter.m */; };
 		0C790B971DDC045A00C381CF /* KHSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C790B951DDC045A00C381CF /* KHSearchTableViewCell.m */; };
 		0C790B981DDC045A00C381CF /* KHSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C790B961DDC045A00C381CF /* KHSearchTableViewCell.xib */; };
 		0C790B9B1DDC047100C381CF /* KHSearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C790B9A1DDC047100C381CF /* KHSearchModel.m */; };
-		0C790B9E1DDC31B000C381CF /* KHSearItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C790B9D1DDC31B000C381CF /* KHSearItemButton.m */; };
 		0C790BA51DDC3E9E00C381CF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C790BA41DDC3E9E00C381CF /* QuartzCore.framework */; };
 		0C790BA71DDC3EAA00C381CF /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C790BA61DDC3EAA00C381CF /* CoreText.framework */; };
 		0C790BA91DDC3EB600C381CF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C790BA81DDC3EB600C381CF /* CoreGraphics.framework */; };
@@ -132,6 +133,13 @@
 		0C790BB81DDC489A00C381CF /* KHSearchResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C790BB71DDC489A00C381CF /* KHSearchResultController.m */; };
 		0C790BC01DDC51E000C381CF /* KHPstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C790BBE1DDC51E000C381CF /* KHPstTableViewCell.m */; };
 		0C790BC11DDC51E000C381CF /* KHPstTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C790BBF1DDC51E000C381CF /* KHPstTableViewCell.xib */; };
+		0C7D0E171DE67D9A0023DD76 /* KHWinCodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7D0E0D1DE67D9A0023DD76 /* KHWinCodeModel.m */; };
+		0C7D0E181DE67D9A0023DD76 /* KHWinTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7D0E101DE67D9A0023DD76 /* KHWinTableViewCell.m */; };
+		0C7D0E191DE67D9A0023DD76 /* KHWinTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C7D0E111DE67D9A0023DD76 /* KHWinTableViewCell.xib */; };
+		0C7D0E1A1DE67D9A0023DD76 /* KHWinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7D0E141DE67D9A0023DD76 /* KHWinViewController.m */; };
+		0C7D0E1E1DE67DBC0023DD76 /* KHWantAppearController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7D0E1C1DE67DBC0023DD76 /* KHWantAppearController.m */; };
+		0C7D0E1F1DE67DBC0023DD76 /* KHWantAppearController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C7D0E1D1DE67DBC0023DD76 /* KHWantAppearController.xib */; };
+		0C7D0E221DE6C9270023DD76 /* KHWantButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7D0E211DE6C9270023DD76 /* KHWantButton.m */; };
 		0C7F832E1DCC2BBE003EA29C /* GSPopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7F832D1DCC2BBE003EA29C /* GSPopoverViewController.m */; };
 		0C7F833B1DCC4707003EA29C /* KHEditAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7F83391DCC4707003EA29C /* KHEditAddressViewController.m */; };
 		0C7F833C1DCC4707003EA29C /* KHEditAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C7F833A1DCC4707003EA29C /* KHEditAddressViewController.xib */; };
@@ -159,6 +167,11 @@
 		0C803CC41DD9F199008CC841 /* KHTopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C803CB91DD9F199008CC841 /* KHTopupViewController.m */; };
 		0C803CC51DD9F199008CC841 /* TopupResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C803CBD1DD9F199008CC841 /* TopupResultViewController.m */; };
 		0C803CC61DD9F199008CC841 /* TopupResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C803CBE1DD9F199008CC841 /* TopupResultViewController.xib */; };
+		0C892F061DE2950B00B9B4A9 /* KHZhifubaoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C892F051DE2950B00B9B4A9 /* KHZhifubaoModel.m */; };
+		0C892F091DE2979400B9B4A9 /* KHResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C892F081DE2979400B9B4A9 /* KHResponseModel.m */; };
+		0C892F111DE2E14000B9B4A9 /* GPAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C892F0F1DE2E14000B9B4A9 /* GPAdViewController.m */; };
+		0C892F121DE2E14000B9B4A9 /* GPAdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C892F101DE2E14000B9B4A9 /* GPAdViewController.xib */; };
+		0C9A6ACD1DE317AA0020C4D0 /* KHSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9A6ACC1DE317AA0020C4D0 /* KHSettingViewController.m */; };
 		0C9B05551DC71684008D7BFA /* UITabBar+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9B05541DC71684008D7BFA /* UITabBar+Badge.m */; };
 		0C9B055A1DC71F37008D7BFA /* UIBarButtonItem+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9B05571DC71F37008D7BFA /* UIBarButtonItem+Badge.m */; };
 		0C9B055B1DC71F37008D7BFA /* UIButton+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9B05591DC71F37008D7BFA /* UIButton+Badge.m */; };
@@ -186,12 +199,8 @@
 		0C9E90381DD1A65B00975AEB /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C9E90371DD1A65B00975AEB /* ImageIO.framework */; };
 		0C9E903A1DD1A67900975AEB /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C9E90391DD1A67900975AEB /* libz.tbd */; };
 		0C9E903C1DD1A69400975AEB /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C9E903B1DD1A69400975AEB /* libc++.tbd */; };
-		0CA598B41DD05242000F007B /* KHWinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA598B31DD05242000F007B /* KHWinViewController.m */; };
-		0CA598B81DD057D8000F007B /* KHWinTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA598B61DD057D8000F007B /* KHWinTableViewCell.m */; };
-		0CA598B91DD057D8000F007B /* KHWinTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CA598B71DD057D8000F007B /* KHWinTableViewCell.xib */; };
 		0CB128BF1DAA0467005A0A4D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB128BE1DAA0467005A0A4D /* main.m */; };
 		0CB128CA1DAA0467005A0A4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CB128C91DAA0467005A0A4D /* Assets.xcassets */; };
-		0CB128CD1DAA0467005A0A4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CB128CB1DAA0467005A0A4D /* LaunchScreen.storyboard */; };
 		0CB128D81DAA0467005A0A4D /* knock_HoneyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB128D71DAA0467005A0A4D /* knock_HoneyTests.m */; };
 		0CB128E31DAA0467005A0A4D /* knock_HoneyUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB128E21DAA0467005A0A4D /* knock_HoneyUITests.m */; };
 		0CB128F91DAA1F2E005A0A4D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB128F81DAA1F2E005A0A4D /* AppDelegate.m */; };
@@ -344,10 +353,13 @@
 		0C3E9C2D1DD2FFFE00F827AC /* BonusCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BonusCell.xib; sourceTree = "<group>"; };
 		0C3E9C301DD3011B00F827AC /* BonusModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BonusModel.h; sourceTree = "<group>"; };
 		0C3E9C311DD3011B00F827AC /* BonusModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BonusModel.m; sourceTree = "<group>"; };
-		0C3E9C331DD3233A00F827AC /* KHWinCodeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHWinCodeModel.h; sourceTree = "<group>"; };
-		0C3E9C341DD3233A00F827AC /* KHWinCodeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHWinCodeModel.m; sourceTree = "<group>"; };
 		0C3E9C361DD34E8400F827AC /* KHPauGoodsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHPauGoodsModel.h; sourceTree = "<group>"; };
 		0C3E9C371DD34E8400F827AC /* KHPauGoodsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPauGoodsModel.m; sourceTree = "<group>"; };
+		0C42DBF41DDDAB9900444BC4 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		0C42DBF51DDDAB9900444BC4 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		0C42DBF61DDDAB9900444BC4 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		0C42DBF71DDDAB9900444BC4 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		0C42DBF81DDDAB9900444BC4 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		0C4481FA1DDAE2F00038697C /* YWCover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YWCover.h; sourceTree = "<group>"; };
 		0C4481FB1DDAE2F00038697C /* YWCover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YWCover.m; sourceTree = "<group>"; };
 		0C4481FC1DDAE2F00038697C /* YWPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YWPopView.h; sourceTree = "<group>"; };
@@ -458,13 +470,13 @@
 		0C6F59C11DB85D2800105C8C /* KHPublishModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPublishModel.m; sourceTree = "<group>"; };
 		0C6F59DD1DB89D6D00105C8C /* UITableView+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Custom.h"; sourceTree = "<group>"; };
 		0C6F59DE1DB89D6D00105C8C /* UITableView+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+Custom.m"; sourceTree = "<group>"; };
+		0C77FAD71DE52B4600B86782 /* GPAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPAutoFooter.h; sourceTree = "<group>"; };
+		0C77FAD81DE52B4600B86782 /* GPAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPAutoFooter.m; sourceTree = "<group>"; };
 		0C790B941DDC045A00C381CF /* KHSearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHSearchTableViewCell.h; sourceTree = "<group>"; };
 		0C790B951DDC045A00C381CF /* KHSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHSearchTableViewCell.m; sourceTree = "<group>"; };
 		0C790B961DDC045A00C381CF /* KHSearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHSearchTableViewCell.xib; sourceTree = "<group>"; };
 		0C790B991DDC047100C381CF /* KHSearchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHSearchModel.h; sourceTree = "<group>"; };
 		0C790B9A1DDC047100C381CF /* KHSearchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHSearchModel.m; sourceTree = "<group>"; };
-		0C790B9C1DDC31B000C381CF /* KHSearItemButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHSearItemButton.h; sourceTree = "<group>"; };
-		0C790B9D1DDC31B000C381CF /* KHSearItemButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHSearItemButton.m; sourceTree = "<group>"; };
 		0C790BA41DDC3E9E00C381CF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0C790BA61DDC3EAA00C381CF /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		0C790BA81DDC3EB600C381CF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -477,6 +489,18 @@
 		0C790BBD1DDC51E000C381CF /* KHPstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHPstTableViewCell.h; sourceTree = "<group>"; };
 		0C790BBE1DDC51E000C381CF /* KHPstTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPstTableViewCell.m; sourceTree = "<group>"; };
 		0C790BBF1DDC51E000C381CF /* KHPstTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHPstTableViewCell.xib; sourceTree = "<group>"; };
+		0C7D0E0C1DE67D9A0023DD76 /* KHWinCodeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHWinCodeModel.h; sourceTree = "<group>"; };
+		0C7D0E0D1DE67D9A0023DD76 /* KHWinCodeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHWinCodeModel.m; sourceTree = "<group>"; };
+		0C7D0E0F1DE67D9A0023DD76 /* KHWinTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHWinTableViewCell.h; sourceTree = "<group>"; };
+		0C7D0E101DE67D9A0023DD76 /* KHWinTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHWinTableViewCell.m; sourceTree = "<group>"; };
+		0C7D0E111DE67D9A0023DD76 /* KHWinTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHWinTableViewCell.xib; sourceTree = "<group>"; };
+		0C7D0E131DE67D9A0023DD76 /* KHWinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHWinViewController.h; sourceTree = "<group>"; };
+		0C7D0E141DE67D9A0023DD76 /* KHWinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHWinViewController.m; sourceTree = "<group>"; };
+		0C7D0E1B1DE67DBC0023DD76 /* KHWantAppearController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHWantAppearController.h; sourceTree = "<group>"; };
+		0C7D0E1C1DE67DBC0023DD76 /* KHWantAppearController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHWantAppearController.m; sourceTree = "<group>"; };
+		0C7D0E1D1DE67DBC0023DD76 /* KHWantAppearController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHWantAppearController.xib; sourceTree = "<group>"; };
+		0C7D0E201DE6C9270023DD76 /* KHWantButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHWantButton.h; sourceTree = "<group>"; };
+		0C7D0E211DE6C9270023DD76 /* KHWantButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHWantButton.m; sourceTree = "<group>"; };
 		0C7F832C1DCC2BBE003EA29C /* GSPopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSPopoverViewController.h; sourceTree = "<group>"; };
 		0C7F832D1DCC2BBE003EA29C /* GSPopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSPopoverViewController.m; sourceTree = "<group>"; };
 		0C7F83381DCC4707003EA29C /* KHEditAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHEditAddressViewController.h; sourceTree = "<group>"; };
@@ -525,6 +549,15 @@
 		0C803CBC1DD9F199008CC841 /* TopupResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopupResultViewController.h; sourceTree = "<group>"; };
 		0C803CBD1DD9F199008CC841 /* TopupResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopupResultViewController.m; sourceTree = "<group>"; };
 		0C803CBE1DD9F199008CC841 /* TopupResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopupResultViewController.xib; sourceTree = "<group>"; };
+		0C892F041DE2950B00B9B4A9 /* KHZhifubaoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHZhifubaoModel.h; sourceTree = "<group>"; };
+		0C892F051DE2950B00B9B4A9 /* KHZhifubaoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHZhifubaoModel.m; sourceTree = "<group>"; };
+		0C892F071DE2979400B9B4A9 /* KHResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHResponseModel.h; sourceTree = "<group>"; };
+		0C892F081DE2979400B9B4A9 /* KHResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHResponseModel.m; sourceTree = "<group>"; };
+		0C892F0E1DE2E14000B9B4A9 /* GPAdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPAdViewController.h; sourceTree = "<group>"; };
+		0C892F0F1DE2E14000B9B4A9 /* GPAdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPAdViewController.m; sourceTree = "<group>"; };
+		0C892F101DE2E14000B9B4A9 /* GPAdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GPAdViewController.xib; sourceTree = "<group>"; };
+		0C9A6ACB1DE317AA0020C4D0 /* KHSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHSettingViewController.h; sourceTree = "<group>"; };
+		0C9A6ACC1DE317AA0020C4D0 /* KHSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHSettingViewController.m; sourceTree = "<group>"; };
 		0C9B05531DC71684008D7BFA /* UITabBar+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBar+Badge.h"; sourceTree = "<group>"; };
 		0C9B05541DC71684008D7BFA /* UITabBar+Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+Badge.m"; sourceTree = "<group>"; };
 		0C9B05561DC71F37008D7BFA /* UIBarButtonItem+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Badge.h"; sourceTree = "<group>"; };
@@ -572,15 +605,9 @@
 		0C9E90371DD1A65B00975AEB /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		0C9E90391DD1A67900975AEB /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		0C9E903B1DD1A69400975AEB /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
-		0CA598B21DD05242000F007B /* KHWinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHWinViewController.h; sourceTree = "<group>"; };
-		0CA598B31DD05242000F007B /* KHWinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHWinViewController.m; sourceTree = "<group>"; };
-		0CA598B51DD057D8000F007B /* KHWinTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHWinTableViewCell.h; sourceTree = "<group>"; };
-		0CA598B61DD057D8000F007B /* KHWinTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHWinTableViewCell.m; sourceTree = "<group>"; };
-		0CA598B71DD057D8000F007B /* KHWinTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHWinTableViewCell.xib; sourceTree = "<group>"; };
 		0CB128BA1DAA0467005A0A4D /* knock Honey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "knock Honey.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CB128BE1DAA0467005A0A4D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0CB128C91DAA0467005A0A4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		0CB128CC1DAA0467005A0A4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0CB128CE1DAA0467005A0A4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CB128D31DAA0467005A0A4D /* knock HoneyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "knock HoneyTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CB128D71DAA0467005A0A4D /* knock_HoneyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = knock_HoneyTests.m; sourceTree = "<group>"; };
@@ -693,6 +720,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C9E90321DD1A61F00975AEB /* libsqlite3.tbd in Frameworks */,
 				0C790BB11DDC3ED800C381CF /* CoreMotion.framework in Frameworks */,
 				0C790BAF1DDC3ECF00C381CF /* CFNetwork.framework in Frameworks */,
 				0C790BAD1DDC3EC700C381CF /* Foundation.framework in Frameworks */,
@@ -704,7 +732,7 @@
 				0C9E90341DD1A64800975AEB /* SystemConfiguration.framework in Frameworks */,
 				0C9E903A1DD1A67900975AEB /* libz.tbd in Frameworks */,
 				0C9E903C1DD1A69400975AEB /* libc++.tbd in Frameworks */,
-				0C9E90321DD1A61F00975AEB /* libsqlite3.tbd in Frameworks */,
+				0C42DBF91DDDAB9900444BC4 /* libWeChatSDK.a in Frameworks */,
 				0C9E90381DD1A65B00975AEB /* ImageIO.framework in Frameworks */,
 				0C645ED21DC82953000E9B98 /* libMJRefresh.a in Frameworks */,
 				0C645ED01DC8294F000E9B98 /* libYYKit.a in Frameworks */,
@@ -1078,6 +1106,18 @@
 				0C3E9C291DD2FE2400F827AC /* KHUserAbleViewController.m */,
 			);
 			path = viewController;
+			sourceTree = "<group>";
+		};
+		0C42DBF31DDDAB9900444BC4 /* OpenSDK1.7.4 */ = {
+			isa = PBXGroup;
+			children = (
+				0C42DBF41DDDAB9900444BC4 /* libWeChatSDK.a */,
+				0C42DBF51DDDAB9900444BC4 /* README.txt */,
+				0C42DBF61DDDAB9900444BC4 /* WechatAuthSDK.h */,
+				0C42DBF71DDDAB9900444BC4 /* WXApi.h */,
+				0C42DBF81DDDAB9900444BC4 /* WXApiObject.h */,
+			);
+			path = OpenSDK1.7.4;
 			sourceTree = "<group>";
 		};
 		0C4481F91DDAE2F00038697C /* 弹出视图 */ = {
@@ -1690,6 +1730,64 @@
 			path = viewController;
 			sourceTree = "<group>";
 		};
+		0C7D0E0A1DE67D9A0023DD76 /* 中奖列表 */ = {
+			isa = PBXGroup;
+			children = (
+				0C7D0E121DE67D9A0023DD76 /* viewController */,
+				0C7D0E0B1DE67D9A0023DD76 /* model */,
+				0C7D0E0E1DE67D9A0023DD76 /* view */,
+			);
+			path = "中奖列表";
+			sourceTree = "<group>";
+		};
+		0C7D0E0B1DE67D9A0023DD76 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				0C7D0E0C1DE67D9A0023DD76 /* KHWinCodeModel.h */,
+				0C7D0E0D1DE67D9A0023DD76 /* KHWinCodeModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		0C7D0E0E1DE67D9A0023DD76 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				0C7D0E0F1DE67D9A0023DD76 /* KHWinTableViewCell.h */,
+				0C7D0E101DE67D9A0023DD76 /* KHWinTableViewCell.m */,
+				0C7D0E111DE67D9A0023DD76 /* KHWinTableViewCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		0C7D0E121DE67D9A0023DD76 /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C7D0E131DE67D9A0023DD76 /* KHWinViewController.h */,
+				0C7D0E141DE67D9A0023DD76 /* KHWinViewController.m */,
+			);
+			path = viewController;
+			sourceTree = "<group>";
+		};
+		0C7D0E151DE67D9A0023DD76 /* 我要晒单 */ = {
+			isa = PBXGroup;
+			children = (
+				0C7D0E161DE67D9A0023DD76 /* viewController */,
+			);
+			path = "我要晒单";
+			sourceTree = "<group>";
+		};
+		0C7D0E161DE67D9A0023DD76 /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C7D0E1B1DE67DBC0023DD76 /* KHWantAppearController.h */,
+				0C7D0E1C1DE67DBC0023DD76 /* KHWantAppearController.m */,
+				0C7D0E1D1DE67DBC0023DD76 /* KHWantAppearController.xib */,
+				0C7D0E201DE6C9270023DD76 /* KHWantButton.h */,
+				0C7D0E211DE6C9270023DD76 /* KHWantButton.m */,
+			);
+			path = viewController;
+			sourceTree = "<group>";
+		};
 		0C7F832B1DCC2BBE003EA29C /* GSPopoverViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1809,6 +1907,10 @@
 		0C803CB01DD9F199008CC841 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				0C892F041DE2950B00B9B4A9 /* KHZhifubaoModel.h */,
+				0C892F051DE2950B00B9B4A9 /* KHZhifubaoModel.m */,
+				0C892F071DE2979400B9B4A9 /* KHResponseModel.h */,
+				0C892F081DE2979400B9B4A9 /* KHResponseModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1866,6 +1968,65 @@
 			children = (
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		0C892F0C1DE2E14000B9B4A9 /* Ad(广告) */ = {
+			isa = PBXGroup;
+			children = (
+				0C892F0D1DE2E14000B9B4A9 /* Controller */,
+			);
+			path = "Ad(广告)";
+			sourceTree = "<group>";
+		};
+		0C892F0D1DE2E14000B9B4A9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0C892F0E1DE2E14000B9B4A9 /* GPAdViewController.h */,
+				0C892F0F1DE2E14000B9B4A9 /* GPAdViewController.m */,
+				0C892F101DE2E14000B9B4A9 /* GPAdViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0C9A6AC61DE3178E0020C4D0 /* 设置 */ = {
+			isa = PBXGroup;
+			children = (
+				0C9A6AC71DE3178E0020C4D0 /* 设置界面 */,
+			);
+			path = "设置";
+			sourceTree = "<group>";
+		};
+		0C9A6AC71DE3178E0020C4D0 /* 设置界面 */ = {
+			isa = PBXGroup;
+			children = (
+				0C9A6ACA1DE3178E0020C4D0 /* viewController */,
+				0C9A6AC81DE3178E0020C4D0 /* model */,
+				0C9A6AC91DE3178E0020C4D0 /* view */,
+			);
+			path = "设置界面";
+			sourceTree = "<group>";
+		};
+		0C9A6AC81DE3178E0020C4D0 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		0C9A6AC91DE3178E0020C4D0 /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		0C9A6ACA1DE3178E0020C4D0 /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C9A6ACB1DE317AA0020C4D0 /* KHSettingViewController.h */,
+				0C9A6ACC1DE317AA0020C4D0 /* KHSettingViewController.m */,
+			);
+			path = viewController;
 			sourceTree = "<group>";
 		};
 		0C9B055C1DC72B0E008D7BFA /* YZDisplayViewController */ = {
@@ -1935,9 +2096,8 @@
 		0C9B05781DC72D92008D7BFA /* 中奖纪录 */ = {
 			isa = PBXGroup;
 			children = (
-				0CA598B11DD0522A000F007B /* viewController */,
-				0CA598AF1DD0522A000F007B /* model */,
-				0CA598B01DD0522A000F007B /* view */,
+				0C7D0E0A1DE67D9A0023DD76 /* 中奖列表 */,
+				0C7D0E151DE67D9A0023DD76 /* 我要晒单 */,
 			);
 			path = "中奖纪录";
 			sourceTree = "<group>";
@@ -2124,37 +2284,10 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		0CA598AF1DD0522A000F007B /* model */ = {
-			isa = PBXGroup;
-			children = (
-				0C3E9C331DD3233A00F827AC /* KHWinCodeModel.h */,
-				0C3E9C341DD3233A00F827AC /* KHWinCodeModel.m */,
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		0CA598B01DD0522A000F007B /* view */ = {
-			isa = PBXGroup;
-			children = (
-				0CA598B51DD057D8000F007B /* KHWinTableViewCell.h */,
-				0CA598B61DD057D8000F007B /* KHWinTableViewCell.m */,
-				0CA598B71DD057D8000F007B /* KHWinTableViewCell.xib */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
-		0CA598B11DD0522A000F007B /* viewController */ = {
-			isa = PBXGroup;
-			children = (
-				0CA598B21DD05242000F007B /* KHWinViewController.h */,
-				0CA598B31DD05242000F007B /* KHWinViewController.m */,
-			);
-			path = viewController;
-			sourceTree = "<group>";
-		};
 		0CB128B11DAA0467005A0A4D = {
 			isa = PBXGroup;
 			children = (
+				0C42DBF31DDDAB9900444BC4 /* OpenSDK1.7.4 */,
 				0C461E981DDC7A1000853605 /* Alipay */,
 				0CB128BC1DAA0467005A0A4D /* knock Honey */,
 				0CB128D61DAA0467005A0A4D /* knock HoneyTests */,
@@ -2178,6 +2311,7 @@
 		0CB128BC1DAA0467005A0A4D /* knock Honey */ = {
 			isa = PBXGroup;
 			children = (
+				0C892F0C1DE2E14000B9B4A9 /* Ad(广告) */,
 				0C3693361DAB5F2200BB3EE0 /* customFunc（自定义视图） */,
 				0CB1293E1DAA291A005A0A4D /* baseClass（基类） */,
 				0CB128F61DAA1F2E005A0A4D /* AppDelegate */,
@@ -2192,7 +2326,6 @@
 				0CB129351DAA28ED005A0A4D /* lib（三方库） */,
 				0CB129361DAA28ED005A0A4D /* tool（工具类） */,
 				0CB128C91DAA0467005A0A4D /* Assets.xcassets */,
-				0CB128CB1DAA0467005A0A4D /* LaunchScreen.storyboard */,
 				0CB128CE1DAA0467005A0A4D /* Info.plist */,
 				0CB1294B1DAA2A40005A0A4D /* knock Honey.pch */,
 				0CB128BD1DAA0467005A0A4D /* Supporting Files */,
@@ -2250,6 +2383,7 @@
 		0CB128F21DAA1EF3005A0A4D /* 个人中心 */ = {
 			isa = PBXGroup;
 			children = (
+				0C9A6AC61DE3178E0020C4D0 /* 设置 */,
 				0CC47EDA1DD5CB6E00F27914 /* 免费抢币 */,
 				0C50E7661DD5A0200087A250 /* 客服 */,
 				0C50E7521DD59FFD0087A250 /* 消息 */,
@@ -2401,6 +2535,8 @@
 		0CB129451DAA2977005A0A4D /* utils（工具） */ = {
 			isa = PBXGroup;
 			children = (
+				0C77FAD71DE52B4600B86782 /* GPAutoFooter.h */,
+				0C77FAD81DE52B4600B86782 /* GPAutoFooter.m */,
 				0CB129461DAA2977005A0A4D /* Utils.h */,
 				0CB129471DAA2977005A0A4D /* Utils.m */,
 			);
@@ -2474,8 +2610,6 @@
 				0C790B941DDC045A00C381CF /* KHSearchTableViewCell.h */,
 				0C790B951DDC045A00C381CF /* KHSearchTableViewCell.m */,
 				0C790B961DDC045A00C381CF /* KHSearchTableViewCell.xib */,
-				0C790B9C1DDC31B000C381CF /* KHSearItemButton.h */,
-				0C790B9D1DDC31B000C381CF /* KHSearItemButton.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2860,6 +2994,7 @@
 			files = (
 				0C3A46711DD70B850082A239 /* KHFreeTableViewCell.xib in Resources */,
 				0C6C68A01DCB0C5F00B06535 /* NicknameViewController.xib in Resources */,
+				0C7D0E1F1DE67DBC0023DD76 /* KHWantAppearController.xib in Resources */,
 				0C803C991DD99D4C008CC841 /* KHSnatchingTableViewCell.xib in Resources */,
 				0C461E9B1DDC7A1000853605 /* AlipaySDK.bundle in Resources */,
 				0C5782DB1DC1DD5000DB0B9A /* KHRegiterThirdViewController.xib in Resources */,
@@ -2869,9 +3004,12 @@
 				0C50E78A1DD5B6CF0087A250 /* KHMessageTableViewCell.xib in Resources */,
 				0C803C941DD99D17008CC841 /* KHAllTableViewCell.xib in Resources */,
 				0C5782D11DC1B8AB00DB0B9A /* KHRegiterViewController.xib in Resources */,
+				0C7D0E191DE67D9A0023DD76 /* KHWinTableViewCell.xib in Resources */,
 				0C5782D61DC1D60100DB0B9A /* KHRegiterSecondController.xib in Resources */,
 				0CBD1A1E1DACB650003E8150 /* IQKeyboardManager.bundle in Resources */,
 				0C790B981DDC045A00C381CF /* KHSearchTableViewCell.xib in Resources */,
+				0C892F121DE2E14000B9B4A9 /* GPAdViewController.xib in Resources */,
+				0C42DBFA1DDDAB9900444BC4 /* README.txt in Resources */,
 				0C9E8FF11DD16E9700975AEB /* KHPayViewController.xib in Resources */,
 				0C7F833C1DCC4707003EA29C /* KHEditAddressViewController.xib in Resources */,
 				0C3A46801DD70DA40082A239 /* KHjifenTableViewCell.xib in Resources */,
@@ -2883,8 +3021,6 @@
 				0C44DEB61DD4423D0085E5C3 /* PayResultCell.xib in Resources */,
 				0CD77C951DBF44D300F72AA5 /* KHAppearTableViewCell.xib in Resources */,
 				0C6C68A91DCB107200B06535 /* KHPhoneViewController.xib in Resources */,
-				0CB128CD1DAA0467005A0A4D /* LaunchScreen.storyboard in Resources */,
-				0CA598B91DD057D8000F007B /* KHWinTableViewCell.xib in Resources */,
 				0CBD1A5D1DACC130003E8150 /* WinTreasureCell.xib in Resources */,
 				0C4482081DDAE5F60038697C /* KHCodeViewController.xib in Resources */,
 				0C27059E1DAF287A00CE2F15 /* CategoryDetailCell.xib in Resources */,
@@ -2972,6 +3108,7 @@
 				0C3A467F1DD70DA40082A239 /* KHjifenTableViewCell.m in Sources */,
 				0C803C8F1DD99CC2008CC841 /* KHMeListViewController.m in Sources */,
 				0C645ECC1DC8288C000E9B98 /* KHKnowViewController.m in Sources */,
+				0C7D0E181DE67D9A0023DD76 /* KHWinTableViewCell.m in Sources */,
 				0C7F83521DCC647C003EA29C /* LocationPickerView.m in Sources */,
 				0C645ECB1DC82809000E9B98 /* KHAppearViewController.m in Sources */,
 				0C2705AF1DAF66EB00CE2F15 /* TreaureHeaderMenu.m in Sources */,
@@ -2993,7 +3130,6 @@
 				0C5E05F51DAE36FE00B2133F /* SDCycleScrollView.m in Sources */,
 				0C9B057C1DC72D92008D7BFA /* KHPersonCell.m in Sources */,
 				0C9E8FEB1DD16DAD00975AEB /* ListCountView.m in Sources */,
-				0C790B9E1DDC31B000C381CF /* KHSearItemButton.m in Sources */,
 				0CBD1A111DACB650003E8150 /* IQUIScrollView+Additions.m in Sources */,
 				0CBD19DF1DAC8DD0003E8150 /* KHSearchViewController.m in Sources */,
 				0C3693281DAB2DD700BB3EE0 /* KHBaseViewController.m in Sources */,
@@ -3017,6 +3153,7 @@
 				0C3A46781DD70C2B0082A239 /* KHGetJinfenViewController.m in Sources */,
 				0C27059D1DAF287A00CE2F15 /* CategoryDetailCell.m in Sources */,
 				0CBD1A661DACC415003E8150 /* WinTreasureMenuHeader.m in Sources */,
+				0C892F111DE2E14000B9B4A9 /* GPAdViewController.m in Sources */,
 				0C803CC11DD9F199008CC841 /* KHTopupHeader.m in Sources */,
 				0C5E05FC1DAE3B7C00B2133F /* KHProductModel.m in Sources */,
 				0C6C68A81DCB107200B06535 /* KHPhoneViewController.m in Sources */,
@@ -3026,7 +3163,6 @@
 				0C6C689E1DCB0C5F00B06535 /* KHInformationController.m in Sources */,
 				0CBD1A1A1DACB650003E8150 /* IQPreviousNextView.m in Sources */,
 				0C5E05F01DAE36FE00B2133F /* TAAbstractDotView.m in Sources */,
-				0C3E9C351DD3233A00F827AC /* KHWinCodeModel.m in Sources */,
 				0CE379661DC0B3BF00F42A4F /* BtButton.m in Sources */,
 				0C2705991DAF27A600CE2F15 /* KHTenModel.m in Sources */,
 				0C6F59DF1DB89D6D00105C8C /* UITableView+Custom.m in Sources */,
@@ -3042,6 +3178,8 @@
 				0C5E05CA1DADCF7700B2133F /* KHDowmViewCell.m in Sources */,
 				0C803C931DD99D17008CC841 /* KHAllTableViewCell.m in Sources */,
 				0C9E8FE81DD16DAD00975AEB /* ShoppingListCell.m in Sources */,
+				0C7D0E171DE67D9A0023DD76 /* KHWinCodeModel.m in Sources */,
+				0C7D0E1E1DE67DBC0023DD76 /* KHWantAppearController.m in Sources */,
 				0C5E05D41DADFAEC00B2133F /* KHChangButton.m in Sources */,
 				0C9B05681DC72B0E008D7BFA /* YZDisplayViewController.m in Sources */,
 				0C2705961DAF279200CE2F15 /* KHTenViewController.m in Sources */,
@@ -3050,10 +3188,12 @@
 				0C9B055A1DC71F37008D7BFA /* UIBarButtonItem+Badge.m in Sources */,
 				0C01B5BB1DB5B6C700D41F43 /* KHWinner.m in Sources */,
 				0C5E05F11DAE36FE00B2133F /* TAAnimatedDotView.m in Sources */,
+				0C892F091DE2979400B9B4A9 /* KHResponseModel.m in Sources */,
 				0C5E05F21DAE36FE00B2133F /* TADotView.m in Sources */,
 				0C6C689F1DCB0C5F00B06535 /* NicknameViewController.m in Sources */,
 				0CBD1A601DACC368003E8150 /* KHHOmeViewLayout.m in Sources */,
 				0C5E05F41DAE36FE00B2133F /* SDCollectionViewCell.m in Sources */,
+				0C892F061DE2950B00B9B4A9 /* KHZhifubaoModel.m in Sources */,
 				0C803CC21DD9F199008CC841 /* KHTopupTableViewCell.m in Sources */,
 				0C7F832E1DCC2BBE003EA29C /* GSPopoverViewController.m in Sources */,
 				0CBD1A151DACB650003E8150 /* IQUIWindow+Hierarchy.m in Sources */,
@@ -3083,7 +3223,6 @@
 				0CBD1A141DACB650003E8150 /* IQUIViewController+Additions.m in Sources */,
 				0C5E05DF1DAE32F800B2133F /* KHDetailViewController.m in Sources */,
 				0C01B5BE1DB6007600D41F43 /* KHIMage.m in Sources */,
-				0CA598B81DD057D8000F007B /* KHWinTableViewCell.m in Sources */,
 				0CBD1A651DACC415003E8150 /* WinTreasureHeader.m in Sources */,
 				0CBD1A181DACB650003E8150 /* IQTextView.m in Sources */,
 				0C4481FF1DDAE2F00038697C /* YWPopView.m in Sources */,
@@ -3092,6 +3231,7 @@
 				0C9B057E1DC72D92008D7BFA /* KHPersonHeader.m in Sources */,
 				0CBD1A121DACB650003E8150 /* IQUITextFieldView+Additions.m in Sources */,
 				0CB1293D1DAA28ED005A0A4D /* UIView+YWViewController.m in Sources */,
+				0C77FAD91DE52B4600B86782 /* GPAutoFooter.m in Sources */,
 				0C461E971DDC57DE00853605 /* KHPastViewController.m in Sources */,
 				0C009FD01DC07E5B002F4470 /* NSString+TSTime.m in Sources */,
 				0CBD19D81DAC8A5D003E8150 /* KHHomeModel.m in Sources */,
@@ -3101,6 +3241,7 @@
 				0C5E05F31DAE36FE00B2133F /* TAPageControl.m in Sources */,
 				0CBD1A6A1DACCF7D003E8150 /* TSProgressView.m in Sources */,
 				0C44DEB51DD4423D0085E5C3 /* PayResultCell.m in Sources */,
+				0C7D0E221DE6C9270023DD76 /* KHWantButton.m in Sources */,
 				0C6F59C21DB85D2800105C8C /* KHPublishModel.m in Sources */,
 				0C44DEC01DD46AF50085E5C3 /* KHAppearDetailModel.m in Sources */,
 				0C44DEC61DD495080085E5C3 /* KHMyAppearViewController.m in Sources */,
@@ -3112,6 +3253,7 @@
 				0C9E8FEC1DD16DAD00975AEB /* KHCartViewController.m in Sources */,
 				0C3E9C321DD3011B00F827AC /* BonusModel.m in Sources */,
 				0C3A46751DD70BCB0082A239 /* KHjJinfenlistViewController.m in Sources */,
+				0C7D0E1A1DE67D9A0023DD76 /* KHWinViewController.m in Sources */,
 				0C3A466D1DD70B850082A239 /* KHCoupon.m in Sources */,
 				0CB1293B1DAA28ED005A0A4D /* UINavigationBar+BTsome.m in Sources */,
 				0CB128F91DAA1F2E005A0A4D /* AppDelegate.m in Sources */,
@@ -3129,7 +3271,7 @@
 				0C3693251DAB281000BB3EE0 /* KHNavigationViewController.m in Sources */,
 				0C4481FE1DDAE2F00038697C /* YWCover.m in Sources */,
 				0C2705A21DAF666C00CE2F15 /* TreasureDetailFooter.m in Sources */,
-				0CA598B41DD05242000F007B /* KHWinViewController.m in Sources */,
+				0C9A6ACD1DE317AA0020C4D0 /* KHSettingViewController.m in Sources */,
 				0CB128BF1DAA0467005A0A4D /* main.m in Sources */,
 				0C6C689C1DCB0C5F00B06535 /* KHInformationCell.m in Sources */,
 				0C50E7891DD5B6CF0087A250 /* KHMessageTableViewCell.m in Sources */,
@@ -3178,17 +3320,6 @@
 			targetProxy = 0CB128DF1DAA0467005A0A4D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		0CB128CB1DAA0467005A0A4D /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0CB128CC1DAA0467005A0A4D /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		0CB128E51DAA0467005A0A4D /* Debug */ = {
@@ -3280,6 +3411,7 @@
 			baseConfigurationReference = B30030C39E55FCBDA7B7F09D /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3303,10 +3435,14 @@
 				INFOPLIST_FILE = "knock Honey/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OpenSDK1.7.4",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "cn.liubitao.knock-Honey";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
@@ -3316,6 +3452,7 @@
 			baseConfigurationReference = 74E0C9D2929A91D4AB2D6BA5 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3339,10 +3476,14 @@
 				INFOPLIST_FILE = "knock Honey/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OpenSDK1.7.4",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "cn.liubitao.knock-Honey";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
