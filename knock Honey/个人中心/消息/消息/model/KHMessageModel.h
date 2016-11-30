@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KHShipping.h"
 
 @interface KHMessageModel : NSObject
 
@@ -17,6 +18,12 @@
 @property (nonatomic,copy) NSString *lotteryid;
 @property (nonatomic,copy) NSString *addtime;
 @property (nonatomic,copy) NSString *type;
+@property (nonatomic,copy) NSString *goodsid;
+@property (nonatomic,copy) NSString *qishu;
+@property (nonatomic,copy) NSString *title;
+@property (nonatomic,copy) NSString *thumb;
+@property (nonatomic,strong) KHShipping *shipping;
+
 
 
 + (instancetype)kh_objectWithKeyValues:(NSDictionary*)dict;

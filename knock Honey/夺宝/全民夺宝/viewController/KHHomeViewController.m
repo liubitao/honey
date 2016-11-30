@@ -28,12 +28,13 @@
 
 @interface KHHomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,WinTreasureCellDelegate,TSAnimationDelegate,KHDowmViewCellDelegate>
 {
-    NSMutableArray *_images;
+   
     NSMutableArray *_dataArray;
     NSMutableArray *_downArray;
     NSInteger _currentIndex;
     NSInteger _currentPage;
 }
+@property (nonatomic,strong)  NSMutableArray *images;
 @property (nonatomic,strong) UICollectionView *collectionView;
 @property (nonatomic,strong) WinTreasureHeader *header;
 /**c产品图片(动画)
@@ -162,7 +163,6 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
                 [_collectionView reloadData];
             }
         } failure:^(NSError *error) {
-            [MBProgressHUD showError:@"网络连接有误"];
         }];
     }
     
@@ -205,8 +205,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
             if (i == 0) {
                 [_collectionView reloadSections:[NSIndexSet indexSetWithIndex:2]];
             }
-        } failure:^(NSError *error) {
-            [MBProgressHUD showError:@"网络连接有误"];
+        } failure:^(NSError *error){
         }];
     }
 }
@@ -251,6 +250,11 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     
     _header.imageBlock = ^(UIImageView *sender) {
         NSLog(@"图片点击%ld",(long)sender.tag);
+        KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
+        VC.title = @"详情";
+        KHIMage *model = weakSelf.images[sender.tag];
+        VC.urlStr = model.link;
+        [weakSelf pushController:VC];
     };
 }
 
@@ -261,9 +265,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (section == 1) {
         return 3;
-    }
-    else if (section == 2) {
-        
+    }else if (section == 2){
         NSMutableArray *array = _dataArray[_currentIndex];
         return array.count;
     }
@@ -332,17 +334,20 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     
     [MBProgressHUD showMessage:@"加载中..."];
     NSMutableDictionary *parameter = [Utils parameter];
+    NSString *qishu;
     NSString *goodsid;
     if (indexPath.section == 1) {
         KHPublishModel * knowModel = _downArray[indexPath.row];
         parameter[@"goodsid"] = knowModel.goodsid;
         parameter[@"qishu"] = knowModel.qishu;
         goodsid = knowModel.goodsid;
+        qishu = knowModel.qishu;
     }else{
         KHHomeModel *knowModel = _dataArray[_currentIndex][indexPath.row];
         parameter[@"goodsid"] = knowModel.ID;
         parameter[@"qishu"] = knowModel.qishu;
         goodsid = knowModel.ID;
+        qishu = knowModel.qishu;
     }
     if ([YWUserTool account]) {
         parameter[@"userid"] = [YWUserTool account].userid;
@@ -353,6 +358,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
         KHDetailViewController *DetailVC = [[KHDetailViewController alloc]init];
         DetailVC.model = [KHProductModel kh_objectWithKeyValues:responseObject[@"result"]];
         DetailVC.goodsid = goodsid;
+        DetailVC.qishu = qishu;
         if (indexPath.section == 1) {
             if ([DetailVC.model.winner.newtime doubleValue] >[[NSDate date] timeIntervalSince1970]){
                 DetailVC.showType = TreasureDetailHeaderTypeCountdown;
@@ -366,7 +372,6 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
         [self pushController:DetailVC];
     } failure:^(NSError *error) {
         [MBProgressHUD hideHUD];
-        [MBProgressHUD showError:@"网络连接有误"];
     }];
 }
 

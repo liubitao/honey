@@ -40,6 +40,8 @@
 #import "NSString+TSTime.h"
 #import "UITabBar+Badge.h"
 #import "UIButton+Badge.h"
+#import "UINavigationBar+BTsome.h"
+
 
 
 //工具类

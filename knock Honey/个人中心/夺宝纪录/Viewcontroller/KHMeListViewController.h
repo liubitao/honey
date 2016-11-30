@@ -11,5 +11,7 @@
 
 @interface KHMeListViewController : KHBaseViewController
 @property (nonatomic,copy) NSString *type;
-
+@property (nonatomic,copy) NSString *userID;
+@property (nonatomic,strong) UITableView *tableView;
+@property (nonatomic,assign) BOOL otherType;
 @end

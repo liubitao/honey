@@ -14,8 +14,6 @@ typedef NS_ENUM(NSInteger, KHEditAddressType) {
     KHAddressEdit = 1,   //修改
 };
 
-
-
 @interface KHEditAddressViewController : KHBaseViewController
 
 @property (nonatomic,strong) KHAddressModel *model;

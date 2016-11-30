@@ -12,6 +12,7 @@
 #import "KHPhoneViewController.h"
 #import "KHAddressViewController.h"
 
+
 @interface KHInformationController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSArray    *titles;
@@ -22,7 +23,7 @@
 @implementation KHInformationController
 - (NSArray *)titles {
     if (!_titles) {
-        _titles = @[@"头像",@"昵称",@"手机号码",@"ID",@"收货地址"];
+        _titles = @[@"头像",@"昵称",@"手机号码",@"推荐ID",@"收货地址"];
     }
     return _titles;
 }
@@ -81,7 +82,7 @@
         }
     }
     if (indexPath.row==3) {
-        cell.detailTextLabel.text = user.userid;
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%zi",user.userid.integerValue +100000];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -98,29 +99,26 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.row == 0) {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"选择操作" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-         UIImagePickerController *pickerController = [[UIImagePickerController alloc]init];
-        UIAlertAction *action_camera = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] && [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear]) {
-                [pickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
-                [pickerController setCameraDevice:UIImagePickerControllerCameraDeviceRear];
-            } else {
-                [pickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    if (indexPath.row == 0){
+        [UIAlertController showActionSheetWithTitle:nil Message:nil cancelBtnTitle:@"取消" OtherBtnTitles:@[@"拍照",@"相册中选择"] ClickBtn:^(NSInteger index) {
+            if (index == 0 ) {
+                return ;
             }
+            UIImagePickerController *pickerController = [[UIImagePickerController alloc]init];
+            if (index == 1 ) {
+                if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] && [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear]) {
+                    [pickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
+                    [pickerController setCameraDevice:UIImagePickerControllerCameraDeviceRear];
+                } else {
+                    [pickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+                }
+            }else{
+                pickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            }
+            pickerController.delegate = self;
+            pickerController.allowsEditing = YES;
+            [self presentViewController:pickerController animated:YES completion:nil];
         }];
-        UIAlertAction *action_photo = [UIAlertAction actionWithTitle:@"从手机相册中选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            pickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        }];
-        pickerController.delegate = self;
-        pickerController.allowsEditing = YES;
-        [self presentViewController:pickerController animated:YES completion:nil];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:nil];
-        
-        [alertController addAction:action_camera];
-        [alertController addAction:action_photo];
-        [alertController addAction:cancelAction];
-        [self presentViewController:alertController animated:YES completion:nil];
     }
     if (indexPath.row == 1){
         NicknameViewController *nickVC = [[NicknameViewController alloc]init];

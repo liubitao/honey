@@ -327,6 +327,7 @@
         [self hideBottomBarPush:resultVC];
         YWUser *user = [YWUserTool account];
         user.money = str;
+        user.grade = responseObject[@"result"][@"grade"];
         [YWUserTool saveAccount:user];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshCart" object:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"kTopupNotification" object:str];

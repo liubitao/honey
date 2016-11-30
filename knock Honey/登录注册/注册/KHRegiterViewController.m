@@ -29,6 +29,8 @@
     [super viewDidLoad];
     _registerButton.layer.cornerRadius = 5;
     _registerButton.layer.masksToBounds = YES;
+    
+    [self setLeftItemTitle:@"取消" action:@selector(pop)];
     self.title = @"注册";
     NSString *remindStr = @"距离获得新手礼包还有2步！";
     _remindLabel.attributedText = [Utils stringWith:remindStr font1:SYSTEM_FONT(14) color1:UIColorHex(51B2EA) font2:SYSTEM_FONT(14) color2:kDefaultColor range:NSMakeRange(10, 1)];
@@ -37,6 +39,12 @@
     //当编辑改变的时候，进行字符校验
     [self.userPhone addTarget:self action:@selector(reformatAsPhoneNumber:) forControlEvents:UIControlEventEditingChanged];
 }
+
+
+- (void)pop{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 -(void)reformatAsPhoneNumber:(UITextField *)textField {
     /**

@@ -69,10 +69,10 @@
 
 /**push不隐藏tabbar
  */
-- (void)pushController:(KHBaseViewController *)controller;
+- (void)pushController:(UIViewController *)controller;
 /**push隐藏tabbar
  */
-- (void)hideBottomBarPush:(KHBaseViewController *)controller;
+- (void)hideBottomBarPush:(UIViewController *)controller;
 
 /**设置导航栏
  */

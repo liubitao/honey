@@ -10,6 +10,7 @@
 #import "KHDetailModel.h"
 
 
+
 @interface TreasureDetailCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
@@ -23,7 +24,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *userNameWidth;
 
 @property (copy, nonatomic) NSIndexPath *indexPath;
-
 
 @property (strong, nonatomic) KHDetailModel *model;
 

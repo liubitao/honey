@@ -13,6 +13,7 @@
 #import "KHEditPhoneViewController.h"
 #import "KHWantAppearController.h"
 #import "KHAddressViewController.h"
+#import "KHQiandaoViewController.h"
 
 
 @interface KHWinViewController ()<UITableViewDataSource,UITableViewDelegate,DZNEmptyDataSetDelegate,DZNEmptyDataSetSource,KHWinTableViewDelegate>{
@@ -75,7 +76,7 @@ static NSString *Wincell = @"winCell";
     
     [self.tableView.mj_header beginRefreshing];
     
-    self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+    self.tableView.mj_footer = [GPAutoFooter footerWithRefreshingBlock:^{
         [weakSelf getMoreData];
         [weakSelf.tableView.mj_footer endRefreshing];
     }];
@@ -89,9 +90,11 @@ static NSString *Wincell = @"winCell";
 }
 
 - (void)rightClick{
-    
+    KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
+    VC.urlStr = PortNovice_coure;
+    VC.title = @"新手帮助";
+    [self hideBottomBarPush:VC];
 }
-
 
 - (void)getLatestPubData{
     NSMutableDictionary *parameter = [Utils parameter];
@@ -114,7 +117,11 @@ static NSString *Wincell = @"winCell";
     parameter[@"p"] = [NSNumber numberWithInteger:++_pageCount];
     [YWHttptool GET:PortWin_list parameters:parameter success:^(id responseObject) {
         NSLog(@"%@",responseObject);
-         [self.dataSoure addObjectsFromArray:[KHWinCodeModel kh_objectWithKeyValuesArray:responseObject[@"result"]]];
+        if ([responseObject[@"result"][@"isError"] integerValue] == 1) {
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            return ;
+        }
+        [self.dataSoure addObjectsFromArray:[KHWinCodeModel kh_objectWithKeyValuesArray:responseObject[@"result"]]];
         NSString *strNumber = [NSString stringWithFormat:@"%zi",self.dataSoure.count];
         NSString *str = [NSString stringWithFormat:@"    恭喜亲已经获得了%zi个宝物",self.dataSoure.count];
         _winCount.attributedText = [Utils stringWith:str font1:SYSTEM_FONT(14) color1:UIColorHex(#D2DBDB) font2:SYSTEM_FONT(14) color2:kDefaultColor range:NSMakeRange(12, strNumber.length)];

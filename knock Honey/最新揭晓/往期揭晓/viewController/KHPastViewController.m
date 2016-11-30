@@ -131,6 +131,7 @@
         KHDetailViewController *DetailVC = [[KHDetailViewController alloc]init];
         DetailVC.model = [KHProductModel kh_objectWithKeyValues:responseObject[@"result"]];
         DetailVC.goodsid = knowModel.goodsid;
+        DetailVC.qishu = knowModel.qishu;
         DetailVC.showType = TreasureDetailHeaderTypeWon;
         [self pushController:DetailVC];
     } failure:^(NSError *error) {

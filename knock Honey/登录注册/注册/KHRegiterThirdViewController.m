@@ -36,7 +36,7 @@
         YWUser *user = [YWUser mj_objectWithKeyValues:responseObject[@"result"]];
         [YWUserTool saveAccount:user];
         [MBProgressHUD showSuccess:@"登录成功"];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"freshenPerson" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"loginPerson" object:nil];
         [self dismissViewControllerAnimated:YES completion:nil];
        
     } failure:^(NSError *error){

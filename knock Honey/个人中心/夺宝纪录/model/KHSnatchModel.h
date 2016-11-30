@@ -16,6 +16,8 @@
 @property (nonatomic,copy) NSString *thumb;
 
 @property (nonatomic,copy) NSString *ID;
+
+
 /**
  *  最新期数
  */

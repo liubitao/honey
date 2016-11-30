@@ -24,6 +24,7 @@
     NSMutableArray *result = [NSMutableArray array];
     for (NSDictionary *dict in array) {
         KHMessageModel *model = [self kh_objectWithKeyValues:dict];
+        model.shipping = [KHShipping mj_objectWithKeyValues:dict[@"shipping"]];
         [result addObject:model];
     }
     return result;

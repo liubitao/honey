@@ -11,7 +11,7 @@
 #import <MJExtension.h>
 #import "BonusModel.h"
 #import "BonusCell.h"
-@interface KHUserAbleViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface KHUserAbleViewController ()<UITableViewDataSource,UITableViewDelegate,DZNEmptyDataSetSource>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *dataArray;
 
@@ -30,6 +30,7 @@
         _tableView.dataSource = self;
         _tableView.delegate = self;
         _tableView.rowHeight = 125;
+        _tableView.emptyDataSetSource = self;
         [_tableView setCustomSeparatorInset:UIEdgeInsetsZero];
         _tableView.tableFooterView = [UIView new];
     }
@@ -70,6 +71,12 @@
     cell.model = self.dataArray[indexPath.row];
     
     return cell;
+}
+
+#pragma mark - DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
+
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    return [UIImage imageNamed:@"empty_placeholder"];
 }
 
 - (void)didReceiveMemoryWarning {

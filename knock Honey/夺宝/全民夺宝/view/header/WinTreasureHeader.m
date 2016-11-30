@@ -148,7 +148,7 @@ const CGFloat kScrollViewHeight = 140.0;
         UIImageView *imgView = [UIImageView new];
         imgView.tag = i;
         imgView.userInteractionEnabled = YES;
-        [imgView sd_setImageWithURL:[NSURL URLWithString:img.img] placeholderImage:[UIImage imageNamed:@"placeholder"]];;
+        [imgView sd_setImageWithURL:[NSURL URLWithString:img.url] placeholderImage:[UIImage imageNamed:@"placeholder"]];
         imgView.origin = CGPointMake(i*KscreenWidth, 0);
         imgView.size = CGSizeMake(_imgScrollView.width, _imgScrollView.height);
         [_imgScrollView addSubview:imgView];        

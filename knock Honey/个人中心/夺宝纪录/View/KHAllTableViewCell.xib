@@ -130,7 +130,7 @@
                 <outlet property="sehngyurenshu" destination="nKX-TM-Nxu" id="jIE-dh-mBk"/>
                 <outlet property="zongrenshu" destination="SlQ-77-lbZ" id="eZQ-GT-Nwt"/>
             </connections>
-            <point key="canvasLocation" x="310.5" y="243.5"/>
+            <point key="canvasLocation" x="234.5" y="352.5"/>
         </tableViewCell>
     </objects>
 </document>

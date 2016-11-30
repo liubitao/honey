@@ -53,7 +53,7 @@
  */
 @property (nonatomic, copy) NSString *qishu;
 
-@property (nonatomic, copy) NSString *ID;//id
+@property (nonatomic, copy) NSString *ID;
 /**
  *  商品照片
  */

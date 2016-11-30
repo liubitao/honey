@@ -16,12 +16,14 @@
 #import "YWPopView.h"
 #import "KHCodeViewController.h"
 #import "KHProductModel.h"
+#import "KHOtherPersonController.h"
 
 
 @interface KHMeListViewController ()<UITableViewDataSource,UITableViewDelegate,khAllCellDegelage,khEdCellDegelage,YWCoverDelegate>{
     NSInteger _currentPage;
+    CGFloat _huadong;
 }
-@property (nonatomic,strong) UITableView *tableView;
+
 @property (nonatomic,strong) NSMutableArray *dataArray;
 @property (nonatomic,strong) KHCodeViewController *codeVC;
 
@@ -45,7 +47,7 @@ static NSString *edGoodsCell = @"edGoodsCell";
 }
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, kScreenHeight - kNavigationBarHeight- 60) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth,_otherType ? kScreenHeight - 190 - 46:kScreenHeight - kNavigationBarHeight- 60) style:UITableViewStylePlain];
         _tableView.dataSource = self;
         _tableView.delegate = self;
         [_tableView setCustomSeparatorInset:UIEdgeInsetsZero];
@@ -72,7 +74,7 @@ static NSString *edGoodsCell = @"edGoodsCell";
     }];
     [self.tableView.mj_header beginRefreshing];
     
-    self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+    self.tableView.mj_footer = [GPAutoFooter footerWithRefreshingBlock:^{
         [weakSelf getMoreData];
         [weakSelf.tableView.mj_footer endRefreshing];
     }];
@@ -82,7 +84,11 @@ static NSString *edGoodsCell = @"edGoodsCell";
 }
 - (void)getData{
     NSMutableDictionary *parameter = [Utils parameter];
-    parameter[@"userid"] = [YWUserTool account].userid;
+    if (_userID) {
+        parameter[@"userid"] = _userID;
+    }else{
+        parameter[@"userid"] = [YWUserTool account].userid;
+    }
     parameter[@"p"] = @1;
     parameter[@"type"] = _type;
     [YWHttptool GET:PortOrder_list parameters:parameter success:^(id responseObject) {
@@ -96,12 +102,16 @@ static NSString *edGoodsCell = @"edGoodsCell";
 
 - (void)getMoreData{
     NSMutableDictionary *parameter = [Utils parameter];
-    parameter[@"userid"] = [YWUserTool account].userid;
+    if (_userID) {
+        parameter[@"userid"] = _userID;
+    }else{
+        parameter[@"userid"] = [YWUserTool account].userid;
+    }
     parameter[@"p"] = [NSNumber numberWithInteger:++_currentPage];
     parameter[@"type"] = _type;
     [YWHttptool GET:PortOrder_list parameters:parameter success:^(id responseObject) {
             NSLog(@"%@",responseObject);
-        if ([responseObject[@"isError"] integerValue] == 1) {
+        if ([responseObject[@"isError"] integerValue]) {
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
             return ;
         }
@@ -154,6 +164,7 @@ static NSString *edGoodsCell = @"edGoodsCell";
         KHDetailViewController *DetailVC = [[KHDetailViewController alloc]init];
         DetailVC.model = [KHProductModel kh_objectWithKeyValues:responseObject[@"result"]];
         DetailVC.goodsid = goodsid;
+        DetailVC.qishu = model.qishu;
         if (model.isopen.integerValue == 1) {
                 DetailVC.showType = TreasureDetailHeaderTypeWon;
         }else{
@@ -218,6 +229,7 @@ static NSString *edGoodsCell = @"edGoodsCell";
     [self.tabBarController setSelectedIndex:3];
     [self.navigationController popToRootViewControllerAnimated:NO];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

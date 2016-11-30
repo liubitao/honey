@@ -10,12 +10,12 @@
 #import "KHMessageModel.h"
 #import <MJExtension.h>
 #import "KHzhongjiangViewController.h"
+#import "KHdisListViewController.h"
+#import "KHPersonCell.h"
 
 
 @interface KHMessageViewController ()<UITableViewDataSource,UITableViewDelegate>
-{
-    NSArray *array;
-}
+
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *titleArray;
 @property (nonatomic,strong) NSMutableArray *imageArray;
@@ -49,39 +49,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    [self.view addSubview:self.tableView];
     self.title = @"消息中心";
-    array =@[@"kefu",@"zhongjiang",@"fahuo",@"xitong"];
-    [self getData];
+    [self.view addSubview:self.tableView];
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"KHPersonCell" bundle:nil] forCellReuseIdentifier:@"personCell"];
 }
 
-- (void)getData{
-    NSMutableDictionary *parameter = [Utils parameter];
-    parameter[@"userid"] = [YWUserTool account].userid;
-    [YWHttptool GET:PortMessage_count parameters:parameter success:^(id responseObject) {
-        NSLog(@"%@",responseObject);
-        _dict = responseObject[@"result"];
-        [self.tableView reloadData];
-    } failure:^(NSError *error){
-    }];
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"messageCell"];
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"messageCell"];
-        cell.detailTextLabel.textColor = kDefaultColor;
-        cell.detailTextLabel.font = SYSTEM_FONT(13);
-        [cell setSeparatorInset:UIEdgeInsetsZero];
-        [cell setLayoutMargins:UIEdgeInsetsZero];
-    }
-    cell.textLabel.text = self.titleArray[indexPath.row];
-    cell.imageView.image = IMAGE_NAMED(self.imageArray[indexPath.row]);
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"(%@)条未读",_dict[array[indexPath.row]]];
+    KHPersonCell *cell = [tableView dequeueReusableCellWithIdentifier:@"personCell" forIndexPath:indexPath] ;
+    [cell setSeparatorInset:UIEdgeInsetsZero];
+    [cell setLayoutMargins:UIEdgeInsetsZero];
+    
+    cell.title.text = self.titleArray[indexPath.row];
+    cell.pic.image = IMAGE_NAMED(self.imageArray[indexPath.row]);
     return cell;
 }
 
@@ -95,9 +80,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    KHzhongjiangViewController *VC = [[KHzhongjiangViewController alloc]init];
-    VC.type = @(indexPath.row+1);
-    [self hideBottomBarPush:VC];
+    if (indexPath.row == 0) {//客服
+        
+    }else if (indexPath.row == 1) {//中奖
+        KHzhongjiangViewController *VC = [[KHzhongjiangViewController alloc]init];
+        VC.type = @(indexPath.row+1);
+        [self hideBottomBarPush:VC];
+    }else if (indexPath.row == 2) {//物流
+        KHdisListViewController *disListVC = [[KHdisListViewController alloc]init];
+        [self hideBottomBarPush:disListVC];
+    }else if (indexPath.row == 3){//系统
+        
+    }
+  
 }
 
 - (void)didReceiveMemoryWarning {

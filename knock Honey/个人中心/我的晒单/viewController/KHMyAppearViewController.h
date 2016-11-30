@@ -9,5 +9,8 @@
 #import "KHBaseViewController.h"
 
 @interface KHMyAppearViewController : KHBaseViewController
+@property (nonatomic,copy) NSString *userID;
+@property (nonatomic,strong) UITableView *tableView;
 
+@property (nonatomic,assign) BOOL otherType;
 @end

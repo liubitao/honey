@@ -50,7 +50,7 @@
 - (void)addAllChildVc{
     KHMeListViewController *allVC = [[KHMeListViewController alloc]init];
     allVC.title = @"全部";
-    
+    allVC.type = @"0";
     [self addChildViewController:allVC];
     
     KHMeListViewController *ingVC= [[KHMeListViewController alloc]init];

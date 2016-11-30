@@ -92,6 +92,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [self getData];
+    [textField resignFirstResponder];
     return YES;
 }
 
@@ -107,6 +108,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     CategoryDetailCell *cell = [CategoryDetailCell cellWithTableView:tableView];
+    cell.tenYImgView.hidden = YES;
     [cell setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, 0)];
     [cell setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
     KHTenModel *model = _dataArray[indexPath.row];

@@ -44,7 +44,7 @@
 
 @interface KHAppearDetailView : UIView
 
-typedef void(^DetailClickBlcok)();
+typedef void(^DetailClickBlcok)(BtButton *, KHAppearDetailModel *);
 @property (nonatomic,copy) DetailClickBlcok ClickBlcok;
 
 @property (nonatomic,strong) UIView *containerView;

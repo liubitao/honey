@@ -19,6 +19,10 @@
 #import "KHFreeViewController.h"
 #import "KHSnatchListController.h"
 #import "KHSettingViewController.h"
+#import "KHLoginViewController.h"
+#import "KHRegiterViewController.h"
+#import "RCDCustomerServiceViewController.h"
+
 
 
 @interface KHPersonViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -54,6 +58,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getTopupResult:) name:@"kTopupNotification" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(freshenPerson) name:@"freshenPerson" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(login) name:@"loginPerson" object:nil];
     [self configNavi];
     [self configTableView];
 }
@@ -63,13 +68,17 @@
     [self.navigationController setNavigationBarHidden:YES];
 }
 
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO];
 }
 
 - (void)freshenPerson{
     [_header freshen];
+}
+
+- (void)login{
+    [_header setType:[YWUserTool account]? KHPersonLogin:KHPersonNOLogin];
 }
 #pragma mark - notice
 - (void)getTopupResult:(NSNotification *)notice {
@@ -103,20 +112,32 @@
     _header = [[KHPersonHeader alloc]initWithFrame:({
         CGRect rect = {0, 0, kScreenWidth, 190};
         rect;
-    })];
+    }) with:[YWUserTool account] ? KHPersonLogin:KHPersonNOLogin];
     _tableView.tableHeaderView = _header;
     __weak typeof(self) weakSelf = self;
-    _header.settingBlock = ^{
+    
+    _header.loginBlock = ^(UIButton *button){//登陆注册
+        if (button.tag == 112) {
+            KHLoginViewController *vc = [[KHLoginViewController alloc]init];
+            KHNavigationViewController *nav = [[KHNavigationViewController alloc] initWithRootViewController:vc];
+            [weakSelf presentViewController:nav animated:YES completion:nil];
+        }else if (button.tag == 110){
+            KHRegiterViewController *vc = [[KHRegiterViewController alloc]init];
+            KHNavigationViewController *nav = [[KHNavigationViewController alloc] initWithRootViewController:vc];
+            [weakSelf presentViewController:nav animated:YES completion:nil];
+        }
+    };
+    _header.settingBlock = ^{//设置
         KHSettingViewController *settingVC = [[KHSettingViewController alloc]init];
         [weakSelf pushController:settingVC];
     };
     
-    _header.headImgBlock = ^{
+    _header.headImgBlock = ^{//头像
         KHInformationController *inforVC = [[KHInformationController alloc]init];
         [weakSelf pushController:inforVC];
     };
     
-    _header.topupBlock = ^{
+    _header.topupBlock = ^{//充值
         KHTopupViewController *topupVC = [[KHTopupViewController alloc]init];
         [weakSelf pushController:topupVC];
     };
@@ -157,6 +178,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (![YWUserTool account]) {
+        [MBProgressHUD showError:@"请先登陆"];
+        return;
+    }
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {//中奖
             KHWinViewController *winVC = [[KHWinViewController alloc]init];
@@ -180,7 +205,11 @@
         [self pushController:freeVC];
     }else if (indexPath.section == 2){
         if (indexPath.row == 0) {//客服
-            
+            RCDCustomerServiceViewController *chatService = [[RCDCustomerServiceViewController alloc] init];
+            chatService.conversationType = ConversationType_CUSTOMERSERVICE;
+            chatService.targetId = KefuMessageID;
+            chatService.title = @"客服";
+            [self pushController:chatService];
         }else if (indexPath.row == 1){//消息
             KHMessageViewController *messageVC= [[KHMessageViewController alloc]init];
             [self pushController:messageVC];

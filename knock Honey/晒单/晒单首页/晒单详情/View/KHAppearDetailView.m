@@ -194,14 +194,13 @@
         _containerView.height = self.height;
 }
 
-- (void)clickStar:(UIButton *)sender{
+- (void)clickStar:(BtButton *)sender{
     if (_model.issupport.integerValue == 1){
         [MBProgressHUD showError:@"已点过赞"];
         return;
     }
-    [_zanButton setImage:[UIImage imageNamed:@"zanSelect"] title:[NSString stringWithFormat:@"(%@)",_model.support] forState:UIControlStateNormal];
     if (_ClickBlcok) {
-        _ClickBlcok();
+        _ClickBlcok(sender,_model);
     }
 }
 

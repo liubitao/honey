@@ -85,7 +85,7 @@ static NSString * rightCell = @"rightCell";
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf getLatestPubData];
         //结束刷新
-        [weakSelf.tableView.mj_header endRefreshing];
+//        [weakSelf.tableView.mj_header endRefreshing];
     }];
     
     [self.tableView registerNib:NIB_NAMED(@"KHAddressTableViewCell") forCellReuseIdentifier:addressCell];
@@ -144,6 +144,8 @@ static NSString * rightCell = @"rightCell";
         if (j!=(self.dataSoure.count - 1) &&self.dataSoure.count !=0) {
             [self.dataSoure exchangeObjectAtIndex:j withObjectAtIndex:self.dataSoure.count-1];
         }
+        //结束刷新
+        [self.tableView.mj_header endRefreshing];
         [self.tableView reloadData];
     } failure:^(NSError *error){
 

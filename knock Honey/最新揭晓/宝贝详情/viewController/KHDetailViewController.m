@@ -17,6 +17,11 @@
 #import "YWPopView.h"
 #import "KHGoodsAppearController.h"
 #import "KHPastViewController.h"
+#import "KHOtherPersonController.h"
+#import "KHLoginViewController.h"
+#import <MJExtension.h>
+#import <UMSocialCore/UMSocialCore.h>
+#import "UMSocialUIManager.h"
 
 @interface KHDetailViewController ()<UITableViewDataSource,UITableViewDelegate,TreasureDetailFooterDelegate,YWCoverDelegate>{
     NSInteger _currentPage;
@@ -180,14 +185,14 @@
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"p"] = @"1";
     parameter[@"goodsid"] = _goodsid;
-    parameter[@"qishu"] = _model.qishu;
-    _currentPage = 1;
+    parameter[@"qishu"] = _qishu;
     [YWHttptool GET:PortGoodsOrder parameters:parameter success:^(id responseObject) {
+        _currentPage = 1;
         NSLog(@"%@",responseObject);
         _dataArray = [KHDetailModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
         [_tableView reloadData];
-    } failure:^(NSError *error) {
-        [MBProgressHUD showError:@"网络连接有误"];
+    } failure:^(NSError *error){
+
     }];
 
 }
@@ -196,7 +201,7 @@
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"p"] = [NSNumber numberWithInteger:++_currentPage];
     parameter[@"goodsid"] = _goodsid;
-    parameter[@"qishu"] = _model.qishu;
+    parameter[@"qishu"] = _qishu;
     [YWHttptool GET:PortGoodsOrder parameters:parameter success:^(id responseObject) {
         NSLog(@"%@",responseObject);
         if ([responseObject[@"isError"] integerValue]){
@@ -207,7 +212,6 @@
         [_dataArray addObjectsFromArray:array];
         [_tableView reloadData];
     } failure:^(NSError *error){
-        [MBProgressHUD showError:@"网络连接有误"];
     }];
 }
 
@@ -220,6 +224,43 @@
 
 //分享
 - (void)share{
+    //显示分享面板
+    NSString *desct = [NSString stringWithFormat:@"最新一期的%@只要一元起",_model.title];
+    [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMShareMenuSelectionView *shareSelectionView, UMSocialPlatformType platformType) {
+        //创建分享消息对象
+        UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+        
+        //创建网页内容对象
+        UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"这是一份来自“云网夺宝”的惊喜，必须分享给你！" descr:desct thumImage:[UIImage imageNamed:@"yunWang"]];
+        //设置网页地址
+        shareObject.webpageUrl =PortShareUrl;
+        
+        //分享消息对象设置分享内容对象
+        messageObject.shareObject = shareObject;
+        
+        //调用分享接口
+        [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+            NSString *result = nil;
+            if (error) {
+                NSLog(@"************Share fail with error %@*********",error);
+                result = @"分享失败";
+            }else{
+                result = @"分享成功";
+                if ([data isKindOfClass:[UMSocialShareResponse class]]) {
+                    UMSocialShareResponse *resp = data;
+                    //分享结果消息
+                    NSLog(@"response message is %@",resp.message);
+                    //第三方原始返回的数据
+                    NSLog(@"response originalResponse data is %@",resp.originalResponse);
+                    
+                }else{
+                    NSLog(@"response data is %@",data);
+                }
+            }
+            [UIAlertController showAlertViewWithTitle:@"提示" Message:result BtnTitles:@[@"确定"] ClickBtn:nil];
+        }];
+
+    }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -238,11 +279,27 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSLog(@"%ld",(long)indexPath.row);
+    KHOtherPersonController *otherVC = [[KHOtherPersonController alloc]init];
+    KHDetailModel *model = self.dataArray[indexPath.row];
+    otherVC.userID = model.userid;
+    NSMutableDictionary *parameter = [Utils parameter];
+    parameter[@"userid"] = model.userid;
+    [YWHttptool GET:PortOther_user parameters:parameter success:^(id responseObject) {
+        if ([responseObject[@"isError"] integerValue]) return ;
+        otherVC.model = [KHOtherModel mj_objectWithKeyValues:responseObject[@"result"]];
+        [self hideBottomBarPush:otherVC];
+    } failure:^(NSError *error) {
+    }];
 }
 
 //夺宝中下面的，点击按钮
 - (void)clickMenuButtonWithIndex:(NSInteger)index{
+    if (![YWUserTool account]) {
+        KHLoginViewController *vc = [[KHLoginViewController alloc]init];
+        KHNavigationViewController *nav = [[KHNavigationViewController alloc] initWithRootViewController:vc];
+        [self presentViewController:nav animated:YES completion:nil];
+        return;
+    }
     switch (index) {
         case 1:
             [self.tabBarController setSelectedIndex:3];

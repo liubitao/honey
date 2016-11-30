@@ -24,7 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.delegate = self;
+//    self.delegate = self;
     [self setup];
 }
 
@@ -77,16 +77,16 @@
     self.hidesBottomBarWhenPushed = NO;
 }
 
-#pragma mark - UITabBarControllerDelegate
-- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
-    if (viewController == tabBarController.viewControllers[4]  &&![YWUserTool account]) {
-        KHLoginViewController *vc = [[KHLoginViewController alloc]init];
-        KHNavigationViewController *nav = [[KHNavigationViewController alloc] initWithRootViewController:vc];
-        [((UINavigationController *)tabBarController.selectedViewController) presentViewController:nav animated:YES completion:nil];
-        return NO;
-    }
-    return YES;
-}
+//#pragma mark - UITabBarControllerDelegate
+//- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+//    if (viewController == tabBarController.viewControllers[4]  &&![YWUserTool account]) {
+//        KHLoginViewController *vc = [[KHLoginViewController alloc]init];
+//        KHNavigationViewController *nav = [[KHNavigationViewController alloc] initWithRootViewController:vc];
+//        [((UINavigationController *)tabBarController.selectedViewController) presentViewController:nav animated:YES completion:nil];
+//        return NO;
+//    }
+//    return YES;
+//}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

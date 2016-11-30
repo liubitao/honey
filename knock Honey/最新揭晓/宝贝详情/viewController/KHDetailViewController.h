@@ -24,4 +24,6 @@ typedef NS_ENUM(NSUInteger, TreasureDetailType) {
 @property (nonatomic, assign) TreasureDetailHeaderType showType;
 
 @property (nonatomic,copy) NSString *goodsid;
+
+@property (nonatomic,copy) NSString *qishu;
 @end

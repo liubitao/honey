@@ -15,7 +15,7 @@
     NSInteger _pageCount;
 }
 
-@property (nonatomic,strong) UITableView *tableView;
+
 @property (nonatomic,strong) NSMutableArray *dataArray;
 
 @end
@@ -37,7 +37,8 @@
 }
 
 - (void)createTableView{
-    self.tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, _otherType ? kScreenHeight - 190 - 46:kScreenHeight) style:UITableViewStylePlain];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.tableFooterView = [UIView new];
@@ -68,7 +69,11 @@
 }
 - (void)getLatestPubData{
     NSMutableDictionary *parameter = [Utils parameter];
-    parameter[@"userid"] = [YWUserTool account].userid;
+    if (_userID) {
+        parameter[@"userid"] = _userID;
+    }else{
+         parameter[@"userid"] = [YWUserTool account].userid;
+    }
     parameter[@"p"] = @1;
     parameter[@"type"] = @1;
     [YWHttptool GET:PortComment_list parameters:parameter success:^(id responseObject){
@@ -83,7 +88,11 @@
 
 - (void)getMoreData{
     NSMutableDictionary *parameter = [Utils parameter];
-    parameter[@"userid"] = [YWUserTool account].userid;
+    if (_userID) {
+        parameter[@"userid"] = _userID;
+    }else{
+        parameter[@"userid"] = [YWUserTool account].userid;
+    }
     parameter[@"p"] = @(++_pageCount);
     parameter[@"type"]= @1;
     [YWHttptool GET:PortComment_list parameters:parameter success:^(id responseObject){

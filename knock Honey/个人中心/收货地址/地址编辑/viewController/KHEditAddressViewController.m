@@ -41,6 +41,8 @@
         _addressSecone.text = _model.address;
         [_moren setOn:[_model.isdefault isEqualToString:@"1"] ? YES:NO ];
     }
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self  action:@selector(chooseAddress:)];
+    [_addressFirst addGestureRecognizer:tap];
 }
 
 //删除

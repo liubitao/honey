@@ -14,6 +14,7 @@
 #import <MJExtension.h>
 #import "KHPayViewController.h"
 #import "KHPayModel.h"
+#import "KHQiandaoViewController.h"
 
 @interface KHCartViewController ()<UITableViewDataSource,UITableViewDelegate,ShoppingListCellDelegate,DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>
 @property (nonatomic, strong) NSNumber *moneySum;
@@ -195,11 +196,13 @@
 
 - (void)excuteDeleteEvent {
     __weak typeof(self) weakSelf = self;
-    if (self.deleteArray.count == 0) {
-        [UIAlertController showAlertViewWithTitle:@"提示" Message:@"请选择需要删除的商品" BtnTitles:@[@"知道了"] ClickBtn:nil];
-    }
+   
     __weak typeof(_billView) weaKbillView = _billView;
     _billView.deleteBlock = ^{
+    if (weakSelf.deleteArray.count == 0 ) {
+        [UIAlertController showAlertViewWithTitle:@"提示" Message:@"请选择需要删除的商品" BtnTitles:@[@"知道了"] ClickBtn:nil];
+        return ;
+        }
     [UIAlertController showAlertViewWithTitle:nil Message:@"确定要删除吗?" BtnTitles:@[@"取消",@"确定"] ClickBtn:^(NSInteger index) {
                 if (index==1) {
                     if (!weakSelf.tableView.editing) {
@@ -302,7 +305,10 @@
  *  点击右边的帮助
  */
 - (void)helpClick{
-    
+    KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
+    VC.urlStr = PortNovice_coure;
+    VC.title = @"新手帮助";
+    [self pushController:VC];
 }
 
 - (void)getMoneySum {

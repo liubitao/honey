@@ -15,6 +15,6 @@
 @property (nonatomic,copy) NSString *buynum;
 @property (nonatomic,copy) NSString *wincode;
 @property (nonatomic,copy) NSString *username;
-
+@property (nonatomic,copy) NSString *img;
 
 @end

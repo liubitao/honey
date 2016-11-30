@@ -107,7 +107,7 @@ static NSString *jifenCell = @"jifenCell";
     
     UILabel *label3 = [[UILabel alloc]init];
     label3.text = @"时间";
-    label3.textColor = UIColorHex(#CBCBCB);
+    label3.textColor = UIColorHex(#6A6A6A);
     label3.textAlignment = NSTextAlignmentCenter;
     label3.font = SYSTEM_FONT(15);
     label3.origin = CGPointMake(20, 0);
@@ -116,22 +116,21 @@ static NSString *jifenCell = @"jifenCell";
     
     UILabel *label2 = [[UILabel alloc]init];
     label2.text = @"类型";
-    label2.textColor = UIColorHex(#CBCBCB);
+    label2.textColor = UIColorHex(#6A6A6A);
     label2.font = SYSTEM_FONT(15);
     label2.textAlignment = NSTextAlignmentCenter;
     label2.origin = CGPointMake(label3.right +20, 0);
-    label2.size = CGSizeMake(((KscreenWidth-60)/-20)/2, 30);
+    label2.size = CGSizeMake(((KscreenWidth-60)/2-20)/2, 30);
     [view addSubview:label2];
     
     UILabel *label1 = [[UILabel alloc]init];
     label1.text = @"积分";
-    label1.textColor = UIColorHex(#CBCBCB);
+    label1.textColor = UIColorHex(#6A6A6A);
     label1.font = SYSTEM_FONT(15);
     label1.textAlignment = NSTextAlignmentCenter;
     label1.origin = CGPointMake(label2.right + 20, 0);
-    label1.size = CGSizeMake(((KscreenWidth-60)/-20)/2, 30);
+    label1.size = CGSizeMake(((KscreenWidth-60)/2-20)/2, 30);
     [view addSubview:label1];
-    
     return view;
 }
 - (void)didReceiveMemoryWarning {

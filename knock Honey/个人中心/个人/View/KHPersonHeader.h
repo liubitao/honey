@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+
+typedef NS_ENUM(NSInteger,KHPersonType){
+    KHPersonNOLogin = 0,//未登录
+    KHPersonLogin = 1//已登录
+};
+
 typedef void(^MeHeaderBlock)(void);
+
+typedef void (^KHPersonLoginBlock)(UIButton *);
 
 @interface KHPersonHeader : UIView
 /**背景图
@@ -29,9 +37,19 @@ typedef void(^MeHeaderBlock)(void);
  */
 @property (nonatomic, copy) MeHeaderBlock diamondBlock;
 
+/**
+ *  未登录的时候的按钮
+ */
+@property (nonatomic,copy) KHPersonLoginBlock loginBlock;
+
 /**余额
  */
 @property (nonatomic, copy) NSString *remainSum;
+
+@property (nonatomic,assign) KHPersonType type;
+
+
+- (instancetype)initWithFrame:(CGRect)frame with:(KHPersonType )type;
 
 - (void)makeScaleForScrollView:(UIScrollView *)scrollView;
 

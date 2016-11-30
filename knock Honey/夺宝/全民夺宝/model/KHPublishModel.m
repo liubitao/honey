@@ -40,7 +40,7 @@
     NSMutableArray *result = [NSMutableArray array];
     for (NSDictionary *dict in array) {
         KHPublishModel *model = [self kh_objectWithKeyValues:dict];
-        if ([model.newtime doubleValue] >[[NSDate date] timeIntervalSince1970]){
+        if ([model.newtime doubleValue] - 0.2 >[[NSDate date] timeIntervalSince1970]){
             [model start];
         }
         [result addObject:model];
@@ -68,13 +68,12 @@
     [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
 }
 
-- (void)clockDidTick {
+- (void)clockDidTick{
     NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
     NSTimeInterval time=[dat timeIntervalSince1970];
     _value =  ([_newtime doubleValue]- time)*1000;
     [self updateDisplay];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_PUSH_CELL object:nil];
-    
 }
 
 - (void)stop {

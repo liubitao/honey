@@ -26,8 +26,7 @@
     [self registerNSNotificationCenter];
 }
 #pragma mark - 通知中心
-- (void)registerNSNotificationCenter {
-    
+- (void)registerNSNotificationCenter{
    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(notificationCenterEvent:)
                                                  name:NOTIFICATION_PUSH_CELL
@@ -38,7 +37,7 @@
                                                object:nil];
 }
 
-- (void)removeNSNotificationCenter {
+- (void)removeNSNotificationCenter{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_PUSH_CELL object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_STOP_CELL object:nil];
 }
@@ -69,9 +68,7 @@
 }
 
 - (void)dealloc {
-    [self removeNSNotificationCenter];
-
-    
+    [self removeNSNotificationCenter];  
 }
 +(CGSize)size{
     return CGSizeMake((KscreenWidth-1)/3, 155);

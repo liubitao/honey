@@ -87,18 +87,10 @@
     _qiandaoButton.size = CGSizeMake(75, 25);
     _qiandaoButton.tag = 2;
     _qiandaoButton.titleLabel.font = SYSTEM_FONT(13);
-    if (_model.issign.integerValue == 0) {
-        [_qiandaoButton setTitle:@"未签到" forState:UIControlStateNormal];
-        _qiandaoButton.backgroundColor = kDefaultColor;
-    }else{
-        [_qiandaoButton setTitle:@"已签到" forState:UIControlStateNormal];
-         _qiandaoButton.backgroundColor = UIColorHex(#329ADD);
-    }
     [_qiandaoButton addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
     _qiandaoButton.layer.cornerRadius =5;
     _qiandaoButton.layer.masksToBounds = YES;
     [container addSubview:_qiandaoButton];
-    
     moreImage.centerY = _qiandaoButton.centerY;
    
     
@@ -131,7 +123,13 @@
         _addLabel.text = @"+20积分";
     }
     
-    [_qiandaoButton setTitle:@"已签到" forState:UIControlStateNormal];
+    if (_model.issign.integerValue == 1) {
+        [_qiandaoButton setTitle:@"已签到" forState:UIControlStateNormal];
+        _qiandaoButton.backgroundColor = UIColorHex(#329ADD);
+    }else{
+         [_qiandaoButton setTitle:@"签到" forState:UIControlStateNormal];
+        _qiandaoButton.backgroundColor = kDefaultColor;
+    }
     
 }
 

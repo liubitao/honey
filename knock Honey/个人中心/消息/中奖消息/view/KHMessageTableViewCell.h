@@ -10,8 +10,8 @@
 #import "KHMessageModel.h"
 
 @interface KHMessageTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *contentStr;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *productImage;
+@property (weak, nonatomic) IBOutlet UILabel *productLabel;
 
 @property (nonatomic,strong) KHMessageModel *model;
 

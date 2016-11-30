@@ -89,13 +89,13 @@ static NSString * published = @"published";
     parameter[@"p"] = [NSNumber numberWithInteger:++_currentPage];
     [YWHttptool GET:PortGoodszxjx parameters:parameter success:^(id responseObject) {
         NSLog(@"%@",responseObject);
-        if ([responseObject[@"isError"] integerValue]){
+        if ([responseObject[@"isError"] integerValue] ==1){
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
             return ;
         };
         NSMutableArray *array = [KHKnowModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
         [_dataArray addObjectsFromArray:array];
-        [self.tableView reloadEmptyDataSet];
+        [self.tableView reloadData];
     } failure:^(NSError *error) {
         [MBProgressHUD showError:@"网络连接有误"];
     }];
@@ -147,6 +147,7 @@ static NSString * published = @"published";
         KHDetailViewController *DetailVC = [[KHDetailViewController alloc]init];
         DetailVC.model = [KHProductModel kh_objectWithKeyValues:responseObject[@"result"]];
         DetailVC.goodsid = knowModel.goodsid;
+        DetailVC.qishu = knowModel.qishu;
         if ([DetailVC.model.winner.newtime doubleValue] >[[NSDate date] timeIntervalSince1970]){
             DetailVC.showType = TreasureDetailHeaderTypeCountdown;
         }else{

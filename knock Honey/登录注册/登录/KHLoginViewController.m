@@ -183,7 +183,7 @@
         [YWUserTool saveAccount:user];
         [MBProgressHUD showSuccess:@"登录成功"];
         [self dismissViewControllerAnimated:YES completion:nil];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"freshenPerson" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"loginPerson" object:nil];
     } failure:^(NSError *error) {
         [MBProgressHUD hideHUDForView:self.view];
         [MBProgressHUD showError:@"登录失败"];
@@ -240,7 +240,7 @@
                                 [self dismissViewControllerAnimated:YES completion:nil];
                                 KHTabbarViewController *tabBarVC = (KHTabbarViewController *)[AppDelegate getAppDelegate].window.rootViewController;
                                 [tabBarVC setSelectedIndex:4];
-                                [[NSNotificationCenter defaultCenter] postNotificationName:@"freshenPerson" object:nil];
+                                [[NSNotificationCenter defaultCenter] postNotificationName:@"loginPerson" object:nil];
                                 [MBProgressHUD showSuccess:@"登录成功"];
                             } failure:^(NSError *error) {
                             }];
@@ -285,7 +285,7 @@
                                             [self dismissViewControllerAnimated:YES completion:nil];
                                             KHTabbarViewController *tabBarVC = (KHTabbarViewController *)[AppDelegate getAppDelegate].window.rootViewController;
                                             [tabBarVC setSelectedIndex:4];
-                                            [[NSNotificationCenter defaultCenter] postNotificationName:@"freshenPerson" object:nil];
+                                            [[NSNotificationCenter defaultCenter] postNotificationName:@"loginPerson" object:nil];
                                             [MBProgressHUD showSuccess:@"登录成功"];
                                         } failure:^(NSError *error) {
                                             NSLog(@"%@",error);

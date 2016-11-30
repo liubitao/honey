@@ -9,6 +9,9 @@
 #import "KHAppearDetailController.h"
 #import "KHAppearDetailView.h"
 #import "KHLoginViewController.h"
+#import "BtButton.h"
+#import <UMSocialCore/UMSocialCore.h>
+#import "UMSocialUIManager.h"
 
 @interface KHAppearDetailController ()
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -44,7 +47,8 @@
         CGRect rect = {0,0,kScreenWidth-10,1};
         rect;
     }) model:_AppearModel];
-    detailView.ClickBlcok = ^(){//点赞
+    detailView.ClickBlcok = ^(BtButton * button ,KHAppearDetailModel *model){//点赞
+       
         if (![YWUserTool account]) {//判断是不是登录状态
             KHLoginViewController *vc = [[KHLoginViewController alloc]init];
             KHNavigationViewController *nav = [[KHNavigationViewController alloc] initWithRootViewController:vc];
@@ -60,6 +64,8 @@
                 return ;
             }
             [MBProgressHUD showSuccess:@"点赞成功"];
+            [button setImage:[UIImage imageNamed:@"zanSelect"] title:[NSString stringWithFormat:@"(%zi)",model.support.integerValue+1] forState:UIControlStateNormal];
+            
             if (self.block){
                 self.block();
             }
@@ -77,6 +83,43 @@
  *  分享
  */
 - (void)share{
+    //显示分享面板
+    [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMShareMenuSelectionView *shareSelectionView, UMSocialPlatformType platformType) {
+        //创建分享消息对象
+        UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+        
+        //创建网页内容对象
+        UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"就是这么炫酷，随随便便又中奖了" descr:@"全场商品低至一元，手机电脑送送送" thumImage:[UIImage imageNamed:@"yunWang"]];
+        //设置网页地址
+        shareObject.webpageUrl =PortShareUrl;
+        
+        //分享消息对象设置分享内容对象
+        messageObject.shareObject = shareObject;
+        
+        //调用分享接口
+        [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+            NSString *result = nil;
+            if (error) {
+                NSLog(@"************Share fail with error %@*********",error);
+                result = @"分享失败";
+            }else{
+                result = @"分享成功";
+                if ([data isKindOfClass:[UMSocialShareResponse class]]) {
+                    UMSocialShareResponse *resp = data;
+                    //分享结果消息
+                    NSLog(@"response message is %@",resp.message);
+                    //第三方原始返回的数据
+                    NSLog(@"response originalResponse data is %@",resp.originalResponse);
+                    
+                }else{
+                    NSLog(@"response data is %@",data);
+                }
+            }
+            [UIAlertController showAlertViewWithTitle:@"提示" Message:result BtnTitles:@[@"确定"] ClickBtn:nil];
+        }];
+        
+    }];
+
     
 }
 

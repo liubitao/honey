@@ -59,9 +59,7 @@
 @end
 
 @interface TSHomeMenu ()
-{
-    UIButton *_selectedBtn;
-}
+
 
 @end
 
@@ -134,10 +132,6 @@ const CGFloat kTSHomeMenuLineSpacing = 20.0;
     sender.selected = !sender.selected;
     sender.userInteractionEnabled = NO;
     _selectedBtn = sender;
-    if (_selectedBtn.tag==4) {
-        _selectedBtn.userInteractionEnabled = YES;
-    }
-
 }
 
 - (void)scrollBottomLine:(CGFloat)x {

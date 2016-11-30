@@ -11,7 +11,7 @@
 #import "KHAppearModel.h"
 #import "KHAppearDetailController.h"
 
-@interface KHAppearViewController ()<UITableViewDataSource,UITableViewDelegate,DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>{
+@interface KHAppearViewController ()<UITableViewDataSource,UITableViewDelegate,DZNEmptyDataSetSource>{
     NSInteger _pageCount;
 }
 
@@ -45,7 +45,6 @@
     [self.tableView setLayoutMargins:UIEdgeInsetsZero];
     [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     [self.view addSubview:self.tableView];
-    _tableView.emptyDataSetDelegate = self;
     _tableView.emptyDataSetSource = self;
 
     
@@ -134,6 +133,7 @@
         detailVC.block = ^{
             KHAppearModel *appearModel = weakSelf.dataArray[indexPath.row];
             appearModel.issupport = @"1";
+            appearModel.support = [NSString stringWithFormat:@"%zi",appearModel.support.integerValue+1];
             [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:appearModel];
             [weakSelf.tableView reloadData];
         };
@@ -152,14 +152,6 @@
     return [UIImage imageNamed:@"empty_placeholder"];
 }
 
-- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
-    return YES;
-}
-
-- (void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view
-{
-    [self.tableView.mj_header beginRefreshing];
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

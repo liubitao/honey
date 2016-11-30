@@ -36,6 +36,8 @@
 
 @property (nonatomic,copy) NSString *mobile;
 
+@property (nonatomic,copy) NSString *grade;
+
 
 
 

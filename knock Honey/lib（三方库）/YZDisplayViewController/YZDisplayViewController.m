@@ -168,8 +168,7 @@
     return _isShowUnderLine?_underLine : nil;
 }
 
-- (NSMutableArray *)titleLabels
-{
+- (NSMutableArray *)titleLabels{
     if (_titleLabels == nil) {
         _titleLabels = [NSMutableArray array];
     }
@@ -183,8 +182,7 @@
         
         UIScrollView *titleScrollView = [[UIScrollView alloc] init];
         
-        titleScrollView.backgroundColor = _titleScrollViewColor?_titleScrollViewColor:[UIColor colorWithWhite:1 alpha:0.7];
-        
+        titleScrollView.backgroundColor = _titleScrollViewColor?_titleScrollViewColor:[UIColor colorWithWhite:1 alpha:1];
         [self.contentView addSubview:titleScrollView];
         
         _titleScrollView = titleScrollView;
@@ -265,9 +263,7 @@
 - (void)setIsfullScreen:(BOOL)isfullScreen
 {
     _isfullScreen = isfullScreen;
-    
-    self.contentView.frame = CGRectMake(0, 0, YZScreenW, YZScreenH);
-    
+         self.contentView.frame = CGRectMake(0, 0, YZScreenW, YZScreenH);
 }
 
 // 设置整体内容的尺寸
@@ -353,7 +349,6 @@
         // 没有设置内容尺寸，才需要设置内容尺寸
         self.contentView.frame = CGRectMake(0, contentY, contentW, contentH);
     }
-    
     // 设置标题滚动视图frame
     // 计算尺寸
     CGFloat titleW = _titleWidth?_titleWidth:YZScreenW;
@@ -423,7 +418,7 @@
         
         totalWidth += width;
     }
-    if (totalWidth > YZScreenW) {
+    if (totalWidth > YZScreenW){
         
         _titleMargin = margin;
         

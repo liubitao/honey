@@ -52,25 +52,35 @@
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 50)];
     view.backgroundColor = UIColorHex(#EFEFF4);
     
-    UIButton *quie = [[UIButton alloc]initWithFrame:CGRectMake(30, 0, KscreenWidth - 60, 50)];
-    quie.backgroundColor = kDefaultColor;
-    [quie setTitle:@"注销登录" forState:UIControlStateNormal];
-    [quie setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    quie.titleLabel.font = SYSTEM_FONT(20);
-    [quie addTarget:self action:@selector(quie:) forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:quie];
-    quie.layer.cornerRadius = 5;
-    quie.layer.masksToBounds = YES;
+    if ([YWUserTool account]) {
+        UIButton *quie = [[UIButton alloc]initWithFrame:CGRectMake(30, 0, KscreenWidth - 60, 50)];
+        quie.backgroundColor = kDefaultColor;
+        [quie setTitle:@"注销登录" forState:UIControlStateNormal];
+        [quie setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        quie.titleLabel.font = SYSTEM_FONT(20);
+        [quie addTarget:self action:@selector(quie:) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:quie];
+        quie.layer.cornerRadius = 5;
+        quie.layer.masksToBounds = YES;
+        _tableView.tableFooterView = view;
+    }else{
+        _tableView.tableFooterView = [UIView new];
+    }
+   
     
-    _tableView.tableFooterView = view;
+   
     
 }
 
 - (void)quie:(UIButton *)sender{
-    [YWUserTool quit];
-    [self.navigationController popToRootViewControllerAnimated:NO];
-    [self.navigationController.tabBarController.tabBar hideBadgeValueAtIndex:3];
-    [self.tabBarController setSelectedIndex:0];
+    [UIAlertController showAlertViewWithTitle:@"提示" Message:@"确认退出" BtnTitles:@[@"确认",@"取消"] ClickBtn:^(NSInteger index) {
+        if (index == 0) {
+            [YWUserTool quit];
+            [self.navigationController popToRootViewControllerAnimated:NO];
+            [self.navigationController.tabBarController.tabBar hideBadgeValueAtIndex:3];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"loginPerson" object:nil];
+        }
+    }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -109,6 +119,11 @@
         [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
              [MBProgressHUD showSuccess:@"清除成功"];
         }];
+    }else if (indexPath.row == 3){
+        KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
+        VC.urlStr = PortAgreement;
+        VC.title = @"用户协议";
+        [self hideBottomBarPush:VC];
     }else{
         KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
         VC.urlStr = self.urlArray[indexPath.row];

@@ -106,7 +106,7 @@
                 <outlet property="indateLabel" destination="ior-TB-4BB" id="199-hn-J5h"/>
                 <outlet property="sumLabel" destination="ml0-Vi-7Nx" id="hFL-uh-x0a"/>
             </connections>
-            <point key="canvasLocation" x="390" y="252.5"/>
+            <point key="canvasLocation" x="406" y="300.5"/>
         </tableViewCell>
     </objects>
     <resources>

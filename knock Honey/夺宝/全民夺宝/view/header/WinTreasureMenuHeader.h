@@ -35,6 +35,8 @@ typedef void (^TSHomeMenuSelectedBlock)(id object);
 
 @property (nonatomic, copy) TSHomeMenuSelectedBlock menuBlock;
 
+@property (nonatomic,assign) UIButton *selectedBtn;
+
 
 - (instancetype)initWithDataArray:(NSArray *)data;
 

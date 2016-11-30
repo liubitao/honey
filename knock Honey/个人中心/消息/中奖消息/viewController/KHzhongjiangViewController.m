@@ -9,6 +9,7 @@
 #import "KHzhongjiangViewController.h"
 #import "KHMessageModel.h"
 #import "KHMessageTableViewCell.h"
+#import "KHWinViewController.h"
 
 @interface KHzhongjiangViewController ()<UITableViewDataSource,UITableViewDelegate,DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>{
     NSInteger _pageCount;
@@ -31,7 +32,7 @@
 - (UITableView *)tableView{
     if (!_tableView) {
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kNavigationBarHeight, KscreenWidth, KscreenHeight-kNavigationBarHeight) style:UITableViewStyleGrouped];
-        _tableView.backgroundColor = UIColorHex(F0F0F0);
+        _tableView.backgroundColor = UIColorHex(EEEEEE);
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -72,7 +73,7 @@
 - (void)getLatestPubData{
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"userid"] = [YWUserTool account].userid;
-    parameter[@"type"] = _type;
+    parameter[@"type"] = @"2";
     parameter[@"p"] = @1;
     [YWHttptool GET:PortMessage_list parameters:parameter success:^(id responseObject){
         if ([responseObject[@"isError"] integerValue]) return ;
@@ -86,7 +87,7 @@
 - (void)getMoreData{
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"userid"] = [YWUserTool account].userid;
-    parameter[@"type"] = _type;
+    parameter[@"type"] = @"2";
     parameter[@"p"] = @(++_pageCount);
     [YWHttptool GET:PortMessage_list parameters:parameter success:^(id responseObject){
         if ([responseObject[@"isError"] integerValue]) return ;
@@ -103,6 +104,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     KHMessageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"zhongjiangCell" forIndexPath:indexPath];
     [cell setModel:_dataArray[indexPath.row]];
@@ -110,9 +112,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    KHMessageModel *model = _dataArray[indexPath.row];
-    CGRect rect = [model.content boundingRectWithSize:CGSizeMake(KscreenWidth - 50, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16]} context:nil];
-    return  45 + rect.size.height;
+    return  90;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 15;
@@ -123,7 +123,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    KHWinViewController *winVC = [[KHWinViewController alloc]init];
+    [self hideBottomBarPush:winVC];
 }
 
 #pragma mark - DZNEmptyDataSetSource, DZNEmptyDataSetDelegate

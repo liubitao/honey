@@ -26,7 +26,10 @@ const CGFloat kTimeLineCellHeight = 35.0; //cell高度
     }
     _headImageView.layer.cornerRadius = 5;
     _headImageView.layer.masksToBounds = YES;
+    
 }
+
+
 
 + (instancetype)cellWithTableView:(UITableView *)tableview {
     static NSString *cellID = @"TreasureDetailCell";

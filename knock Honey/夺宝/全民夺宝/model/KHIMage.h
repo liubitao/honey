@@ -10,7 +10,8 @@
 
 @interface KHIMage : NSObject
 
-@property (nonatomic,copy) NSString *img;
+
+@property (nonatomic,copy) NSString *url;
 
 @property (nonatomic,copy) NSString *link;
 

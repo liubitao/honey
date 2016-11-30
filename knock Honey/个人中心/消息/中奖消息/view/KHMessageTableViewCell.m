@@ -17,9 +17,8 @@
 - (void)setModel:(KHMessageModel *)model{
     _model = model;
     
-    _contentStr.text = model.content;
-    
-    _timeLabel.text = [Utils timeWith:model.addtime];
+    [_productImage sd_setImageWithURL:[NSURL URLWithString:_model.thumb] placeholderImage:IMAGE_NAMED(@"placeholder")];
+    _productLabel.text = [NSString stringWithFormat:@"恭喜您成为%@期%@的获奖者",_model.qishu,_model.title];
     
 }
 
