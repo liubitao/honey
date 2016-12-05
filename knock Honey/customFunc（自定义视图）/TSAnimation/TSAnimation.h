@@ -18,7 +18,7 @@
 
 @property (nonatomic, assign) BOOL isShowing;
 
-@property (nonatomic, weak) id<TSAnimationDelegate>delegate;
+@property (nonatomic, assign) id<TSAnimationDelegate>delegate;
 
 + (TSAnimation *)sharedAnimation;
 

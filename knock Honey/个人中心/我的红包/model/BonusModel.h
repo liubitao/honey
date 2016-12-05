@@ -58,14 +58,14 @@
 /**
  *
  */
-@property (nonatomic,copy) NSString *user_over;
+@property (nonatomic,copy) NSString *use_end_time;
+
+
+@property (nonatomic,copy) NSString *use_beg_time;
 /**
  *  红包名
  */
 @property (nonatomic,copy) NSString *name;
-/**
- *  过期时间
- */
-@property (nonatomic,copy) NSString *use_end_time;
+
 
 @end

@@ -11,7 +11,7 @@
 #import "KHAppearModel.h"
 #import "KHAppearDetailController.h"
 
-@interface KHAppearViewController ()<UITableViewDataSource,UITableViewDelegate,DZNEmptyDataSetSource>{
+@interface KHAppearViewController ()<UITableViewDataSource,UITableViewDelegate,DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>{
     NSInteger _pageCount;
 }
 
@@ -151,7 +151,9 @@
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
     return [UIImage imageNamed:@"empty_placeholder"];
 }
-
+- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
+    return YES;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

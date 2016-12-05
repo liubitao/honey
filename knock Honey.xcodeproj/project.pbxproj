@@ -72,6 +72,8 @@
 		0C461E971DDC57DE00853605 /* KHPastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C461E961DDC57DE00853605 /* KHPastViewController.m */; };
 		0C461E9B1DDC7A1000853605 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0C461E991DDC7A1000853605 /* AlipaySDK.bundle */; };
 		0C461E9C1DDC7A1000853605 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C461E9A1DDC7A1000853605 /* AlipaySDK.framework */; };
+		0C4EA38D1DF0201300A1DC22 /* libUMessage_Sdk_1.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C4EA38B1DF0201300A1DC22 /* libUMessage_Sdk_1.4.0.a */; };
+		0C4EA38F1DF020B900A1DC22 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C4EA38E1DF020B900A1DC22 /* UserNotifications.framework */; };
 		0C50E7781DD5AC420087A250 /* KHzhongjiangViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C50E7771DD5AC420087A250 /* KHzhongjiangViewController.m */; };
 		0C50E7841DD5ACCA0087A250 /* KHMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C50E77F1DD5ACCA0087A250 /* KHMessageModel.m */; };
 		0C50E7851DD5ACCA0087A250 /* KHMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C50E7831DD5ACCA0087A250 /* KHMessageViewController.m */; };
@@ -143,6 +145,14 @@
 		0C6C68B61DCB2F4B00B06535 /* KHAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6C68B51DCB2F4B00B06535 /* KHAddressModel.m */; };
 		0C6F59C21DB85D2800105C8C /* KHPublishModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6F59C11DB85D2800105C8C /* KHPublishModel.m */; };
 		0C6F59DF1DB89D6D00105C8C /* UITableView+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6F59DE1DB89D6D00105C8C /* UITableView+Custom.m */; };
+		0C711BF91DEEC443001D2740 /* KHXitongViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C711BF71DEEC443001D2740 /* KHXitongViewCell.m */; };
+		0C711BFA1DEEC443001D2740 /* KHXitongViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C711BF81DEEC443001D2740 /* KHXitongViewCell.xib */; };
+		0C711BFD1DEECA99001D2740 /* KHXitongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C711BFC1DEECA99001D2740 /* KHXitongModel.m */; };
+		0C711C011DEECC5E001D2740 /* KHXitongContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C711BFF1DEECC5E001D2740 /* KHXitongContentController.m */; };
+		0C711C021DEECC5E001D2740 /* KHXitongContentController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C711C001DEECC5E001D2740 /* KHXitongContentController.xib */; };
+		0C711C061DEEFCA8001D2740 /* KHAdvertModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C711C051DEEFCA8001D2740 /* KHAdvertModel.m */; };
+		0C711C091DEF01B5001D2740 /* KHAdvertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C711C081DEF01B5001D2740 /* KHAdvertView.m */; };
+		0C711C0B1DEF01CD001D2740 /* KHAdvertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C711C0A1DEF01CD001D2740 /* KHAdvertView.xib */; };
 		0C790B971DDC045A00C381CF /* KHSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C790B951DDC045A00C381CF /* KHSearchTableViewCell.m */; };
 		0C790B981DDC045A00C381CF /* KHSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C790B961DDC045A00C381CF /* KHSearchTableViewCell.xib */; };
 		0C790B9B1DDC047100C381CF /* KHSearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C790B9A1DDC047100C381CF /* KHSearchModel.m */; };
@@ -230,6 +240,7 @@
 		0C9E90361DD1A65200975AEB /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C9E90351DD1A65200975AEB /* CoreTelephony.framework */; };
 		0C9E90381DD1A65B00975AEB /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C9E90371DD1A65B00975AEB /* ImageIO.framework */; };
 		0C9E903C1DD1A69400975AEB /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C9E903B1DD1A69400975AEB /* libc++.tbd */; };
+		0CA3A30D1DF56B7200514913 /* KHXitongViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA3A30C1DF56B7200514913 /* KHXitongViewController.m */; };
 		0CB128BF1DAA0467005A0A4D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB128BE1DAA0467005A0A4D /* main.m */; };
 		0CB128CA1DAA0467005A0A4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CB128C91DAA0467005A0A4D /* Assets.xcassets */; };
 		0CB128D81DAA0467005A0A4D /* knock_HoneyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB128D71DAA0467005A0A4D /* knock_HoneyTests.m */; };
@@ -428,6 +439,10 @@
 		0C461E961DDC57DE00853605 /* KHPastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPastViewController.m; sourceTree = "<group>"; };
 		0C461E991DDC7A1000853605 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		0C461E9A1DDC7A1000853605 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
+		0C4EA38B1DF0201300A1DC22 /* libUMessage_Sdk_1.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.4.0.a; sourceTree = "<group>"; };
+		0C4EA38C1DF0201300A1DC22 /* UMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessage.h; sourceTree = "<group>"; };
+		0C4EA38E1DF020B900A1DC22 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		0C4EA3901DF0219700A1DC22 /* knock Honey.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "knock Honey.entitlements"; sourceTree = "<group>"; };
 		0C50E7761DD5AC420087A250 /* KHzhongjiangViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHzhongjiangViewController.h; sourceTree = "<group>"; };
 		0C50E7771DD5AC420087A250 /* KHzhongjiangViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHzhongjiangViewController.m; sourceTree = "<group>"; };
 		0C50E77E1DD5ACCA0087A250 /* KHMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KHMessageModel.h; path = "../../消息/model/KHMessageModel.h"; sourceTree = "<group>"; };
@@ -530,6 +545,19 @@
 		0C6F59C11DB85D2800105C8C /* KHPublishModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPublishModel.m; sourceTree = "<group>"; };
 		0C6F59DD1DB89D6D00105C8C /* UITableView+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Custom.h"; sourceTree = "<group>"; };
 		0C6F59DE1DB89D6D00105C8C /* UITableView+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+Custom.m"; sourceTree = "<group>"; };
+		0C711BF61DEEC443001D2740 /* KHXitongViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHXitongViewCell.h; sourceTree = "<group>"; };
+		0C711BF71DEEC443001D2740 /* KHXitongViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHXitongViewCell.m; sourceTree = "<group>"; };
+		0C711BF81DEEC443001D2740 /* KHXitongViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHXitongViewCell.xib; sourceTree = "<group>"; };
+		0C711BFB1DEECA99001D2740 /* KHXitongModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHXitongModel.h; sourceTree = "<group>"; };
+		0C711BFC1DEECA99001D2740 /* KHXitongModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHXitongModel.m; sourceTree = "<group>"; };
+		0C711BFE1DEECC5E001D2740 /* KHXitongContentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHXitongContentController.h; sourceTree = "<group>"; };
+		0C711BFF1DEECC5E001D2740 /* KHXitongContentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHXitongContentController.m; sourceTree = "<group>"; };
+		0C711C001DEECC5E001D2740 /* KHXitongContentController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHXitongContentController.xib; sourceTree = "<group>"; };
+		0C711C041DEEFCA8001D2740 /* KHAdvertModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHAdvertModel.h; sourceTree = "<group>"; };
+		0C711C051DEEFCA8001D2740 /* KHAdvertModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHAdvertModel.m; sourceTree = "<group>"; };
+		0C711C071DEF01B5001D2740 /* KHAdvertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHAdvertView.h; sourceTree = "<group>"; };
+		0C711C081DEF01B5001D2740 /* KHAdvertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHAdvertView.m; sourceTree = "<group>"; };
+		0C711C0A1DEF01CD001D2740 /* KHAdvertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHAdvertView.xib; sourceTree = "<group>"; };
 		0C790B941DDC045A00C381CF /* KHSearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHSearchTableViewCell.h; sourceTree = "<group>"; };
 		0C790B951DDC045A00C381CF /* KHSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHSearchTableViewCell.m; sourceTree = "<group>"; };
 		0C790B961DDC045A00C381CF /* KHSearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHSearchTableViewCell.xib; sourceTree = "<group>"; };
@@ -680,6 +708,8 @@
 		0C9E90371DD1A65B00975AEB /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		0C9E90391DD1A67900975AEB /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		0C9E903B1DD1A69400975AEB /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		0CA3A30B1DF56B7200514913 /* KHXitongViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHXitongViewController.h; sourceTree = "<group>"; };
+		0CA3A30C1DF56B7200514913 /* KHXitongViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHXitongViewController.m; sourceTree = "<group>"; };
 		0CB128BA1DAA0467005A0A4D /* knock Honey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "knock Honey.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CB128BE1DAA0467005A0A4D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0CB128C91DAA0467005A0A4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -801,6 +831,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C4EA38F1DF020B900A1DC22 /* UserNotifications.framework in Frameworks */,
 				0C678FAF1DED5E8E009417D7 /* libz.tbd in Frameworks */,
 				0C678FAE1DED5E0B009417D7 /* SafariServices.framework in Frameworks */,
 				0C678FAC1DED5E02009417D7 /* Photos.framework in Frameworks */,
@@ -808,6 +839,7 @@
 				0C9E90341DD1A64800975AEB /* SystemConfiguration.framework in Frameworks */,
 				0C790BA51DDC3E9E00C381CF /* QuartzCore.framework in Frameworks */,
 				0C678FAA1DED5DDD009417D7 /* OpenGLES.framework in Frameworks */,
+				0C4EA38D1DF0201300A1DC22 /* libUMessage_Sdk_1.4.0.a in Frameworks */,
 				0C678FA81DED5DD4009417D7 /* MapKit.framework in Frameworks */,
 				0C678FA61DED5DC4009417D7 /* libxml2.tbd in Frameworks */,
 				0C678FA41DED5DB1009417D7 /* libstdc++.tbd in Frameworks */,
@@ -860,6 +892,7 @@
 		0606D3066CB5E18E899A3B54 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0C4EA38E1DF020B900A1DC22 /* UserNotifications.framework */,
 				0C678FAD1DED5E0B009417D7 /* SafariServices.framework */,
 				0C678FAB1DED5E02009417D7 /* Photos.framework */,
 				0C678FA91DED5DDD009417D7 /* OpenGLES.framework */,
@@ -1395,9 +1428,19 @@
 			path = Alipay;
 			sourceTree = "<group>";
 		};
+		0C4EA38A1DF0201300A1DC22 /* UMessage_Sdk_1.4.0 */ = {
+			isa = PBXGroup;
+			children = (
+				0C4EA38B1DF0201300A1DC22 /* libUMessage_Sdk_1.4.0.a */,
+				0C4EA38C1DF0201300A1DC22 /* UMessage.h */,
+			);
+			path = UMessage_Sdk_1.4.0;
+			sourceTree = "<group>";
+		};
 		0C50E7521DD59FFD0087A250 /* 消息 */ = {
 			isa = PBXGroup;
 			children = (
+				0C711BEF1DEEC369001D2740 /* 系统消息 */,
 				0C50E77C1DD5ACCA0087A250 /* 消息 */,
 				0C7FAB061DE932C300DB5D9C /* 发货消息 */,
 				0C50E7561DD59FFD0087A250 /* 中奖消息 */,
@@ -1795,6 +1838,47 @@
 			children = (
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		0C711BEF1DEEC369001D2740 /* 系统消息 */ = {
+			isa = PBXGroup;
+			children = (
+				0C711BF21DEEC369001D2740 /* viewController */,
+				0C711BF01DEEC369001D2740 /* model */,
+				0C711BF11DEEC369001D2740 /* view */,
+			);
+			path = "系统消息";
+			sourceTree = "<group>";
+		};
+		0C711BF01DEEC369001D2740 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				0C711BFB1DEECA99001D2740 /* KHXitongModel.h */,
+				0C711BFC1DEECA99001D2740 /* KHXitongModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		0C711BF11DEEC369001D2740 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				0C711BF61DEEC443001D2740 /* KHXitongViewCell.h */,
+				0C711BF71DEEC443001D2740 /* KHXitongViewCell.m */,
+				0C711BF81DEEC443001D2740 /* KHXitongViewCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		0C711BF21DEEC369001D2740 /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				0CA3A30B1DF56B7200514913 /* KHXitongViewController.h */,
+				0CA3A30C1DF56B7200514913 /* KHXitongViewController.m */,
+				0C711BFE1DEECC5E001D2740 /* KHXitongContentController.h */,
+				0C711BFF1DEECC5E001D2740 /* KHXitongContentController.m */,
+				0C711C001DEECC5E001D2740 /* KHXitongContentController.xib */,
+			);
+			path = viewController;
 			sourceTree = "<group>";
 		};
 		0C790BB21DDC487900C381CF /* 搜索结果 */ = {
@@ -2529,6 +2613,7 @@
 		0CB128B11DAA0467005A0A4D = {
 			isa = PBXGroup;
 			children = (
+				0C4EA38A1DF0201300A1DC22 /* UMessage_Sdk_1.4.0 */,
 				0C678FB01DED6491009417D7 /* IMLib */,
 				0C678F811DED57FD009417D7 /* IMKit */,
 				0C42DBF31DDDAB9900444BC4 /* OpenSDK1.7.4 */,
@@ -2555,6 +2640,7 @@
 		0CB128BC1DAA0467005A0A4D /* knock Honey */ = {
 			isa = PBXGroup;
 			children = (
+				0C4EA3901DF0219700A1DC22 /* knock Honey.entitlements */,
 				0C3693361DAB5F2200BB3EE0 /* customFunc（自定义视图） */,
 				0CB1293E1DAA291A005A0A4D /* baseClass（基类） */,
 				0CB128F61DAA1F2E005A0A4D /* AppDelegate */,
@@ -2805,6 +2891,8 @@
 				0C01B5BD1DB6007600D41F43 /* KHIMage.m */,
 				0C6F59C01DB85D2800105C8C /* KHPublishModel.h */,
 				0C6F59C11DB85D2800105C8C /* KHPublishModel.m */,
+				0C711C041DEEFCA8001D2740 /* KHAdvertModel.h */,
+				0C711C051DEEFCA8001D2740 /* KHAdvertModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -2965,6 +3053,9 @@
 		0CBD1A571DACC11D003E8150 /* header */ = {
 			isa = PBXGroup;
 			children = (
+				0C711C071DEF01B5001D2740 /* KHAdvertView.h */,
+				0C711C081DEF01B5001D2740 /* KHAdvertView.m */,
+				0C711C0A1DEF01CD001D2740 /* KHAdvertView.xib */,
 				0CBD1A611DACC415003E8150 /* WinTreasureHeader.h */,
 				0CBD1A621DACC415003E8150 /* WinTreasureHeader.m */,
 				0CBD1A631DACC415003E8150 /* WinTreasureMenuHeader.h */,
@@ -3223,11 +3314,17 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = KH;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = liubitao;
 				TargetAttributes = {
 					0CB128B91DAA0467005A0A4D = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = N9J8L4GH86;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					0CB128D21DAA0467005A0A4D = {
 						CreatedOnToolsVersion = 7.2;
@@ -3279,6 +3376,7 @@
 				0C2705AD1DAF66EB00CE2F15 /* TreasureDetailCell.xib in Resources */,
 				0C50E78A1DD5B6CF0087A250 /* KHMessageTableViewCell.xib in Resources */,
 				0C803C941DD99D17008CC841 /* KHAllTableViewCell.xib in Resources */,
+				0C711BFA1DEEC443001D2740 /* KHXitongViewCell.xib in Resources */,
 				0C5782D11DC1B8AB00DB0B9A /* KHRegiterViewController.xib in Resources */,
 				0C7D0E191DE67D9A0023DD76 /* KHWinTableViewCell.xib in Resources */,
 				0C5782D61DC1D60100DB0B9A /* KHRegiterSecondController.xib in Resources */,
@@ -3289,6 +3387,7 @@
 				0C7F833C1DCC4707003EA29C /* KHEditAddressViewController.xib in Resources */,
 				0C3A46801DD70DA40082A239 /* KHjifenTableViewCell.xib in Resources */,
 				0C6C68AE1DCB205900B06535 /* KHAddressTableViewCell.xib in Resources */,
+				0C711C021DEECC5E001D2740 /* KHXitongContentController.xib in Resources */,
 				0C803CC61DD9F199008CC841 /* TopupResultViewController.xib in Resources */,
 				0C7F83501DCC647C003EA29C /* LocalProvince.plist in Resources */,
 				0C3E9C2F1DD2FFFE00F827AC /* BonusCell.xib in Resources */,
@@ -3301,6 +3400,7 @@
 				0C4482081DDAE5F60038697C /* KHCodeViewController.xib in Resources */,
 				0C27059E1DAF287A00CE2F15 /* CategoryDetailCell.xib in Resources */,
 				0C790BC11DDC51E000C381CF /* KHPstTableViewCell.xib in Resources */,
+				0C711C0B1DEF01CD001D2740 /* KHAdvertView.xib in Resources */,
 				0C7F83411DCC4F84003EA29C /* KHEditPhoneViewController.xib in Resources */,
 				0C6C68B31DCB273F00B06535 /* KHPhoneTableViewCell.xib in Resources */,
 				0C6C689D1DCB0C5F00B06535 /* KHInformationCell.xib in Resources */,
@@ -3405,6 +3505,7 @@
 				0CE216A11DE82B52003A75AA /* Utils.m in Sources */,
 				0C9E8FE91DD16DAD00975AEB /* ShoppingListLayout.m in Sources */,
 				0C7F833B1DCC4707003EA29C /* KHEditAddressViewController.m in Sources */,
+				0CA3A30D1DF56B7200514913 /* KHXitongViewController.m in Sources */,
 				0C3693451DAB8F8000BB3EE0 /* KHPulishedTableViewCell.m in Sources */,
 				0CC47ED91DD5C3CF00F27914 /* KHHomeViewController.m in Sources */,
 				0C5E05F51DAE36FE00B2133F /* SDCycleScrollView.m in Sources */,
@@ -3412,6 +3513,7 @@
 				0C9E8FEB1DD16DAD00975AEB /* ListCountView.m in Sources */,
 				0CBD1A111DACB650003E8150 /* IQUIScrollView+Additions.m in Sources */,
 				0CBD19DF1DAC8DD0003E8150 /* KHSearchViewController.m in Sources */,
+				0C711C091DEF01B5001D2740 /* KHAdvertView.m in Sources */,
 				0C3693281DAB2DD700BB3EE0 /* KHBaseViewController.m in Sources */,
 				0C3E9C271DD2FE1200F827AC /* KHUseredViewController.m in Sources */,
 				0CBD1A6E1DACD05E003E8150 /* TSAnimation.m in Sources */,
@@ -3496,6 +3598,7 @@
 				0C7FAB431DE95A5600DB5D9C /* KHDistanceViewController.m in Sources */,
 				0CE2169D1DE82B3D003A75AA /* GPAutoFooter.m in Sources */,
 				0C803C9F1DD9AF37008CC841 /* KHSnatchWinModel.m in Sources */,
+				0C711BFD1DEECA99001D2740 /* KHXitongModel.m in Sources */,
 				0CBD1A171DACB650003E8150 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				0C803CAD1DD9EA5C008CC841 /* YHWebViewProgress.m in Sources */,
 				0C6C68B21DCB273F00B06535 /* KHPhoneTableViewCell.m in Sources */,
@@ -3518,15 +3621,18 @@
 				0C461E971DDC57DE00853605 /* KHPastViewController.m in Sources */,
 				0C009FD01DC07E5B002F4470 /* NSString+TSTime.m in Sources */,
 				0CBD19D81DAC8A5D003E8150 /* KHHomeModel.m in Sources */,
+				0C711BF91DEEC443001D2740 /* KHXitongViewCell.m in Sources */,
 				0C7FAB4E1DE9609D00DB5D9C /* KHShipping.m in Sources */,
 				0C9E8FE61DD16DAD00975AEB /* KHcartModel.m in Sources */,
 				0C3693411DAB6EE600BB3EE0 /* KHKnowModel.m in Sources */,
+				0C711C061DEEFCA8001D2740 /* KHAdvertModel.m in Sources */,
 				0C3693131DAB209A00BB3EE0 /* KHTabbarViewController.m in Sources */,
 				0C5E05F31DAE36FE00B2133F /* TAPageControl.m in Sources */,
 				0CBD1A6A1DACCF7D003E8150 /* TSProgressView.m in Sources */,
 				0C44DEB51DD4423D0085E5C3 /* PayResultCell.m in Sources */,
 				0C7D0E221DE6C9270023DD76 /* KHWantButton.m in Sources */,
 				0C6F59C21DB85D2800105C8C /* KHPublishModel.m in Sources */,
+				0C711C011DEECC5E001D2740 /* KHXitongContentController.m in Sources */,
 				0C44DEC01DD46AF50085E5C3 /* KHAppearDetailModel.m in Sources */,
 				0C44DEC61DD495080085E5C3 /* KHMyAppearViewController.m in Sources */,
 				0CB1293C1DAA28ED005A0A4D /* UIView+Frame.m in Sources */,
@@ -3628,6 +3734,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -3637,8 +3744,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -3673,6 +3782,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -3682,8 +3792,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -3714,6 +3826,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "knock Honey/knock Honey.entitlements";
+				DEVELOPMENT_TEAM = N9J8L4GH86;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3743,9 +3857,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/OpenSDK1.7.4",
 					"$(PROJECT_DIR)/IMLib",
+					"$(PROJECT_DIR)/UMessage_Sdk_1.4.0",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "cn.liubitao.knock-Honey";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.liubitao.knock-Honey";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -3758,6 +3873,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "knock Honey/knock Honey.entitlements";
+				DEVELOPMENT_TEAM = N9J8L4GH86;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3787,9 +3904,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/OpenSDK1.7.4",
 					"$(PROJECT_DIR)/IMLib",
+					"$(PROJECT_DIR)/UMessage_Sdk_1.4.0",
 				);
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "cn.liubitao.knock-Honey";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.liubitao.knock-Honey";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";

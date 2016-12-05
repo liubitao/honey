@@ -162,8 +162,8 @@
         return;
     }
     
-    if (![_validateCode.text compare:_validatePic.changeString
-                             options:NSCaseInsensitiveSearch | NSNumericSearch] == NSOrderedSame) {
+    if ([_validateCode.text compare:_validatePic.changeString
+                             options:NSCaseInsensitiveSearch | NSNumericSearch] != NSOrderedSame) {
         [MBProgressHUD showError:@"图形验证码错误"];
         return;
     }

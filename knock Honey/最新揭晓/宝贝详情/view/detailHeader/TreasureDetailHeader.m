@@ -206,7 +206,7 @@ const CGFloat kTreasureDetailHeaderPageControlHeight = 30.0; //pagecontroll heig
     
     
     //下面的选项
-    NSArray *dataArray = @[@"晒单分享",@"往期揭晓"];
+    NSArray *dataArray = @[@"图文详情",@"晒单分享",@"往期揭晓"];
     _headerMenu = [[TreaureHeaderMenu alloc]initWithFrame:({
         CGRect rect = {0,_declareBtn.bottom+5,kScreenWidth,1};
         rect;

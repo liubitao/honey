@@ -29,6 +29,7 @@
 #define sKey        @"bf9024c8e834146606c7f364e73f743a"
 #define mKey        @"oneshopgoods"
 //#define portPic     @"http://"
+
 //#define PortCartPic @"http://oneshop.zhongwenyu1987.com"
 
 //融云客服
@@ -215,4 +216,11 @@
 
 //62.分享页面
 #define PortShareUrl            @"http://oneshop.zhongwenyu1987.com/index.php/mobile/prom/app_down"
+
+//63.图文详情
+#define PortImage_detail        @"http://oneshop.zhongwenyu1987.com/index.php/Mobile/Prom/image_detail?goodsid"
+
+//64.最新活动
+#define PortActivity                @"http://oneshop.zhongwenyu1987.com/index.php/mobile/prom/turntable?userid"
+
 #endif /* port_h */

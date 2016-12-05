@@ -10,7 +10,7 @@
 #import "KHjifenModel.h"
 #import "KHjifenTableViewCell.h"
 
-@interface KHGetJinfenViewController ()<UITableViewDataSource,UITableViewDelegate>{
+@interface KHGetJinfenViewController ()<UITableViewDataSource,UITableViewDelegate,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>{
     NSInteger _currentPage;
 }
 @property (nonatomic,strong) UITableView *tableView;
@@ -31,6 +31,8 @@ static NSString *jifenCell = @"jifenCell";
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, kScreenHeight -kNavigationBarHeight -46 ) style:UITableViewStylePlain];
         _tableView.dataSource = self;
         _tableView.delegate = self;
+        _tableView.emptyDataSetDelegate = self;
+        _tableView.emptyDataSetSource = self;
         _tableView.backgroundColor = UIColorHex(#F0F0F0);
         [_tableView setCustomSeparatorInset:UIEdgeInsetsZero];
         _tableView.tableFooterView = [UIView new];
@@ -132,6 +134,17 @@ static NSString *jifenCell = @"jifenCell";
     [view addSubview:label1]; 
     return view;
 }
+
+#pragma mark - DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
+
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    return [UIImage imageNamed:@"empty_placeholder"];
+}
+
+- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
+    return YES;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

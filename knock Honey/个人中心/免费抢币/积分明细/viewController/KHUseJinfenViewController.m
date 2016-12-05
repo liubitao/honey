@@ -133,6 +133,17 @@ static NSString *jifenCell = @"jifenCell";
     [view addSubview:label1];
     return view;
 }
+
+#pragma mark - DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
+
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    return [UIImage imageNamed:@"empty_placeholder"];
+}
+
+- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
+    return YES;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

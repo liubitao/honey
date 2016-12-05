@@ -82,7 +82,7 @@
 }
 #pragma mark - notice
 - (void)getTopupResult:(NSNotification *)notice {
-    NSString *remainSum = (NSString *)notice.object;
+    NSString *remainSum = [NSString stringWithFormat:@"%@", notice.object];
     _header.remainSum = remainSum;
 }
 - (void)dealloc{

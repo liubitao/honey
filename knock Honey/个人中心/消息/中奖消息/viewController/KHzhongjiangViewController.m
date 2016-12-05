@@ -36,7 +36,6 @@
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        _tableView.emptyDataSetDelegate = self;
         _tableView.emptyDataSetSource = self;
         _tableView.tableFooterView = [UIView new];
     }
@@ -48,8 +47,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.view addSubview:self.tableView];
     self.view.backgroundColor = [UIColor whiteColor];
-    NSArray *array = @[@"客服消息",@"中奖消息",@"发货消息",@"系统消息"];
-    self.title = array[_type.integerValue -1];
+    self.title = @"中奖消息";
     //下拉刷新
     __weak typeof(self) weakSelf = self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -61,7 +59,7 @@
     [self.tableView.mj_header beginRefreshing];
     
     //上拉刷新
-    _tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+    _tableView.mj_footer = [GPAutoFooter footerWithRefreshingBlock:^{
         [weakSelf getMoreData];
         [weakSelf.tableView.mj_footer endRefreshing];
     }];
@@ -90,7 +88,10 @@
     parameter[@"type"] = @"2";
     parameter[@"p"] = @(++_pageCount);
     [YWHttptool GET:PortMessage_list parameters:parameter success:^(id responseObject){
-        if ([responseObject[@"isError"] integerValue]) return ;
+        if ([responseObject[@"isError"] integerValue]){
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            return ;
+        };
         [self.dataArray addObjectsFromArray:[KHMessageModel kh_objectWithKeyValuesArray:responseObject[@"result"]]];
         [self.tableView reloadData];
     } failure:^(NSError *error){
@@ -133,24 +134,6 @@
     return [UIImage imageNamed:@"empty_placeholder"];
 }
 
-- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
-    return YES;
-}
-
-- (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView{
-    return YES;
-}
-
-
-- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView
-{
-    return YES;
-}
-
-- (void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view
-{
-    [self.tableView.mj_header beginRefreshing];
-}
 
 
 - (void)didReceiveMemoryWarning {

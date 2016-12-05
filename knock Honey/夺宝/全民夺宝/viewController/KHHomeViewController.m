@@ -24,19 +24,22 @@
 #import "KHIMage.h"
 #import "KHLoginViewController.h"
 #import "KHQiandaoViewController.h"
+#import "KHAdvertModel.h"
 
 
 @interface KHHomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,WinTreasureCellDelegate,TSAnimationDelegate,KHDowmViewCellDelegate>
 {
-   
+    KHAdvertModel *advertModel;
     NSMutableArray *_dataArray;
     NSMutableArray *_downArray;
     NSInteger _currentIndex;
     NSInteger _currentPage;
+    
+    CGFloat insetHeight;
 }
 @property (nonatomic,strong)  NSMutableArray *images;
 @property (nonatomic,strong) UICollectionView *collectionView;
-@property (nonatomic,strong) WinTreasureHeader *header;
+
 /**c产品图片(动画)
  */
 @property (nonatomic, strong) UIImageView *productView;
@@ -49,6 +52,7 @@ static NSString *Cell0Identifier = @"winTreasureCell0Identifier";
 static NSString *Cell1Identifier = @"winTreasureCell1Identifier";
 static NSString *Cell2Identifier = @"winTreasureCell2Identifier";
 
+static NSString *Header0Identifier = @"winTreasureMenuHeader0Identifier";
 static NSString *Header1Identifier = @"winTreasureMenuHeader1Identifier";
 static NSString *HeaderIdentifier = @"winTreasureMenuHeaderIdentifier";
 
@@ -59,15 +63,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
 #pragma mark - lazy load
 
 
-- (WinTreasureHeader *)header {
-    if (!_header) {
-        _header = [[WinTreasureHeader alloc]initWithFrame:({
-            CGRect rect = {0,-[WinTreasureHeader height],KscreenWidth,[WinTreasureHeader height]};
-            rect;
-        })];
-    }
-    return _header;
-}
+
 
 - (UIImageView *)productView {
     if (!_productView) {
@@ -81,13 +77,24 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     [super viewDidLoad];
     _dataArray = [NSMutableArray arrayWithObjects:[NSMutableArray array],[NSMutableArray array],[NSMutableArray array],[NSMutableArray array], nil];
     _currentIndex = 0;
-    
+    insetHeight = [WinTreasureHeader height];
     self.title = @"全民夺宝";
     self.view.backgroundColor = [UIColor whiteColor];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(notificationCenterEvent)
+                                                 name:@"advertStop"
+                                               object:nil];
     [self createNavi];
     [self configCollectionView];
     
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+- (void)notificationCenterEvent{
+    NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:0];
+    [self.collectionView reloadSections:indexSet];
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -118,7 +125,6 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     KHHOmeViewLayout *layout = [[KHHOmeViewLayout alloc]init];
     
     _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, KscreenHeight) collectionViewLayout:layout];
-    _collectionView.contentInset = UIEdgeInsetsMake([WinTreasureHeader height], 0, 0, 0);
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
     [self.view addSubview:_collectionView];
@@ -127,6 +133,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:Cell0Identifier];
     [_collectionView registerNib:NIB_NAMED(@"KHDowmViewCell") forCellWithReuseIdentifier:Cell1Identifier];
     [_collectionView registerNib:NIB_NAMED(@"WinTreasureCell") forCellWithReuseIdentifier:Cell2Identifier];
+    [_collectionView registerClass:[WinTreasureHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:Header0Identifier];
     [_collectionView registerNib:NIB_NAMED(@"KHheard2View") forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:Header1Identifier];
     [_collectionView registerClass:[WinTreasureMenuHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:HeaderIdentifier];
     [_collectionView registerClass:[HomeFooter class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerIdentifier];
@@ -143,8 +150,6 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
         [weakSelf getMoreDate];
         [weakSelf.collectionView.mj_footer endRefreshing];
     }];
-    
-    _collectionView.mj_header.ignoredScrollViewContentInsetTop = [WinTreasureHeader height];
     [_collectionView.mj_header beginRefreshing];
 }
 
@@ -157,7 +162,6 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     for (int i = 0 ; i<=3; i++) {
         parameter[@"sort"] = array[i];
         [YWHttptool GET:PortGoodslist parameters:parameter success:^(id responseObject) {
-            //            NSLog(@"%@",responseObject);
             _dataArray[i] = [KHHomeModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
             if (i == 0) {
                 [_collectionView reloadData];
@@ -167,24 +171,27 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     }
     
     [YWHttptool GET:PortGoodsIndex parameters:parameter success:^(id responseObject) {
-        NSLog(@"%@",responseObject);
         if ([responseObject[@"isError"] integerValue]) return;
         for (KHPublishModel *model in _downArray) {
             [model stop];
         }
         [_downArray removeAllObjects];
         
+        [advertModel stop];
+        //活动的数据
+        advertModel = [KHAdvertModel kh_objectWithKeyValues:responseObject[@"result"][@"top_prom"]];
+        if (advertModel && advertModel.prom_end.integerValue >[[NSDate date] timeIntervalSince1970]) {
+            insetHeight = 260;
+        }else{
+            insetHeight = 216;
+        }
         _images = [KHIMage kh_objectWithKeyValuesArray:responseObject[@"result"][@"banner"]];
-        self.header.images = _images;
-        [self.header resetImage];
+       
         _downArray = [KHPublishModel kh_objectWithKeyValuesArray:responseObject[@"result"][@"zxjx"]];
-        [_collectionView reloadSections:[NSIndexSet indexSetWithIndex:1]];
+        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 2)];
+        [self.collectionView reloadSections:indexSet];
     } failure:^(NSError *error){
     }];
-    
-    //轮播图
-    [_collectionView addSubview:self.header];
-    [self setupHeaderEvents];
 }
 
 //上拉更多
@@ -195,7 +202,6 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     for (int i = 0 ; i<=3; i++) {
         parameter[@"sort"] = array[i];
         [YWHttptool GET:PortGoodslist parameters:parameter success:^(id responseObject) {
-            NSLog(@"%@",responseObject);
             if ([responseObject[@"isError"] integerValue]){
                     [self.collectionView.mj_footer endRefreshingWithNoMoreData];
                 return ;
@@ -211,51 +217,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
 }
 
 - (void)setupHeaderEvents {
-    __weak __typeof(self) weakSelf= self;
-    [_header selectItem:^(UIButton *sender) {
-        NSLog(@"点击%@",[sender titleForState:UIControlStateNormal]);
-        [self setBackItem];
-        switch (sender.tag) {
-            case 0: {
-                
-            }
-                break;
-            case 1: {//十元专区
-                KHTenViewController *tenVC = [[KHTenViewController alloc]init];
-                tenVC.area = @"12";
-                tenVC.port = PortGoods_cate;
-                tenVC.title = @"十元专区";
-                [weakSelf pushController:tenVC];
-            }
-                break;
-            case 2: {//签到
-                KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
-                NSString *str = [NSString stringWithFormat:@"%@?userid=%@",PortSign_index,[YWUserTool account].userid];
-                VC.urlStr = str;
-                VC.title = @"签到";
-                [self pushController:VC];
-            }
-                break;
-            case 3: {//常见问题
-                KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
-                VC.urlStr = PortCommon_problem;
-                VC.title = @"常见问题";
-                [self pushController:VC];
-            }
-                break;
-            default:
-                break;
-        }
-    }];
-    
-    _header.imageBlock = ^(UIImageView *sender) {
-        NSLog(@"图片点击%ld",(long)sender.tag);
-        KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
-        VC.title = @"详情";
-        KHIMage *model = weakSelf.images[sender.tag];
-        VC.urlStr = model.link;
-        [weakSelf pushController:VC];
-    };
+ 
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -303,13 +265,78 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     if (kind == UICollectionElementKindSectionHeader) {
-        if (indexPath.section == 1) {
+        if (indexPath.section == 0) {
+            WinTreasureHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:Header0Identifier forIndexPath:indexPath];
+             __weak __typeof(self) weakSelf= self;
+            header.advertBlock = ^{
+                KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
+                VC.title = advertModel.name;
+                VC.urlStr = advertModel.link;
+                [weakSelf pushController:VC];
+            };
+            [header setAdVertModel:advertModel with:_images];
+           
+            [header selectItem:^(UIButton *sender) {
+                NSLog(@"点击%@",[sender titleForState:UIControlStateNormal]);
+                [self setBackItem];
+                switch (sender.tag) {
+                    case 0: {//活动
+                        if (![YWUserTool account]) {
+                            KHLoginViewController *vc = [[KHLoginViewController alloc]init];
+                            KHNavigationViewController *nav = [[KHNavigationViewController alloc] initWithRootViewController:vc];
+                            [weakSelf presentViewController:nav animated:YES completion:nil];
+                            return;
+                        }
+                        KHQiandaoViewController *activityVC = [[KHQiandaoViewController alloc]init];
+                        activityVC.title = @"最新活动";
+                        activityVC.urlStr = [NSString stringWithFormat:@"%@=%@",PortActivity,[YWUserTool account].userid];
+                        [weakSelf pushController:activityVC];
+                    }
+                        break;
+                    case 1: {//十元专区
+                        KHTenViewController *tenVC = [[KHTenViewController alloc]init];
+                        tenVC.area = @"12";
+                        tenVC.port = PortGoods_cate;
+                        tenVC.title = @"十元专区";
+                        [weakSelf pushController:tenVC];
+                    }
+                        break;
+                    case 2: {//签到
+                        KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
+                        NSString *str = [NSString stringWithFormat:@"%@?userid=%@",PortSign_index,[YWUserTool account].userid];
+                        VC.urlStr = str;
+                        VC.title = @"签到";
+                        [self pushController:VC];
+                    }
+                        break;
+                    case 3: {//常见问题
+                        KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
+                        VC.urlStr = PortCommon_problem;
+                        VC.title = @"常见问题";
+                        [self pushController:VC];
+                    }
+                        break;
+                    default:
+                        break;
+                }
+            }];
+            
+            header.imageBlock = ^(UIImageView *sender) {
+                NSLog(@"图片点击%ld",(long)sender.tag);
+                KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
+                VC.title = @"详情";
+                KHIMage *model = weakSelf.images[sender.tag];
+                VC.urlStr = model.link;
+                [weakSelf pushController:VC];
+            };
+            return header;
+        }else if (indexPath.section == 1) {
             KHheard2View *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:Header1Identifier forIndexPath:indexPath];
             [header setCellBlcok:^{
                 [self.tabBarController setSelectedIndex:1];
             }];
             return header;
-        }
+        }else{
         WinTreasureMenuHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:HeaderIdentifier forIndexPath:indexPath];
         __weak typeof(self) weakSelf = self;
         [header selectAMenu:^(id object) {
@@ -319,8 +346,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
             [weakSelf.collectionView reloadData];
         }];
         return header;
-        
-        
+        }
     }else{
         HomeFooter *view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerIdentifier forIndexPath:indexPath];
         return view;
@@ -388,7 +414,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     
     if (section == 0) {
-        return CGSizeMake(KscreenWidth, 0);
+        return CGSizeMake(KscreenWidth, insetHeight);
     }
     return CGSizeMake(KscreenWidth, _dataArray.count > 0 ? [WinTreasureMenuHeader menuHeight]:0);
     
@@ -452,7 +478,6 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
         _downArray = [KHPublishModel kh_objectWithKeyValuesArray:responseObject[@"result"][@"zxjx"]];
         [_collectionView reloadSections:[NSIndexSet indexSetWithIndex:1]];
     } failure:^(NSError *error) {
-        [MBProgressHUD showError:@"网络连接有误"];
     }];
     
 }

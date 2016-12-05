@@ -19,7 +19,7 @@
 #import "KHOtherPersonController.h"
 
 
-@interface KHMeListViewController ()<UITableViewDataSource,UITableViewDelegate,khAllCellDegelage,khEdCellDegelage,YWCoverDelegate>{
+@interface KHMeListViewController ()<UITableViewDataSource,UITableViewDelegate,DZNEmptyDataSetDelegate,DZNEmptyDataSetSource,khAllCellDegelage,khEdCellDegelage,YWCoverDelegate>{
     NSInteger _currentPage;
     CGFloat _huadong;
 }
@@ -50,6 +50,8 @@ static NSString *edGoodsCell = @"edGoodsCell";
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth,_otherType ? kScreenHeight - 190 - 46:kScreenHeight - kNavigationBarHeight- 60) style:UITableViewStylePlain];
         _tableView.dataSource = self;
         _tableView.delegate = self;
+        _tableView.emptyDataSetSource = self;
+        _tableView.emptyDataSetDelegate = self;
         [_tableView setCustomSeparatorInset:UIEdgeInsetsZero];
         _tableView.tableFooterView = [UIView new];
         UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 1)];
@@ -228,6 +230,16 @@ static NSString *edGoodsCell = @"edGoodsCell";
     }];
     [self.tabBarController setSelectedIndex:3];
     [self.navigationController popToRootViewControllerAnimated:NO];
+}
+
+#pragma mark - DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
+
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    return [UIImage imageNamed:@"empty_placeholder"];
+}
+
+- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
+    return YES;
 }
 
 

@@ -44,7 +44,7 @@ CGFloat balanceViewHeight = 45.0;
 
 /**抢币数量
  */
-@property (nonatomic, copy) NSNumber *diamondCount;
+@property (nonatomic, copy) NSString *diamondCount;
 
 
 
@@ -61,7 +61,7 @@ CGFloat balanceViewHeight = 45.0;
 
 @implementation KHPersonHeader
 
-- (void)setDiamondCount:(NSNumber *)diamondCount {
+- (void)setDiamondCount:(NSString *)diamondCount {
     _diamondCount = diamondCount;
 }
 
@@ -185,9 +185,7 @@ CGFloat balanceViewHeight = 45.0;
         }
     }];
     [_headImageView addGestureRecognizer:tap];
-    
-    
-    
+
     _nameLabel = [YYLabel new];
     _nameLabel.text = user.username;
     _nameLabel.origin = CGPointMake(_headImageView.right+headImageViewRightMargin, _headImageView.top);
@@ -307,10 +305,9 @@ CGFloat topupButtonHeight = 25.0;
 
 - (void)setBalanceAmount:(NSString *)balanceAmount {
     _balanceAmount = balanceAmount;
-    NSString *aString = [NSString stringWithFormat:@"抢币：%@",_balanceAmount];
-    NSMutableAttributedString *attString = [Utils stringWith:aString font1:SYSTEM_FONT(13) color1:UIColorHex(999999) font2:SYSTEM_FONT(13) color2:kDefaultColor range:NSMakeRange(3, _balanceAmount.length)];
+    NSString *aString = [NSString stringWithFormat:@"抢币:%@",balanceAmount];
+    NSMutableAttributedString *attString = [Utils stringWith:aString font1:SYSTEM_FONT(13) color1:UIColorHex(999999) font2:SYSTEM_FONT(13) color2:kDefaultColor range:NSMakeRange(3, aString.length-3)];
     _balanceLabel.attributedText = attString;
-    
     _balanceLabel.size = [attString size];
     _topupButton.left = _balanceLabel.right + 8;
 }

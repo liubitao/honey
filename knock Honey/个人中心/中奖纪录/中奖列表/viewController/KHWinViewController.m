@@ -185,20 +185,7 @@ static NSString *Wincell = @"winCell";
     return YES;
 }
 
-- (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView{
-    return YES;
-}
 
-
-- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView
-{
-    return YES;
-}
-
-- (void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view
-{
-    [self.tableView.mj_header beginRefreshing];
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

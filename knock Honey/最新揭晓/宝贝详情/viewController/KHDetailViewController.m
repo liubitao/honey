@@ -101,13 +101,20 @@
     //详情中的选项
     header.clickMenuBlock = ^(id object){
         switch ([object integerValue]) {
-            case 0: {//晒单分享
+            case 0: {//图文详情
+                KHQiandaoViewController *goodsVC = [[KHQiandaoViewController alloc]init];
+                goodsVC.urlStr = [NSString stringWithFormat:@"%@=%@",PortImage_detail,weakSelf.goodsid];
+                goodsVC.title = @"图文详情";
+                [weakSelf hideBottomBarPush:goodsVC];
+            }
+                break;
+            case 1: {//晒单分享
                 KHGoodsAppearController *goodsVC = [[KHGoodsAppearController alloc]init];
                 goodsVC.goodsid = _goodsid;
                 [weakSelf hideBottomBarPush:goodsVC];
             }
                 break;
-            case 1: {//往期揭晓
+            case 2: {//往期揭晓
                 KHPastViewController *pastVC = [[KHPastViewController alloc]init];
                 pastVC.goodsid = _goodsid;
                 [weakSelf hideBottomBarPush:pastVC];
@@ -120,7 +127,7 @@
     };
     __weak typeof(header) weakHeader = header;
     header.headerHeight = ^(){//头高
-        weakHeader.height = 655-200+kScreenWidth/375*200-30+weakHeader.productNameLabel.height;
+        weakHeader.height = 695-200+kScreenWidth/375*200-30+weakHeader.productNameLabel.height;
         weakSelf.tableView.tableHeaderView = weakHeader;
     };
     

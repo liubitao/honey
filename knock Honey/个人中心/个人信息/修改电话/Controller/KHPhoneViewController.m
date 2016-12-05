@@ -159,8 +159,8 @@
 
 }
 - (IBAction)savePhone:(id)sender {
-    if (![_valiCode.text compare:_pooCode.changeString
-                             options:NSCaseInsensitiveSearch | NSNumericSearch] == NSOrderedSame) {
+    if ([_valiCode.text compare:_pooCode.changeString
+                             options:NSCaseInsensitiveSearch | NSNumericSearch] != NSOrderedSame) {
         [MBProgressHUD showError:@"图形验证码错误"];
         return;
     }

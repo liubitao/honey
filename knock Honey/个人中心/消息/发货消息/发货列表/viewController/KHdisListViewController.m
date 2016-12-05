@@ -44,7 +44,7 @@
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.view.backgroundColor = UIColorHex(#F5F5F5);
-    
+    self.title = @"发货消息";
     [self.view addSubview:self.tableView];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"KHDistanceViewCell" bundle:nil] forCellReuseIdentifier:@"KHDistanceViewCell"];

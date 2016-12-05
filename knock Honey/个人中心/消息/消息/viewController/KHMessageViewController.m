@@ -12,7 +12,8 @@
 #import "KHzhongjiangViewController.h"
 #import "KHdisListViewController.h"
 #import "KHPersonCell.h"
-
+#import "KHXitongViewController.h"
+#import "RCDCustomerServiceViewController.h"
 
 @interface KHMessageViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -64,7 +65,6 @@
     KHPersonCell *cell = [tableView dequeueReusableCellWithIdentifier:@"personCell" forIndexPath:indexPath] ;
     [cell setSeparatorInset:UIEdgeInsetsZero];
     [cell setLayoutMargins:UIEdgeInsetsZero];
-    
     cell.title.text = self.titleArray[indexPath.row];
     cell.pic.image = IMAGE_NAMED(self.imageArray[indexPath.row]);
     return cell;
@@ -81,7 +81,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 0) {//客服
-        
+        RCDCustomerServiceViewController *chatService = [[RCDCustomerServiceViewController alloc] init];
+        chatService.conversationType = ConversationType_CUSTOMERSERVICE;
+        chatService.targetId = KefuMessageID;
+        chatService.title = @"客服";
+        [self pushController:chatService];
     }else if (indexPath.row == 1) {//中奖
         KHzhongjiangViewController *VC = [[KHzhongjiangViewController alloc]init];
         VC.type = @(indexPath.row+1);
@@ -90,7 +94,8 @@
         KHdisListViewController *disListVC = [[KHdisListViewController alloc]init];
         [self hideBottomBarPush:disListVC];
     }else if (indexPath.row == 3){//系统
-        
+        KHXitongViewController *xitongVC = [[KHXitongViewController alloc]init];
+        [self hideBottomBarPush:xitongVC];
     }
   
 }

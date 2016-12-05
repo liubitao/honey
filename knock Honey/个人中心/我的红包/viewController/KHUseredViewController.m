@@ -12,7 +12,7 @@
 #import "BonusModel.h"
 #import "BonusCell.h"
 
-@interface KHUseredViewController ()<UITableViewDataSource,UITableViewDelegate,DZNEmptyDataSetSource>
+@interface KHUseredViewController ()<UITableViewDataSource,UITableViewDelegate,DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *dataArray;
 
@@ -84,6 +84,9 @@
     return [UIImage imageNamed:@"empty_placeholder"];
 }
 
+- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
+    return YES;
+}
 
 
 

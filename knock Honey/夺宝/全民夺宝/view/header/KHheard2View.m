@@ -17,11 +17,6 @@
 
 - (void)awakeFromNib{
     [super awakeFromNib];
-//    CGFloat titleWidth = _moreBtn.titleLabel.width;
-//    CGFloat imageWidth = _moreBtn.imageView.width;
-//    _moreBtn.imageEdgeInsets = UIEdgeInsetsMake(0, titleWidth+20, 0, -titleWidth-20);
-//    _moreBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -imageWidth, 0, imageWidth);
-
 }
 
 - (void)setCellBlcok:(heard2ViewBlcok)blcok{

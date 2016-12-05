@@ -95,11 +95,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     khDistanceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"khDistanceCell" forIndexPath:indexPath];
+
     if (indexPath.row == 0) {
         cell.topView.hidden = YES;
+        cell.messageLabel.textColor = UIColorHex(#2B9FFA);
+        cell.timeLabel.textColor = UIColorHex(#2B9FFA);
         cell.centerImage.image = IMAGE_NAMED(@"firstPoint");
     }else{
         cell.topView.hidden = NO;
+        cell.messageLabel.textColor = [UIColor blackColor];
+        cell.timeLabel.textColor = [UIColor blackColor];
         cell.centerImage.image = IMAGE_NAMED(@"noFirstPoint");
     }
     if (indexPath.row == self.dataArray.count -1) {

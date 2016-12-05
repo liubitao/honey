@@ -51,7 +51,8 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     NSLog(@"%@",request);
-    if ([self.title isEqualToString:@"新手帮助"]||[self.title isEqualToString:@"新手指南"]) {
+    NSString *titleStrs = @"新手帮助,新手指南,签到,最新活动";
+    if ([titleStrs containsString:self.title]) {
         return YES;
     }else if (first){
         first = NO;

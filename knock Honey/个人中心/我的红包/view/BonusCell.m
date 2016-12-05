@@ -32,7 +32,7 @@
     _model = model;
     _sumLabel.text = [NSString stringWithFormat:@"%@元",_model.money];
     _conditionLabel.text = [NSString stringWithFormat:@"满%@元使用",_model.condition];
-    _effectDateLabel.text =  [NSString stringWithFormat:@"生效期:%@",[Utils timeWith:_model.addtime]];
+    _effectDateLabel.text =  [NSString stringWithFormat:@"生效期:%@",[Utils timeWith:_model.use_beg_time]];
     _indateLabel.text = [NSString stringWithFormat:@"有效期至:%@",[Utils timeWith:_model.use_end_time]];
     _bounsName.text = _model.name;
     if (_model.user_status.integerValue == 0 ) {

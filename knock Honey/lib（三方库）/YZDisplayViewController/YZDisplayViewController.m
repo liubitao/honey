@@ -68,8 +68,8 @@
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     [self initial];
-    
 }
 
 - (void)initial
@@ -642,7 +642,7 @@
 }
 
 #pragma mark - 标题点击处理
-- (void)setSelectIndex:(BOOL)selectIndex
+- (void)setSelectIndex:(NSInteger)selectIndex
 {
     _selectIndex = selectIndex;
     if (self.titleLabels.count) {
