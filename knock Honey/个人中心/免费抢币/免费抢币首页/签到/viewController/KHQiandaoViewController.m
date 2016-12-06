@@ -9,6 +9,10 @@
 #import "KHQiandaoViewController.h"
 #import "YHWebViewProgressView.h"
 #import "YHWebViewProgress.h"
+#import <UMSocialCore/UMSocialCore.h>
+#import "UMSocialUIManager.h"
+#import <MJExtension.h>
+#import "KHDetailViewController.h"
 
 @interface KHQiandaoViewController ()<UIWebViewDelegate>
 {
@@ -51,8 +55,27 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     NSLog(@"%@",request);
-    NSString *titleStrs = @"新手帮助,新手指南,签到,最新活动";
-    if ([titleStrs containsString:self.title]) {
+    NSString *titleStrs = @"新手帮助,新手指南,签到,最新活动,活动";
+    if ([titleStrs containsString:self.title]){
+        if ([request.URL.absoluteString containsString:@"openpage"]){
+            NSString *decodedString=[request.URL.absoluteString stringByRemovingPercentEncoding];
+            NSRange range = [decodedString rangeOfString:@"parameter="];
+            NSString *strJson = [decodedString substringFromIndex:range.location + range.length];
+            NSString *parameter = [strJson stringByReplacingOccurrencesOfString:@"'" withString:@"\""];
+             NSRange rangePage = [decodedString rangeOfString:@"openpage="];
+            NSString *openPage = [decodedString substringWithRange:NSMakeRange(rangePage.location+rangePage.length, 1)];
+            NSInteger page = openPage.integerValue;
+            if (page == 1) {
+                [self share:parameter];
+            }else if (page == 2){
+                
+            }else if (page == 3){
+                
+            }else if (page == 4){
+                
+            }
+            return NO;
+        }
         return YES;
     }else if (first){
         first = NO;
@@ -68,10 +91,70 @@
         VC.urlStr = url;
         VC.title = title;
         [self hideBottomBarPush:VC];
-        NSLog(@"%@",str);
         return NO;
     }
 }
+
+//分享
+- (void)share:(NSString *)para{
+    NSData *jsonData = [para dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSError *err;
+    
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                         
+                                                        options:NSJSONReadingMutableContainers
+                         
+                                                          error:&err];
+    NSLog(@"%@",err);
+    //显示分享面板
+    [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMShareMenuSelectionView *shareSelectionView, UMSocialPlatformType platformType){
+        //创建分享消息对象
+        UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:dic[@"img"]]];
+        UIImage *image = [UIImage imageWithData:data];
+        //创建网页内容对象
+        UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:dic[@"title"] descr:dic[@"content"] thumImage:image];
+        //设置网页地址
+        shareObject.webpageUrl = dic[@"url"];
+        
+        //分享消息对象设置分享内容对象
+        messageObject.shareObject = shareObject;
+        
+        //调用分享接口
+        [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+            NSString *result = nil;
+            if (error) {
+                NSLog(@"************Share fail with error %@*********",error);
+                result = @"分享失败";
+            }else{
+                result = @"分享成功";
+                if ([data isKindOfClass:[UMSocialShareResponse class]]) {
+                    UMSocialShareResponse *resp = data;
+                    //分享结果消息
+                    NSLog(@"response message is %@",resp.message);
+                    //第三方原始返回的数据
+                    NSLog(@"response originalResponse data is %@",resp.originalResponse);
+                    
+                    NSMutableDictionary *parameter = [Utils parameter];
+                    parameter[@"userid"] = [YWUserTool account].userid;
+                    parameter[@"parameter"] = para;
+                    [YWHttptool Post:PortProm_handle parameters:parameter success:^(id responseObject) {
+                        
+                    } failure:^(NSError *error){
+                    }];
+                }else{
+                    NSLog(@"response data is %@",data);
+                }
+            }
+            [UIAlertController showAlertViewWithTitle:@"提示" Message:result BtnTitles:@[@"确定"] ClickBtn:nil];
+        }];
+        
+    }];
+}
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

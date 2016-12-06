@@ -85,7 +85,7 @@
         chatService.conversationType = ConversationType_CUSTOMERSERVICE;
         chatService.targetId = KefuMessageID;
         chatService.title = @"客服";
-        [self pushController:chatService];
+        [self hideBottomBarPush:chatService];
     }else if (indexPath.row == 1) {//中奖
         KHzhongjiangViewController *VC = [[KHzhongjiangViewController alloc]init];
         VC.type = @(indexPath.row+1);

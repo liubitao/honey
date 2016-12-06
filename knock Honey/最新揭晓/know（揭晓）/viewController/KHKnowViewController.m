@@ -140,6 +140,9 @@ static NSString * published = @"published";
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"goodsid"] = knowModel.goodsid;
     parameter[@"qishu"] = knowModel.qishu;
+    if ([YWUserTool account]) {
+         parameter[@"userid"] = [YWUserTool account].userid;
+    }
     [YWHttptool GET:PortGoodsdetails parameters:parameter success:^(id responseObject) {
         [MBProgressHUD hideHUD];
         NSLog(@"%@",responseObject);

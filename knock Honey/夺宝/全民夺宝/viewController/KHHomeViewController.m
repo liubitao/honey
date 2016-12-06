@@ -86,7 +86,6 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
                                                object:nil];
     [self createNavi];
     [self configCollectionView];
-    
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
@@ -116,6 +115,12 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
 
 //右侧消息栏
 - (void)message{
+    if (![YWUserTool account]) {
+        KHLoginViewController *vc = [[KHLoginViewController alloc]init];
+        KHNavigationViewController *nav = [[KHNavigationViewController alloc] initWithRootViewController:vc];
+        [self presentViewController:nav animated:YES completion:nil];
+        return;
+    }
     KHMessageViewController *messageVC = [[KHMessageViewController alloc]init];
     [self pushController:messageVC];
 }
@@ -270,7 +275,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
              __weak __typeof(self) weakSelf= self;
             header.advertBlock = ^{
                 KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
-                VC.title = advertModel.name;
+                VC.title = @"活动";
                 VC.urlStr = advertModel.link;
                 [weakSelf pushController:VC];
             };

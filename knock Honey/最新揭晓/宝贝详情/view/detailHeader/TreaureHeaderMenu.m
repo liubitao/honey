@@ -108,14 +108,7 @@ const CGFloat kMenuViewPadding = 8.0; //左右间距
         _titleLabel.text = @"参与记录";
         [self addSubview:_titleLabel];
         [_titleLabel sizeToFit];
-        
-        _detailLabel = [YYLabel new];
-        _detailLabel.origin = CGPointMake(_titleLabel.right, 0);
-        _detailLabel.size = CGSizeMake(self.width-_titleLabel.right+8, kMenuButtonHeight);
-        _detailLabel.font = SYSTEM_FONT(11);
-        _detailLabel.textColor = UIColorHex(999999);
-        _detailLabel.text = @"(2016-06-10 15:49:23开始)";
-        [self addSubview:_detailLabel];
+
         CAShapeLayer *layer = [CAShapeLayer layer];
         layer.frame =  CGRectMake(0,kMenuButtonHeight-0.3,self.width,0.3);
         layer.backgroundColor = UIColorHex(0xEFEAE5).CGColor;

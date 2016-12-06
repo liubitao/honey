@@ -199,10 +199,6 @@
    
     __weak typeof(_billView) weaKbillView = _billView;
     _billView.deleteBlock = ^{
-    if (weakSelf.deleteArray.count == 0 ) {
-        [UIAlertController showAlertViewWithTitle:@"提示" Message:@"请选择需要删除的商品" BtnTitles:@[@"知道了"] ClickBtn:nil];
-        return ;
-        }
     [UIAlertController showAlertViewWithTitle:nil Message:@"确定要删除吗?" BtnTitles:@[@"取消",@"确定"] ClickBtn:^(NSInteger index) {
                 if (index==1) {
                     if (!weakSelf.tableView.editing) {

@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KHRegiterThirdViewController">
@@ -40,7 +44,7 @@
                                 <constraint firstAttribute="height" constant="45" id="cfc-MI-afS"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <color key="textColor" red="0.81568627450980391" green="0.13725490196078433" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" red="0.76342791318893433" green="0.030544910579919815" blue="0.26860609650611877" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.输入验证码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yfJ-Ui-EEh">
@@ -49,7 +53,7 @@
                                 <constraint firstAttribute="height" constant="45" id="wxK-wf-o9J"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <color key="textColor" red="0.81568627449999997" green="0.13725490200000001" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.81568627449999997" green="0.13725490200000001" blue="0.33725490200000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.输入手机号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8eS-dr-aoX">
@@ -58,11 +62,11 @@
                                 <constraint firstAttribute="height" constant="45" id="Eru-5C-Ok8"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <color key="textColor" red="0.81568627449999997" green="0.13725490200000001" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.81568627449999997" green="0.13725490200000001" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="Bq5-J0-Log" firstAttribute="leading" secondItem="8eS-dr-aoX" secondAttribute="trailing" id="5bg-lM-Qh4"/>
                         <constraint firstItem="BK8-PB-MTd" firstAttribute="leading" secondItem="F14-Ah-tXU" secondAttribute="trailing" id="D8F-6C-Vl0"/>
@@ -94,11 +98,11 @@
                                 <constraint firstAttribute="width" constant="90" id="wEa-EI-BN5"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="n12-6J-otv" firstAttribute="leading" secondItem="cQW-Vy-svT" secondAttribute="leading" constant="10" id="4tS-bL-XXA"/>
                         <constraint firstAttribute="bottom" secondItem="n12-6J-otv" secondAttribute="bottom" id="BTJ-pH-8mH"/>
@@ -114,33 +118,33 @@
                     <rect key="frame" x="8" y="182" width="10" height="10"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="“用英文+数字”组合设置密码会跟安全哦！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Buh-jX-w8k">
-                    <rect key="frame" x="23" y="177" width="261" height="20"/>
+                    <rect key="frame" x="23" y="177" width="265.5" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="GT8-KV-zur"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" red="0.31764705879999999" green="0.69803921570000005" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.31764705879999999" green="0.69803921570000005" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eky-DP-5BD">
                     <rect key="frame" x="20" y="217" width="335" height="45"/>
-                    <color key="backgroundColor" red="0.81568627449999997" green="0.13725490200000001" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.81568627449999997" green="0.13725490200000001" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="Vfr-UZ-iKZ"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                     <state key="normal" title="登录">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <state key="highlighted">
-                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="loginAccount:" destination="-1" eventType="touchUpInside" id="1xG-JO-N4r"/>
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="0.94107431173324585" green="0.94123536348342896" blue="0.94106405973434448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.92623984813690186" green="0.92641764879226685" blue="0.92621004581451416" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="82V-qC-kS3" secondAttribute="trailing" constant="-6" id="5GG-Bv-PVE"/>
                 <constraint firstItem="Buh-jX-w8k" firstAttribute="centerY" secondItem="c4F-AR-BEu" secondAttribute="centerY" id="5z6-GC-e7v"/>
@@ -156,7 +160,6 @@
                 <constraint firstItem="Eky-DP-5BD" firstAttribute="top" secondItem="Buh-jX-w8k" secondAttribute="bottom" constant="20" id="gtT-aN-jTf"/>
                 <constraint firstItem="cQW-Vy-svT" firstAttribute="leading" secondItem="82V-qC-kS3" secondAttribute="leading" id="vDy-8S-r1D"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="195.5" y="85.5"/>
         </view>
     </objects>

@@ -58,6 +58,9 @@
     [WXApi registerApp:@"wx1bf9134fbd335945" withDescription:@"knockHoney"];
     
     [self configureBoardManager];
+    
+    //每次启动刷新个人数据
+    [self refreshPerson];
     return YES;
 }
 
@@ -66,8 +69,11 @@
     [UMessage startWithAppkey:@"582167c9aed17960b30009d4" launchOptions:launchOptions];
     
     //添加别名(addAlias)
-//    [UMessage addAlias:@"test@test.com" type:kUMessageAliasTypeSina response:^(id responseObject, NSError *error) {
-//    }];
+    if ([YWUserTool account]) {
+        [UMessage addAlias:[YWUserTool account].userid type:@"ywteam" response:^(id responseObject, NSError *error) {
+        }];
+    }
+  
     
     //注册通知，如果要使用category的自定义策略，可以参考demo中的代码。
     [UMessage registerForRemoteNotifications];
@@ -86,50 +92,8 @@
         }
     }];
     
- 
-    
-    
-    //---------------------------------------如果要在iOS10显示交互式的通知，必须注意实现以下代码
-    if ([[[UIDevice currentDevice] systemVersion]intValue]>=10) {
-        UNNotificationAction *action1_ios10 = [UNNotificationAction actionWithIdentifier:@"action1_ios10_identifier" title:@"打开应用" options:UNNotificationActionOptionForeground];
-        UNNotificationAction *action2_ios10 = [UNNotificationAction actionWithIdentifier:@"action2_ios10_identifier" title:@"忽略" options:UNNotificationActionOptionForeground];
-        
-        //UNNotificationCategoryOptionNone
-        //UNNotificationCategoryOptionCustomDismissAction  清除通知被触发会走通知的代理方法
-        //UNNotificationCategoryOptionAllowInCarPlay       适用于行车模式
-        UNNotificationCategory *category1_ios10 = [UNNotificationCategory categoryWithIdentifier:@"category101" actions:@[action1_ios10,action2_ios10]   intentIdentifiers:@[] options:UNNotificationCategoryOptionCustomDismissAction];
-        NSSet *categories_ios10 = [NSSet setWithObjects:category1_ios10, nil];
-        [center setNotificationCategories:categories_ios10];
-    }else
-    {
-        //------------------------------------------------如果你期望使用交互式(只有iOS 8.0及以上有)的通知，请参考下面注释部分的初始化代码
-        UIMutableUserNotificationAction *action1 = [[UIMutableUserNotificationAction alloc] init];
-        action1.identifier = @"action1_identifier";
-        action1.title=@"打开应用";
-        action1.activationMode = UIUserNotificationActivationModeForeground;//当点击的时候启动程序
-        
-        UIMutableUserNotificationAction *action2 = [[UIMutableUserNotificationAction alloc] init];  //第二按钮
-        action2.identifier = @"action2_identifier";
-        action2.title=@"忽略";
-        action2.activationMode = UIUserNotificationActivationModeBackground;//当点击的时候不启动程序，在后台处理
-        action2.authenticationRequired = YES;//需要解锁才能处理，如果action.activationMode = UIUserNotificationActivationModeForeground;则这个属性被忽略；
-        action2.destructive = YES;
-        UIMutableUserNotificationCategory *actionCategory1 = [[UIMutableUserNotificationCategory alloc] init];
-        actionCategory1.identifier = @"category1";//这组动作的唯一标示
-        [actionCategory1 setActions:@[action1,action2] forContext:(UIUserNotificationActionContextDefault)];
-        NSSet *categories = [NSSet setWithObjects:actionCategory1, nil];
-        [UMessage registerForRemoteNotifications:categories];
-        //如果对角标，文字和声音的取舍，请用下面的方法
-//        UIRemoteNotificationType types7 = UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeSound;
-//        UIUserNotificationType types8 = UIUserNotificationTypeAlert|UIUserNotificationTypeSound|UIUserNotificationTypeBadge;
-//        [UMessage registerForRemoteNotifications:categories withTypesForIos7:types7 withTypesForIos8:types8];
-    }
-    
-    
-    
     //for log
     [UMessage setLogEnabled:YES];
-
 }
 
 
@@ -138,20 +102,6 @@
     //关闭友盟自带的弹出框
     [UMessage setAutoAlert:NO];
     [UMessage didReceiveRemoteNotification:userInfo];
-    
-    //    self.userInfo = userInfo;
-    //    //定制自定的的弹出框
-    //    if([UIApplication sharedApplication].applicationState == UIApplicationStateActive)
-    //    {
-    //        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"标题"
-    //                                                            message:@"Test On ApplicationStateActive"
-    //                                                           delegate:self
-    //                                                  cancelButtonTitle:@"确定"
-    //                                                  otherButtonTitles:nil];
-    //
-    //        [alertView show];
-    //
-    //    }
 }
 
 
@@ -197,7 +147,7 @@
     NSDictionary *parameter = [Utils parameter];
     [AdvertiseHelper showAdvertiserView];
     [YWHttptool GET:PortFirst_banner parameters:parameter success:^(id responseObject) {
-        [[AdvertiseHelper sharedInstance] getAdvertisingImage:responseObject[@"url"]];
+        [[AdvertiseHelper sharedInstance] getAdvertisingImage:responseObject[@"result"]];
     } failure:^(NSError *error){
         
     }];
@@ -244,29 +194,26 @@
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:UMWeiboAppKey appSecret:UMWeiboAppsecret redirectURL:UMWeiboUrl];
     
 }
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
-    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];
-    if (!result) {
-    }
-    return result;
-}
+
 
 // NOTE: 9.0以后使用新API接口
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options{
-    if ([url.host isEqualToString:@"safepay"]) {
-        //跳转支付宝钱包进行支付，处理支付结果
-        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
-            NSLog(@"result = %@",resultDic);
-            NSData *data = [resultDic[@"result"] dataUsingEncoding:NSUTF8StringEncoding];
-            NSDictionary *weatherDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
-            NSNotification *notification = [NSNotification notificationWithName:@"ORDER_PAY_NOTIFICATION" object:@"zhifubao" userInfo:weatherDic];
-            [[NSNotificationCenter defaultCenter] postNotification:notification];
-        }];
-        return YES;
-    }else{
-        [WXApi handleOpenURL:url delegate:self];
-        return [[UMSocialManager defaultManager] handleOpenURL:url];
-    }
+        BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];
+        if ([url.host isEqualToString:@"safepay"]) {
+                //跳转支付宝钱包进行支付，处理支付结果
+                [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+                    NSLog(@"result = %@",resultDic);
+                    NSData *data = [resultDic[@"result"] dataUsingEncoding:NSUTF8StringEncoding];
+                    NSDictionary *weatherDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+                    NSNotification *notification = [NSNotification notificationWithName:@"ORDER_PAY_NOTIFICATION" object:@"zhifubao" userInfo:weatherDic];
+                    [[NSNotificationCenter defaultCenter] postNotification:notification];
+                }];
+                return YES;
+            }
+        if ([url.host isEqualToString:@"pay"]){
+               return [WXApi handleOpenURL:url delegate:self];
+            }
+        return result;
 }
 
 /*发送一个sendReq后，收到微信的回应收到一个来自微信的处理结果。 
@@ -340,6 +287,12 @@
 - (void)cartNumber{
     [self configRongCloud];
     
+    //添加别名(addAlias)
+    if ([YWUserTool account]) {
+        [UMessage addAlias:[YWUserTool account].userid type:@"ywteam" response:^(id responseObject, NSError *error) {
+        }];
+    }
+    
     if ([YWUserTool account]){
         NSMutableDictionary *parameter = [Utils parameter];
         parameter[@"userid"] = [YWUserTool account].userid;
@@ -353,6 +306,19 @@
         }];
     }else{
         [AppDelegate getAppDelegate].value = 0;
+    }
+}
+
+- (void)refreshPerson{
+    if ([YWUserTool account]){
+    NSMutableDictionary *parameter = [Utils parameter];
+    parameter[@"userid"] = [YWUserTool account].userid;
+    [YWHttptool GET:PortOther_user parameters:parameter success:^(id responseObject) {
+        if ([responseObject[@"isError"] integerValue]) return ;
+//        YWUser *user = [YWUser mj_objectWithKeyValues:responseObject[@"result"]];
+//        [YWUserTool saveAccount:user];
+    } failure:^(NSError *error) {
+    }];
     }
 }
 

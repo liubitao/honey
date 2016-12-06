@@ -8,6 +8,7 @@
 
 #import "KHSettingViewController.h"
 #import "KHQiandaoViewController.h"
+#import "UMessage.h"
 
 @interface KHSettingViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -66,15 +67,13 @@
     }else{
         _tableView.tableFooterView = [UIView new];
     }
-   
-    
-   
-    
 }
 
 - (void)quie:(UIButton *)sender{
     [UIAlertController showAlertViewWithTitle:@"提示" Message:@"确认退出" BtnTitles:@[@"确认",@"取消"] ClickBtn:^(NSInteger index) {
         if (index == 0) {
+            [UMessage removeAlias:[YWUserTool account].userid type:@"ywteam" response:^(id  _Nonnull responseObject, NSError * _Nonnull error) {
+            }];
             [YWUserTool quit];
             [self.navigationController popToRootViewControllerAnimated:NO];
             [self.navigationController.tabBarController.tabBar hideBadgeValueAtIndex:3];

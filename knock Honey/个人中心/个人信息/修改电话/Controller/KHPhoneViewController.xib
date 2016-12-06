@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KHPhoneViewController">
@@ -28,7 +32,7 @@
                                 <constraint firstAttribute="width" constant="90" id="426-aY-BT6"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的手机号码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jTB-eN-8a8">
@@ -37,7 +41,7 @@
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                         </textField>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="24I-2M-boS"/>
                         <constraint firstItem="jTB-eN-8a8" firstAttribute="top" secondItem="X9I-ha-6ig" secondAttribute="top" id="3pD-MR-Pr9"/>
@@ -59,7 +63,7 @@
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LkN-B3-vnM" customClass="PooCodeView">
                             <rect key="frame" x="225" y="8" width="80" height="30"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="0cz-Ls-hzd"/>
                                 <constraint firstAttribute="width" constant="80" id="af5-d5-IuE"/>
@@ -71,7 +75,7 @@
                                 <constraint firstAttribute="width" constant="90" id="ztl-hM-kZJ"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="67p-UR-MS7">
@@ -81,14 +85,14 @@
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <state key="normal" title="换一张">
-                                <color key="titleColor" red="0.33333333329999998" green="0.79215686269999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" red="0.33333333329999998" green="0.79215686269999996" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
                                 <action selector="valiCodeClick:" destination="-1" eventType="touchUpInside" id="U5E-Ut-tqR"/>
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="67p-UR-MS7" secondAttribute="trailing" constant="15" id="9Mr-pB-yMZ"/>
                         <constraint firstItem="ovt-Do-B8q" firstAttribute="leading" secondItem="GMz-z1-tOA" secondAttribute="leading" constant="10" id="Jia-6l-mCk"/>
@@ -114,7 +118,7 @@
                                 <constraint firstAttribute="width" constant="90" id="zbV-hy-YZq"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kHn-xg-NAm">
@@ -124,7 +128,7 @@
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="获取验证码">
-                                <color key="titleColor" red="0.81568627450980391" green="0.13725490196078433" blue="0.33725490196078434" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" red="0.81568627450980391" green="0.13725490196078433" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
                                 <action selector="phoneClick:" destination="-1" eventType="touchUpInside" id="Rbv-8y-d8R"/>
@@ -136,7 +140,7 @@
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                         </textField>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="kHn-xg-NAm" firstAttribute="top" secondItem="4qj-Vk-DrA" secondAttribute="top" constant="8" id="DiH-hq-KQ8"/>
                         <constraint firstItem="ugf-5y-4B3" firstAttribute="leading" secondItem="4qj-Vk-DrA" secondAttribute="leading" constant="10" id="GGC-cU-etE"/>
@@ -153,23 +157,23 @@
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5y-Jx-yUN">
                     <rect key="frame" x="8" y="244" width="359" height="45"/>
-                    <color key="backgroundColor" red="0.81568627449999997" green="0.13725490200000001" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.81568627449999997" green="0.13725490200000001" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="Fbh-oG-nNC"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                     <state key="normal" title="保存">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <state key="highlighted">
-                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="savePhone:" destination="-1" eventType="touchUpInside" id="G95-YI-vAM"/>
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="0.9370916485786438" green="0.93694382905960083" blue="0.95754462480545044" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.92123949527740479" green="0.92019951343536377" blue="0.9466170072555542" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="GMz-z1-tOA" secondAttribute="trailing" id="0TW-LB-j0a"/>
                 <constraint firstItem="4qj-Vk-DrA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="7Ni-N8-9gc"/>
@@ -184,8 +188,7 @@
                 <constraint firstItem="X9I-ha-6ig" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vmW-XE-mvo"/>
                 <constraint firstItem="GMz-z1-tOA" firstAttribute="top" secondItem="X9I-ha-6ig" secondAttribute="bottom" constant="1" id="zGJ-es-evm"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="-133.5" y="550.5"/>
+            <point key="canvasLocation" x="29" y="134"/>
         </view>
     </objects>
 </document>

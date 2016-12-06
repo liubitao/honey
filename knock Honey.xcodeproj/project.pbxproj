@@ -31,6 +31,8 @@
 		0C3693411DAB6EE600BB3EE0 /* KHKnowModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3693401DAB6EE600BB3EE0 /* KHKnowModel.m */; };
 		0C3693451DAB8F8000BB3EE0 /* KHPulishedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3693431DAB8F8000BB3EE0 /* KHPulishedTableViewCell.m */; };
 		0C3693461DAB8F8000BB3EE0 /* KHPulishedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C3693441DAB8F8000BB3EE0 /* KHPulishedTableViewCell.xib */; };
+		0C36C3A61DF6863C005B5B02 /* KHForgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C36C3A41DF6863C005B5B02 /* KHForgetViewController.m */; };
+		0C36C3A71DF6863C005B5B02 /* KHForgetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C36C3A51DF6863C005B5B02 /* KHForgetViewController.xib */; };
 		0C3A466D1DD70B850082A239 /* KHCoupon.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3A465D1DD70B850082A239 /* KHCoupon.m */; };
 		0C3A466E1DD70B850082A239 /* KHFreeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3A465F1DD70B850082A239 /* KHFreeModel.m */; };
 		0C3A466F1DD70B850082A239 /* KHFreeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3A46621DD70B850082A239 /* KHFreeHeaderView.m */; };
@@ -363,6 +365,9 @@
 		0C3693421DAB8F8000BB3EE0 /* KHPulishedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHPulishedTableViewCell.h; sourceTree = "<group>"; };
 		0C3693431DAB8F8000BB3EE0 /* KHPulishedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPulishedTableViewCell.m; sourceTree = "<group>"; };
 		0C3693441DAB8F8000BB3EE0 /* KHPulishedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHPulishedTableViewCell.xib; sourceTree = "<group>"; };
+		0C36C3A31DF6863C005B5B02 /* KHForgetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHForgetViewController.h; sourceTree = "<group>"; };
+		0C36C3A41DF6863C005B5B02 /* KHForgetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHForgetViewController.m; sourceTree = "<group>"; };
+		0C36C3A51DF6863C005B5B02 /* KHForgetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHForgetViewController.xib; sourceTree = "<group>"; };
 		0C3A465C1DD70B850082A239 /* KHCoupon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHCoupon.h; sourceTree = "<group>"; };
 		0C3A465D1DD70B850082A239 /* KHCoupon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHCoupon.m; sourceTree = "<group>"; };
 		0C3A465E1DD70B850082A239 /* KHFreeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHFreeModel.h; sourceTree = "<group>"; };
@@ -1135,6 +1140,24 @@
 				0C3693441DAB8F8000BB3EE0 /* KHPulishedTableViewCell.xib */,
 			);
 			path = "publishedCell(已经发布的)";
+			sourceTree = "<group>";
+		};
+		0C36C3A11DF68608005B5B02 /* 忘记密码 */ = {
+			isa = PBXGroup;
+			children = (
+				0C36C3A21DF68608005B5B02 /* viewController */,
+			);
+			path = "忘记密码";
+			sourceTree = "<group>";
+		};
+		0C36C3A21DF68608005B5B02 /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C36C3A31DF6863C005B5B02 /* KHForgetViewController.h */,
+				0C36C3A41DF6863C005B5B02 /* KHForgetViewController.m */,
+				0C36C3A51DF6863C005B5B02 /* KHForgetViewController.xib */,
+			);
+			path = viewController;
 			sourceTree = "<group>";
 		};
 		0C3A465A1DD70B850082A239 /* 免费抢币首页 */ = {
@@ -3198,6 +3221,7 @@
 		0CEDEE331DC193E50063C690 /* 登录注册 */ = {
 			isa = PBXGroup;
 			children = (
+				0C36C3A11DF68608005B5B02 /* 忘记密码 */,
 				0CEDEE351DC193E50063C690 /* 登录 */,
 				0CEDEE341DC193E50063C690 /* 注册 */,
 			);
@@ -3410,6 +3434,7 @@
 				0C7FAB421DE95A5600DB5D9C /* khDistanceCell.xib in Resources */,
 				0C36933E1DAB66C800BB3EE0 /* KHKnowTableViewCell.xib in Resources */,
 				0CB128CA1DAA0467005A0A4D /* Assets.xcassets in Resources */,
+				0C36C3A71DF6863C005B5B02 /* KHForgetViewController.xib in Resources */,
 				0CEDEE3E1DC199F90063C690 /* KHLoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3507,6 +3532,7 @@
 				0C7F833B1DCC4707003EA29C /* KHEditAddressViewController.m in Sources */,
 				0CA3A30D1DF56B7200514913 /* KHXitongViewController.m in Sources */,
 				0C3693451DAB8F8000BB3EE0 /* KHPulishedTableViewCell.m in Sources */,
+				0C36C3A61DF6863C005B5B02 /* KHForgetViewController.m in Sources */,
 				0CC47ED91DD5C3CF00F27914 /* KHHomeViewController.m in Sources */,
 				0C5E05F51DAE36FE00B2133F /* SDCycleScrollView.m in Sources */,
 				0C9B057C1DC72D92008D7BFA /* KHPersonCell.m in Sources */,

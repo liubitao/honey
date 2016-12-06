@@ -75,7 +75,7 @@
         cell.detailTextLabel.text = user.username;
     }
     if (indexPath.row == 2) {
-        if ([user.mobile isEqualToString:@"0"]) {
+        if ([user.mobile isEqualToString:@"0"]||!user.mobile ) {
             cell.detailTextLabel.text = @"请绑定电话号码";
         }else{
             cell.detailTextLabel.text = user.mobile;

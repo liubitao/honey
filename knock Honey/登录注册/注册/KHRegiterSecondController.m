@@ -49,6 +49,7 @@
         [MBProgressHUD showError:@"请输入验证码"];
         return;
     }
+    
     NSMutableDictionary *parameters = [Utils parameter];
     parameters[@"mobile"] = _phone;
     parameters[@"code"] = _phoneCode.text;

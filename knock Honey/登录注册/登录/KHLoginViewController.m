@@ -13,6 +13,7 @@
 #import <MJExtension.h>
 #import <UMSocialCore/UMSocialCore.h>
 #import "KHTabbarViewController.h"
+#import "KHForgetViewController.h"
 
 @interface KHLoginViewController ()<UITextFieldDelegate>
 {
@@ -201,11 +202,14 @@
  *  忘记密码
  */
 - (IBAction)forgetPassword:(id)sender {
+    KHForgetViewController *forGetVC = [[KHForgetViewController alloc]init];
+    [self hideBottomBarPush:forGetVC];
 }
 /**
  *  第三方登录
  */
 - (IBAction)loginWithThird:(UIButton *)sender {
+    [MBProgressHUD showMessage:@"登录中..."];
     switch (sender.tag) {
         case 0:
         {
@@ -213,6 +217,7 @@
                 [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_QQ currentViewController:self completion:^(id result, NSError *error) {
                     NSString *message = nil;
                     if (error) {
+                        [MBProgressHUD hideHUD];
                         [MBProgressHUD showError:@"登录失败"];
                         UMSocialLogInfo(@"Auth fail with error %@", error);
                         message = @"Auth fail";
@@ -223,7 +228,7 @@
                             
                             NSMutableDictionary *parameter = [Utils parameter];
                             NSMutableDictionary *dictUser = [NSMutableDictionary dictionary];
-                            dictUser[@"appid"] = resp.openid;
+                            dictUser[@"appid"] = resp.uid;
                             dictUser[@"username"] = resp.name;
                             dictUser[@"img"] = resp.iconurl;
                             dictUser[@"province"] = dict[@"province"];
@@ -233,6 +238,7 @@
                             parameter[@"user"] = jsonString;
                             
                             [YWHttptool Post:PortThird_login parameters:parameter success:^(id responseObject) {
+                                   [MBProgressHUD hideHUD];
                                 if ([responseObject[@"isError"] integerValue]) return ;
                                 YWUser *user = [YWUser mj_objectWithKeyValues:responseObject[@"result"]];
                                 [YWUserTool saveAccount:user];
@@ -245,6 +251,7 @@
                             } failure:^(NSError *error) {
                             }];
                         }else{
+                               [MBProgressHUD hideHUD];
                             UMSocialLogInfo(@"Auth fail with unknow error");
                             message = @"Auth fail";
                         }
@@ -258,6 +265,7 @@
             [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_WechatSession currentViewController:self completion:^(id result, NSError *error) {
                                 NSString *message = nil;
                                 if (error) {
+                                       [MBProgressHUD hideHUD];
                                     [MBProgressHUD showError:@"登录失败"];
                                     UMSocialLogInfo(@"Auth fail with error %@", error);
                                     message = @"Auth fail";
@@ -277,6 +285,7 @@
                                         parameter[@"user"] = jsonString;
                                         
                                         [YWHttptool Post:PortThird_login parameters:parameter success:^(id responseObject) {
+                                               [MBProgressHUD hideHUD];
                                             NSLog(@"%@",responseObject);
                                             if ([responseObject[@"isError"] integerValue]) return ;
                                             YWUser *user = [YWUser mj_objectWithKeyValues:responseObject[@"result"]];
@@ -291,6 +300,7 @@
                                             NSLog(@"%@",error);
                                         }];
                                     }else{
+                                           [MBProgressHUD hideHUD];
                                         UMSocialLogInfo(@"Auth fail with unknow error");
                                         message = @"Auth fail";
                                     }
@@ -299,8 +309,55 @@
             }];
         }
             break;
-        case 2:
-         
+        case 2:{
+            [[UMSocialManager defaultManager] cancelAuthWithPlatform:UMSocialPlatformType_Sina completion:^(id result, NSError *error) {
+                [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_Sina currentViewController:self completion:^(id result, NSError *error) {
+                    NSString *message = nil;
+                    if (error) {
+                           [MBProgressHUD hideHUD];
+                        [MBProgressHUD showError:@"登录失败"];
+                        UMSocialLogInfo(@"Auth fail with error %@", error);
+                        message = @"Auth fail";
+                    }else{
+                        if ([result isKindOfClass:[UMSocialUserInfoResponse class]]) {
+                            UMSocialUserInfoResponse *resp = result;
+                            NSDictionary *dict = resp.originalResponse;
+                            NSMutableDictionary *parameter = [Utils parameter];
+                            NSMutableDictionary *dictUser = [NSMutableDictionary dictionary];
+                            dictUser[@"appid"] = resp.uid;
+                            dictUser[@"username"] = resp.name;
+                            dictUser[@"img"] = resp.iconurl;
+                            dictUser[@"province"] = dict[@"province"];
+                            dictUser[@"city"] = dict[@"city"];
+                            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictUser options:NSJSONWritingPrettyPrinted error:nil];
+                            NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+                            parameter[@"user"] = jsonString;
+                            
+                            [YWHttptool Post:PortThird_login parameters:parameter success:^(id responseObject) {
+                                [MBProgressHUD hideHUD];
+                                NSLog(@"%@",responseObject);
+                                if ([responseObject[@"isError"] integerValue]) return ;
+                                YWUser *user = [YWUser mj_objectWithKeyValues:responseObject[@"result"]];
+                                [YWUserTool saveAccount:user];
+                                [self.navigationController popToRootViewControllerAnimated:NO];
+                                [self dismissViewControllerAnimated:YES completion:nil];
+                                KHTabbarViewController *tabBarVC = (KHTabbarViewController *)[AppDelegate getAppDelegate].window.rootViewController;
+                                [tabBarVC setSelectedIndex:4];
+                                [[NSNotificationCenter defaultCenter] postNotificationName:@"loginPerson" object:nil];
+                                [MBProgressHUD showSuccess:@"登录成功"];
+                            } failure:^(NSError *error) {
+                                NSLog(@"%@",error);
+                            }];
+                        }else{
+                            [MBProgressHUD hideHUD];
+                            UMSocialLogInfo(@"Auth fail with unknow error");
+                            message = @"Auth fail";
+                        }
+                    }
+                }];
+            }];
+
+        }
             break;
         default:
             break;

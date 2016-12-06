@@ -89,6 +89,7 @@ static NSString *FreeCell = @"FreeCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     KHFreeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FreeCell forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell setSeparatorInset:UIEdgeInsetsZero];
     [cell setLayoutMargins:UIEdgeInsetsZero];
     cell.delegate =  self;
@@ -136,6 +137,11 @@ static NSString *FreeCell = @"FreeCell";
             [MBProgressHUD showError:@"兑换失败"];
             return;
         };
+        YWUser *user = [YWUserTool account];
+        user.score = responseObject[@"result"][@"score"];
+        [YWUserTool saveAccount:user];
+        [headerView setJifen:user.score];
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"freshenPerson" object:nil];
         [MBProgressHUD showSuccess:@"兑换成功"];
     } failure:^(NSError *error){
         [MBProgressHUD showError:@"兑换失败"];
@@ -144,17 +150,5 @@ static NSString *FreeCell = @"FreeCell";
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

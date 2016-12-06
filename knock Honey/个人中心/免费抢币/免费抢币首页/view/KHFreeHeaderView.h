@@ -27,4 +27,6 @@ typedef void(^FreeHeaderBlock)(NSInteger i);
 - (instancetype)initWithFrame:(CGRect)frame model:(KHFreeModel *)model;
 - (void)reSetModel:(KHFreeModel *)model;
 
+- (void)setJifen:(NSString *)jifen;
+
 @end

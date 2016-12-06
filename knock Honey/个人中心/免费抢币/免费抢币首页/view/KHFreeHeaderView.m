@@ -133,6 +133,11 @@
     
 }
 
+- (void)setJifen:(NSString *)jifen{
+    NSString *str = [NSString stringWithFormat:@"%@积分",jifen];
+    _jifenLabel.attributedText = [Utils stringWith:str font1:[UIFont boldSystemFontOfSize:22] color1:[UIColor blackColor] font2:SYSTEM_FONT(15) color2:[UIColor blackColor] range:NSMakeRange(_model.score.length, 2)];
+}
+
 - (void)click:(UIButton *)sender{
     NSString *str = [sender titleForState:UIControlStateNormal];
     if (![str isEqualToString:@"已签到"]) {

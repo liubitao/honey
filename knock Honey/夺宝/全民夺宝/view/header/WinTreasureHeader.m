@@ -139,7 +139,7 @@ const CGFloat kScrollViewHeight = 140.0;
     }
     //轮播图
     _imgScrollView = [[UIScrollView alloc]initWithFrame:({
-        CGRect rect = {0,_adVertModel?self.advertView.bottom:0,self.width,kScrollViewHeight};
+        CGRect rect = {0,_adVertModel&& _adVertModel.prom_end.integerValue >[[NSDate date] timeIntervalSince1970] ?self.advertView.bottom:0,self.width,kScrollViewHeight};
         rect;
     })];
     _imgScrollView.delegate = self;
