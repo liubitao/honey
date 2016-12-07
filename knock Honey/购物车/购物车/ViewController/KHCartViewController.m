@@ -196,7 +196,6 @@
 
 - (void)excuteDeleteEvent {
     __weak typeof(self) weakSelf = self;
-   
     __weak typeof(_billView) weaKbillView = _billView;
     _billView.deleteBlock = ^{
     [UIAlertController showAlertViewWithTitle:nil Message:@"确定要删除吗?" BtnTitles:@[@"取消",@"确定"] ClickBtn:^(NSInteger index) {

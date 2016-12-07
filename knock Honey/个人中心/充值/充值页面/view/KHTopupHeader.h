@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface KHTopupHeader : UIView
-@property (nonatomic, copy) NSNumber *coinAmount;
+@property (nonatomic, copy) NSString *coinAmount;
+
+- (instancetype)initWithFrame:(CGRect)frame coin:(NSString *)coinAmount;
 @end

@@ -33,7 +33,9 @@
     _model = model;
     _nameLabel.text = [NSString stringWithFormat:@"商品名称:%@",_model.title];
     _periodLabel.text = [NSString stringWithFormat:@"商品期号:%@",_model.qishu];
-    _treasureNoLabel.text = [NSString stringWithFormat:@"夺宝号码:%@",_model.codes];
+    if (_model.codes) {
+         _treasureNoLabel.text = [NSString stringWithFormat:@"夺宝号码:%@",_model.codes];
+    }
     _paticipateLabel.text = [NSString stringWithFormat:@"%@人次",_model.buynum];
 }
 

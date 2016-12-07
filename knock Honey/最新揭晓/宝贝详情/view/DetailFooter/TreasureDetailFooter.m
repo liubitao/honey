@@ -95,7 +95,7 @@ const CGFloat kFooterButtonHeight = 40.0;
         case TreasurePublishedType: {
             YYLabel *label = [YYLabel new];
             label.origin = CGPointMake(kTreasureDetailFooterPadding, (self.height-15)/2.0);
-            label.size = CGSizeMake(150, 15);
+            label.size = CGSizeMake(200, 15);
             label.font = SYSTEM_FONT(14);
             label.textColor = UIColorHex(666666);
             label.text = [NSString stringWithFormat:@"第%@期正在进行..",_model.qishu];

@@ -13,6 +13,8 @@
 #import "UMSocialUIManager.h"
 #import <MJExtension.h>
 #import "KHDetailViewController.h"
+#import "KHTopupViewController.h"
+#import "KHTenViewController.h"
 
 @interface KHQiandaoViewController ()<UIWebViewDelegate>
 {
@@ -57,6 +59,11 @@
     NSLog(@"%@",request);
     NSString *titleStrs = @"新手帮助,新手指南,签到,最新活动,活动";
     if ([titleStrs containsString:self.title]){
+//        openpage
+//        1.分享—url,img
+//        2.商品详情—goodsid
+//        3.商品列表—cateid（从接口/Api/Goods/goods_cate获取数据）
+//        4.会员充值—money（0则不限充值金额,title）
         if ([request.URL.absoluteString containsString:@"openpage"]){
             NSString *decodedString=[request.URL.absoluteString stringByRemovingPercentEncoding];
             NSRange range = [decodedString rangeOfString:@"parameter="];
@@ -65,14 +72,21 @@
              NSRange rangePage = [decodedString rangeOfString:@"openpage="];
             NSString *openPage = [decodedString substringWithRange:NSMakeRange(rangePage.location+rangePage.length, 1)];
             NSInteger page = openPage.integerValue;
+            NSData *jsonData = [parameter dataUsingEncoding:NSUTF8StringEncoding];
+            NSError *err;
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                 
+                                                                options:NSJSONReadingMutableContainers
+                                 
+                                                                  error:&err];
             if (page == 1) {
                 [self share:parameter];
             }else if (page == 2){
-                
+                [self goodsDetali:dic];
             }else if (page == 3){
-                
+                [self goodsArea:dic];
             }else if (page == 4){
-                
+                [self Recharge:dic];
             }
             return NO;
         }
@@ -98,15 +112,11 @@
 //分享
 - (void)share:(NSString *)para{
     NSData *jsonData = [para dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSError *err;
-    
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
                          
                                                         options:NSJSONReadingMutableContainers
                          
-                                                          error:&err];
-    NSLog(@"%@",err);
+                                                          error:nil];
     //显示分享面板
     [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMShareMenuSelectionView *shareSelectionView, UMSocialPlatformType platformType){
         //创建分享消息对象
@@ -153,8 +163,46 @@
     }];
 }
 
+//商品详情
+- (void)goodsDetali:(NSDictionary *)dic{
+    [MBProgressHUD showMessage:@"加载中..."];
+    NSMutableDictionary *parameter = [Utils parameter];
+    parameter[@"goodsid"] = dic[@"goodsid"];
+    parameter[@"qishu"] = dic[@"qishu"];
+    if ([YWUserTool account]) {
+        parameter[@"userid"] = [YWUserTool account].userid;
+    }
+    [YWHttptool GET:PortGoodsdetails parameters:parameter success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
+        if ([responseObject[@"isError"] integerValue])return;
+        KHDetailViewController *DetailVC = [[KHDetailViewController alloc]init];
+        DetailVC.model = [KHProductModel kh_objectWithKeyValues:responseObject[@"result"]];
+        DetailVC.goodsid = dic[@"goodsid"];
+        DetailVC.qishu = dic[@"qishu"];
+        DetailVC.showType = TreasureDetailHeaderTypeNotParticipate;
+        [self hideBottomBarPush:DetailVC];
+    } failure:^(NSError *error) {
+        [MBProgressHUD hideHUD];
+    }];
 
+}
 
+//商品列表
+- (void)goodsArea:(NSDictionary *)dic{
+    KHTenViewController *VC = [[KHTenViewController alloc]init];
+    VC.area = dic[@"cateid"];
+    VC.port = PortGoods_cate;
+    VC.title = dic[@"title"];
+    [self hideBottomBarPush:VC];
+}
+
+//充值
+- (void)Recharge:(NSDictionary *)dic{
+    KHTopupViewController *topupVC = [[KHTopupViewController alloc]init];
+    topupVC.money = dic[@"money"];
+    topupVC.title = dic[@"title"];
+    [self hideBottomBarPush:topupVC];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

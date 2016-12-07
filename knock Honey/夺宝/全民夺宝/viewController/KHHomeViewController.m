@@ -61,10 +61,6 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
 @implementation KHHomeViewController
 
 #pragma mark - lazy load
-
-
-
-
 - (UIImageView *)productView {
     if (!_productView) {
         _productView = [[UIImageView alloc]initWithFrame:CGRectZero];

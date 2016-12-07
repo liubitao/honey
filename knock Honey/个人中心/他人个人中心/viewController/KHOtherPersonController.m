@@ -9,6 +9,8 @@
 #import "KHOtherPersonController.h"
 #import "KHMeListViewController.h"
 #import "KHMyAppearViewController.h"
+#import "KHOtherWinController.h"
+
 
 @interface KHOtherPersonController ()
 @property (nonatomic,strong) KHOtherHeaderView *headerView;
@@ -81,14 +83,11 @@
     allVC.title = @"夺宝纪录";
     allVC.type = @"0";
     allVC.userID = _userID;
-
     [self addChildViewController:allVC];
     
-    KHMeListViewController *ingVC= [[KHMeListViewController alloc]init];
-    ingVC.otherType = YES;
+    KHOtherWinController *ingVC= [[KHOtherWinController alloc]init];
     ingVC.title = @"中奖纪录";
-    ingVC.type = @"1";
-    ingVC.userID = _userID;
+    ingVC.userid = _userID;
     [self addChildViewController:ingVC];
     
     KHMyAppearViewController *edVC = [[KHMyAppearViewController alloc]init];

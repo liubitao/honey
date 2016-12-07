@@ -49,7 +49,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
      self.automaticallyAdjustsScrollViewInsets = NO;
-    self.title = @"充值";
+    if (!self.title) {
+           self.title = @"充值";
+    }
     [self.view addSubview:self.tableView];
     [self setupHeader];
     [self setupBottom];
@@ -124,8 +126,7 @@
     _header = [[KHTopupHeader alloc]initWithFrame:({
         CGRect rect = {0,0,KscreenWidth,1};
         rect;
-    })];
-
+    }) coin:_money];
     self.tableView.tableHeaderView = _header;
 }
 

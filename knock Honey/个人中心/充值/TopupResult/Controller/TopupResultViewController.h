@@ -10,6 +10,6 @@
 
 @interface TopupResultViewController : KHBaseViewController
 
-@property (nonatomic, copy) NSNumber *coinAmount;
+@property (nonatomic, copy ) NSString *coinAmount;
 
 @end

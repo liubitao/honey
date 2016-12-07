@@ -154,18 +154,19 @@ static NSString *edGoodsCell = @"edGoodsCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [MBProgressHUD showMessage:@"加载中..."];
-    NSString *goodsid;
     NSMutableDictionary *parameter = [Utils parameter];
-        KHSnatchModel *model = self.dataArray[indexPath.row];
-        parameter[@"goodsid"] = model.goodsid;
-        parameter[@"qishu"] = model.qishu;
-        goodsid = model.goodsid;
+    KHSnatchModel *model = self.dataArray[indexPath.row];
+    parameter[@"goodsid"] = model.goodsid;
+    parameter[@"qishu"] = model.qishu;
+    if ([YWUserTool account]) {
+        parameter[@"userid"] = [YWUserTool account].userid;
+    }
     [YWHttptool GET:PortGoodsdetails parameters:parameter success:^(id responseObject) {
         [MBProgressHUD hideHUD];
         if ([responseObject[@"isError"] integerValue])return;
         KHDetailViewController *DetailVC = [[KHDetailViewController alloc]init];
         DetailVC.model = [KHProductModel kh_objectWithKeyValues:responseObject[@"result"]];
-        DetailVC.goodsid = goodsid;
+        DetailVC.goodsid = model.goodsid;
         DetailVC.qishu = model.qishu;
         if (model.isopen.integerValue == 1) {
                 DetailVC.showType = TreasureDetailHeaderTypeWon;

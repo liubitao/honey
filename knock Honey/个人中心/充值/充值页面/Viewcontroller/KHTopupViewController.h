@@ -9,5 +9,5 @@
 #import "KHBaseViewController.h"
 
 @interface KHTopupViewController : KHBaseViewController
-
+@property (nonatomic,copy) NSString *money;
 @end

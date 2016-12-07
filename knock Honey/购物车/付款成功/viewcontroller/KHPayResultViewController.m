@@ -128,10 +128,11 @@
         productLabel.textColor = kDefaultColor;
         NSInteger renci = self.resultmodel.fails.count;
         NSInteger count = 0;
+        NSInteger failMoney = self.resultmodel.failmoney.integerValue;
         for (KHresultGoods *good in self.resultmodel.fails) {
             count+= good.buynum.integerValue;
         }
-        productLabel.text = [NSString stringWithFormat:@"参与失败%zi件商品,共%zi人次",renci,count];
+        productLabel.text = [NSString stringWithFormat:@"参与失败%zi件商品,共%zi人次,%zi抢币将立即退回",renci,count,failMoney];
         [seperatorLayer addSubview:productLabel];
         
         CAShapeLayer *lineLayer = [CAShapeLayer layer];

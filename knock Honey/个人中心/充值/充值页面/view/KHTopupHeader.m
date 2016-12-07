@@ -37,9 +37,10 @@ const CGFloat kHeaderButtonPadding = 15.0;
     return _amountArray;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame{
+- (instancetype)initWithFrame:(CGRect)frame coin:(NSString *)coinAmount{
     self = [super initWithFrame:frame];
     if (self) {
+        _coinAmount = coinAmount;
         self.backgroundColor = UIColorHex(f3f3f3);
         [self setupPerson];
         kHeaderButtonWidth = (kScreenWidth-(self.amountArray.count+1)*kHeaderButtonPadding)/self.amountArray.count;
@@ -114,6 +115,12 @@ const CGFloat kHeaderButtonPadding = 15.0;
                 field.clearButtonMode = UITextFieldViewModeWhileEditing;
                 field.keyboardType = UIKeyboardTypeNumberPad;
                 [_btnContainer addSubview:field];
+                if (_coinAmount) {
+                    field.text = [NSString stringWithFormat:@"%@",_coinAmount];
+                    field.layer.borderColor = kDefaultColor.CGColor;
+                    field.userInteractionEnabled = NO;
+                    field.enabled = NO;
+                }
             } else {
                 UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
                 button.layer.borderWidth = CGFloatFromPixel(2);
@@ -126,7 +133,12 @@ const CGFloat kHeaderButtonPadding = 15.0;
                 [button addTarget:self action:@selector(chooseMoney:) forControlEvents:UIControlEventTouchUpInside];
                 [button setTitle:_amountArray[i][j] forState:UIControlStateNormal];
                 [_btnContainer addSubview:button];
+                 if (_coinAmount) {
+                button.userInteractionEnabled = NO;
+                button.enabled = NO;
+                 }
             }
+           
         }
     }
     [view addSubview:_btnContainer];
@@ -160,7 +172,7 @@ const CGFloat kHeaderButtonPadding = 15.0;
     sender.layer.borderColor = kDefaultColor.CGColor;
     sender.backgroundColor = kDefaultColor;
     _selectedButton = sender;
-    _coinAmount = [_selectedButton titleForState:UIControlStateNormal].numberValue;
+    _coinAmount = [_selectedButton titleForState:UIControlStateNormal];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -174,19 +186,7 @@ const CGFloat kHeaderButtonPadding = 15.0;
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     textField.layer.borderColor = kDefaultColor.CGColor;
-    _coinAmount = textField.text.numberValue;
+    _coinAmount = textField.text;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 @end

@@ -195,13 +195,10 @@
     parameter[@"qishu"] = _qishu;
     [YWHttptool GET:PortGoodsOrder parameters:parameter success:^(id responseObject) {
         _currentPage = 1;
-        NSLog(@"%@",responseObject);
         _dataArray = [KHDetailModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
         [_tableView reloadData];
     } failure:^(NSError *error){
-
     }];
-
 }
 
 - (void)getMoreData{
@@ -210,7 +207,6 @@
     parameter[@"goodsid"] = _goodsid;
     parameter[@"qishu"] = _qishu;
     [YWHttptool GET:PortGoodsOrder parameters:parameter success:^(id responseObject) {
-        NSLog(@"%@",responseObject);
         if ([responseObject[@"isError"] integerValue]){
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
             return ;
@@ -360,12 +356,16 @@
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"goodsid"] = _goodsid;
     parameter[@"qishu"] = _model.qishu;
+    if ([YWUserTool account]) {
+        parameter[@"userid"] = [YWUserTool account].userid;
+    }
     [YWHttptool GET:PortGoodsdetails parameters:parameter success:^(id responseObject) {
         [MBProgressHUD hideHUD];
         if ([responseObject[@"isError"] integerValue])return;
         KHDetailViewController *DetailVC = [[KHDetailViewController alloc]init];
         DetailVC.model = [KHProductModel kh_objectWithKeyValues:responseObject[@"result"]];
         DetailVC.goodsid = _goodsid;
+        DetailVC.qishu = _model.qishu;
         DetailVC.showType = TreasureDetailHeaderTypeNotParticipate;
         [self hideBottomBarPush:DetailVC];
     } failure:^(NSError *error) {

@@ -53,6 +53,9 @@
 		0C3E9C2F1DD2FFFE00F827AC /* BonusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C3E9C2D1DD2FFFE00F827AC /* BonusCell.xib */; };
 		0C3E9C321DD3011B00F827AC /* BonusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3E9C311DD3011B00F827AC /* BonusModel.m */; };
 		0C3E9C381DD34E8400F827AC /* KHPauGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3E9C371DD34E8400F827AC /* KHPauGoodsModel.m */; };
+		0C40647B1DF7DC4500CB017F /* KHOtherWinController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C40647A1DF7DC4500CB017F /* KHOtherWinController.m */; };
+		0C40647F1DF7DD8300CB017F /* KHOtherWinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C40647D1DF7DD8300CB017F /* KHOtherWinCell.m */; };
+		0C4064801DF7DD8300CB017F /* KHOtherWinCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C40647E1DF7DD8300CB017F /* KHOtherWinCell.xib */; };
 		0C42DBF91DDDAB9900444BC4 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C42DBF41DDDAB9900444BC4 /* libWeChatSDK.a */; };
 		0C42DBFA1DDDAB9900444BC4 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0C42DBF51DDDAB9900444BC4 /* README.txt */; };
 		0C4481FE1DDAE2F00038697C /* YWCover.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4481FB1DDAE2F00038697C /* YWCover.m */; };
@@ -405,6 +408,11 @@
 		0C3E9C311DD3011B00F827AC /* BonusModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BonusModel.m; sourceTree = "<group>"; };
 		0C3E9C361DD34E8400F827AC /* KHPauGoodsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHPauGoodsModel.h; sourceTree = "<group>"; };
 		0C3E9C371DD34E8400F827AC /* KHPauGoodsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPauGoodsModel.m; sourceTree = "<group>"; };
+		0C4064791DF7DC4500CB017F /* KHOtherWinController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHOtherWinController.h; sourceTree = "<group>"; };
+		0C40647A1DF7DC4500CB017F /* KHOtherWinController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHOtherWinController.m; sourceTree = "<group>"; };
+		0C40647C1DF7DD8300CB017F /* KHOtherWinCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHOtherWinCell.h; sourceTree = "<group>"; };
+		0C40647D1DF7DD8300CB017F /* KHOtherWinCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHOtherWinCell.m; sourceTree = "<group>"; };
+		0C40647E1DF7DD8300CB017F /* KHOtherWinCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHOtherWinCell.xib; sourceTree = "<group>"; };
 		0C42DBF41DDDAB9900444BC4 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		0C42DBF51DDDAB9900444BC4 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		0C42DBF61DDDAB9900444BC4 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
@@ -2324,6 +2332,9 @@
 			children = (
 				0C8877711DEBFA3500B21134 /* KHOtherHeaderView.h */,
 				0C8877721DEBFA3500B21134 /* KHOtherHeaderView.m */,
+				0C40647C1DF7DD8300CB017F /* KHOtherWinCell.h */,
+				0C40647D1DF7DD8300CB017F /* KHOtherWinCell.m */,
+				0C40647E1DF7DD8300CB017F /* KHOtherWinCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2333,6 +2344,8 @@
 			children = (
 				0C88776E1DEBF92500B21134 /* KHOtherPersonController.h */,
 				0C88776F1DEBF92500B21134 /* KHOtherPersonController.m */,
+				0C4064791DF7DC4500CB017F /* KHOtherWinController.h */,
+				0C40647A1DF7DC4500CB017F /* KHOtherWinController.m */,
 			);
 			path = viewController;
 			sourceTree = "<group>";
@@ -3416,6 +3429,7 @@
 				0C7F83501DCC647C003EA29C /* LocalProvince.plist in Resources */,
 				0C3E9C2F1DD2FFFE00F827AC /* BonusCell.xib in Resources */,
 				0C3693461DAB8F8000BB3EE0 /* KHPulishedTableViewCell.xib in Resources */,
+				0C4064801DF7DD8300CB017F /* KHOtherWinCell.xib in Resources */,
 				0C44DEB61DD4423D0085E5C3 /* PayResultCell.xib in Resources */,
 				0CD77C951DBF44D300F72AA5 /* KHAppearTableViewCell.xib in Resources */,
 				0C6C68A91DCB107200B06535 /* KHPhoneViewController.xib in Resources */,
@@ -3534,6 +3548,7 @@
 				0C3693451DAB8F8000BB3EE0 /* KHPulishedTableViewCell.m in Sources */,
 				0C36C3A61DF6863C005B5B02 /* KHForgetViewController.m in Sources */,
 				0CC47ED91DD5C3CF00F27914 /* KHHomeViewController.m in Sources */,
+				0C40647B1DF7DC4500CB017F /* KHOtherWinController.m in Sources */,
 				0C5E05F51DAE36FE00B2133F /* SDCycleScrollView.m in Sources */,
 				0C9B057C1DC72D92008D7BFA /* KHPersonCell.m in Sources */,
 				0C9E8FEB1DD16DAD00975AEB /* ListCountView.m in Sources */,
@@ -3702,6 +3717,7 @@
 				0C3E9C241DD2FD5100F827AC /* KHBounsViewController.m in Sources */,
 				0C3A46831DD711510082A239 /* KHjifenModel.m in Sources */,
 				0C8877701DEBF92500B21134 /* KHOtherPersonController.m in Sources */,
+				0C40647F1DF7DD8300CB017F /* KHOtherWinCell.m in Sources */,
 				0C7FAB401DE95A5600DB5D9C /* KHDistaceHeaderView.m in Sources */,
 				0C803C9C1DD9ABB5008CC841 /* KHSnatchModel.m in Sources */,
 				0C44820C1DDAE9C60038697C /* DDCollectionViewFlowLayout.m in Sources */,

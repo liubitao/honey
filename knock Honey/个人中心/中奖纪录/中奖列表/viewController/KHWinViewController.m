@@ -63,8 +63,6 @@ static NSString *Wincell = @"winCell";
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.tableView];
     [self setRightImageNamed:@"help" action:@selector(rightClick)];
-    [self getLatestPubData];
-    
     
     //下拉刷新
     __weak typeof(self) weakSelf = self;
@@ -117,7 +115,7 @@ static NSString *Wincell = @"winCell";
     parameter[@"p"] = [NSNumber numberWithInteger:++_pageCount];
     [YWHttptool GET:PortWin_list parameters:parameter success:^(id responseObject) {
         NSLog(@"%@",responseObject);
-        if ([responseObject[@"result"][@"isError"] integerValue] == 1) {
+        if ([responseObject[@"isError"] integerValue] == 1) {
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
             return ;
         }
@@ -139,6 +137,7 @@ static NSString *Wincell = @"winCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     KHWinTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:Wincell forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell setModel:self.dataSoure[indexPath.row]];
     cell.delegate = self;
     return cell;

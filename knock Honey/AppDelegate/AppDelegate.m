@@ -315,8 +315,8 @@
     parameter[@"userid"] = [YWUserTool account].userid;
     [YWHttptool GET:PortOther_user parameters:parameter success:^(id responseObject) {
         if ([responseObject[@"isError"] integerValue]) return ;
-//        YWUser *user = [YWUser mj_objectWithKeyValues:responseObject[@"result"]];
-//        [YWUserTool saveAccount:user];
+        YWUser *user = [YWUser mj_objectWithKeyValues:responseObject[@"result"]];
+        [YWUserTool saveAccount:user];
     } failure:^(NSError *error) {
     }];
     }
