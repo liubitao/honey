@@ -105,7 +105,7 @@
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[@"act"] = _editType == KHAddressEdit ? @"edit":@"add";
-    dict[@"addressid"] = _model.ID;
+    dict[@"id"] = _model.ID;
     dict[@"type"] = @1;
     dict[@"consignee"] = _takeName.text;
     dict[@"mobile"] = _takePhone.text;

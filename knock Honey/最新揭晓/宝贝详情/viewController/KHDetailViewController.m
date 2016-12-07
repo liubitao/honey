@@ -169,6 +169,7 @@
     //下拉刷新
     _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf getData];
+        [weakSelf.tableView.mj_footer resetNoMoreData];
         [weakSelf.tableView.mj_header endRefreshing];
     }];
     //上拉刷新

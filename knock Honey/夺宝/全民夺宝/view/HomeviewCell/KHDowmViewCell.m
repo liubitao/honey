@@ -68,7 +68,7 @@
     [self removeNSNotificationCenter];  
 }
 +(CGSize)size{
-    return CGSizeMake((KscreenWidth-1)/3, 155);
+    return CGSizeMake((KscreenWidth-1)/3,155);
 }
 
 

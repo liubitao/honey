@@ -389,7 +389,7 @@ const CGFloat kBackImageViewHeight = 45.0;
             _totalLabel.attributedText = [Utils stringWith:totalStr font1:SYSTEM_FONT(12) color1:UIColorHex(999999) font2:SYSTEM_FONT(12) color2:UIColorHex(7cade8) range:NSMakeRange(2, totalStr.length-4)];
             [self addSubview:_totalLabel];
             
-            if ([Utils isNull:_model.winner.qishu]) {
+            if ([Utils isNull:_model.winner]) {
                 self.height = _totalLabel.bottom ;
             } else{
             [self setupWinnerView:_totalLabel.bottom+20];

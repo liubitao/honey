@@ -27,6 +27,8 @@
  */
 @property (nonatomic, strong) YYLabel *renci;
 
+@property (nonatomic,strong)  UIImageView *pricePic;
+
 @end
 
 
@@ -54,6 +56,13 @@
         _productImgView.size = CGSizeMake(kProductImageDefaultHeight, kProductImageDefaultHeight);
         _productImgView.backgroundColor = UIColorHex(0xeeeeee);
         [self.contentView addSubview:_productImgView];
+        
+        _pricePic = [UIImageView new];
+        _pricePic.origin = CGPointMake(10, 0);
+        _pricePic.size = CGSizeMake(30, 35);
+        _pricePic.image= IMAGE_NAMED(@"price_tag_ten");
+        _pricePic.contentMode = UIViewContentModeScaleAspectFit;
+        [self.contentView addSubview:_pricePic];
         
         _productNameLabel = [YYLabel new];
         _productNameLabel.origin = CGPointMake(_productImgView.right+kProductImagePadding, 15);
@@ -102,6 +111,12 @@
     if (layout.nameHeight>0) {
         top += kProductImageDefaultMargin;
     }
+    if (layout.model.price.integerValue == 10) {
+        _pricePic.hidden = NO;
+    }else{
+        _pricePic.hidden = YES;
+    }
+    
     _productImgView.top = top;
     [_productImgView sd_setImageWithURL:[NSURL URLWithString:layout.model.goods.thumb]];
     _productNameLabel.top = top;

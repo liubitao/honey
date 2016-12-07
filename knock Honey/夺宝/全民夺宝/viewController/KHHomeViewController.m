@@ -144,6 +144,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     //下拉刷新
     _collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf getData];
+        [weakSelf.collectionView.mj_footer resetNoMoreData];
         [weakSelf.collectionView.mj_header endRefreshing];
     }];
     //上拉刷新

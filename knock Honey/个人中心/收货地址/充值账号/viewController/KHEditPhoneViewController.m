@@ -50,7 +50,7 @@
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[@"act"] = _editType == KHPhoneEdit ? @"edit":@"add";
-    dict[@"addressid"] = _model.ID;
+    dict[@"id"] = _model.ID;
     dict[@"type"] = @2;
     dict[@"czmobile"] = _phoneNumber.text;
     dict[@"czqq"] = _QQnumber.text;

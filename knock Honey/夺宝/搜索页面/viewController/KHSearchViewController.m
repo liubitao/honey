@@ -103,6 +103,7 @@
     //下拉刷新
     self.rightTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf getCategories];
+        [weakSelf.rightTableView.mj_footer resetNoMoreData];
         [weakSelf.rightTableView.mj_header endRefreshing];
     }];
     //上拉刷新

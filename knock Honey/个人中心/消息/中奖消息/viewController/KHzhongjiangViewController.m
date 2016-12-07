@@ -52,6 +52,7 @@
     __weak typeof(self) weakSelf = self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf getLatestPubData];
+        [weakSelf.tableView.mj_footer resetNoMoreData];
         //结束刷新
         [weakSelf.tableView.mj_header endRefreshing];
     }];
@@ -108,7 +109,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     KHMessageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"zhongjiangCell" forIndexPath:indexPath];
-    [cell setModel:_dataArray[indexPath.row]];
+    [cell setModel:_dataArray[indexPath.section]];
     return cell;
 }
 
