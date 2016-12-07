@@ -80,28 +80,28 @@
     //抵扣红包
     NSInteger red_Price = [self.payModel.red_price integerValue];
     
-    _payNumber.text = [NSString stringWithFormat:@"%ld抢币",(order_amount+red_Price)];
+    _payNumber.text = [NSString stringWithFormat:@"%zi抢币",(order_amount+red_Price)];
     if(red_Price == 0){
          _discountLabel.text = @"无可用";
     }else{
-    _discountLabel.text = [NSString stringWithFormat:@"-%ld抢币",red_Price];
+    _discountLabel.text = [NSString stringWithFormat:@"-%zi抢币",red_Price];
     }
-    _yueLabel.text = [NSString stringWithFormat:@"余额支付(余额:%ld抢币)",total];
+    _yueLabel.text = [NSString stringWithFormat:@"余额支付(余额:%zi抢币)",total];
     
     if (total >= order_amount){
         _payType = KHPayTypeCanPay;
-        _payNumber2.text = [NSString stringWithFormat:@"%ld抢币",order_amount];
+        _payNumber2.text = [NSString stringWithFormat:@"%zi抢币",order_amount];
         [_yueButton setSelected:YES];
         _hybridType = KHPayTypeYuePay;
     }else if(total > 0){
         _payType = KHPayTypeAddPay;
-        _payNumber2.text = [NSString stringWithFormat:@"%ld抢币",(order_amount-total)];
+        _payNumber2.text = [NSString stringWithFormat:@"%zi抢币",(order_amount-total)];
         [_yueButton setSelected:YES];
         [_weixinButton setSelected:YES];
         _hybridType = KHPayTypeYueWeixinPay;
     }else{
         _payType = KHPayTypeNoPay;
-        _payNumber2.text = [NSString stringWithFormat:@"%ld抢币",order_amount];
+        _payNumber2.text = [NSString stringWithFormat:@"%zi抢币",order_amount];
         [_weixinButton setSelected:YES];
         _hybridType = KHPayTypeWeixinPay;
         _yueButton.userInteractionEnabled = NO;

@@ -38,7 +38,9 @@
         [self setRightItemTitle:@"删除" action:@selector(delete)];
         _takeName.text = _model.consignee;
         _takePhone.text = _model.mobile;
-        _addressSecone.text = _model.address;
+        NSArray *array = [_model.address componentsSeparatedByString:@","];
+        _addressFirst.text = array[0];
+        _addressSecone.text = array[1];
         [_moren setOn:[_model.isdefault isEqualToString:@"1"] ? YES:NO ];
     }
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self  action:@selector(chooseAddress:)];
@@ -68,7 +70,7 @@
     }];
 }
 
-- (IBAction)chooseAddress:(id)sender {
+- (IBAction)chooseAddress:(id)sender{
     [self.view endEditing:YES];
         if (!_pickerView) {
             _pickerView = [[LocationPickerView alloc]initWithLoadLocal];
@@ -107,11 +109,10 @@
     dict[@"type"] = @1;
     dict[@"consignee"] = _takeName.text;
     dict[@"mobile"] = _takePhone.text;
-    dict[@"address"] = [NSString stringWithFormat:@"%@%@",_addressFirst.text,_addressSecone.text];
+    dict[@"address"] = [NSString stringWithFormat:@"%@,%@",_addressFirst.text,_addressSecone.text];
     dict[@"isdefault"] = _moren.isOn ? @1:@0;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
     NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    
     parameter[@"address"] = jsonString;
     
     [YWHttptool Post:PortAddress_handle parameters:parameter success:^(id responseObject) {
@@ -126,8 +127,6 @@
     } failure:^(NSError *error){
         [MBProgressHUD showError:@"保存失败"];
     }];
-
-    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -470,7 +470,6 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"p"] = @"1";
     [YWHttptool GET:PortGoodsIndex parameters:parameter success:^(id responseObject) {
-        NSLog(@"%@",responseObject);
         for (KHPublishModel *model in _downArray) {
             [model stop];
         }

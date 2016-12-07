@@ -19,6 +19,7 @@
 @interface KHQiandaoViewController ()<UIWebViewDelegate>
 {
     BOOL first;
+    UIWebView *webView;
 }
 @property (strong, nonatomic) YHWebViewProgress *progressProxy;
 @end
@@ -28,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     first = YES;
-    UIWebView *webView = [[UIWebView alloc]initWithFrame:self.view.bounds];
+    webView = [[UIWebView alloc]initWithFrame:self.view.bounds];
     webView.delegate = self;
 
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_urlStr]]];
@@ -150,8 +151,11 @@
                     parameter[@"userid"] = [YWUserTool account].userid;
                     parameter[@"parameter"] = para;
                     [YWHttptool Post:PortProm_handle parameters:parameter success:^(id responseObject) {
-                        
+                        if (![responseObject[@"isError"] integerValue]) {
+                           [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_urlStr]]];
+                        }
                     } failure:^(NSError *error){
+      
                     }];
                 }else{
                     NSLog(@"response data is %@",data);

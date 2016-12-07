@@ -88,6 +88,8 @@
     self.running = NO;
 }
 
+
+
 - (NSString *)timeFormattedStringForValue:(unsigned long)value {
     int msperhour = 3600000;
     int mspermin = 60000;

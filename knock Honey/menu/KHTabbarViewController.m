@@ -72,9 +72,9 @@
         self.selectedIndex = index;
     }
     UINavigationController *newNavigationController = [self.viewControllers objectAtIndex:index];
-    self.hidesBottomBarWhenPushed = YES;
+    newNavigationController.hidesBottomBarWhenPushed = YES;
     [newNavigationController pushViewController:VC animated:YES];
-    self.hidesBottomBarWhenPushed = NO;
+    newNavigationController.hidesBottomBarWhenPushed = NO;
 }
 
 //#pragma mark - UITabBarControllerDelegate

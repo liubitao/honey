@@ -44,11 +44,11 @@
 
 - (void)reloadViewController{
     
-        if (![Utils isNull:_model]&&([[self.model valueForKey:@"value"] integerValue]<200)) {
-                if ([self.delagate respondsToSelector:@selector(reloadDown)]) {
-                    [self.delagate reloadDown];
-                }
+    if (![Utils isNull:_model]&&[self.model valueForKey:@"Frist"]) {
+        if ([self.delagate respondsToSelector:@selector(reloadDown)]) {
+            [self.delagate reloadDown];
         }
+    }
 }
 - (void)notificationCenterEvent:(NSNotification*)sender{
     [self reset];
@@ -59,12 +59,9 @@
     [_goodsImage sd_setImageWithURL:[NSURL URLWithString:model.thumb] placeholderImage:IMAGE_NAMED(@"placeholder")];
     _goodsName.text = model.title;
     _timeDown.text = [model valueForKey:@"valueString"]?[model valueForKey:@"valueString"]:@"正在揭晓";
-    if ((model.newtime.doubleValue - 0.2)<[[NSDate date] timeIntervalSince1970]) {
-        _timeDown.text = @"正在揭晓";
-    }
 }
 - (void)reset{
-    _timeDown.text = [_model valueForKey:@"valueString"];
+    _timeDown.text = [_model valueForKey:@"valueString"]?[_model valueForKey:@"valueString"]:@"正在揭晓";
 }
 
 - (void)dealloc {

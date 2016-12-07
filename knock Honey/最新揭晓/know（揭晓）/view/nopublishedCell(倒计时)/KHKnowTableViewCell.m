@@ -25,7 +25,6 @@
 
 #pragma mark - 通知中心
 - (void)registerNSNotificationCenter {
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(notificationCenterEvent:)
                                                  name:NOTIFICATION_TIME_CELL
@@ -37,7 +36,7 @@
 }
 
 - (void)notificationCenterEvent:(id)sender{
-    if (self.isDisplayed) {
+    if (self.isDisplayed){
         [self settime:self.model];
     }
 }
