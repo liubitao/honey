@@ -21,7 +21,7 @@ static NSString * published = @"published";
 }
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *dataArray;
-
+@property (nonatomic,assign) BOOL loading;
 @end
 
 @implementation KHKnowViewController
@@ -50,7 +50,6 @@ static NSString * published = @"published";
     __weak typeof(self) weakSelf = self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf getLatestPubData];
-        [weakSelf.tableView.mj_footer resetNoMoreData];
         //结束刷新
         [weakSelf.tableView.mj_header endRefreshing];
     }];
@@ -58,7 +57,7 @@ static NSString * published = @"published";
     [self.tableView.mj_header beginRefreshing];
     
     //上拉刷新
-    _tableView.mj_footer = [GPAutoFooter footerWithRefreshingBlock:^{
+    _tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
         
         [weakSelf getMoreData];
         [weakSelf.tableView.mj_footer endRefreshing];
@@ -69,11 +68,21 @@ static NSString * published = @"published";
     
 }
 
+- (void)setLoading:(BOOL)loading{
+    if (self.loading == loading) {
+        return;
+    }
+    _loading = loading;
+    
+    [self.tableView reloadEmptyDataSet];
+}
 
 - (void)getLatestPubData{
+        [MBProgressHUD showMessage:@"加载中..."];
     NSMutableDictionary *parameter = [Utils parameter];
     [YWHttptool GET:PortGoodszxjx parameters:parameter success:^(id responseObject) {
-        NSLog(@"%@",responseObject);
+        [MBProgressHUD hideHUD];
+        self.loading = YES;
         for (KHKnowModel *model in _dataArray) {
             [model stop];
         }
@@ -82,6 +91,8 @@ static NSString * published = @"published";
         _dataArray = [KHKnowModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
         [self.tableView reloadData];
     } failure:^(NSError *error){
+        [MBProgressHUD hideHUD];
+        self.loading = YES;
     }];
 }
 
@@ -91,7 +102,6 @@ static NSString * published = @"published";
     [YWHttptool GET:PortGoodszxjx parameters:parameter success:^(id responseObject) {
         NSLog(@"%@",responseObject);
         if ([responseObject[@"isError"] integerValue] ==1){
-            [self.tableView.mj_footer endRefreshingWithNoMoreData];
             return ;
         };
         NSMutableArray *array = [KHKnowModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
@@ -122,7 +132,6 @@ static NSString * published = @"published";
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     KHKnowTableViewCell *tmpCell = (KHKnowTableViewCell *)cell;
     tmpCell.isDisplayed = YES;
-    [tmpCell setModel:_dataArray[indexPath.row] indexPath:indexPath];
 }
 
 - (void)tableView:(UITableView *)tableView didEndDisplayingCell:(nonnull UITableViewCell *)cell forRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
@@ -152,11 +161,6 @@ static NSString * published = @"published";
         DetailVC.model = [KHProductModel kh_objectWithKeyValues:responseObject[@"result"]];
         DetailVC.goodsid = knowModel.goodsid;
         DetailVC.qishu = knowModel.qishu;
-        if ([DetailVC.model.winner.newtime doubleValue] >[[NSDate date] timeIntervalSince1970]){
-            DetailVC.showType = TreasureDetailHeaderTypeCountdown;
-        }else{
-        DetailVC.showType = TreasureDetailHeaderTypeWon;
-        }
         [self pushController:DetailVC];
     } failure:^(NSError *error) {
         [MBProgressHUD hideHUD];
@@ -169,23 +173,32 @@ static NSString * published = @"published";
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
     return [UIImage imageNamed:@"empty_placeholder"];
 }
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"暂无此纪录";
+    return [[NSAttributedString alloc] initWithString:text attributes:@{
+                                                                        NSFontAttributeName:SYSTEM_FONT(15)
+                                                                        }];
+}
+
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView{
+    return -64;
+}
+
+- (UIImage *)buttonImageForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state{
+    return IMAGE_NAMED(@"duobao");
+}
 
 - (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
     return YES;
 }
-
-- (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView{
-    return YES;
+- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView{
+    return self.loading;
 }
 
-- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView
-{
-    return YES;
-}
-
-- (void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view
-{
-    [self.tableView.mj_header beginRefreshing];
+- (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button{
+    UITabBarController *tabBarVC = (UITabBarController *)[AppDelegate getAppDelegate].window.rootViewController;
+    [tabBarVC setSelectedIndex:0];
 }
 
 #pragma mark - LatestPublishCellDelegate

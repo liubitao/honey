@@ -51,10 +51,12 @@ MJCodingImplementation
 #pragma mark - Setters
 
 - (void)updateDisplay {
-    if ( _value < 200) {
+    if ( _value < -2000) {
         [self stop];
-        self.valueString = @"正在揭晓";
-    } else {
+        self.valueString = @"已揭晓";
+    } else  if(_value < 200){
+        self.valueString = @"正在计算...";
+    }else{
         self.valueString = [self timeFormattedStringForValue:_value];
     }
 }

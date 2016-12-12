@@ -23,7 +23,7 @@
 #define UMWeixinAppID       @"wx1bf9134fbd335945"
 #define UMWeixinAPPsecret   @"50d04908bedb1ba715cb352c814efc81"
 
-#define UMWeiboAppKey       @"1110923628"
+#define UMWeiboAppKey        @"1110923628"
 #define UMWeiboAppsecret    @"8b321089624280ee25e1590fa6eca739"
 #define UMWeiboUrl          @"http://sns.whalecloud.com/sina2/callback"
 #define sKey        @"bf9024c8e834146606c7f364e73f743a"
@@ -32,8 +32,10 @@
 
 //#define PortCartPic       @"http://www.ywduobao.com"
 
+
+
 //融云客服
-#define KefuMessageID    @"KEFU148015018789671"
+#define KefuMessageID    @"KEFU148133649044021"
 
 //物流查询
 #define WuliuMessage    @"8e303712afa44a7ca28a087adcad6c3c"
@@ -97,7 +99,7 @@
 #define PortCoupon_list     @"http://www.ywduobao.com/index.php/api/User/coupon_list"
 
 //22.消息中心
-#define PortMessage_count   @"http://www.ywduobao.com/index.php/api/User/message_count"
+#define PortMessage_count   @"http://www.ywduobao.com/index.php/Api/User/message_count"
 
 //23.消息列表
 #define PortMessage_list    @"http://www.ywduobao.com/index.php/api/User/message_list"
@@ -231,5 +233,20 @@
 
 //67.密码修改
 #define PortPwd_change          @"http://www.ywduobao.com/index.php/Api/User/pwd_change"
+
+//68.推广活动
+#define  PortOuter_prom           @"http://www.ywduobao.com/index.php/Api/Common/outer_prom"
+
+//69.夺宝声明
+#define PortDuobao_statement       @"http://www.ywduobao.com/index.php/mobile/prom/duobao_statement"
+
+//70.收货地址引导
+#define   PortAdress_place              @"http://www.ywduobao.com/index.php/mobile/prom/adress_place"
+
+//71.购物车指南
+#define    PortShopping_help           @"http://www.ywduobao.com/index.php/mobile/prom/shopping_help"
+
+//72.猜你喜欢
+#define     PortExten_goods               @"http://www.ywduobao.com/index.php/Api/Goods/exten_goods"
 
 #endif /* port_h */

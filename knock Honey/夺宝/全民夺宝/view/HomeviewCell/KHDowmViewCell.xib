@@ -63,7 +63,7 @@
                 <outlet property="goodsName" destination="Vfb-tW-3Zz" id="aAH-fC-Pby"/>
                 <outlet property="timeDown" destination="wdG-Fx-R0s" id="v3y-AH-Rbh"/>
             </connections>
-            <point key="canvasLocation" x="301.5" y="400.5"/>
+            <point key="canvasLocation" x="-31" y="4"/>
         </collectionViewCell>
     </objects>
 </document>

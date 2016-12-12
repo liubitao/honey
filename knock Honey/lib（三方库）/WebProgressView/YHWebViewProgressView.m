@@ -34,7 +34,7 @@
 
 - (void)dealloc
 {
-    
+    [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
 }
 
 - (void)configureViews
@@ -84,6 +84,7 @@
     if (!webView) {
         return;
     }
+    self.webView = webView;
     self.isWkWebView = YES;
     [webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
 }

@@ -22,10 +22,6 @@ const CGFloat kTreasureDetailHeaderPageControlHeight = 30.0; //pagecontroll heig
 
 @property (nonatomic, strong) UIPageControl *pageControl;
 
-
-
-
-
 @end
 
 @implementation TreasureDetailHeader
@@ -33,7 +29,6 @@ const CGFloat kTreasureDetailHeaderPageControlHeight = 30.0; //pagecontroll heig
 + (CGFloat)getHeight {
     return kScreenWidth*2;
 }
-
 
 - (UIScrollView *)scrollView {
     if (!_scrollView) {
@@ -77,10 +72,9 @@ const CGFloat kTreasureDetailHeaderPageControlHeight = 30.0; //pagecontroll heig
 
 - (instancetype)initWithFrame:(CGRect)frame
                          type:(TreasureDetailHeaderType)type
-                    countTime:(NSInteger)countTime  Model:(KHProductModel*)model{
+                       Model:(KHProductModel*)model{
     self = [super initWithFrame:frame];
     if (self) {
-        _count = countTime;
         _type = type;
         _model = model;
         [self setup];
@@ -94,26 +88,26 @@ const CGFloat kTreasureDetailHeaderPageControlHeight = 30.0; //pagecontroll heig
     //添加pageControl
     [self addSubview:self.pageControl];
     //添加状态
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(kTreasureDetailHeaderPadding, _scrollView.bottom+15, 45, 16)];
-    label.textColor = [UIColor whiteColor];
-    label.font = [UIFont systemFontOfSize:12];
-    label.textAlignment = NSTextAlignmentCenter;
-    [self addSubview:label];
+    _statueLabel = [[UILabel alloc]initWithFrame:CGRectMake(kTreasureDetailHeaderPadding, _scrollView.bottom+15, 45, 16)];
+    _statueLabel.textColor = [UIColor whiteColor];
+    _statueLabel.font = [UIFont systemFontOfSize:12];
+    _statueLabel.textAlignment = NSTextAlignmentCenter;
+    [self addSubview:_statueLabel];
     
     switch (_type) {
             //进行中
         case TreasureDetailHeaderTypeNotParticipate:
         case TreasureDetailHeaderTypeParticipated:
-            label.text = @"进行中";
-            label.backgroundColor = kDefaultColor;
+            _statueLabel.text = @"进行中";
+            _statueLabel.backgroundColor = kDefaultColor;
             break;
         case TreasureDetailHeaderTypeCountdown://倒计时
-            label.text = @"倒计时";
-            label.backgroundColor = kDefaultColor;
+            _statueLabel.text = @"倒计时";
+            _statueLabel.backgroundColor = kDefaultColor;
             break;
         case TreasureDetailHeaderTypeWon://商品揭晓
-            label.text = @"已揭晓";
-            label.backgroundColor = UIColorHex(55bf41);
+            _statueLabel.text = @"已揭晓";
+            _statueLabel.backgroundColor = UIColorHex(55bf41);
             break;
         default:
             break;
@@ -142,7 +136,7 @@ const CGFloat kTreasureDetailHeaderPageControlHeight = 30.0; //pagecontroll heig
         kScreenWidth-kTreasureDetailHeaderPadding*2,
                                                 1};
         rect;
-    }) type:_type countTime:_count Model:_model];
+    }) type:_type Model:_model];
     _treasureProgressView.countDownLabel.delegate = self;
     __weak typeof(self) weakSelf = self;
     
@@ -241,7 +235,30 @@ const CGFloat kTreasureDetailHeaderPageControlHeight = 30.0; //pagecontroll heig
 - (void)countdownDidEnd {
     _treasureProgressView.type = TreasureDetailHeaderTypeWon;
     [self setNeedsLayout];
-    self.headerHeight();
+    TreasureDetailHeaderType headerType = _treasureProgressView.type;
+    if (self.headerHeight) {
+        self.headerHeight(headerType);
+    }
+}
+
+- (void)refreshHeader:(KHProductModel *)model{
+    _model = model;
+    _treasureProgressView.model = model;
+    if ( [Utils isNull:model.newtime]) {
+         _treasureProgressView.type = TreasureDetailHeaderTypeNotParticipate;
+    }else if([model.newtime doubleValue] >[[NSDate date] timeIntervalSince1970]){
+         _treasureProgressView.type = TreasureDetailHeaderTypeCountdown;
+    }else{
+        _treasureProgressView.type = TreasureDetailHeaderTypeWon;
+    }
+    TreasureDetailHeaderType headerType = _treasureProgressView.type;
+    if ([Utils isNull:model.winner.username]) {
+         headerType = TreasureDetailHeaderTypeNolast;
+    }
+    [self setNeedsLayout];
+    if (self.headerHeight){
+        self.headerHeight(headerType);
+    }
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -294,7 +311,7 @@ const CGFloat kTreasureDetailHeaderPageControlHeight = 30.0; //pagecontroll heig
     _participateLabel.size = CGSizeMake(self.width-100, 15);
     _participateLabel.textColor = UIColorHex(666666);
     _participateLabel.font = SYSTEM_FONT(12);
-    _participateLabel.text = [NSString stringWithFormat:@"您参与了:%zi人次",array.count];
+    _participateLabel.text = [NSString stringWithFormat:@"您参与了:%zi人次",array.count-1];
     [self addSubview:_participateLabel];
     
     _numberLabel = [YYLabel new];
@@ -336,10 +353,9 @@ const CGFloat kBackImageViewHeight = 45.0;
 
 - (instancetype)initWithFrame:(CGRect)frame
                          type:(TreasureDetailHeaderType)type
-                    countTime:(NSInteger)countTime Model:(KHProductModel*)model{
+                    Model:(KHProductModel*)model{
     self = [super initWithFrame:frame];
     if (self) {
-        _countTime = countTime;
         _type = type;
         _model = model;
         [self setup];
@@ -389,7 +405,7 @@ const CGFloat kBackImageViewHeight = 45.0;
             _totalLabel.attributedText = [Utils stringWith:totalStr font1:SYSTEM_FONT(12) color1:UIColorHex(999999) font2:SYSTEM_FONT(12) color2:UIColorHex(7cade8) range:NSMakeRange(2, totalStr.length-4)];
             [self addSubview:_totalLabel];
             
-            if ([Utils isNull:_model.winner]) {
+            if ([Utils isNull:_model.winner.wincode]) {
                 self.height = _totalLabel.bottom ;
             } else{
             [self setupWinnerView:_totalLabel.bottom+20];
@@ -423,6 +439,9 @@ const CGFloat kBackImageViewHeight = 45.0;
             _countDownLabel.centerY = _countLabel.centerY;
             _countDownLabel.font = SYSTEM_FONT(17);
             _countDownLabel.textColor = [UIColor whiteColor];
+            NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+            NSTimeInterval time=[dat timeIntervalSince1970];
+            _countTime = ([_model.winner.newtime doubleValue]- time)*1000;
             _countDownLabel.startValue = _countTime;
             [self addSubview:_countDownLabel];
             [_countDownLabel start];

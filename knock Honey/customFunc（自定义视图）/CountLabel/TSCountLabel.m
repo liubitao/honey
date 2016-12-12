@@ -11,8 +11,8 @@
 @interface TSCountLabel ()
 
 @property (strong, nonatomic) NSString *valueString;
-@property (nonatomic, assign) unsigned long resetValue;
-@property (nonatomic, assign) unsigned long value;
+@property (nonatomic, assign) NSInteger resetValue;
+@property (nonatomic, assign) NSInteger value;
 @property (nonatomic, assign) double startTime;
 @property (nonatomic, assign) BOOL running;
 
@@ -48,7 +48,7 @@
 
 #pragma mark - Setters
 
-- (void)setValue:(unsigned long)value {
+- (void)setValue:(NSInteger )value {
     _value = value;
     self.currentValue = _value;
     if (self.delegate && [self.delegate respondsToSelector:@selector(countdownDidStarted:)]) {
@@ -66,25 +66,35 @@
 #pragma mark - Private
 
 - (void)updateDisplay {
-    if (self.countDirection == kCountDirectionDown && _value < 100) {
+    if (self.countDirection == kCountDirectionDown  && _value < -2000) {
         [self stop];
-        self.valueString = @"正在揭晓";
-        
-        // Inform any delegates
+        self.valueString = @"已揭晓";
         if (self.delegate && [self.delegate respondsToSelector:@selector(countdownDidEnd)]) {
             [self.delegate performSelector:@selector(countdownDidEnd)];
         }
-    } else {
-
+    } else  if(_value < 200){
+        self.valueString = @"正在计算...";
+    }else{
         self.valueString = [self timeFormattedStringForValue:_value];
     }
+    
+//    if (self.countDirection == kCountDirectionDown && _value < 100) {
+//        [self stop];
+//        self.valueString = @"正在揭晓";
+//        // Inform any delegates
+//        if (self.delegate && [self.delegate respondsToSelector:@selector(countdownDidEnd)]) {
+//            [self.delegate performSelector:@selector(countdownDidEnd)];
+//        }
+//    } else {
+//        self.valueString = [self timeFormattedStringForValue:_value];
+//    }
     
     self.text = self.valueString;
     
     [self setNeedsDisplay];
 }
 
-- (NSString *)timeFormattedStringForValue:(unsigned long)value {
+- (NSString *)timeFormattedStringForValue:(long)value {
     int msperhour = 3600000;
     int mspermin = 60000;
     
@@ -111,7 +121,7 @@
 - (void)clockDidTick:(NSTimer *)timer {
     double currentTime = CFAbsoluteTimeGetCurrent();
     double elapsedTime = currentTime - self.startTime;
-    unsigned long milliSecs = (unsigned long)(elapsedTime * 1000);
+    double milliSecs = (double)(elapsedTime * 1000);
 
     if (self.countDirection == kCountDirectionDown) {
         [self setValue:(_startValue - milliSecs)];
@@ -135,8 +145,6 @@
                                            userInfo:nil repeats:YES];
         [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
     }
-    
-    
 }
 
 - (void)stop {

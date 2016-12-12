@@ -75,8 +75,10 @@
             dict[@"ordersn"] = ordersn;
             dict[@"pay_code"] = notification.userInfo[@"alipay_trade_app_pay_response"][@"trade_no"];
             dict[@"pay_mode"] = @"3";
+            [MBProgressHUD showMessage:@"支付中"];
             [YWHttptool GET:Portuser_recharge parameters:dict success:^(id responseObject) {
                 NSLog(@"%@",responseObject);
+                [MBProgressHUD hideHUD];
                 if ([responseObject[@"result"][@"status"] integerValue] == 1) {
                     TopupResultViewController *vc = [[TopupResultViewController alloc]init];
                     NSLog(@"%@ coin",_header.coinAmount);
@@ -88,7 +90,9 @@
                     [YWUserTool saveAccount:user];
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"kTopupNotification" object:str];
                 }
-            } failure:nil];
+            } failure:^(NSError *error) {
+                [MBProgressHUD hideHUD];
+            }];
 
         }else{
               [UIAlertController showAlertViewWithTitle:@"提示" Message:@"支付失败" BtnTitles:@[@"知道了"] ClickBtn:nil];
@@ -101,8 +105,10 @@
         dict[@"ordersn"] = ordersn;
         dict[@"pay_mode"] = @"2";
         dict[@"pay_code"] = ordersn;
+         [MBProgressHUD showMessage:@"正在支付..."];
         [YWHttptool GET:Portuser_recharge parameters:dict success:^(id responseObject) {
             NSLog(@"%@",responseObject);
+            [MBProgressHUD hideHUD];
             if ([responseObject[@"result"][@"status"] integerValue] == 1) {
                 TopupResultViewController *vc = [[TopupResultViewController alloc]init];
                 NSLog(@"%@ coin",_header.coinAmount);
@@ -115,7 +121,7 @@
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"kTopupNotification" object:str];
             }
         } failure:^(NSError *error) {
-            
+            [MBProgressHUD hideHUD];
         }];
     }
     else{

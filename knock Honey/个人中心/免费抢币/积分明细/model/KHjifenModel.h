@@ -12,6 +12,7 @@
 @property (nonatomic,copy) NSString *ID;
 @property (nonatomic,copy) NSString *score;
 @property (nonatomic,copy) NSString *addtime;
+@property (nonatomic,copy) NSString *type;
 
 + (instancetype)kh_objectWithKeyValues:(NSDictionary*)dict;
 + (NSMutableArray*)kh_objectWithKeyValuesArray:(NSArray *)array;

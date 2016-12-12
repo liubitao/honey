@@ -13,12 +13,12 @@
 #import "KHProductModel.h"
 #import "KHDetailViewController.h"
 
-@interface KHPastViewController ()<UITableViewDataSource,UITableViewDelegate>{
+@interface KHPastViewController ()<UITableViewDataSource,UITableViewDelegate,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>{
     NSInteger _currentPage;
 }
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *dataArray;
-
+@property (nonatomic,assign) BOOL loading;
 @end
 
 @implementation KHPastViewController
@@ -34,6 +34,8 @@
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kNavigationBarHeight, KscreenWidth, kScreenHeight - kNavigationBarHeight) style:UITableViewStylePlain];
         _tableView.dataSource = self;
         _tableView.delegate = self;
+        _tableView.emptyDataSetDelegate = self;
+        _tableView.emptyDataSetSource = self;
         [_tableView setCustomSeparatorInset:UIEdgeInsetsZero];
         _tableView.tableFooterView = [UIView new];
     }
@@ -52,7 +54,6 @@
     __weak typeof(self) weakSelf = self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf getLatestPubData];
-        [weakSelf.tableView.mj_footer resetNoMoreData];
         //结束刷新
         [weakSelf.tableView.mj_header endRefreshing];
     }];
@@ -60,22 +61,35 @@
     [self.tableView.mj_header beginRefreshing];
     
     //上拉刷新
-    _tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
-        
+    _tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{  
         [weakSelf getMoreData];
         [weakSelf.tableView.mj_footer endRefreshing];
     }];
 }
 
+- (void)setLoading:(BOOL)loading{
+    if (self.loading == loading) {
+        return;
+    }
+    _loading = loading;
+    
+    [self.tableView reloadEmptyDataSet];
+}
+
 - (void)getLatestPubData{
+    [MBProgressHUD showMessage:@"加载中..."];
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"goodsid"] = _goodsid;
     parameter[@"p"] = @1;
     [YWHttptool GET:PortPast_lottery parameters:parameter success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
+         self.loading = YES;
         _currentPage = 1;
         _dataArray = [KHpastModel mj_objectArrayWithKeyValuesArray:responseObject[@"result"]];
         [self.tableView reloadData];
     } failure:^(NSError *error){
+        [MBProgressHUD hideHUD];
+         self.loading = YES;
     }];
 }
 
@@ -133,7 +147,6 @@
         DetailVC.model = [KHProductModel kh_objectWithKeyValues:responseObject[@"result"]];
         DetailVC.goodsid = knowModel.goodsid;
         DetailVC.qishu = knowModel.qishu;
-        DetailVC.showType = TreasureDetailHeaderTypeWon;
         [self pushController:DetailVC];
     } failure:^(NSError *error) {
         [MBProgressHUD hideHUD];
@@ -142,6 +155,39 @@
     
 }
 
+#pragma mark - DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
+
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    return [UIImage imageNamed:@"empty_placeholder"];
+}
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"暂无此纪录";
+    return [[NSAttributedString alloc] initWithString:text attributes:@{
+                                                                        NSFontAttributeName:SYSTEM_FONT(15)
+                                                                        }];
+}
+
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView{
+    return -64;
+}
+
+- (UIImage *)buttonImageForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state{
+    return IMAGE_NAMED(@"duobao");
+}
+
+- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
+    return YES;
+}
+- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView{
+    return self.loading;
+}
+
+- (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button{
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    UITabBarController *tabBarVC = (UITabBarController *)[AppDelegate getAppDelegate].window.rootViewController;
+    [tabBarVC setSelectedIndex:0];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

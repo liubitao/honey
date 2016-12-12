@@ -12,7 +12,7 @@
 @interface KHjifenTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *jifenNumber;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *timeWidth;
+@property (weak, nonatomic) IBOutlet UILabel *leixing;
 
 @property (nonatomic,strong) KHjifenModel *model;
 

@@ -15,12 +15,18 @@
 #import "KHPayViewController.h"
 #import "KHPayModel.h"
 #import "KHQiandaoViewController.h"
+#import "KHCartMoreModel.h"
+#import "KHCartMoreView.h"
+#import "KHDetailViewController.h"
 
-@interface KHCartViewController ()<UITableViewDataSource,UITableViewDelegate,ShoppingListCellDelegate,DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>
+@interface KHCartViewController ()<UITableViewDataSource,UITableViewDelegate,ShoppingListCellDelegate,DZNEmptyDataSetDelegate,DZNEmptyDataSetSource,KHCartMoreDelegate>
 @property (nonatomic, strong) NSNumber *moneySum;
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *dataArray;
 @property (nonatomic,strong) NSMutableArray *deleteArray;
+@property (nonatomic,strong) NSMutableArray *moreArray;
+@property  (nonatomic,strong) UIView *bottomView;
+@property (nonatomic,assign) BOOL loading;
 /**
  *  下面视图
  */
@@ -31,6 +37,13 @@
 @end
 
 @implementation KHCartViewController
+
+- (NSMutableArray *)moreArray{
+    if (!_moreArray) {
+        _moreArray = [NSMutableArray arrayWithCapacity:8];
+    }
+    return _moreArray;
+}
 
 - (NSMutableArray *)deleteArray {
     if (!_deleteArray) {
@@ -65,7 +78,15 @@
     return _tableView;
 }
 
-- (BillView *)billView {
+- (UIView *)bottomView{
+    if (!_bottomView) {
+        _bottomView = [[UIView alloc]initWithFrame:CGRectMake(0,KscreenHeight- kTabBarHeight - 190,KscreenWidth, 190)];
+        _bottomView.backgroundColor = [UIColor whiteColor];
+    }
+    return _bottomView;
+}
+
+- (BillView *)billView{
     if (!_billView) {
         _billView = [[BillView alloc]initWithFrame:({
             CGRect rect = {0,_isPushed ? kScreenHeight-[BillView getHeight] : kScreenHeight-[BillView getHeight]-kTabBarHeight, kScreenWidth, [BillView getHeight]};
@@ -85,7 +106,7 @@
     self.title = @"购物车";
     [self.view addSubview:self.tableView];
   
-    [self setRightImageNamed:@"help" action:@selector(helpClick)];
+    [self setRightImageNamed:@"cartHelp" action:@selector(helpClick)];
     //下拉刷新
     __weak typeof(self) weakSelf = self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -130,35 +151,55 @@
     [_billView setNormalStyle];
 }
 
+- (void)setLoading:(BOOL)loading{
+    if (self.loading == loading) {
+        return;
+    }
+    _loading = loading;
+    
+    [self.tableView reloadEmptyDataSet];
+}
 
 - (void)getDatasource{
+    [MBProgressHUD showMessage:@"加载中..."];
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"userid"] = [YWUserTool account].userid;
     [YWHttptool GET:PortIndex parameters:parameter success:^(id responseObject) {
-        if ([responseObject[@"isError"] integerValue]) return ;
+        [MBProgressHUD hideHUD];
+         self.loading = YES;
+        if ([responseObject[@"isError"] integerValue]){
+             [self setupBillview];
+            return ;
+        };
         [_dataArray removeAllObjects];
         NSMutableArray *mutableArray = [KHcartModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
         for (KHcartModel *cartModel in mutableArray) {
             ShoppingListLayout *layout = [[ShoppingListLayout alloc]initWithModel:cartModel];
             [self.dataArray addObject:layout];
         }
-        [self.tableView reloadData];
         [self getMoneySum];
         [self setupBillview];
-    } failure:^(NSError *error) {
+    } failure:^(NSError *error){
+        [MBProgressHUD hideHUD];
+         self.loading = YES;
     }];
   
 }
 
 - (void)setupBillview {
-    if (self.dataArray.count==0) {
-        _tableView.frame = CGRectMake(0,0,kScreenWidth,_isPushed?kScreenHeight:kScreenHeight-kTabBarHeight);
+    if (self.dataArray.count==0){
+        _tableView.frame = CGRectMake(0,0,kScreenWidth,_isPushed?kScreenHeight:kScreenHeight- 190- kTabBarHeight);
+         [self.tableView reloadData];
         self.leftBtn.hidden = YES;
         [self.billView removeFromSuperview];
+        [self setBottomMoreView];
         [AppDelegate getAppDelegate].value = 0;
         [self setBadgeValue:[AppDelegate getAppDelegate].value atIndex:3];
         return;
     }
+    _tableView.frame = CGRectMake(0,0,kScreenWidth,_isPushed?kScreenHeight:kScreenHeight- kTabBarHeight);
+    [self.tableView reloadData];
+    [self.bottomView removeFromSuperview];
     [self setLeftItemTitle:@"编辑" action:@selector(editList)];
     [self.view addSubview:self.billView];
     [_billView setMoneyNumber:_dataArray.count Sum:_moneySum];
@@ -167,10 +208,42 @@
     [self excuteSelectEvent];
 }
 
+- (void)setBottomMoreView{
+    
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, KscreenWidth, 30)];
+    label.text = @"猜你喜欢";
+    label.textColor = UIColorHex(#5D5D5D);
+    label.font = SYSTEM_FONT(17);
+    [self.bottomView addSubview:label];
+    
+    UIScrollView *moreScroollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 50, KscreenWidth, 140)];
+    moreScroollView.bounces = NO;
+    moreScroollView.showsHorizontalScrollIndicator = NO;
+    moreScroollView.contentSize = CGSizeMake(120*8, 140);
+    [self.bottomView addSubview:moreScroollView];
+    
+    NSMutableDictionary *parameter = [Utils parameter];
+    parameter[@"type"] = @"1";
+    [YWHttptool GET:PortExten_goods parameters:parameter success:^(id responseObject) {
+        if ([responseObject[@"isError"] integerValue]) return ;
+        self.moreArray = [KHCartMoreModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
+        for (int i = 0; i<self.moreArray.count; i++) {
+            KHCartMoreView *view = [KHCartMoreView viewFromNIB];
+            view.origin = CGPointMake(i*120, 0);
+            [view setModel:self.moreArray[i]];
+            view.delegate = self;
+            [moreScroollView addSubview:view];
+        }
+    } failure:^(NSError *error) {
+    }];
+    
+    [self.view addSubview:self.bottomView];
+}
+
 - (void)excuteBuyEvent{
     __weak typeof(self) weakSelf = self;
     _billView.buyBlock = ^{//提交订单
-        [MBProgressHUD showMessage:@"提交订单..." toView:weakSelf.tableView];
+    [MBProgressHUD showMessage:@"提交订单..." ];
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"userid"] = [YWUserTool account].userid;
     NSMutableArray *array = [NSMutableArray array];
@@ -182,14 +255,14 @@
     parameter[@"cart"] = jsonString;
     [YWHttptool Post:PortOrder_submit parameters:parameter success:^(id responseObject){
         NSLog(@"%@",responseObject);
-        [MBProgressHUD hideHUDForView:weakSelf.tableView];
+        [MBProgressHUD hideHUD];
         if ([responseObject[@"isError"] integerValue]) return ;
         KHPayModel *model = [KHPayModel kh_objectWithKeyValues:responseObject[@"result"]];
         KHPayViewController *payVC = [[KHPayViewController alloc]init];
         payVC.payModel = model;
         [weakSelf pushController:payVC];
     } failure:^(NSError *error){
-          [MBProgressHUD hideHUDForView:weakSelf.tableView];
+          [MBProgressHUD hideHUD];
     }];
     };
 }
@@ -198,9 +271,9 @@
     __weak typeof(self) weakSelf = self;
     __weak typeof(_billView) weaKbillView = _billView;
     _billView.deleteBlock = ^{
-    [UIAlertController showAlertViewWithTitle:nil Message:@"确定要删除吗?" BtnTitles:@[@"取消",@"确定"] ClickBtn:^(NSInteger index) {
-                if (index==1) {
-                    if (!weakSelf.tableView.editing) {
+    [UIAlertController showAlertViewWithTitle:nil Message:@"确定要删除吗?" BtnTitles:@[@"确定",@"取消"] ClickBtn:^(NSInteger index) {
+                if (index==0) {
+                    if (!weakSelf.tableView.editing){
                         return;
                     }
                     [weakSelf.deleteArray removeAllObjects];
@@ -237,14 +310,14 @@
                             [weakSelf editList];
                             if (weakSelf.deleteArray.count == dataCount) {
                                 weakSelf.leftBtn.hidden = YES;
-                                weakSelf.tableView.frame = CGRectMake(0,0,kScreenWidth,weakSelf.isPushed?kScreenHeight:kScreenHeight-kTabBarHeight);
+                                weakSelf.tableView.frame = CGRectMake(0,0,kScreenWidth,weakSelf.isPushed?kScreenHeight:kScreenHeight- 190- kTabBarHeight);
                                 [weakSelf.billView removeFromSuperview];
+                                [weakSelf setBottomMoreView];
                             }
                             [AppDelegate getAppDelegate].value = [AppDelegate getAppDelegate].value -weakSelf.deleteArray.count;
                             [weakSelf setBadgeValue:[AppDelegate getAppDelegate].value atIndex:3];
                         } failure:^(NSError *error) {
                         }];
-                    
                     });
                     }
         }];
@@ -301,8 +374,8 @@
  */
 - (void)helpClick{
     KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
-    VC.urlStr = PortNovice_coure;
-    VC.title = @"新手帮助";
+    VC.urlStr = PortShopping_help;
+    VC.title = @"购物指南";
     [self pushController:VC];
 }
 
@@ -384,25 +457,55 @@
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
     return [UIImage imageNamed:@"empty_placeholder"];
 }
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"购物车空空如也";
+    return [[NSAttributedString alloc] initWithString:text attributes:@{
+                                                                        NSFontAttributeName:SYSTEM_FONT(15)
+                                                                        }];
+}
 
+- (UIImage *)buttonImageForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state{
+    return IMAGE_NAMED(@"duobao");
+}
 
 - (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
     return YES;
 }
-
-- (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView{
-    return YES;
+- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView{
+    return self.loading;
 }
 
-- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView
-{
-    return YES;
+- (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button{
+    UITabBarController *tabBarVC = (UITabBarController *)[AppDelegate getAppDelegate].window.rootViewController;
+    [tabBarVC setSelectedIndex:0];
 }
 
-- (void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view
-{
-    //开始下拉刷新
-    [self.tableView.mj_header beginRefreshing];
+
+- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView{
+    return UIColorHex(#F0F0F0);
+}
+
+- (void)clickPush:(KHCartMoreModel *)model{
+
+    [MBProgressHUD showMessage:@"加载中..."];
+    NSMutableDictionary *parameter = [Utils parameter];
+    parameter[@"goodsid"] = model.goodsid;
+    parameter[@"qishu"] = model.qishu;
+    if ([YWUserTool account]) {
+        parameter[@"userid"] = [YWUserTool account].userid;
+    }
+    [YWHttptool GET:PortGoodsdetails parameters:parameter success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
+        if ([responseObject[@"isError"] integerValue])return;
+        KHDetailViewController *DetailVC = [[KHDetailViewController alloc]init];
+        DetailVC.model = [KHProductModel kh_objectWithKeyValues:responseObject[@"result"]];
+        DetailVC.goodsid = model.goodsid;
+        DetailVC.qishu = model.qishu;
+        [self pushController:DetailVC];
+    } failure:^(NSError *error) {
+        [MBProgressHUD hideHUD];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

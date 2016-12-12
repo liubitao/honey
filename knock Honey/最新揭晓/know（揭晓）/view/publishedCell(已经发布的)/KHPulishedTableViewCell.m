@@ -29,7 +29,7 @@
     [_goodImage sd_setImageWithURL:[NSURL URLWithString:model.thumb] placeholderImage:[UIImage imageNamed:@"placeholder"]];
     _title.text = model.title;
     _sprice.text = [NSString stringWithFormat:@"总需:￥%@",model.zongrenshu];
-    _name.attributedText = [Utils stringWith:[NSString stringWithFormat:@"获奖者:%@",model.winner] font1:[UIFont systemFontOfSize:12.f] color1:[UIColor colorWithHexString:@"2a99f4"] font2:[UIFont systemFontOfSize:12.f] color2:[UIColor colorWithWhite:0 alpha:0.5] range:NSMakeRange(0, 3)];
+    _name.attributedText = [Utils stringWith:[NSString stringWithFormat:@"获奖者:%@",model.winner] font1:[UIFont systemFontOfSize:12.f] color1:[UIColor colorWithHexString:@"2a99f4"] font2:[UIFont systemFontOfSize:12.f] color2:[UIColor colorWithWhite:0 alpha:0.5] range:NSMakeRange(0, 4)];
     NSString *numebr =[NSString stringWithFormat:@"本期夺宝:%@人次",model.buynum];
     _number.attributedText = [Utils stringWith:numebr font1:[UIFont systemFontOfSize:12.f] color1:[UIColor colorWithWhite:0 alpha:0.5] font2:[UIFont systemFontOfSize:12.f] color2:[UIColor redColor] range:NSMakeRange(5, numebr.length-7)];
     _publishTime.text = [NSString stringWithFormat:@"揭晓时间:%@",[Utils timeWith:model.newtime]];

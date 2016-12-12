@@ -21,9 +21,7 @@
 #import "KHSettingViewController.h"
 #import "KHLoginViewController.h"
 #import "KHRegiterViewController.h"
-#import "RCDCustomerServiceViewController.h"
-
-
+#import "KHQiandaoViewController.h"
 
 @interface KHPersonViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *tableView;
@@ -205,11 +203,10 @@
         [self pushController:freeVC];
     }else if (indexPath.section == 2){
         if (indexPath.row == 0) {//客服
-            RCDCustomerServiceViewController *chatService = [[RCDCustomerServiceViewController alloc] init];
-            chatService.conversationType = ConversationType_CUSTOMERSERVICE;
-            chatService.targetId = KefuMessageID;
-            chatService.title = @"客服";
-            [self pushController:chatService];
+            KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
+            VC.urlStr = PortCommon_problem;
+            VC.title = @"常见问题";
+            [self pushController:VC];
         }else if (indexPath.row == 1){//消息
             KHMessageViewController *messageVC= [[KHMessageViewController alloc]init];
             [self pushController:messageVC];

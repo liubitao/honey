@@ -8,7 +8,6 @@
 
 #import "RCDCustomerServiceViewController.h"
 #import "IQKeyboardManager.h"
-
 //#import "RCDSettingBaseViewController.h"
 @interface RCDCustomerServiceViewController ()
 //＊＊＊＊＊＊＊＊＊应用自定义评价界面开始1＊＊＊＊＊＊＊＊＊＊＊＊＊
@@ -24,18 +23,6 @@
   [super viewDidLoad];
   // Do any additional setup after loading the view.
   [self notifyUpdateUnreadMessageCount];
-    UIButton *button =
-    [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-    UIImageView *imageView =
-    [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Private_Setting"]];
-    imageView.frame = CGRectMake(15, 5,16 , 17);
-    [button addSubview:imageView];
-    [button addTarget:self
-               action:@selector(rightBarButtonItemClicked:)
-     forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *rightBarButton =
-    [[UIBarButtonItem alloc] initWithCustomView:button];
-    self.navigationItem.rightBarButtonItem = rightBarButton;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -52,24 +39,6 @@
     
     [IQKeyboardManager sharedManager].enable = YES;
     
-}
-
-- (void)rightBarButtonItemClicked:(id)sender {
-//  RCDSettingBaseViewController *settingVC =
-//      [[RCDSettingBaseViewController alloc] init];
-//  settingVC.conversationType = self.conversationType;
-//  settingVC.targetId = self.targetId;
-//  //清除聊天记录之后reload data
-//  __weak typeof(self) weakSelf = self;
-//  settingVC.clearHistoryCompletion = ^(BOOL isSuccess) {
-//    if (isSuccess) {
-//      [weakSelf.conversationDataRepository removeAllObjects];
-//      dispatch_async(dispatch_get_main_queue(), ^{
-//        [weakSelf.conversationMessageCollectionView reloadData];
-//      });
-//    }
-//  };
-//  [self.navigationController pushViewController:settingVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

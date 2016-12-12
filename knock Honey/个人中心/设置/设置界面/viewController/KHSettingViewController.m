@@ -121,7 +121,7 @@
     }else if (indexPath.row == 3){
         KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
         VC.urlStr = PortAgreement;
-        VC.title = @"用户协议";
+        VC.title = @"";
         [self hideBottomBarPush:VC];
     }else{
         KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];

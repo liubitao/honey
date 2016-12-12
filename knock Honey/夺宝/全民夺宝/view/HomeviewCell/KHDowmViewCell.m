@@ -28,37 +28,23 @@
 #pragma mark - 通知中心
 - (void)registerNSNotificationCenter{
    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(notificationCenterEvent:)
+                                             selector:@selector(reset)
                                                  name:NOTIFICATION_PUSH_CELL
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(reloadViewController)
-                                                 name:NOTIFICATION_STOP_CELL
                                                object:nil];
 }
 
 - (void)removeNSNotificationCenter{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_PUSH_CELL object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_STOP_CELL object:nil];
 }
 
-- (void)reloadViewController{
-    
-    if (![Utils isNull:_model]&&[self.model valueForKey:@"Frist"]) {
-        if ([self.delagate respondsToSelector:@selector(reloadDown)]) {
-            [self.delagate reloadDown];
-        }
-    }
-}
-- (void)notificationCenterEvent:(NSNotification*)sender{
-    [self reset];
-}
+
 
 -(void)setModel:(KHPublishModel *)model{
     _model = model;
     [_goodsImage sd_setImageWithURL:[NSURL URLWithString:model.thumb] placeholderImage:IMAGE_NAMED(@"placeholder")];
     _goodsName.text = model.title;
-    _timeDown.text = [model valueForKey:@"valueString"]?[model valueForKey:@"valueString"]:@"正在揭晓";
+    _timeDown.textColor = [UIColor whiteColor];
+    _timeDown.text = [model valueForKey:@"valueString"]?[model valueForKey:@"valueString"]:model.winner;
 }
 - (void)reset{
     _timeDown.text = [_model valueForKey:@"valueString"]?[_model valueForKey:@"valueString"]:@"正在揭晓";

@@ -12,7 +12,6 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -21,10 +20,16 @@
 
 - (void)setModel:(KHjifenModel *)model{
     _model = model;
-    
-    _timeWidth.constant = (KscreenWidth-80)/2;
+    if (model.type.integerValue == 1) {
+        _leixing.text = @"签到";
+    }else if (model.type.integerValue == 2){
+        _leixing.text = @"兑换红包";
+    }else{
+        _leixing.text = @"活动";
+    }
     _timeLabel.text = [Utils timeWith:model.addtime];
     
     _jifenNumber.text = model.score;
+    
 }
 @end

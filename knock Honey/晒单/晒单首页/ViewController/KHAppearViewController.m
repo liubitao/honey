@@ -10,6 +10,8 @@
 #import "KHAppearTableViewCell.h"
 #import "KHAppearModel.h"
 #import "KHAppearDetailController.h"
+#import "KHMyAppearViewController.h"
+#import "KHLoginViewController.h"
 
 @interface KHAppearViewController ()<UITableViewDataSource,UITableViewDelegate,DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>{
     NSInteger _pageCount;
@@ -17,6 +19,7 @@
 
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *dataArray;
+@property (nonatomic,assign) BOOL loading;
 @end
 
 @implementation KHAppearViewController
@@ -33,7 +36,7 @@
     [super viewDidLoad];
     self.title = @"晒单";
     self.view.backgroundColor = [UIColor whiteColor];
-    
+    [self setRightImageNamed:@"myAppear" action:@selector(myAppear)];
     [self createTableView];
 }
 
@@ -46,14 +49,13 @@
     [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     [self.view addSubview:self.tableView];
     _tableView.emptyDataSetSource = self;
-
+    _tableView.emptyDataSetDelegate = self;
     
     [self.tableView registerNib:[UINib nibWithNibName:@"KHAppearTableViewCell" bundle:nil] forCellReuseIdentifier:@"AppearCell"];
     //下拉刷新
     __weak typeof(self) weakSelf = self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf getLatestPubData];
-        [weakSelf.tableView.mj_footer resetNoMoreData];
         //结束刷新
         [weakSelf.tableView.mj_header endRefreshing];
     }];
@@ -61,23 +63,48 @@
     [self.tableView.mj_header beginRefreshing];
     
     //上拉刷新
-    self.tableView.mj_footer = [GPAutoFooter footerWithRefreshingBlock:^{
+    self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
         [weakSelf getMoreData];
         [weakSelf.tableView.mj_footer endRefreshing];
     }];  
     
 }
+
+- (void)myAppear{
+    if (![YWUserTool account]) {
+        KHLoginViewController *vc = [[KHLoginViewController alloc]init];
+        KHNavigationViewController *nav = [[KHNavigationViewController alloc] initWithRootViewController:vc];
+        [self presentViewController:nav animated:YES completion:nil];
+        return;
+    }
+    KHMyAppearViewController *myAppearVC = [[KHMyAppearViewController alloc]init];
+    [self pushController:myAppearVC];
+}
+
+- (void)setLoading:(BOOL)loading{
+    if (self.loading == loading) {
+        return;
+    }
+    _loading = loading;
+    [self.tableView reloadEmptyDataSet];
+}
+
 - (void)getLatestPubData{
+    [MBProgressHUD showMessage:@"加载中..."];
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"p"] = @1;
     parameter[@"userid"] = [YWUserTool account].userid;
     [YWHttptool GET:PortComment_list parameters:parameter success:^(id responseObject){
+        [MBProgressHUD hideHUD];
+         self.loading = YES;
          if ([responseObject[@"isError"] integerValue]) return ;
         _pageCount = 1;
         [self.dataArray removeAllObjects];
         self.dataArray = [KHAppearModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
         [self.tableView reloadData];
     } failure:^(NSError *error){
+        [MBProgressHUD hideHUD];
+         self.loading = YES;
     }];
 }
 
@@ -88,7 +115,6 @@
     parameter[@"userid"] = [YWUserTool account].userid;
     [YWHttptool GET:PortComment_list parameters:parameter success:^(id responseObject){
         if ([responseObject[@"isError"] integerValue]) {
-                [self.tableView.mj_footer endRefreshingWithNoMoreData];
                 return;
         }
         NSArray *array = [KHAppearModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
@@ -152,8 +178,33 @@
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
     return [UIImage imageNamed:@"empty_placeholder"];
 }
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"暂无此纪录";
+    return [[NSAttributedString alloc] initWithString:text attributes:@{
+                                                                        NSFontAttributeName:SYSTEM_FONT(15)
+                                                                        }];
+}
+
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView{
+    return -64;
+}
+
+- (UIImage *)buttonImageForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state{
+    return IMAGE_NAMED(@"duobao");
+}
+
 - (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
     return YES;
+}
+- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView{
+    return self.loading;
+}
+
+- (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button{
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    UITabBarController *tabBarVC = (UITabBarController *)[AppDelegate getAppDelegate].window.rootViewController;
+    [tabBarVC setSelectedIndex:0];
 }
 
 - (void)didReceiveMemoryWarning {

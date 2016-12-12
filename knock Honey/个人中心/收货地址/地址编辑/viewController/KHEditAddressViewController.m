@@ -40,7 +40,9 @@
         _takePhone.text = _model.mobile;
         NSArray *array = [_model.address componentsSeparatedByString:@","];
         _addressFirst.text = array[0];
-        _addressSecone.text = array[1];
+        if (array.count == 2) {
+            _addressSecone.text = array[1];
+        }
         [_moren setOn:[_model.isdefault isEqualToString:@"1"] ? YES:NO ];
     }
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self  action:@selector(chooseAddress:)];

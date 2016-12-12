@@ -17,7 +17,7 @@
 
 
 @property (nonatomic,strong) NSMutableArray *dataArray;
-
+@property (nonatomic,assign) BOOL loading;
 @end
 
 @implementation KHMyAppearViewController
@@ -54,7 +54,6 @@
     __weak typeof(self) weakSelf = self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf getLatestPubData];
-        [weakSelf.tableView.mj_footer resetNoMoreData];
         //结束刷新
         [weakSelf.tableView.mj_header endRefreshing];
     }];
@@ -68,7 +67,17 @@
     }];
     
 }
+- (void)setLoading:(BOOL)loading{
+    if (self.loading == loading) {
+        return;
+    }
+    _loading = loading;
+    
+    [self.tableView reloadEmptyDataSet];
+}
+
 - (void)getLatestPubData{
+    [MBProgressHUD showMessage:@"加载中..."];
     NSMutableDictionary *parameter = [Utils parameter];
     if (_userID) {
         parameter[@"userid"] = _userID;
@@ -78,12 +87,16 @@
     parameter[@"p"] = @1;
     parameter[@"type"] = @1;
     [YWHttptool GET:PortComment_list parameters:parameter success:^(id responseObject){
+        [MBProgressHUD hideHUD];
+        self.loading = YES;
         if ([responseObject[@"isError"] integerValue]) return ;
         _pageCount = 1;
         [self.dataArray removeAllObjects];
         self.dataArray = [KHAppearModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
         [self.tableView reloadData];
     } failure:^(NSError *error){
+        [MBProgressHUD hideHUD];
+        self.loading = YES;
     }];
 }
 
@@ -146,26 +159,33 @@
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
     return [UIImage imageNamed:@"empty_placeholder"];
 }
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"暂无此纪录";
+    return [[NSAttributedString alloc] initWithString:text attributes:@{
+                                                                        NSFontAttributeName:SYSTEM_FONT(15)
+                                                                        }];
+}
 
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView{
+    return -64;
+}
 
+- (UIImage *)buttonImageForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state{
+    return IMAGE_NAMED(@"duobao");
+}
 
 - (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
     return YES;
 }
-
-- (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView{
-    return YES;
+- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView{
+    return self.loading;
 }
 
-
-- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView
-{
-    return YES;
-}
-
-- (void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view
-{
-    [self.tableView.mj_header beginRefreshing];
+- (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button{
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    UITabBarController *tabBarVC = (UITabBarController *)[AppDelegate getAppDelegate].window.rootViewController;
+    [tabBarVC setSelectedIndex:0];
 }
 
 

@@ -23,6 +23,7 @@
 @property (nonatomic,strong) NSMutableArray *dataSoure;
 @property (nonatomic, strong) UITableView *RightTableView;
 @property (nonatomic,strong) GSPopoverViewController *popView;
+@property (nonatomic,assign) BOOL loading;
 @end
 static NSString * addressCell = @"addressCell";
 static NSString * phoneCell = @"phoneCell";
@@ -46,7 +47,7 @@ static NSString * rightCell = @"rightCell";
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.emptyDataSetDelegate = self;
         _tableView.emptyDataSetSource = self;
-        _tableView.backgroundColor = UIColorHex(efeff4);
+        _tableView.backgroundColor = UIColorHex(#F8F8F8);
     }
     return _tableView;
 }
@@ -66,6 +67,7 @@ static NSString * rightCell = @"rightCell";
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = UIColorHex(#F8F8F8);
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.view addSubview:self.tableView];
     if (_chooseAdd) {
@@ -119,15 +121,24 @@ static NSString * rightCell = @"rightCell";
     self.popView.borderColor = UIColorHex(434343);
     [self.popView showPopoverWithBarButtonItemTouch:event animation:YES];
 }
-
+- (void)setLoading:(BOOL)loading{
+    if (self.loading == loading) {
+        return;
+    }
+    _loading = loading;
+    
+    [self.tableView reloadEmptyDataSet];
+}
 
 - (void)getLatestPubData{
+    [MBProgressHUD showMessage:@"加载中..."];
     addressCount = 0;
     phoneCount = 0;
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"userid"] = [YWUserTool account].userid;
     [YWHttptool GET:PortAddress_list parameters:parameter success:^(id responseObject) {
-        NSLog(@"%@",responseObject);
+        [MBProgressHUD hideHUD];
+        self.loading = YES;
         self.dataSoure = [KHAddressModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
         NSInteger j = 0;
         for (int i = 0 ; i <self.dataSoure.count; i++){
@@ -146,7 +157,8 @@ static NSString * rightCell = @"rightCell";
         [self.tableView.mj_header endRefreshing];
         [self.tableView reloadData];
     } failure:^(NSError *error){
-
+        [MBProgressHUD hideHUD];
+        self.loading = YES;
     }];
 }
 
@@ -275,26 +287,24 @@ static NSString * rightCell = @"rightCell";
 
 #pragma mark - DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
 
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView{
+    return -150;
+}
+
+- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView{
+    return UIColorHex(#F8F8F8);
+}
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
-    return [UIImage imageNamed:@"empty_placeholder"];
+    return [UIImage imageNamed:@"addressHoldPlacer"];
 }
 
 - (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
     return YES;
 }
 
-- (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView{
-    return YES;
-}
-
 - (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView
 {
-    return YES;
-}
-
-- (void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view
-{
-    [self.tableView.mj_header beginRefreshing];
+    return self.loading;
 }
 
 - (void)didReceiveMemoryWarning {

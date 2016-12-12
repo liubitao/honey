@@ -26,7 +26,7 @@
 
 @property (nonatomic,strong) NSMutableArray *dataArray;
 @property (nonatomic,strong) KHCodeViewController *codeVC;
-
+@property (nonatomic,assign) BOOL loading;
 @end
 static NSString *ingGoodsCell = @"ingGoodsCell";
 static NSString *edGoodsCell = @"edGoodsCell";
@@ -71,13 +71,12 @@ static NSString *edGoodsCell = @"edGoodsCell";
     __weak typeof(self) weakSelf = self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf getData];
-        [weakSelf.tableView.mj_footer resetNoMoreData];
         //结束刷新
         [weakSelf.tableView.mj_header endRefreshing];
     }];
     [self.tableView.mj_header beginRefreshing];
     
-    self.tableView.mj_footer = [GPAutoFooter footerWithRefreshingBlock:^{
+    self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
         [weakSelf getMoreData];
         [weakSelf.tableView.mj_footer endRefreshing];
     }];
@@ -85,7 +84,17 @@ static NSString *edGoodsCell = @"edGoodsCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"KHSnatchingTableViewCell" bundle:nil] forCellReuseIdentifier:edGoodsCell];
     [self.tableView registerNib:[UINib nibWithNibName:@"KHAllTableViewCell" bundle:nil] forCellReuseIdentifier:ingGoodsCell];
 }
+- (void)setLoading:(BOOL)loading{
+    if (self.loading == loading) {
+        return;
+    }
+    _loading = loading;
+    
+    [self.tableView reloadEmptyDataSet];
+}
+
 - (void)getData{
+    [MBProgressHUD showMessage:@"加载中..."];
     NSMutableDictionary *parameter = [Utils parameter];
     if (_userID) {
         parameter[@"userid"] = _userID;
@@ -95,11 +104,14 @@ static NSString *edGoodsCell = @"edGoodsCell";
     parameter[@"p"] = @1;
     parameter[@"type"] = _type;
     [YWHttptool GET:PortOrder_list parameters:parameter success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
+        self.loading = YES;
         _currentPage = 1;
         self.dataArray = [KHSnatchModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
-        
         [self.tableView reloadData];
     } failure:^(NSError *error){
+        [MBProgressHUD hideHUD];
+        self.loading = YES;
     }];
 }
 
@@ -113,9 +125,7 @@ static NSString *edGoodsCell = @"edGoodsCell";
     parameter[@"p"] = [NSNumber numberWithInteger:++_currentPage];
     parameter[@"type"] = _type;
     [YWHttptool GET:PortOrder_list parameters:parameter success:^(id responseObject) {
-            NSLog(@"%@",responseObject);
         if ([responseObject[@"isError"] integerValue]) {
-            [self.tableView.mj_footer endRefreshingWithNoMoreData];
             return ;
         }
         [self.dataArray addObjectsFromArray:[KHSnatchModel kh_objectWithKeyValuesArray:responseObject[@"result"]]];
@@ -239,9 +249,33 @@ static NSString *edGoodsCell = @"edGoodsCell";
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
     return [UIImage imageNamed:@"empty_placeholder"];
 }
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"暂无此纪录";
+    return [[NSAttributedString alloc] initWithString:text attributes:@{
+                                                                        NSFontAttributeName:SYSTEM_FONT(15)
+                                                                        }];
+}
+
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView{
+    return -64;
+}
+
+- (UIImage *)buttonImageForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state{
+    return IMAGE_NAMED(@"duobao");
+}
 
 - (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
     return YES;
+}
+- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView{
+    return self.loading;
+}
+
+- (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button{
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    UITabBarController *tabBarVC = (UITabBarController *)[AppDelegate getAppDelegate].window.rootViewController;
+    [tabBarVC setSelectedIndex:0];
 }
 
 

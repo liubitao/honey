@@ -25,12 +25,14 @@
 
 @interface KHDetailViewController ()<UITableViewDataSource,UITableViewDelegate,TreasureDetailFooterDelegate,YWCoverDelegate>{
     NSInteger _currentPage;
+    TreasureDetailHeader *header;
 }
 
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) TreasureDetailFooter *footer;
 @property (nonatomic,strong) NSMutableArray *dataArray;
 @property (nonatomic,strong) KHCodeViewController *codeVC;
+
 
 @end
 
@@ -43,6 +45,22 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kNavigationBarHeight, KscreenWidth, KscreenHeight - kNavigationBarHeight-60) style:UITableViewStylePlain];
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
+    _tableView.tableFooterView = [[UIView alloc]init];
+    [self.view addSubview:_tableView];
+    
+    if ( [Utils isNull:_model.newtime]) {
+        _showType = TreasureDetailHeaderTypeNotParticipate;
+    }else if([_model.newtime doubleValue] >[[NSDate date] timeIntervalSince1970]){
+        _showType = TreasureDetailHeaderTypeCountdown;
+    }else{
+        _showType = TreasureDetailHeaderTypeWon;
+    }
+    
     [self createNavi];
     [self configBottomMenu];
     [self createTableView];
@@ -54,29 +72,17 @@
 }
 
 - (void)createTableView{
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kNavigationBarHeight, KscreenWidth, KscreenHeight - kNavigationBarHeight-60) style:UITableViewStylePlain];
-    _tableView.dataSource = self;
-    _tableView.delegate = self;
-    _tableView.tableFooterView = [[UIView alloc]init];
-    [self.view addSubview:_tableView];
-    
-    if (_showType == TreasureDetailHeaderTypeCountdown) {
-        NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
-        NSTimeInterval time=[dat timeIntervalSince1970];
-        _count = ([_model.winner.newtime doubleValue]- time)*1000;
-    }
-    TreasureDetailHeader *header = [[TreasureDetailHeader alloc]initWithFrame:({
+    header = [[TreasureDetailHeader alloc]initWithFrame:({
         CGRect rect = {0, 0, kScreenWidth, 1};
         rect;
-    }) type:_showType countTime:_count Model:_model];
+    }) type:_showType Model:_model];
      _tableView.tableHeaderView = header;
     
     
     __weak typeof(self) weakSelf = self;
     
     header.codeBlock = ^{//点击获奖人的参与次数
-        KHCodeViewController *vc = self.codeVC;
+        KHCodeViewController *vc = weakSelf.codeVC;
         NSArray *array = [weakSelf.model.winner.codes componentsSeparatedByString:@","];
         vc.dataArray = array.mutableCopy;
         if (weakSelf.model.winner){
@@ -85,12 +91,12 @@
         [vc.ColloctionView reloadData];
         //弹出蒙版
         YWCover  *cover = [YWCover show];
-        cover.delegate = self;
+        cover.delegate = weakSelf;
         [cover setDimBackground:YES];
         
         // 弹出pop菜单
         YWPopView *menu = [YWPopView showInRect:CGRectZero];
-        menu.center = self.view.center;
+        menu.center = weakSelf.view.center;
         menu.transform = CGAffineTransformMakeScale(0, 0);
         [UIView animateWithDuration:0.5
                          animations:^{
@@ -110,40 +116,47 @@
                 break;
             case 1: {//晒单分享
                 KHGoodsAppearController *goodsVC = [[KHGoodsAppearController alloc]init];
-                goodsVC.goodsid = _goodsid;
+                goodsVC.goodsid = weakSelf.goodsid;
                 [weakSelf hideBottomBarPush:goodsVC];
             }
                 break;
             case 2: {//往期揭晓
                 KHPastViewController *pastVC = [[KHPastViewController alloc]init];
-                pastVC.goodsid = _goodsid;
+                pastVC.goodsid = weakSelf.goodsid;
                 [weakSelf hideBottomBarPush:pastVC];
             }
                 break;
             default:
                 break;
         }
- 
     };
     __weak typeof(header) weakHeader = header;
-    header.headerHeight = ^(){//头高
-        weakHeader.height = 695-200+kScreenWidth/375*200-30+weakHeader.productNameLabel.height;
+    header.headerHeight = ^(TreasureDetailHeaderType type){//头高
+        if (type == TreasureDetailHeaderTypeNotParticipate ||type ==TreasureDetailHeaderTypeParticipated) {
+            weakHeader.height = 775-200+kScreenWidth/375*200-30+weakHeader.productNameLabel.height;
+        }else if (type == TreasureDetailHeaderTypeCountdown){
+            weakHeader.height = 590-200+kScreenWidth/375*200-30+weakHeader.productNameLabel.height;
+        }else  if(type == TreasureDetailHeaderTypeWon){
+            weakHeader.height = 700-200+kScreenWidth/375*200-30+weakHeader.productNameLabel.height;
+        }else{
+            weakHeader.height = 585-200+kScreenWidth/375*200-30+weakHeader.productNameLabel.height;
+        }
         weakSelf.tableView.tableHeaderView = weakHeader;
     };
     
     header.lookBlock = ^{
-        KHCodeViewController *vc = self.codeVC;
+        KHCodeViewController *vc = weakSelf.codeVC;
         NSArray *array = [weakSelf.model.codes componentsSeparatedByString:@","];
         vc.dataArray = array.mutableCopy;
         [vc.ColloctionView reloadData];
         //弹出蒙版
         YWCover  *cover = [YWCover show];
-        cover.delegate = self;
+        cover.delegate = weakSelf;
         [cover setDimBackground:YES];
         
         // 弹出pop菜单
         YWPopView *menu = [YWPopView showInRect:CGRectZero];
-        menu.center = self.view.center;
+        menu.center = weakSelf.view.center;
         menu.transform = CGAffineTransformMakeScale(0, 0);
         [UIView animateWithDuration:0.5
                          animations:^{
@@ -154,15 +167,17 @@
     
     header.countDetailBlock = ^(){//计算详情
         KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
-        NSString *str = [NSString stringWithFormat:@"%@?goodsid=%@&qishu=%@",PortFormula,_goodsid,_model.winner.qishu];
-        
+        NSString *str = [NSString stringWithFormat:@"%@?goodsid=%@&qishu=%@",PortFormula,weakSelf.goodsid,weakSelf.model.winner.qishu];
         VC.urlStr = str;
         VC.title = @"计算详情";
         [weakSelf hideBottomBarPush:VC];
     };
     
     header.declareBlcok = ^(){//点击声明
-        NSLog(@"声明");
+        KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
+        VC.urlStr = PortDuobao_statement;
+        VC.title = @"夺宝声明";
+        [weakSelf hideBottomBarPush:VC];
     };
 
     
@@ -196,9 +211,38 @@
     parameter[@"qishu"] = _qishu;
     [YWHttptool GET:PortGoodsOrder parameters:parameter success:^(id responseObject) {
         _currentPage = 1;
-        _dataArray = [KHDetailModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
+        self.dataArray = [KHDetailModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
         [_tableView reloadData];
     } failure:^(NSError *error){
+    }];
+    
+    NSMutableDictionary *parameter2 = [Utils parameter];
+    parameter2[@"goodsid"] = _goodsid;
+    parameter2[@"qishu"] = _qishu;
+    if ([YWUserTool account]) {
+        parameter2[@"userid"] = [YWUserTool account].userid;
+    }
+    [YWHttptool GET:PortGoodsdetails parameters:parameter2 success:^(id responseObject) {
+        [MBProgressHUD hideHUD];
+        if ([responseObject[@"isError"] integerValue])return;
+        KHProductModel *model = [KHProductModel kh_objectWithKeyValues:responseObject[@"result"]];
+        if ( [Utils isNull:model.newtime]) {
+            _showType = TreasureDetailHeaderTypeNotParticipate;
+            header.statueLabel.text = @"进行中";
+            header.statueLabel.backgroundColor = kDefaultColor;
+        }else if([model.newtime doubleValue] >[[NSDate date] timeIntervalSince1970]){
+            _showType = TreasureDetailHeaderTypeCountdown;
+            header.statueLabel.text = @"倒计时";
+            header.statueLabel.backgroundColor = kDefaultColor;
+        }else{
+            _showType = TreasureDetailHeaderTypeWon;
+            header.statueLabel.text = @"已揭晓";
+            header.statueLabel.backgroundColor = UIColorHex(55bf41);
+        }
+        [self configBottomMenu];
+        [header refreshHeader:model];
+    } failure:^(NSError *error) {
+        [MBProgressHUD hideHUD];
     }];
 }
 
@@ -213,7 +257,7 @@
             return ;
         };
         NSArray *array = [KHDetailModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
-        [_dataArray addObjectsFromArray:array];
+        [self.dataArray addObjectsFromArray:array];
         [_tableView reloadData];
     } failure:^(NSError *error){
     }];
@@ -221,6 +265,7 @@
 
 //加载下面菜单视图
 - (void)configBottomMenu{
+    [_footer removeFromSuperview];
     _footer = [[TreasureDetailFooter alloc]initWithType:(_showType==TreasureDetailHeaderTypeNotParticipate)?TreasureUnPublishedType:TreasurePublishedType Model:_model];
     _footer.delegate = self;
     [self.view addSubview:_footer];

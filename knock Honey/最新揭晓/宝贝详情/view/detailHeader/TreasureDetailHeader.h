@@ -18,13 +18,16 @@ typedef NS_ENUM(NSUInteger, TreasureDetailHeaderType) {
     TreasureDetailHeaderTypeNotParticipate = 0, //未参加
     TreasureDetailHeaderTypeCountdown, //倒计时
     TreasureDetailHeaderTypeWon, //已获奖
-    TreasureDetailHeaderTypeParticipated //参加
+    TreasureDetailHeaderTypeParticipated, //参加
+    TreasureDetailHeaderTypeNolast//没有上一期
 };
 
 typedef void(^TreasureDetailHeaderClickMenuButtonBlock)(id object);
 typedef void(^TreasureDetailHeaderCountDetailButtonBlock)(void);
 
 typedef void(^TreasureCountDetailButtonBlock)(void);
+
+typedef void(^HeaderHeight)(TreasureDetailHeaderType );
 
 /**
  *  进度或时间倒计时
@@ -107,7 +110,7 @@ typedef void(^TreasureCountDetailButtonBlock)(void);
 
 - (instancetype)initWithFrame:(CGRect)frame
                          type:(TreasureDetailHeaderType)type
-                    countTime:(NSInteger)countTime Model:(KHProductModel*)model;
+                        Model:(KHProductModel*)model;
 - (void)start;
 
 @end
@@ -164,7 +167,7 @@ typedef void(^TreasureLookButtonBlock)(void);
 @property (nonatomic,copy) TreasureCountDetailButtonBlock lookBlock;
 
 //头部高度变化
-@property (nonatomic,copy) TreasureCountDetailButtonBlock headerHeight;
+@property (nonatomic,copy)  HeaderHeight headerHeight;
 
 @property (nonatomic,copy) TreasureCountDetailButtonBlock codeBlock;
 
@@ -174,14 +177,14 @@ typedef void(^TreasureLookButtonBlock)(void);
 
 @property (nonatomic,strong) UIButton *declareBtn;
 
-@property (nonatomic, assign) NSInteger count;
-
 @property (nonatomic,strong) KHProductModel *model;
 
+@property (nonatomic,strong) UILabel *statueLabel;
 
 - (instancetype)initWithFrame:(CGRect)frame
                          type:(TreasureDetailHeaderType)type
-                    countTime:(NSInteger)countTime Model:(KHProductModel*)model;
+                         Model:(KHProductModel*)model;
+- (void)refreshHeader:(KHProductModel *)model;
 + (CGFloat)getHeight;
 
 @end

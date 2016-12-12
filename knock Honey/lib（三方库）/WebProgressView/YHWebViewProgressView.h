@@ -22,6 +22,8 @@
  */
 @property (copy, nonatomic) UIColor *progressBarColor;
 
+@property (nonatomic,strong) WKWebView *webView;
+
 /**
  *  使用WKWebKit
  *

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="KHCartMoreView">
+            <rect key="frame" x="0.0" y="0.0" width="120" height="140"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7L5-VC-Bhy">
+                    <rect key="frame" x="20" y="0.0" width="80" height="80"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="fZq-67-0xY"/>
+                        <constraint firstAttribute="height" constant="80" id="jUn-Hl-TsL"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我无法为念佛问过翁很晚ighewoijfgoewihfgoiwehjfoiwej" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rrt-Vn-irD">
+                    <rect key="frame" x="10" y="88" width="100" height="29"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LZJ-mc-swd" customClass="TSProgressView">
+                    <rect key="frame" x="10" y="122.5" width="100" height="10"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="10" id="3yI-ip-gA1"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Rrt-Vn-irD" secondAttribute="trailing" constant="10" id="4qt-iY-8v4"/>
+                <constraint firstItem="Rrt-Vn-irD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="Blc-1F-Tpf"/>
+                <constraint firstItem="7L5-VC-Bhy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="OBH-qs-eJV"/>
+                <constraint firstItem="Rrt-Vn-irD" firstAttribute="top" secondItem="7L5-VC-Bhy" secondAttribute="bottom" constant="8" id="Zi8-iG-95b"/>
+                <constraint firstItem="7L5-VC-Bhy" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="fUO-D2-dXN"/>
+                <constraint firstAttribute="bottom" secondItem="LZJ-mc-swd" secondAttribute="bottom" constant="7.5" id="glw-Vp-y7s"/>
+                <constraint firstItem="LZJ-mc-swd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="pdF-q1-fHY"/>
+                <constraint firstAttribute="trailing" secondItem="LZJ-mc-swd" secondAttribute="trailing" constant="10" id="pdn-eT-bZr"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="productPic" destination="7L5-VC-Bhy" id="ScN-NT-b0q"/>
+                <outlet property="productTitle" destination="Rrt-Vn-irD" id="hXI-ih-Aad"/>
+                <outlet property="progressView" destination="LZJ-mc-swd" id="Yne-Bc-aqN"/>
+            </connections>
+            <point key="canvasLocation" x="-100" y="-157"/>
+        </view>
+    </objects>
+</document>

@@ -196,8 +196,6 @@
     }
 }
 - (IBAction)submit:(id)sender {//支付
-
-    
     switch (_hybridType) {
         case KHPayTypeYuePay:{//余额支付
             [self paykind:@"1" pay_money:@"0" user_money:self.payModel.order_amount pay_code:@"0"];
@@ -316,10 +314,14 @@
     NSString *jsonString2 = [[NSString alloc] initWithData:jsonData2 encoding:NSUTF8StringEncoding];
     
     parameter[@"goods"] = jsonString2;
-    
+    [MBProgressHUD showMessage:@"正在支付..."];
     [YWHttptool GET:PortOrder_pay parameters:parameter success:^(id responseObject) {
         NSLog(@"购买之后=%@",responseObject);
-        if ([responseObject[@"isError"] integerValue]) return ;
+        [MBProgressHUD hideHUD];
+        if ([responseObject[@"isError"] integerValue]){
+            [MBProgressHUD showError:@"支付失败"];
+            return ;
+        };
         NSString *str = responseObject[@"result"][@"money"];
         KHPayResultModel *model = [KHPayResultModel kh_objectWithKeyValues:responseObject[@"result"]];
         KHPayResultViewController *resultVC = [[KHPayResultViewController alloc]init];
@@ -331,8 +333,10 @@
         [YWUserTool saveAccount:user];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshCart" object:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"kTopupNotification" object:str];
-    } failure:^(NSError *error){   
+    } failure:^(NSError *error){
+          [MBProgressHUD hideHUD];
     }];
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -28,15 +28,15 @@ const CGFloat kScrollViewHeight = 140.0;
     if (!_menuImages) {
         _menuImages = @[@"Activity",
                         @"prefecture",
-                        @"lucky",
-                        @"register"];
+                        @"register",
+                        @"lucky"];
     }
     return _menuImages;
 }
 
 - (NSArray *)menuTitles {
     if (!_menuTitles) {
-        _menuTitles = @[@"最新活动",@"十元专区",@"签到",@"常见问题"];
+        _menuTitles = @[@"最新活动",@"十元专区",@"幸运转盘",@"每日签到"];
     }
     return _menuTitles;
 }

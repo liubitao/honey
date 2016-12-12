@@ -25,9 +25,10 @@
 #import "KHLoginViewController.h"
 #import "KHQiandaoViewController.h"
 #import "KHAdvertModel.h"
+#import "KHActivityViewController.h"
 
 
-@interface KHHomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,WinTreasureCellDelegate,TSAnimationDelegate,KHDowmViewCellDelegate>
+@interface KHHomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,WinTreasureCellDelegate,TSAnimationDelegate>
 {
     KHAdvertModel *advertModel;
     NSMutableArray *_dataArray;
@@ -74,7 +75,12 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     _dataArray = [NSMutableArray arrayWithObjects:[NSMutableArray array],[NSMutableArray array],[NSMutableArray array],[NSMutableArray array], nil];
     _currentIndex = 0;
     insetHeight = [WinTreasureHeader height];
-    self.title = @"全民夺宝";
+    UILabel *titleView = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 20)];
+    titleView.text = @"云网夺宝";
+    titleView.textAlignment = NSTextAlignmentCenter;
+    titleView.textColor = [UIColor whiteColor];
+    titleView.font = [UIFont systemFontOfSize:20];
+    self.navigationItem.titleView = titleView;
     self.view.backgroundColor = [UIColor whiteColor];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(notificationCenterEvent)
@@ -244,7 +250,6 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     }else if (indexPath.section == 1){
         KHDowmViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:Cell1Identifier forIndexPath:indexPath];
         cell.model = _downArray[indexPath.row];
-        cell.delagate = self;
         return cell;
     }
     NSMutableArray *array = _dataArray[_currentIndex];
@@ -282,7 +287,20 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
                 NSLog(@"点击%@",[sender titleForState:UIControlStateNormal]);
                 [self setBackItem];
                 switch (sender.tag) {
-                    case 0: {//活动
+                    case 0: {//最新活动
+                        KHActivityViewController *activityVC = [[KHActivityViewController alloc]init];
+                        [weakSelf pushController:activityVC];
+                    }
+                        break;
+                    case 1: {//十元专区
+                        KHTenViewController *tenVC = [[KHTenViewController alloc]init];
+                        tenVC.area = @"12";
+                        tenVC.port = PortGoods_cate;
+                        tenVC.title = @"十元专区";
+                        [weakSelf pushController:tenVC];
+                    }
+                        break;
+                    case 2: {//幸运转盘
                         if (![YWUserTool account]) {
                             KHLoginViewController *vc = [[KHLoginViewController alloc]init];
                             KHNavigationViewController *nav = [[KHNavigationViewController alloc] initWithRootViewController:vc];
@@ -295,26 +313,11 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
                         [weakSelf pushController:activityVC];
                     }
                         break;
-                    case 1: {//十元专区
-                        KHTenViewController *tenVC = [[KHTenViewController alloc]init];
-                        tenVC.area = @"12";
-                        tenVC.port = PortGoods_cate;
-                        tenVC.title = @"十元专区";
-                        [weakSelf pushController:tenVC];
-                    }
-                        break;
-                    case 2: {//签到
+                    case 3: {//每日签到
                         KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
                         NSString *str = [NSString stringWithFormat:@"%@?userid=%@",PortSign_index,[YWUserTool account].userid];
                         VC.urlStr = str;
                         VC.title = @"签到";
-                        [self pushController:VC];
-                    }
-                        break;
-                    case 3: {//常见问题
-                        KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
-                        VC.urlStr = PortCommon_problem;
-                        VC.title = @"常见问题";
                         [self pushController:VC];
                     }
                         break;
@@ -387,16 +390,6 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
         DetailVC.model = [KHProductModel kh_objectWithKeyValues:responseObject[@"result"]];
         DetailVC.goodsid = goodsid;
         DetailVC.qishu = qishu;
-        if (indexPath.section == 1) {
-            if ([DetailVC.model.winner.newtime doubleValue] >[[NSDate date] timeIntervalSince1970]){
-                DetailVC.showType = TreasureDetailHeaderTypeCountdown;
-            }else{
-                DetailVC.showType = TreasureDetailHeaderTypeWon;
-            }
-        }else{
-            DetailVC.showType = TreasureDetailHeaderTypeNotParticipate;
-        }
-        
         [self pushController:DetailVC];
     } failure:^(NSError *error) {
         [MBProgressHUD hideHUD];
@@ -467,21 +460,6 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
     [[TSAnimation sharedAnimation] throwTheView:self.productView path:path isRotated:YES endScale:0.1];
 }
 
-- (void)reloadDown{
-    NSMutableDictionary *parameter = [Utils parameter];
-    parameter[@"p"] = @"1";
-    [YWHttptool GET:PortGoodsIndex parameters:parameter success:^(id responseObject) {
-        for (KHPublishModel *model in _downArray) {
-            [model stop];
-        }
-        [_downArray removeAllObjects];
-        
-        _downArray = [KHPublishModel kh_objectWithKeyValuesArray:responseObject[@"result"][@"zxjx"]];
-        [_collectionView reloadSections:[NSIndexSet indexSetWithIndex:1]];
-    } failure:^(NSError *error) {
-    }];
-    
-}
 #pragma mark - TSAnimationDelegate;//动画完成
 - (void)animationFinished{    
    

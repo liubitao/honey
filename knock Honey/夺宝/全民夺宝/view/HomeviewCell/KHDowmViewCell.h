@@ -9,16 +9,9 @@
 #import <UIKit/UIKit.h>
 @class KHPublishModel;
 
-@protocol KHDowmViewCellDelegate <NSObject>
-
-- (void)reloadDown;
-
-@end
 @interface KHDowmViewCell : UICollectionViewCell
 
 @property (nonatomic,strong) KHPublishModel *model;
-
-@property (nonatomic,assign) id <KHDowmViewCellDelegate>delagate;
 
 +(CGSize)size;
 

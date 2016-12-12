@@ -18,7 +18,9 @@
 #import <RongIMKit/RongIMKit.h>
 #import "IQKeyboardManager.h"
 #import "UMessage.h"
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 100000
 #import <UserNotifications/UserNotifications.h>
+#endif
 
 
 @interface AppDelegate ()<WXApiDelegate,UNUserNotificationCenterDelegate>
@@ -49,6 +51,7 @@
     [self configUM];
     
     //融云
+    [[RCIM sharedRCIM] initWithAppKey:@"82hegw5u8acgx"];
     [self configRongCloud];
     
     //友盟推送
@@ -66,7 +69,9 @@
 
 - (void)pushWithOptions:(NSDictionary *)launchOptions{
     //初始化方法,也可以使用(void)startWithAppkey:(NSString *)appKey launchOptions:(NSDictionary * )launchOptions httpsenable:(BOOL)value;这个方法，方便设置https请求。
-    [UMessage startWithAppkey:@"582167c9aed17960b30009d4" launchOptions:launchOptions];
+    [UMessage startWithAppkey:@"582167c9aed17960b30009d4" launchOptions:launchOptions httpsenable:YES ];
+    //注册通知，如果要使用category的自定义策略，可以参考demo中的代码。
+    [UMessage registerForRemoteNotifications];
     
     //添加别名(addAlias)
     if ([YWUserTool account]) {
@@ -75,8 +80,7 @@
     }
   
     
-    //注册通知，如果要使用category的自定义策略，可以参考demo中的代码。
-    [UMessage registerForRemoteNotifications];
+
     
     //iOS10必须加下面这段代码。
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
@@ -91,7 +95,6 @@
             //这里可以添加一些自己的逻辑
         }
     }];
-    
     //for log
     [UMessage setLogEnabled:YES];
 }
@@ -133,7 +136,6 @@
     }else{
         //应用处于后台时的本地推送接受
     }
-    
 }
 
 
@@ -149,9 +151,7 @@
     [YWHttptool GET:PortFirst_banner parameters:parameter success:^(id responseObject) {
         [[AdvertiseHelper sharedInstance] getAdvertisingImage:responseObject[@"result"]];
     } failure:^(NSError *error){
-        
     }];
-    
 }
 
 - (void)configApper{
@@ -163,9 +163,9 @@
 }
 
 - (void)configRongCloud{
-    [[RCIM sharedRCIM] initWithAppKey:@"8w7jv4qb8flvy"];
+
     
-    if ([YWUserTool account]) {
+    if ([YWUserTool account]){
         NSMutableDictionary *parameter = [Utils parameter];
         parameter[@"userid"] = [YWUserTool account].userid;
         [YWHttptool GET:PortRongcloud parameters:parameter success:^(id responseObject) {
@@ -173,8 +173,7 @@
                 NSString *str = responseObject[@"result"][@"token"];
                 [[RCIM sharedRCIM] connectWithToken:str success:nil error:nil tokenIncorrect:nil];
             }
-        } failure:^(NSError *error) {
-            
+        } failure:^(NSError *error){
         }];
     }
 }

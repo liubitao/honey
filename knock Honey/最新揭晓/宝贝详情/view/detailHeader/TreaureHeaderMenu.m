@@ -31,7 +31,7 @@
             
         }];
         RecordView *record = [[RecordView alloc]initWithFrame:({
-            CGRect rect = {0,_data.count*kMenuButtonHeight+kTreaureHeaderMenuMargin,self.width,kMenuButtonHeight};
+            CGRect rect = {0,3*kMenuButtonHeight+kTreaureHeaderMenuMargin,self.width,kMenuButtonHeight};
             rect;
         })];
         [self addSubview:record];

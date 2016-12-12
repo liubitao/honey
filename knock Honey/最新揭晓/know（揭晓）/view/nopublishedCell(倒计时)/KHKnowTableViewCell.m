@@ -47,15 +47,10 @@
     _timeLabel.text = [model valueForKey:@"valueString"];
     _title.text = model.title;
     _sprice.text = [NSString stringWithFormat:@"总需:￥%@",model.zongrenshu];
-    if ([_timeLabel.text isEqualToString:@"正在揭晓"]) {
-        if (_delegate && [_delegate respondsToSelector:@selector(countdownDidEnd:)]) {
-            [_delegate countdownDidEnd:self.indexPath];
-        }
-    }
 }
 - (void)settime:(KHKnowModel *)model{
     _timeLabel.text = [model valueForKey:@"valueString"];
-    if ([_timeLabel.text isEqualToString:@"正在揭晓"]) {
+    if ([_timeLabel.text isEqualToString:@"已揭晓"]){
         if (_delegate && [_delegate respondsToSelector:@selector(countdownDidEnd:)]) {
             [_delegate countdownDidEnd:self.indexPath];
         }

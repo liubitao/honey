@@ -22,7 +22,6 @@
 
 @property (nonatomic, assign) BOOL running;
 
-@property (nonatomic,assign) BOOL Frist;
 @end
 
 @implementation KHPublishModel
@@ -42,6 +41,8 @@
         KHPublishModel *model = [self kh_objectWithKeyValues:dict];
         if ([model.newtime doubleValue] - 0.2 >[[NSDate date] timeIntervalSince1970]){
             [model start];
+        }else{
+            model.valueString = model.winner;
         }
         [result addObject:model];
     }
@@ -50,10 +51,12 @@
 #pragma mark - Setters
 
 - (void)updateDisplay {
-    if ( _value < 200) {
+    if ( _value < -2000) {
         [self stop];
-        self.valueString = @"正在揭晓";
-    } else {
+        self.valueString = self.winner;
+    } else  if(_value < 200){
+        self.valueString = @"正在计算...";
+    }else{
         self.valueString = [self timeFormattedStringForValue:_value];
     }
 }
@@ -78,17 +81,11 @@
 
 - (void)stop {
     if (self.timer) {
-        if ((self.newtime.doubleValue - 0.2)<[[NSDate date] timeIntervalSince1970]&& !_Frist) {
-            _Frist = YES;
-            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_STOP_CELL object:nil];
-        }
         [self.timer invalidate];
         self.timer = nil;
     }
     self.running = NO;
 }
-
-
 
 - (NSString *)timeFormattedStringForValue:(unsigned long)value {
     int msperhour = 3600000;

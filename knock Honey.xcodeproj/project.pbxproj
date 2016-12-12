@@ -33,6 +33,9 @@
 		0C3693461DAB8F8000BB3EE0 /* KHPulishedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C3693441DAB8F8000BB3EE0 /* KHPulishedTableViewCell.xib */; };
 		0C36C3A61DF6863C005B5B02 /* KHForgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C36C3A41DF6863C005B5B02 /* KHForgetViewController.m */; };
 		0C36C3A71DF6863C005B5B02 /* KHForgetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C36C3A51DF6863C005B5B02 /* KHForgetViewController.xib */; };
+		0C3892261DFA4A5E00DB397F /* KHCartMoreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3892251DFA4A5E00DB397F /* KHCartMoreModel.m */; };
+		0C38922A1DFA4B8100DB397F /* KHCartMoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3892291DFA4B8100DB397F /* KHCartMoreView.m */; };
+		0C38922C1DFA4B9000DB397F /* KHCartMoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C38922B1DFA4B9000DB397F /* KHCartMoreView.xib */; };
 		0C3A466D1DD70B850082A239 /* KHCoupon.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3A465D1DD70B850082A239 /* KHCoupon.m */; };
 		0C3A466E1DD70B850082A239 /* KHFreeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3A465F1DD70B850082A239 /* KHFreeModel.m */; };
 		0C3A466F1DD70B850082A239 /* KHFreeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3A46621DD70B850082A239 /* KHFreeHeaderView.m */; };
@@ -53,6 +56,10 @@
 		0C3E9C2F1DD2FFFE00F827AC /* BonusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C3E9C2D1DD2FFFE00F827AC /* BonusCell.xib */; };
 		0C3E9C321DD3011B00F827AC /* BonusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3E9C311DD3011B00F827AC /* BonusModel.m */; };
 		0C3E9C381DD34E8400F827AC /* KHPauGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3E9C371DD34E8400F827AC /* KHPauGoodsModel.m */; };
+		0C3F6A2A1DF9005B00229DF5 /* KHActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3F6A291DF9005B00229DF5 /* KHActivityViewController.m */; };
+		0C3F6A2D1DF9007D00229DF5 /* KHActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3F6A2C1DF9007D00229DF5 /* KHActivity.m */; };
+		0C3F6A311DF900B100229DF5 /* KHActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3F6A2F1DF900B100229DF5 /* KHActivityTableViewCell.m */; };
+		0C3F6A321DF900B100229DF5 /* KHActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C3F6A301DF900B100229DF5 /* KHActivityTableViewCell.xib */; };
 		0C40647B1DF7DC4500CB017F /* KHOtherWinController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C40647A1DF7DC4500CB017F /* KHOtherWinController.m */; };
 		0C40647F1DF7DD8300CB017F /* KHOtherWinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C40647D1DF7DD8300CB017F /* KHOtherWinCell.m */; };
 		0C4064801DF7DD8300CB017F /* KHOtherWinCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C40647E1DF7DD8300CB017F /* KHOtherWinCell.xib */; };
@@ -371,6 +378,11 @@
 		0C36C3A31DF6863C005B5B02 /* KHForgetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHForgetViewController.h; sourceTree = "<group>"; };
 		0C36C3A41DF6863C005B5B02 /* KHForgetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHForgetViewController.m; sourceTree = "<group>"; };
 		0C36C3A51DF6863C005B5B02 /* KHForgetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHForgetViewController.xib; sourceTree = "<group>"; };
+		0C3892241DFA4A5E00DB397F /* KHCartMoreModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHCartMoreModel.h; sourceTree = "<group>"; };
+		0C3892251DFA4A5E00DB397F /* KHCartMoreModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHCartMoreModel.m; sourceTree = "<group>"; };
+		0C3892281DFA4B8100DB397F /* KHCartMoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHCartMoreView.h; sourceTree = "<group>"; };
+		0C3892291DFA4B8100DB397F /* KHCartMoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHCartMoreView.m; sourceTree = "<group>"; };
+		0C38922B1DFA4B9000DB397F /* KHCartMoreView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHCartMoreView.xib; sourceTree = "<group>"; };
 		0C3A465C1DD70B850082A239 /* KHCoupon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHCoupon.h; sourceTree = "<group>"; };
 		0C3A465D1DD70B850082A239 /* KHCoupon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHCoupon.m; sourceTree = "<group>"; };
 		0C3A465E1DD70B850082A239 /* KHFreeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHFreeModel.h; sourceTree = "<group>"; };
@@ -408,6 +420,13 @@
 		0C3E9C311DD3011B00F827AC /* BonusModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BonusModel.m; sourceTree = "<group>"; };
 		0C3E9C361DD34E8400F827AC /* KHPauGoodsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHPauGoodsModel.h; sourceTree = "<group>"; };
 		0C3E9C371DD34E8400F827AC /* KHPauGoodsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPauGoodsModel.m; sourceTree = "<group>"; };
+		0C3F6A281DF9005B00229DF5 /* KHActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHActivityViewController.h; sourceTree = "<group>"; };
+		0C3F6A291DF9005B00229DF5 /* KHActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHActivityViewController.m; sourceTree = "<group>"; };
+		0C3F6A2B1DF9007D00229DF5 /* KHActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHActivity.h; sourceTree = "<group>"; };
+		0C3F6A2C1DF9007D00229DF5 /* KHActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHActivity.m; sourceTree = "<group>"; };
+		0C3F6A2E1DF900B100229DF5 /* KHActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHActivityTableViewCell.h; sourceTree = "<group>"; };
+		0C3F6A2F1DF900B100229DF5 /* KHActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHActivityTableViewCell.m; sourceTree = "<group>"; };
+		0C3F6A301DF900B100229DF5 /* KHActivityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHActivityTableViewCell.xib; sourceTree = "<group>"; };
 		0C4064791DF7DC4500CB017F /* KHOtherWinController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHOtherWinController.h; sourceTree = "<group>"; };
 		0C40647A1DF7DC4500CB017F /* KHOtherWinController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHOtherWinController.m; sourceTree = "<group>"; };
 		0C40647C1DF7DD8300CB017F /* KHOtherWinCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHOtherWinCell.h; sourceTree = "<group>"; };
@@ -455,7 +474,6 @@
 		0C4EA38B1DF0201300A1DC22 /* libUMessage_Sdk_1.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.4.0.a; sourceTree = "<group>"; };
 		0C4EA38C1DF0201300A1DC22 /* UMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessage.h; sourceTree = "<group>"; };
 		0C4EA38E1DF020B900A1DC22 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
-		0C4EA3901DF0219700A1DC22 /* knock Honey.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "knock Honey.entitlements"; sourceTree = "<group>"; };
 		0C50E7761DD5AC420087A250 /* KHzhongjiangViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHzhongjiangViewController.h; sourceTree = "<group>"; };
 		0C50E7771DD5AC420087A250 /* KHzhongjiangViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHzhongjiangViewController.m; sourceTree = "<group>"; };
 		0C50E77E1DD5ACCA0087A250 /* KHMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KHMessageModel.h; path = "../../消息/model/KHMessageModel.h"; sourceTree = "<group>"; };
@@ -465,6 +483,7 @@
 		0C50E7861DD5B6CF0087A250 /* KHMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHMessageTableViewCell.h; sourceTree = "<group>"; };
 		0C50E7871DD5B6CF0087A250 /* KHMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHMessageTableViewCell.m; sourceTree = "<group>"; };
 		0C50E7881DD5B6CF0087A250 /* KHMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHMessageTableViewCell.xib; sourceTree = "<group>"; };
+		0C52FFD91DFBF64A00F5CC32 /* knock Honey.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "knock Honey.entitlements"; sourceTree = "<group>"; };
 		0C5609971DC9EDF600B7BEBC /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		0C5609981DC9EDF600B7BEBC /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		0C5609A01DC9EF9E00B7BEBC /* KHAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHAddressViewController.h; sourceTree = "<group>"; };
@@ -1168,6 +1187,16 @@
 			path = viewController;
 			sourceTree = "<group>";
 		};
+		0C3892271DFA4B5B00DB397F /* cartMoreview */ = {
+			isa = PBXGroup;
+			children = (
+				0C3892281DFA4B8100DB397F /* KHCartMoreView.h */,
+				0C3892291DFA4B8100DB397F /* KHCartMoreView.m */,
+				0C38922B1DFA4B9000DB397F /* KHCartMoreView.xib */,
+			);
+			path = cartMoreview;
+			sourceTree = "<group>";
+		};
 		0C3A465A1DD70B850082A239 /* 免费抢币首页 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1280,6 +1309,44 @@
 				0C3E9C261DD2FE1200F827AC /* KHUseredViewController.m */,
 				0C3E9C281DD2FE2400F827AC /* KHUserAbleViewController.h */,
 				0C3E9C291DD2FE2400F827AC /* KHUserAbleViewController.m */,
+			);
+			path = viewController;
+			sourceTree = "<group>";
+		};
+		0C3F6A241DF9002000229DF5 /* 最新活动 */ = {
+			isa = PBXGroup;
+			children = (
+				0C3F6A271DF9002000229DF5 /* viewController */,
+				0C3F6A251DF9002000229DF5 /* model */,
+				0C3F6A261DF9002000229DF5 /* view */,
+			);
+			path = "最新活动";
+			sourceTree = "<group>";
+		};
+		0C3F6A251DF9002000229DF5 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				0C3F6A2B1DF9007D00229DF5 /* KHActivity.h */,
+				0C3F6A2C1DF9007D00229DF5 /* KHActivity.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		0C3F6A261DF9002000229DF5 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				0C3F6A2E1DF900B100229DF5 /* KHActivityTableViewCell.h */,
+				0C3F6A2F1DF900B100229DF5 /* KHActivityTableViewCell.m */,
+				0C3F6A301DF900B100229DF5 /* KHActivityTableViewCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		0C3F6A271DF9002000229DF5 /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C3F6A281DF9005B00229DF5 /* KHActivityViewController.h */,
+				0C3F6A291DF9005B00229DF5 /* KHActivityViewController.m */,
 			);
 			path = viewController;
 			sourceTree = "<group>";
@@ -1471,8 +1538,8 @@
 		0C50E7521DD59FFD0087A250 /* 消息 */ = {
 			isa = PBXGroup;
 			children = (
-				0C711BEF1DEEC369001D2740 /* 系统消息 */,
 				0C50E77C1DD5ACCA0087A250 /* 消息 */,
+				0C711BEF1DEEC369001D2740 /* 系统消息 */,
 				0C7FAB061DE932C300DB5D9C /* 发货消息 */,
 				0C50E7561DD59FFD0087A250 /* 中奖消息 */,
 			);
@@ -2584,6 +2651,8 @@
 				0C9E8FD21DD16DAD00975AEB /* KHcartModel.m */,
 				0C9E8FCF1DD16DAD00975AEB /* KHCartGoodsModel.h */,
 				0C9E8FD01DD16DAD00975AEB /* KHCartGoodsModel.m */,
+				0C3892241DFA4A5E00DB397F /* KHCartMoreModel.h */,
+				0C3892251DFA4A5E00DB397F /* KHCartMoreModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2591,6 +2660,7 @@
 		0C9E8FD31DD16DAD00975AEB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0C3892271DFA4B5B00DB397F /* cartMoreview */,
 				0C9E8FD41DD16DAD00975AEB /* BillView */,
 				0C9E8FD71DD16DAD00975AEB /* cartCell */,
 				0C9E8FDC1DD16DAD00975AEB /* EditingCell */,
@@ -2676,7 +2746,7 @@
 		0CB128BC1DAA0467005A0A4D /* knock Honey */ = {
 			isa = PBXGroup;
 			children = (
-				0C4EA3901DF0219700A1DC22 /* knock Honey.entitlements */,
+				0C52FFD91DFBF64A00F5CC32 /* knock Honey.entitlements */,
 				0C3693361DAB5F2200BB3EE0 /* customFunc（自定义视图） */,
 				0CB1293E1DAA291A005A0A4D /* baseClass（基类） */,
 				0CB128F61DAA1F2E005A0A4D /* AppDelegate */,
@@ -2727,6 +2797,7 @@
 		0CB128F01DAA1EF3005A0A4D /* 夺宝 */ = {
 			isa = PBXGroup;
 			children = (
+				0C3F6A241DF9002000229DF5 /* 最新活动 */,
 				0C2705901DAF26B500CE2F15 /* 10元专区 */,
 				0CB128F11DAA1EF3005A0A4D /* 全民夺宝 */,
 				0CBD19D91DAC8D9A003E8150 /* 搜索页面 */,
@@ -3357,7 +3428,11 @@
 					0CB128B91DAA0467005A0A4D = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = N9J8L4GH86;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -3365,10 +3440,12 @@
 					};
 					0CB128D21DAA0467005A0A4D = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = N9J8L4GH86;
 						TestTargetID = 0CB128B91DAA0467005A0A4D;
 					};
 					0CB128DD1DAA0467005A0A4D = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = N9J8L4GH86;
 						TestTargetID = 0CB128B91DAA0467005A0A4D;
 					};
 				};
@@ -3417,6 +3494,7 @@
 				0C5782D11DC1B8AB00DB0B9A /* KHRegiterViewController.xib in Resources */,
 				0C7D0E191DE67D9A0023DD76 /* KHWinTableViewCell.xib in Resources */,
 				0C5782D61DC1D60100DB0B9A /* KHRegiterSecondController.xib in Resources */,
+				0C38922C1DFA4B9000DB397F /* KHCartMoreView.xib in Resources */,
 				0CBD1A1E1DACB650003E8150 /* IQKeyboardManager.bundle in Resources */,
 				0C790B981DDC045A00C381CF /* KHSearchTableViewCell.xib in Resources */,
 				0C42DBFA1DDDAB9900444BC4 /* README.txt in Resources */,
@@ -3434,6 +3512,7 @@
 				0CD77C951DBF44D300F72AA5 /* KHAppearTableViewCell.xib in Resources */,
 				0C6C68A91DCB107200B06535 /* KHPhoneViewController.xib in Resources */,
 				0C678FB51DED6491009417D7 /* RCConfig.plist in Resources */,
+				0C3F6A321DF900B100229DF5 /* KHActivityTableViewCell.xib in Resources */,
 				0CBD1A5D1DACC130003E8150 /* WinTreasureCell.xib in Resources */,
 				0C4482081DDAE5F60038697C /* KHCodeViewController.xib in Resources */,
 				0C27059E1DAF287A00CE2F15 /* CategoryDetailCell.xib in Resources */,
@@ -3560,9 +3639,11 @@
 				0CBD1A6E1DACD05E003E8150 /* TSAnimation.m in Sources */,
 				0C3E9C1E1DD2BB9C00F827AC /* KHPayModel.m in Sources */,
 				0CBD1A1B1DACB650003E8150 /* IQTitleBarButtonItem.m in Sources */,
+				0C38922A1DFA4B8100DB397F /* KHCartMoreView.m in Sources */,
 				0C678F801DED56D7009417D7 /* RCDCustomerServiceViewController.m in Sources */,
 				0CBD1A761DACD466003E8150 /* VerticalButton.m in Sources */,
 				0CBD1A1C1DACB650003E8150 /* IQToolbar.m in Sources */,
+				0C3892261DFA4A5E00DB397F /* KHCartMoreModel.m in Sources */,
 				0CB129481DAA2977005A0A4D /* YWUserTool.m in Sources */,
 				0C44DEB71DD4423D0085E5C3 /* PayResultHeader.m in Sources */,
 				0C803CA51DD9E6FF008CC841 /* KHQiandaoViewController.m in Sources */,
@@ -3645,6 +3726,7 @@
 				0C6C68B21DCB273F00B06535 /* KHPhoneTableViewCell.m in Sources */,
 				0C6C68AD1DCB205900B06535 /* KHAddressTableViewCell.m in Sources */,
 				0C5782DA1DC1DD5000DB0B9A /* KHRegiterThirdViewController.m in Sources */,
+				0C3F6A2D1DF9007D00229DF5 /* KHActivity.m in Sources */,
 				0C5609A21DC9EF9E00B7BEBC /* KHAddressViewController.m in Sources */,
 				0CBD1A131DACB650003E8150 /* IQUIView+Hierarchy.m in Sources */,
 				0C790B9B1DDC047100C381CF /* KHSearchModel.m in Sources */,
@@ -3680,6 +3762,7 @@
 				0CBD1A1D1DACB650003E8150 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				0C3A46701DD70B850082A239 /* KHFreeTableViewCell.m in Sources */,
 				0CB1294F1DAA2C15005A0A4D /* YWUser.m in Sources */,
+				0C3F6A311DF900B100229DF5 /* KHActivityTableViewCell.m in Sources */,
 				0CD77C941DBF44D300F72AA5 /* KHAppearTableViewCell.m in Sources */,
 				0C9E8FEC1DD16DAD00975AEB /* KHCartViewController.m in Sources */,
 				0C3E9C321DD3011B00F827AC /* BonusModel.m in Sources */,
@@ -3710,6 +3793,7 @@
 				0CB128BF1DAA0467005A0A4D /* main.m in Sources */,
 				0C6C689C1DCB0C5F00B06535 /* KHInformationCell.m in Sources */,
 				0C50E7891DD5B6CF0087A250 /* KHMessageTableViewCell.m in Sources */,
+				0C3F6A2A1DF9005B00229DF5 /* KHActivityViewController.m in Sources */,
 				0C3E9C2E1DD2FFFE00F827AC /* BonusCell.m in Sources */,
 				0CEDEE391DC199C60063C690 /* PooCodeView.m in Sources */,
 				0C50E7841DD5ACCA0087A250 /* KHMessageModel.m in Sources */,
@@ -3792,9 +3876,11 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: BiTao Liu (3A322MN98Q)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: BiTao Liu (3A322MN98Q)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = N9J8L4GH86;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3813,9 +3899,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -3840,9 +3928,11 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: BiTao Liu (N9J8L4GH86)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: BiTao Liu (N9J8L4GH86)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = N9J8L4GH86;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3855,8 +3945,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3869,6 +3961,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "knock Honey/knock Honey.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: BiTao Liu (N9J8L4GH86)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = N9J8L4GH86;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3902,8 +3996,10 @@
 					"$(PROJECT_DIR)/UMessage_Sdk_1.4.0",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.liubitao.knock-Honey";
+				PRODUCT_BUNDLE_IDENTIFIER = com.liubitao.knock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
@@ -3916,6 +4012,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "knock Honey/knock Honey.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: BiTao Liu (N9J8L4GH86)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = N9J8L4GH86;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3949,8 +4047,10 @@
 					"$(PROJECT_DIR)/UMessage_Sdk_1.4.0",
 				);
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.liubitao.knock-Honey";
+				PRODUCT_BUNDLE_IDENTIFIER = com.liubitao.knock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
@@ -3960,6 +4060,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: BiTao Liu (N9J8L4GH86)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: BiTao Liu (N9J8L4GH86)";
+				DEVELOPMENT_TEAM = N9J8L4GH86;
 				INFOPLIST_FILE = "knock HoneyTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cn.liubitao.knock-HoneyTests";
@@ -3972,6 +4075,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: BiTao Liu (N9J8L4GH86)";
 				INFOPLIST_FILE = "knock HoneyTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cn.liubitao.knock-HoneyTests";
