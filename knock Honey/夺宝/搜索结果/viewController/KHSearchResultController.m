@@ -59,8 +59,6 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.view addSubview:self.tableView];
-    
-    [self getData];
     [self createNavi];
     
 }
@@ -126,17 +124,19 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [MBProgressHUD showMessage:@"加载中..."];
     NSMutableDictionary *parameter = [Utils parameter];
-    NSString *goodsid;
     KHTenModel *Model = _dataArray[indexPath.row];
     parameter[@"goodsid"] = Model.ID;
     parameter[@"qishu"] = Model.qishu;
-    goodsid = Model.ID;
+    if ([YWUserTool account]) {
+        parameter[@"userid"] = [YWUserTool account].userid;
+    }
     [YWHttptool GET:PortGoodsdetails parameters:parameter success:^(id responseObject) {
         [MBProgressHUD hideHUD];
         if ([responseObject[@"isError"] integerValue])return;
         KHDetailViewController *DetailVC = [[KHDetailViewController alloc]init];
         DetailVC.model = [KHProductModel kh_objectWithKeyValues:responseObject[@"result"]];
-        DetailVC.goodsid = goodsid;
+        DetailVC.goodsid = Model.ID;
+        DetailVC.qishu = Model.qishu;
         DetailVC.showType = TreasureDetailHeaderTypeNotParticipate;
         [self pushController:DetailVC];
     } failure:^(NSError *error) {
@@ -157,7 +157,6 @@
     parameter[@"userid"] = [YWUserTool account].userid;
     parameter[@"goodsid"] = model.ID;
     [YWHttptool GET:PortAddCart parameters:parameter success:^(id responseObject) {
-        NSLog(@"%@",responseObject);
         if ([responseObject[@"isError"] integerValue]) return ;
         [AppDelegate getAppDelegate].value = [responseObject[@"result"][@"count_cart"] integerValue];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshCart" object:nil userInfo:nil];
@@ -191,18 +190,9 @@
     return YES;
 }
 
-- (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView{
-    return YES;
-}
-
 - (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView
 {
     return YES;
-}
-
-- (void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view
-{
-    [self.tableView.mj_header beginRefreshing];
 }
 
 - (void)didReceiveMemoryWarning {

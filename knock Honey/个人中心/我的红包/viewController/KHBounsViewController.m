@@ -9,6 +9,7 @@
 #import "KHBounsViewController.h"
 #import "KHUserAbleViewController.h"
 #import "KHUseredViewController.h"
+#import "KHQiandaoViewController.h"
 
 
 @interface KHBounsViewController ()
@@ -21,10 +22,19 @@
     [super viewDidLoad];
     self.title = @"红包";
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self setRightItemTitle:@"使用说明" action:@selector(toUse)];
     // 初始化样式
     [self setupView];
     // 添加子控制器
     [self addAllChildVc];
+}
+
+- (void)toUse{
+    KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
+    VC.title = @"使用说明";
+    VC.urlStr = PortCoupon_course;
+    [self hideBottomBarPush:VC];
 }
 
 #pragma mark - 初始化子控件

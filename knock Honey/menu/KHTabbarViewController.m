@@ -68,8 +68,8 @@
         [oldNavigationController popToViewController:viewController animated:NO];
         
     }
-    if (0 != self.selectedIndex){
-        self.selectedIndex = index;
+    if (index != self.selectedIndex){
+        [self setSelectedIndex:index];
     }
     UINavigationController *newNavigationController = [self.viewControllers objectAtIndex:index];
     UIViewController *viewControllerOrgin = newNavigationController.viewControllers[0];

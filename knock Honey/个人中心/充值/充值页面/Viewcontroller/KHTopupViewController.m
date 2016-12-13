@@ -12,6 +12,7 @@
 #import "TopupResultViewController.h"
 #import <AlipaySDK/AlipaySDK.h>
 #import "WXApi.h"
+#import "KHQiandaoViewController.h"
 
 @interface KHTopupViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -28,7 +29,7 @@
 @implementation KHTopupViewController
 
 
-- (NSMutableArray *)datasoure {
+- (NSMutableArray *)datasoure{
     if (!_datasoure) {
         NSArray *array = @[@"微信支付",@"支付宝支付"];
         _datasoure = [NSMutableArray arrayWithArray:array];
@@ -53,8 +54,14 @@
            self.title = @"充值";
     }
     [self.view addSubview:self.tableView];
+    
+    [self setRightImageNamed:@"cartHelp" action:@selector(rightClick)];
     [self setupHeader];
     [self setupBottom];
+}
+
+- (void)rightClick{
+    [UIAlertController showAlertViewWithTitle:nil Message:@"充值金额用于购买云网夺宝提供的网盘空间(1元等于1M)，同时获得相应个数的夺宝币，可以用于云网夺宝，充值的金额将无法退回" BtnTitles:@[@"确定"] ClickBtn:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -187,8 +194,6 @@
             }];}else{
                 [UIAlertController showAlertViewWithTitle:@"提示" Message:@"您未安装微信!" BtnTitles:@[@"确定"] ClickBtn:nil];
             }
-        
-        
     }else{//支付宝支付
         NSMutableDictionary *params = [Utils parameter];
         params[@"order_amount"] = _header.coinAmount;
@@ -203,10 +208,12 @@
             NSString *appScheme = @"KnockHoneyBT";
             ordersn = ordersns;
             [[AlipaySDK defaultService] payOrder:string fromScheme:appScheme callback:^(NSDictionary *resultDic) {
-                NSLog(@"reslut = %@",resultDic);  NSData *data = [resultDic[@"result"] dataUsingEncoding:NSUTF8StringEncoding];
+                NSLog(@"reslut = %@",resultDic);
+                NSData *data = [resultDic[@"result"] dataUsingEncoding:NSUTF8StringEncoding];
                 NSDictionary *weatherDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
                 NSNotification *notification = [NSNotification notificationWithName:@"ORDER_PAY_NOTIFICATION" object:@"zhifubao" userInfo:weatherDic];
-                [[NSNotificationCenter defaultCenter] postNotification:notification];            }];
+                [[NSNotificationCenter defaultCenter] postNotification:notification];
+            }];
         } failure:^(NSError *error){
             [MBProgressHUD hideHUD];
             [MBProgressHUD showError:@"支付失败"];
@@ -234,6 +241,41 @@
     }
     cell.leibie.text = _datasoure[indexPath.row];
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 30;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 30)];
+    view.backgroundColor = [UIColor whiteColor];
+    
+    //声明按钮
+     UIButton *declareBtn = [[UIButton alloc]initWithFrame:({
+        CGRect rect = {20,
+            10,
+            kScreenWidth-20,
+            20};
+        rect;
+    })];
+    [declareBtn setImage:IMAGE_NAMED(@"select") forState:UIControlStateNormal];
+    [declareBtn setTitle:@"我已阅读并同意《云网夺宝用户协议》" forState:UIControlStateNormal];
+    declareBtn.titleLabel.font = SYSTEM_FONT(14);
+    declareBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [declareBtn setTitleColor:UIColorHex(999999) forState:UIControlStateNormal];
+    [declareBtn addTarget:self action:@selector(clickDeclare:) forControlEvents:UIControlEventTouchUpInside];
+    declareBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [view addSubview:declareBtn];
+    
+    return view;
+}
+
+- (void)clickDeclare:(UIButton *)sender{
+    KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
+    VC.urlStr = PortAgreement;
+    VC.title = @"夺宝声明";
+    [self hideBottomBarPush:VC];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

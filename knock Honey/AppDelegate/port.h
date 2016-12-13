@@ -249,4 +249,6 @@
 //72.猜你喜欢
 #define     PortExten_goods               @"http://www.ywduobao.com/index.php/Api/Goods/exten_goods"
 
+//73.红包使用说明
+#define   PortCoupon_course             @"http://www.ywduobao.com/index.php/mobile/prom/coupon_course"
 #endif /* port_h */

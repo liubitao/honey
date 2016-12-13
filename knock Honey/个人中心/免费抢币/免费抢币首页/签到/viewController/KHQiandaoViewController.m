@@ -54,13 +54,14 @@
     
 }
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
-    NSString *titleStrs = @"新手帮助,新手指南,签到,最新活动,活动";
-    if ([titleStrs containsString:self.title]){
+//    NSString *titleStrs = @"新手帮助,新手指南,签到,幸运转盘,活动,最新活动,开奖规则,计算详情,常见问题";
         //        openpage
         //        1.分享—url,img
         //        2.商品详情—goodsid
         //        3.商品列表—cateid（从接口/Api/Goods/goods_cate获取数据）
         //        4.会员充值—money（0则不限充值金额,title）
+        //        5.客服——
+        //        6.页面跳转
         if ([navigationAction.request.URL.absoluteString containsString:@"openpage"]){
             NSString *decodedString=[navigationAction.request.URL.absoluteString stringByRemovingPercentEncoding];
             NSRange range = [decodedString rangeOfString:@"parameter="];
@@ -84,22 +85,8 @@
                 [self goodsArea:dic];
             }else if (page == 4){
                 [self Recharge:dic];
-            }
-            decisionHandler(WKNavigationActionPolicyCancel);
-        }
-        decisionHandler(WKNavigationActionPolicyAllow);
-    }else if (first){
-        first = NO;
-         decisionHandler(WKNavigationActionPolicyAllow);
-    }else{
-        NSString *str = [navigationAction.request.URL.absoluteString stringByRemovingPercentEncoding];
-        NSRange range1 = [str rangeOfString:@"="];
-        NSRange range2 = [str rangeOfString:@"&"];
-        NSRange range3 = [str rangeOfString:@"'"];
-        NSString *title = [str substringWithRange:NSMakeRange(range1.location+1, range2.location - range1.location-1)];
-        NSString *url = [str substringWithRange:NSMakeRange(range3.location+1, str.length - range3.location-1-1)];
-        if ([title isEqualToString:@"5"]) {
-                if ([YWUserTool account]) {
+            }else if (page == 5){
+                if ([YWUserTool account]){
                     RCDCustomerServiceViewController *chatService = [[RCDCustomerServiceViewController alloc] init];
                     chatService.conversationType = ConversationType_CUSTOMERSERVICE;
                     chatService.targetId = KefuMessageID;
@@ -108,14 +95,15 @@
                 }else{
                     [MBProgressHUD showError:@"请先登录"];
                 }
-        }else{
-        KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
-        VC.urlStr = url;
-        VC.title = title;
-        [self hideBottomBarPush:VC];
+            }else if (page == 6){
+                KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
+                VC.urlStr = dic[@"url"];
+                VC.title = dic[@"title"];
+                [self hideBottomBarPush:VC];
+            }
+            decisionHandler(WKNavigationActionPolicyCancel);
         }
-        decisionHandler(WKNavigationActionPolicyCancel);
-    }
+        decisionHandler(WKNavigationActionPolicyAllow);
 }
 //分享
 - (void)share:(NSString *)para{

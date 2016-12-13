@@ -308,7 +308,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
                             return;
                         }
                         KHQiandaoViewController *activityVC = [[KHQiandaoViewController alloc]init];
-                        activityVC.title = @"最新活动";
+                        activityVC.title = @"幸运转盘";
                         activityVC.urlStr = [NSString stringWithFormat:@"%@=%@",PortActivity,[YWUserTool account].userid];
                         [weakSelf pushController:activityVC];
                     }

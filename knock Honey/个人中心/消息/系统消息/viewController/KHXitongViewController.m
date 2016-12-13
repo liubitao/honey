@@ -11,12 +11,13 @@
 #import "KHXitongViewCell.h"
 #import "KHXitongContentController.h"
 
-@interface KHXitongViewController ()<UITableViewDataSource,UITableViewDelegate,DZNEmptyDataSetSource>{
+@interface KHXitongViewController ()<UITableViewDataSource,UITableViewDelegate,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>{
     NSInteger _pageCount;
 }
 
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *dataArray;
+@property (nonatomic,assign) BOOL loading;
 @end
 
 @implementation KHXitongViewController
@@ -34,6 +35,7 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.emptyDataSetSource = self;
+        _tableView.emptyDataSetDelegate = self;
         _tableView.tableFooterView = [UIView new];
     }
     return _tableView;
@@ -49,7 +51,6 @@
     __weak typeof(self) weakSelf = self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf getLatestPubData];
-        [weakSelf.tableView.mj_footer resetNoMoreData];
         //结束刷新
         [weakSelf.tableView.mj_header endRefreshing];
     }];
@@ -57,24 +58,39 @@
     [self.tableView.mj_header beginRefreshing];
     
     //上拉刷新
-    _tableView.mj_footer = [GPAutoFooter footerWithRefreshingBlock:^{
+    _tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
         [weakSelf getMoreData];
         [weakSelf.tableView.mj_footer endRefreshing];
     }];
     [self.tableView registerNib:[UINib nibWithNibName:@"KHXitongViewCell" bundle:nil] forCellReuseIdentifier:@"xitongCell"];
 }
 
+- (void)setLoading:(BOOL)loading{
+    if (self.loading == loading) {
+        return;
+    }
+    _loading = loading;
+    
+    [self.tableView reloadEmptyDataSet];
+}
+
+
 - (void)getLatestPubData{
+        [MBProgressHUD showMessage:@"加载中..."];
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"userid"] = [YWUserTool account].userid;
     parameter[@"type"] = @"4";
     parameter[@"p"] = @1;
     [YWHttptool GET:PortMessage_list parameters:parameter success:^(id responseObject){
+        [MBProgressHUD hideHUD];
+        self.loading = YES;
         if ([responseObject[@"isError"] integerValue]) return ;
         _pageCount = 1;
         self.dataArray = [KHXitongModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
         [self.tableView reloadData];
     } failure:^(NSError *error){
+        [MBProgressHUD hideHUD];
+        self.loading = YES;
     }];
 }
 
@@ -85,7 +101,6 @@
     parameter[@"p"] = @(++_pageCount);
     [YWHttptool GET:PortMessage_list parameters:parameter success:^(id responseObject){
         if ([responseObject[@"isError"] integerValue]) {
-            [self.tableView.mj_footer endRefreshingWithNoMoreData];
             return ;
         };
         [self.dataArray addObjectsFromArray:[KHXitongModel kh_objectWithKeyValuesArray:responseObject[@"result"]]];
@@ -129,6 +144,24 @@
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
     return [UIImage imageNamed:@"empty_placeholder"];
+}
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"暂无此纪录";
+    return [[NSAttributedString alloc] initWithString:text attributes:@{
+                                                                        NSFontAttributeName:SYSTEM_FONT(15)
+                                                                        }];
+}
+
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView{
+    return -64;
+}
+
+- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
+    return YES;
+}
+- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView{
+    return self.loading;
 }
 
 - (void)didReceiveMemoryWarning {

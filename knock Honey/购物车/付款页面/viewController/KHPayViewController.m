@@ -12,6 +12,7 @@
 #import "KHPauGoodsModel.h"
 #import "WXApi.h"
 #import <AlipaySDK/AlipaySDK.h>
+#import "KHQiandaoViewController.h"
 
 @interface KHPayViewController ()
 @property (weak, nonatomic) IBOutlet UILabel  *payNumber;
@@ -35,7 +36,19 @@
     _submit.layer.cornerRadius = 5;
     _submit.layer.masksToBounds = YES;
     
+    [self setRightImageNamed:@"cartHelp" action:@selector(rightClick)];
+    
     [self setData]; 
+}
+
+- (void)rightClick{
+    [UIAlertController showAlertViewWithTitle:nil Message:@"充值金额用于购买云网夺宝提供的网盘空间(1元等于1M)，同时获得相应个数的夺宝币，可以用于云网夺宝，充值的金额将无法退回" BtnTitles:@[@"确定"] ClickBtn:nil];
+}
+- (IBAction)clickXieyi:(UIButton *)sender {
+    KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
+    VC.urlStr = PortAgreement;
+    VC.title = @"夺宝声明";
+    [self hideBottomBarPush:VC];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -107,9 +120,9 @@
         _yueButton.userInteractionEnabled = NO;
         _yueButton.enabled = NO;
     }
-    
 }
-- (IBAction)yueClick:(UIButton *)sender {
+
+- (IBAction)yueClick:(UIButton *)sender{
     //钱包余额
     NSInteger total = [self.payModel.money integerValue];
     //支付金额（减去红包）
@@ -166,7 +179,6 @@
             break;
     }
 }
-
 
 - (IBAction)zhifubaoClick:(UIButton *)sender{
     if (sender.isSelected) {
@@ -292,7 +304,8 @@
     parameter[@"userid"] = [YWUserTool account].userid;
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[@"pay_code"] = pay_code;
-    dict[@"orderid"] = self.payModel.ordersn;
+    dict[@"orderid"] = self.payModel.orderid;
+    dict[@"ordersn"] = self.payModel.ordersn;
     dict[@"pay_mode"] = kind;
     dict[@"pay_money"] = pay_money;
     dict[@"user_money"] = user_money;

@@ -141,6 +141,9 @@
     KHTenModel *Model = _dataArray[indexPath.row];
     parameter[@"goodsid"] = Model.ID;
     parameter[@"qishu"] = Model.qishu;
+    if ([YWUserTool account]) {
+        parameter[@"userid"] = [YWUserTool account].userid;
+    }
     goodsid = Model.ID;
     [YWHttptool GET:PortGoodsdetails parameters:parameter success:^(id responseObject) {
         [MBProgressHUD hideHUD];
@@ -148,6 +151,7 @@
         KHDetailViewController *DetailVC = [[KHDetailViewController alloc]init];
         DetailVC.model = [KHProductModel kh_objectWithKeyValues:responseObject[@"result"]];
         DetailVC.goodsid = goodsid;
+        DetailVC.qishu = Model.qishu;
         DetailVC.showType = TreasureDetailHeaderTypeNotParticipate;
         [self hideBottomBarPush:DetailVC];
     } failure:^(NSError *error) {

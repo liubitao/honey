@@ -22,7 +22,7 @@
 
 - (NSArray *)urlArray{
     if (!_urlArray) {
-        _urlArray = @[PortNovice_coure,PortLottery_rule,PortCommon_problem,];
+        _urlArray = @[PortNovice_coure,PortLottery_rule,PortCommon_problem,PortAgreement];
     }
     return _urlArray;
 }
@@ -118,11 +118,6 @@
         [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
              [MBProgressHUD showSuccess:@"清除成功"];
         }];
-    }else if (indexPath.row == 3){
-        KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
-        VC.urlStr = PortAgreement;
-        VC.title = @"";
-        [self hideBottomBarPush:VC];
     }else{
         KHQiandaoViewController *VC = [[KHQiandaoViewController alloc]init];
         VC.urlStr = self.urlArray[indexPath.row];
