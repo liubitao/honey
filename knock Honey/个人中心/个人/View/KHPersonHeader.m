@@ -328,6 +328,10 @@ CGFloat topupButtonHeight = 25.0;
     _balanceLabel.font = SYSTEM_FONT(14);
     [self addSubview:_balanceLabel];
     
+    //根据test来判断
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *str = [defaults valueForKey:@"test"];
+    if (str.integerValue == 0) {
     _topupButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _topupButton.origin = CGPointMake(_balanceLabel.right+8, (self.height-topupButtonHeight)/2.0);
     _topupButton.size = CGSizeMake(60, topupButtonHeight);
@@ -340,6 +344,7 @@ CGFloat topupButtonHeight = 25.0;
     [_topupButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
     [_topupButton addTarget:self action:@selector(topup) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_topupButton];
+    }
 }
 
 - (void)topup {

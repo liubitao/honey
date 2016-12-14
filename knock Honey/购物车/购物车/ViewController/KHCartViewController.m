@@ -18,6 +18,8 @@
 #import "KHCartMoreModel.h"
 #import "KHCartMoreView.h"
 #import "KHDetailViewController.h"
+#import "KHSnatchListController.h"
+#import "KHTabbarViewController.h"
 
 @interface KHCartViewController ()<UITableViewDataSource,UITableViewDelegate,ShoppingListCellDelegate,DZNEmptyDataSetDelegate,DZNEmptyDataSetSource,KHCartMoreDelegate>
 @property (nonatomic, strong) NSNumber *moneySum;
@@ -102,6 +104,11 @@
                                              selector:@selector(notificationCenterEvent)
                                                  name:@"refreshCart"
                                                object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(testBuy:)
+                                                 name:@"testNOtification"
+                                               object:nil];
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"购物车";
     [self.view addSubview:self.tableView];
@@ -119,6 +126,19 @@
 }
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
+
+- (void)testBuy:(NSNotification *)notice {
+    NSString *str = [NSString stringWithFormat:@"%@", notice.object];
+    if ([str isEqualToString:@"success"]) {
+        [self getDatasource];
+        KHSnatchListController *snatchVC = [[KHSnatchListController alloc]init];
+        KHTabbarViewController *tab = (KHTabbarViewController *)[AppDelegate getAppDelegate].window.rootViewController;
+        [tab pushOtherIndex:4 viewController:snatchVC];
+        [UIAlertController showAlertViewWithTitle:nil Message:@"支付成功" BtnTitles:@[@"知道"] ClickBtn:nil];
+    }else{
+         [UIAlertController showAlertViewWithTitle:nil Message:@"支付取消" BtnTitles:@[@"知道"] ClickBtn:nil];
+    }
 }
 - (void)notificationCenterEvent{
     [self getDatasource];
@@ -161,11 +181,9 @@
 }
 
 - (void)getDatasource{
-    [MBProgressHUD showMessage:@"加载中..."];
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"userid"] = [YWUserTool account].userid;
     [YWHttptool GET:PortIndex parameters:parameter success:^(id responseObject) {
-        [MBProgressHUD hideHUD];
          self.loading = YES;
         if ([responseObject[@"isError"] integerValue]){
              [self setupBillview];
@@ -180,7 +198,6 @@
         [self getMoneySum];
         [self setupBillview];
     } failure:^(NSError *error){
-        [MBProgressHUD hideHUD];
          self.loading = YES;
     }];
   
@@ -209,7 +226,6 @@
 }
 
 - (void)setBottomMoreView{
-    
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, KscreenWidth, 30)];
     label.text = @"猜你喜欢";
     label.textColor = UIColorHex(#5D5D5D);
@@ -258,6 +274,13 @@
         [MBProgressHUD hideHUD];
         if ([responseObject[@"isError"] integerValue]) return ;
         KHPayModel *model = [KHPayModel kh_objectWithKeyValues:responseObject[@"result"]];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *str = [defaults valueForKey:@"test"];
+        if (str.integerValue == 1) {
+            NSString *urlStr = [NSString stringWithFormat:@"%@?orderid=%@&userid=%@",PortOther_pay,model.orderid,[YWUserTool account].userid];
+             [[UIApplication sharedApplication]openURL:[NSURL URLWithString:urlStr]];
+            return ;
+        }
         KHPayViewController *payVC = [[KHPayViewController alloc]init];
         payVC.payModel = model;
         [weakSelf pushController:payVC];

@@ -251,4 +251,10 @@
 
 //73.红包使用说明
 #define   PortCoupon_course             @"http://www.ywduobao.com/index.php/mobile/prom/coupon_course"
+
+//上架查询
+#define  PortIsTest                     @"http://www.ywduobao.com/index.php/api/Index/istest"
+
+//上架支付
+#define PortOther_pay                  @"http://www.ywduobao.com/index.php/mobile/prom/other_pay"
 #endif /* port_h */

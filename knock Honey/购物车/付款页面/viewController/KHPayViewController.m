@@ -52,9 +52,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    if([WXApi isWXAppInstalled]){ // 判断 用户是否安装微信
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getOrderPayResult:) name:@"ORDER_PAY_NOTIFICATION" object:nil];//监听一个通知
-    }
     [super viewWillAppear:animated];
 }
 
@@ -139,7 +137,7 @@
         case KHPayTypeAddPay:
             sender.selected = !sender.isSelected;
             if (sender.isSelected) {
-                _payNumber2.text = [NSString stringWithFormat:@"%ld枪币",(order_amount-total)];
+                _payNumber2.text = [NSString stringWithFormat:@"%zi枪币",(order_amount-total)];
                 _hybridType = _weixinButton.isSelected ? KHPayTypeYueWeixinPay:KHPayTypeYueAliPay;
             }else{
                  _payNumber2.text = [NSString stringWithFormat:@"%@抢币",self.payModel.order_amount];
@@ -265,9 +263,9 @@
             [WXApi sendReq:wxreq];//微信充值成功后
         } failure:^(NSError *error){
             [MBProgressHUD hideHUD];
-            [MBProgressHUD showError:@"支付失败"];
+            [MBProgressHUD showError:@"支付有误"];
         }];}else{
-            [UIAlertController showAlertViewWithTitle:@"提示" Message:@"您未安装微信!" BtnTitles:@[@"确定"] ClickBtn:nil];
+            [MBProgressHUD showError:@"您没有安装微信"];
         }
     
 
@@ -294,7 +292,7 @@
                     }];
     } failure:^(NSError *error){
         [MBProgressHUD hideHUD];
-        [MBProgressHUD showError:@"支付失败"];
+        [MBProgressHUD showError:@"支付有误"];
     }];
 
 }

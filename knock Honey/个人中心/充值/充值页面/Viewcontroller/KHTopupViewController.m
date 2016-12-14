@@ -164,7 +164,7 @@
         return;
     }
 
-    if (_selectedIndexPath.row == 0) {//微信支付
+    if (_selectedIndexPath.row == 1) {//微信支付
         if([WXApi isWXAppInstalled]) // 判断用户是否安装微信
             {
                 NSMutableDictionary *params = [Utils parameter];
@@ -190,9 +190,9 @@
                     [WXApi sendReq:wxreq];//微信充值成功后
             } failure:^(NSError *error){
             [MBProgressHUD hideHUD];
-            [MBProgressHUD showError:@"支付失败"];
+            [MBProgressHUD showError:@"支付有误"];
             }];}else{
-                [UIAlertController showAlertViewWithTitle:@"提示" Message:@"您未安装微信!" BtnTitles:@[@"确定"] ClickBtn:nil];
+                [MBProgressHUD showError:@"您未安装微信"];
             }
     }else{//支付宝支付
         NSMutableDictionary *params = [Utils parameter];
@@ -207,7 +207,7 @@
             //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
             NSString *appScheme = @"KnockHoneyBT";
             ordersn = ordersns;
-            [[AlipaySDK defaultService] payOrder:string fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+            [[AlipaySDK defaultService] payOrder:string fromScheme:appScheme callback:^(NSDictionary *resultDic){
                 NSLog(@"reslut = %@",resultDic);
                 NSData *data = [resultDic[@"result"] dataUsingEncoding:NSUTF8StringEncoding];
                 NSDictionary *weatherDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
@@ -216,7 +216,7 @@
             }];
         } failure:^(NSError *error){
             [MBProgressHUD hideHUD];
-            [MBProgressHUD showError:@"支付失败"];
+            [MBProgressHUD showError:@"支付有误"];
         }];
     }
 }
@@ -231,13 +231,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     KHTopupTableViewCell *cell = [KHTopupTableViewCell cellWithTableView:tableView];
     if (indexPath.row == 0) {
-        cell.imageView.image = IMAGE_NAMED(@"wenxinPay");
-        cell.des.text = @"推荐已开通微信钱包的用户使用";
+        cell.imageView.image = IMAGE_NAMED(@"zhifubaoPay");
+        cell.des.text = @"推荐已开通支付宝的用户使用";
         cell.selectImage.image = IMAGE_NAMED(@"selected");
         _selectedIndexPath = indexPath;
     }else{
-        cell.imageView.image = IMAGE_NAMED(@"zhifubaoPay");
-        cell.des.text = @"推荐已开通支付宝的用户使用";
+        cell.imageView.image = IMAGE_NAMED(@"wenxinPay");
+        cell.des.text = @"推荐已开通微信钱包的用户使用";
     }
     cell.leibie.text = _datasoure[indexPath.row];
     return cell;

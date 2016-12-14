@@ -22,6 +22,7 @@
 #import "KHLoginViewController.h"
 #import "KHRegiterViewController.h"
 #import "KHQiandaoViewController.h"
+#import <MJExtension.h>
 
 @interface KHPersonViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *tableView;
@@ -97,6 +98,18 @@
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
     [self setupHeader];
+    
+    //下拉刷新
+    __weak typeof(self) weakSelf = self;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf getDatasource];
+        [weakSelf.tableView.mj_footer resetNoMoreData];
+        //结束刷新
+        [weakSelf.tableView.mj_header endRefreshing];
+    }];
+    
+    [self.tableView.mj_header beginRefreshing];
+    
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 30)];
     label.text = @"声明：所有奖品抽奖活动与苹果公司(Apple Inc)无关";
     label.font = [UIFont systemFontOfSize:12];
@@ -104,6 +117,20 @@
     label.textColor = UIColorHex(999999);
     self.tableView.tableFooterView = label;
     [self.tableView registerNib:NIB_NAMED(@"KHPersonCell") forCellReuseIdentifier:@"personCell"];
+}
+
+- (void)getDatasource{
+    if ([YWUserTool account]){
+        NSMutableDictionary *parameter = [Utils parameter];
+        parameter[@"userid"] = [YWUserTool account].userid;
+        [YWHttptool GET:PortOther_user parameters:parameter success:^(id responseObject) {
+            if ([responseObject[@"isError"] integerValue]) return ;
+            YWUser *user = [YWUser mj_objectWithKeyValues:responseObject[@"result"]];
+            [YWUserTool saveAccount:user];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"freshenPerson" object:nil];
+        } failure:^(NSError *error){
+        }];
+    }
 }
 
 - (void)setupHeader{

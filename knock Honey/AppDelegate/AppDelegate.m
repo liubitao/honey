@@ -39,6 +39,8 @@
     //启动广告（记得放最后，才可以盖在页面上面）
     [self setupAdveriseView];
     
+    //查询上架
+    [self test];
     
     [self cartNumber];
     
@@ -61,10 +63,23 @@
     [WXApi registerApp:@"wx1bf9134fbd335945" withDescription:@"knockHoney"];
     
     [self configureBoardManager];
-    
-    //每次启动刷新个人数据
-    [self refreshPerson];
+
     return YES;
+}
+
+- (void)test{
+    NSMutableDictionary *parameters = [Utils parameter];
+    [YWHttptool GET:PortIsTest parameters:parameters success:^(id responseObject) {
+        if ([responseObject[@"isError"] integerValue] == 0) {
+            NSString *str = responseObject[@"result"][@"test"];
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:str forKey:@"test"];
+            [defaults synchronize];
+        }
+    } failure:^(NSError *error) {
+         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+         [defaults setObject:@"1" forKey:@"test"];
+    }];
 }
 
 - (void)pushWithOptions:(NSDictionary *)launchOptions{
@@ -197,6 +212,15 @@
 
 // NOTE: 9.0以后使用新API接口
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options{
+    if ([url.host isEqualToString:@"success"]) {
+        NSNotification *notification = [NSNotification notificationWithName:@"testNOtification" object:@"success" userInfo:nil];
+        [[NSNotificationCenter defaultCenter] postNotification:notification];
+        return YES;
+    }else if([url.host isEqualToString:@"fail"]){
+        NSNotification *notification = [NSNotification notificationWithName:@"testNOtification" object:@"fail" userInfo:nil];
+        [[NSNotificationCenter defaultCenter] postNotification:notification];
+        return YES;
+    }
         BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];
         if ([url.host isEqualToString:@"safepay"]) {
                 //跳转支付宝钱包进行支付，处理支付结果
@@ -305,19 +329,6 @@
         }];
     }else{
         [AppDelegate getAppDelegate].value = 0;
-    }
-}
-
-- (void)refreshPerson{
-    if ([YWUserTool account]){
-    NSMutableDictionary *parameter = [Utils parameter];
-    parameter[@"userid"] = [YWUserTool account].userid;
-    [YWHttptool GET:PortOther_user parameters:parameter success:^(id responseObject) {
-        if ([responseObject[@"isError"] integerValue]) return ;
-        YWUser *user = [YWUser mj_objectWithKeyValues:responseObject[@"result"]];
-        [YWUserTool saveAccount:user];
-    } failure:^(NSError *error) {
-    }];
     }
 }
 
