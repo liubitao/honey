@@ -23,7 +23,7 @@
 + (NSMutableArray*)kh_objectWithKeyValuesArray:(NSArray *)array{
     NSMutableArray *result = [NSMutableArray array];
     for (NSDictionary *dict in array) {
-        KHWinCodeModel *model = [self kh_objectWithKeyValues:dict];
+        KHWinCodeModel *model = [KHWinCodeModel kh_objectWithKeyValues:dict];
         [result addObject:model];
     }
     return result;

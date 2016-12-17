@@ -15,6 +15,7 @@
 #import "KHTenModel.h"
 #import "KHDetailViewController.h"
 #import "TSAnimation.h"
+#import "KHLoginViewController.h"
 
 @interface KHSearchViewController ()<UITableViewDataSource,UITableViewDelegate,KHSearchCellDelegate,UITextFieldDelegate,TSAnimationDelegate>{
      CGFloat _leftTableWidth;
@@ -274,6 +275,12 @@
 
 //点击加入了清单
 - (void)clickAddListButtonAtCell:(KHSearchTableViewCell *)cell{
+    if (![YWUserTool account]) {
+        KHLoginViewController *vc = [[KHLoginViewController alloc]init];
+        KHNavigationViewController *nav = [[KHNavigationViewController alloc] initWithRootViewController:vc];
+        [self presentViewController:nav animated:YES completion:nil];
+        return;
+    }
     if ([TSAnimation sharedAnimation].isShowing) {
         return;
     }
