@@ -225,6 +225,7 @@
 		0C8877731DEBFA3500B21134 /* KHOtherHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C8877721DEBFA3500B21134 /* KHOtherHeaderView.m */; };
 		0C892F061DE2950B00B9B4A9 /* KHZhifubaoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C892F051DE2950B00B9B4A9 /* KHZhifubaoModel.m */; };
 		0C892F091DE2979400B9B4A9 /* KHResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C892F081DE2979400B9B4A9 /* KHResponseModel.m */; };
+		0C8E192D1E07B0080061C972 /* duobao.cer in Resources */ = {isa = PBXBuildFile; fileRef = 0C8E192C1E07B0080061C972 /* duobao.cer */; };
 		0C9A6ACD1DE317AA0020C4D0 /* KHSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9A6ACC1DE317AA0020C4D0 /* KHSettingViewController.m */; };
 		0C9B05551DC71684008D7BFA /* UITabBar+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9B05541DC71684008D7BFA /* UITabBar+Badge.m */; };
 		0C9B055A1DC71F37008D7BFA /* UIBarButtonItem+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9B05571DC71F37008D7BFA /* UIBarButtonItem+Badge.m */; };
@@ -691,6 +692,7 @@
 		0C892F051DE2950B00B9B4A9 /* KHZhifubaoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHZhifubaoModel.m; sourceTree = "<group>"; };
 		0C892F071DE2979400B9B4A9 /* KHResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHResponseModel.h; sourceTree = "<group>"; };
 		0C892F081DE2979400B9B4A9 /* KHResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHResponseModel.m; sourceTree = "<group>"; };
+		0C8E192C1E07B0080061C972 /* duobao.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = duobao.cer; sourceTree = "<group>"; };
 		0C9A6ACB1DE317AA0020C4D0 /* KHSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHSettingViewController.h; sourceTree = "<group>"; };
 		0C9A6ACC1DE317AA0020C4D0 /* KHSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHSettingViewController.m; sourceTree = "<group>"; };
 		0C9B05531DC71684008D7BFA /* UITabBar+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBar+Badge.h"; sourceTree = "<group>"; };
@@ -2761,6 +2763,7 @@
 				0CB129351DAA28ED005A0A4D /* lib（三方库） */,
 				0CB129361DAA28ED005A0A4D /* tool（工具类） */,
 				0CB128C91DAA0467005A0A4D /* Assets.xcassets */,
+				0C8E192C1E07B0080061C972 /* duobao.cer */,
 				0CB128CE1DAA0467005A0A4D /* Info.plist */,
 				0CB1294B1DAA2A40005A0A4D /* knock Honey.pch */,
 				0CB128BD1DAA0467005A0A4D /* Supporting Files */,
@@ -3496,6 +3499,7 @@
 				0C5782D61DC1D60100DB0B9A /* KHRegiterSecondController.xib in Resources */,
 				0C38922C1DFA4B9000DB397F /* KHCartMoreView.xib in Resources */,
 				0CBD1A1E1DACB650003E8150 /* IQKeyboardManager.bundle in Resources */,
+				0C8E192D1E07B0080061C972 /* duobao.cer in Resources */,
 				0C790B981DDC045A00C381CF /* KHSearchTableViewCell.xib in Resources */,
 				0C42DBFA1DDDAB9900444BC4 /* README.txt in Resources */,
 				0C9E8FF11DD16E9700975AEB /* KHPayViewController.xib in Resources */,

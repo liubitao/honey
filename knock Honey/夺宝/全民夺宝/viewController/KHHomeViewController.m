@@ -174,7 +174,7 @@ static NSString *footerIdentifier = @"winTreasureMenufooterIdentifier";
             if (i == 0) {
                 [_collectionView reloadData];
             }
-        } failure:^(NSError *error) {
+        }failure:^(NSError *error) {
         }];
     }
     
