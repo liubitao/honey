@@ -129,6 +129,7 @@
             [YWUserTool saveAccount:user];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"freshenPerson" object:nil];
         } failure:^(NSError *error){
+            
         }];
     }
 }

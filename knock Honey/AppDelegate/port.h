@@ -8,8 +8,6 @@
 
 #ifndef port_h
 #define port_h
-//a6e391fec0c6c459b66dcef77d39ce83
-//1.skey
 
 //QQ   APP ID  1105806530     APP KEY  LpnWofBiKeDb0aqA
 //weixin  AppID：wx1bf9134fbd335945 Appsecret：50d04908bedb1ba715cb352c814efc81
@@ -26,13 +24,7 @@
 #define UMWeiboAppKey        @"1110923628"
 #define UMWeiboAppsecret    @"8b321089624280ee25e1590fa6eca739"
 #define UMWeiboUrl          @"https://sns.whalecloud.com/sina2/callback"
-#define sKey        @"bf9024c8e834146606c7f364e73f743a"
-#define mKey        @"oneshopgoods"
-//#define portPic     @"https://"
-
-//#define PortCartPic       @"https://www.ywduobao.com"
-
-
+#define sKey        @"ywteam"
 
 //融云客服
 #define KefuMessageID    @"KEFU148133649044021"

@@ -111,6 +111,7 @@
                     [pickerController setCameraDevice:UIImagePickerControllerCameraDeviceRear];
                 } else {
                     [pickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+                    
                 }
             }else{
                 pickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;

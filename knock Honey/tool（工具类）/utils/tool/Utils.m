@@ -146,7 +146,9 @@
 
 + (NSMutableDictionary *)parameter{
     NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
-    parameter[@"mKey"] = [[NSString stringWithFormat:@"%@%@",[mKey MD5Digest],sKey]MD5Digest];
+    double time = [[NSDate date] timeIntervalSince1970] + 5;
+    parameter[@"timestamp"] = @(time);
+    parameter[@"mKey"] = [[NSString stringWithFormat:@"%@%@",@(time),sKey]MD5Digest];
     return parameter;
 }
 
