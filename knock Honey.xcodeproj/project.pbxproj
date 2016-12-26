@@ -3431,7 +3431,7 @@
 					0CB128B91DAA0467005A0A4D = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = N9J8L4GH86;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -3966,8 +3966,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "knock Honey/knock Honey.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: BiTao Liu (N9J8L4GH86)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: BiTao Liu (N9J8L4GH86)";
+				DEVELOPMENT_TEAM = N9J8L4GH86;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4002,8 +4002,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.liubitao.knock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "99e7b7f4-49f5-4f5b-aa81-185d16782ae3";
+				PROVISIONING_PROFILE_SPECIFIER = knock;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
@@ -4017,8 +4017,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "knock Honey/knock Honey.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: BiTao Liu (N9J8L4GH86)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: BiTao Liu (N9J8L4GH86)";
+				DEVELOPMENT_TEAM = N9J8L4GH86;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4053,8 +4053,8 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.liubitao.knock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "99e7b7f4-49f5-4f5b-aa81-185d16782ae3";
+				PROVISIONING_PROFILE_SPECIFIER = knock;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};

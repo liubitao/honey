@@ -184,7 +184,7 @@ static NSString * rightCell = @"rightCell";
       
             [cell setModel:model];
             cell.delegate = self;
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }else{
             KHPhoneTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:phoneCell forIndexPath:indexPath];

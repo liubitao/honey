@@ -94,7 +94,6 @@ static NSString *edGoodsCell = @"edGoodsCell";
 }
 
 - (void)getData{
-    [MBProgressHUD showMessage:@"加载中..."];
     NSMutableDictionary *parameter = [Utils parameter];
     if (_userID) {
         parameter[@"userid"] = _userID;
@@ -104,13 +103,11 @@ static NSString *edGoodsCell = @"edGoodsCell";
     parameter[@"p"] = @1;
     parameter[@"type"] = _type;
     [YWHttptool GET:PortOrder_list parameters:parameter success:^(id responseObject) {
-        [MBProgressHUD hideHUD];
         self.loading = YES;
         _currentPage = 1;
         self.dataArray = [KHSnatchModel kh_objectWithKeyValuesArray:responseObject[@"result"]];
         [self.tableView reloadData];
     } failure:^(NSError *error){
-        [MBProgressHUD hideHUD];
         self.loading = YES;
     }];
 }

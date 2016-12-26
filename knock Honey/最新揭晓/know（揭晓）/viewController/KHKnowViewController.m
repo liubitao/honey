@@ -78,7 +78,7 @@ static NSString * published = @"published";
 }
 
 - (void)getLatestPubData{
-        [MBProgressHUD showMessage:@"加载中..."];
+    [MBProgressHUD showMessage:@"加载中..."];
     NSMutableDictionary *parameter = [Utils parameter];
     [YWHttptool GET:PortGoodszxjx parameters:parameter success:^(id responseObject) {
         [MBProgressHUD hideHUD];

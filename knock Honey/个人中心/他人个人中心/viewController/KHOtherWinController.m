@@ -79,18 +79,15 @@ static NSString *OtherWincell = @"otherWinCell";
 }
 
 - (void)getLatestPubData{
-    [MBProgressHUD showMessage:@"加载中..."];
     NSMutableDictionary *parameter = [Utils parameter];
     parameter[@"userid"] = _userid;
     parameter[@"p"] = @1;
     [YWHttptool GET:PortWin_list parameters:parameter success:^(id responseObject) {
-        [MBProgressHUD hideHUD];
         self.loading = YES;
         _pageCount = 1;
         self.dataSoure = [KHWinCodeModel kh_objectWithKeyValuesArray:responseObject[@"result"][@"list"]];
         [self.tableView reloadData];
     } failure:^(NSError *error){
-        [MBProgressHUD hideHUD];
         self.loading = YES;
     }];
 }
@@ -100,7 +97,6 @@ static NSString *OtherWincell = @"otherWinCell";
     parameter[@"userid"] = _userid;
     parameter[@"p"] = [NSNumber numberWithInteger:++_pageCount];
     [YWHttptool GET:PortWin_list parameters:parameter success:^(id responseObject) {
-        NSLog(@"%@",responseObject);
         if ([responseObject[@"isError"] integerValue] == 1) {
             return ;
         }

@@ -280,7 +280,8 @@ CGFloat balanceViewHeight = 45.0;
     YWUser *user = [YWUserTool account];
     [_headImageView sd_setImageWithURL:[NSURL URLWithString:user.img] placeholderImage:[UIImage imageNamed:@"kongren"]];
     _nameLabel.text = user.username;
-    _IDLabel.text = [NSString stringWithFormat:@"推荐ID:%@",user.userid];
+    
+    _IDLabel.text = [NSString stringWithFormat:@"推荐ID:%zi",user.userid.integerValue +100000];
     _integralLabel.text = [NSString stringWithFormat:@"积分:%@",user.score];
     NSString *gradeStr = [NSString stringWithFormat:@"grade%@",user.grade];
     _gradeImage.image = IMAGE_NAMED(gradeStr);
